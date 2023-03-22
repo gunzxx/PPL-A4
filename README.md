@@ -1,4 +1,4 @@
-<h1>Cara menggunakan projek SoyBean ini</h1>
+<h1>Cara menggunakan projek SoyChain ini</h1>
 <div style="width:100%; display:flex; justify-content:center;">
     <img src="https://cdn-icons-png.flaticon.com/512/3988/3988187.png" title="SoyBean" width="150">
 </div>
