@@ -7,24 +7,31 @@
     background: var(--c4);
 }
 
-.form-container{
-    width: 500px;
-    height: 400px;
+.card-container{
+    min-width: 500px;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
     border-radius: 20px;
     background: var(--c3) ;
     box-shadow: 0 0 10px var(--sc1);
+    padding: 20px;
+}
+
+.form-container{
+    position: relative;
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    padding: 20px;
 }
 .form-container > h1{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .form-group{
-    width: 80%;
+    width: 100%;
     padding: 10px 20px;
     display: flex;
     flex-direction: column;
@@ -50,7 +57,7 @@
 }
 
 .form-group>input:hover{
-    box-shadow: 0 0 10px var(--sc1);
+    box-shadow: 0 0 5px var(--sc1);
 }
 .form-group>input:focus{
     box-shadow: 0 0 10px var(--sc1);
@@ -69,4 +76,15 @@
     box-shadow: 0 0 10px var(--sc1);
     transform: scale(1.1);
     /* transition: 0.3s; */
+}
+
+.action-container{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 12px;
 }

@@ -18,5 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [LoginController::class,'index']);
-Route::post('/login', [LoginController::class,'login']);
+
+Route::middleware('guest')->group(function(){
+    Route::get('/login', [LoginController::class,'index']);
+    Route::post('/login', [LoginController::class,'login']);
+});

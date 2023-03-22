@@ -36,3 +36,8 @@
 .mb-2{
     margin-bottom: 2rem;
 }
+
+.error{
+    color: white;
+    margin-top: 3px;
+}
