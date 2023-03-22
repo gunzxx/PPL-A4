@@ -17,6 +17,7 @@
 
 ## Step 3 : Konfigurasi database
 - buat database baru dengan nama <pre>soybean</pre> di <strong>phpmyadmin</strong>
+- lalu jalankan perintah : <pre>php artisan migrate</pre>
 ## Step 4 :
 - Enjoyy, kalo ada error tinggal hubungi <a href="https://wa.me/+62895370015252" target="_blank"> aku </a> aja
 
