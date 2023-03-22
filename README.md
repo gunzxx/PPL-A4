@@ -1,4 +1,8 @@
-# Cara menggunakan projek ini
+<h1>Cara menggunakan SoyBean</h1>
+<div style="width:100%; display:flex; justify-content:center;">
+    <img src="https://cdn-icons-png.flaticon.com/512/3988/3988187.png" title="SoyBean" width="150">
+</div>
+
 ## Step 1 : clone projek dari github
 - buat folder di komputer anda, <strong>bebas dimana aja</strong>
 - klik kanan dimana aja, lalu klik git bash here
