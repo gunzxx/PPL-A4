@@ -21,7 +21,7 @@
             .login:hover{
                 transform: scale(1.1);
                 transition: 0.3s;
-                box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+                box-shadow: 0 0 30px rgba(255, 255, 255, 1);
             }
         </style>
     </head>
