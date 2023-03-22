@@ -11,8 +11,12 @@
 
 ## Step 2 : install laravel
 - tetep di terminalnya, lalu ketik <pre>composer i</pre>
-- tunggu sampai selesai, kalo ada error bisa hubungi <a href="https://wa.me/+62895370015252" target="_blank"> aku </a>
+- tunggu sampai selesai
+- Masukkan perintah : <pre>cp .env.example .env</pre>
+- kalo ada error bisa hubungi <a href="https://wa.me/+62895370015252" target="_blank"> aku </a>
 
-## Step 3 :
+## Step 3 : Konfigurasi database
+- buat database baru dengan nama <pre>soybean</pre> di <strong>phpmyadmin</strong>
+## Step 4 :
 - Enjoyy, kalo ada error tinggal hubungi <a href="https://wa.me/+62895370015252" target="_blank"> aku </a> aja
 
