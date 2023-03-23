@@ -22,7 +22,7 @@
                 </div>
                 
                 <button class="login-button">Masuk</button>
-
+                
                 <div class="action-container">
                     <a href="/forgot">Lupa password</a>
                     <p>Tidak punya akun?<a href="/register">Daftar</a></p>
