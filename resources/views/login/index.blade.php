@@ -5,17 +5,20 @@
         <div class="card-container">
             <form method="POST" class="form-container" action="/login">
                 @csrf
+                @if(session()->has('error'))
+                    {{ dd("OK"); }}
+                @endif
                 <h1>Masuk</h1>
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" autofocus name="username" id="username" autocomplete="off" placeholder="Masukkan username" value="{{ old('username') }}">
+                    <input required type="text" autofocus name="username" id="username" autocomplete="off" placeholder="Masukkan username" value="{{ old('username') }}">
                     @error('username')
                         <small class="error">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="form-group" style="margin-bottom: 10px;">
                     <label for="password">Password</label>
-                    <input type="text" name="password" id="password" autocomplete="off" placeholder="Masukkan password" value="{{ old('password') }}">
+                    <input required type="text" name="password" id="password" autocomplete="off" placeholder="Masukkan password" value="{{ old('password') }}">
                     @error('password')
                         <small class="error">{{ $message }}</small>
                     @enderror

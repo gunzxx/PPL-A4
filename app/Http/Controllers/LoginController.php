@@ -24,11 +24,10 @@ class LoginController extends Controller
         ]);
 
         if(Auth::attempt([
-            "name" => $request->post('username'),
+            "username" => $request->post('username'),
             "password" => $request->post('password'),
         ])){
-            dd("Login berhasil");
+            return redirect('/login')->with('error',"Login gagal");
         }
-        dd("Login gagal");
     }
 }

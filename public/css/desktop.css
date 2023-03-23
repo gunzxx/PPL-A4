@@ -16,6 +16,7 @@
     background: var(--c3) ;
     box-shadow: 0 0 10px var(--sc1);
     padding: 20px;
+    box-sizing: content-box ;
 }
 
 .form-container{
