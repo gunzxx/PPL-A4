@@ -5,10 +5,13 @@
         <div class="card-container">
             <form method="POST" class="form-container" action="/login">
                 @csrf
-                @if(session()->has('error'))
-                    {{ dd("OK"); }}
-                @endif
                 <h1>Masuk</h1>
+                @if(session()->has('error'))
+                    <div class="alert-container">
+                        <p class="alert static">Login gagal</p>
+                        <button type="button" class="closeAlert">X</button>
+                    </div>
+                @endif
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input required type="text" autofocus name="username" id="username" autocomplete="off" placeholder="Masukkan username" value="{{ old('username') }}">

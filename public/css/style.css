@@ -41,3 +41,21 @@
     color: white;
     margin-top: 3px;
 }
+
+.alert-container *{
+    color: var(--c1);
+}
+.alert-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: var(--c4);
+}
+.alert-container>button{
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

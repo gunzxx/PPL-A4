@@ -27,7 +27,10 @@ class LoginController extends Controller
             "username" => $request->post('username'),
             "password" => $request->post('password'),
         ])){
-            return redirect('/login')->with('error',"Login gagal");
+            dd("Login berhasil");
+        }
+        else{
+            return redirect()->back()->with('error',"Login gagal");
         }
     }
 }
