@@ -31,7 +31,7 @@
                 
                 <div class="action-container">
                     <a href="/forgot">Lupa password</a>
-                    <p>Tidak punya akun?<a href="/register">Daftar</a></p>
+                    <p>Tidak punya akun? <a href="/register">Daftar</a></p>
                 </div>
             </form>
         </div>
