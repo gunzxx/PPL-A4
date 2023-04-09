@@ -1,0 +1,196 @@
+body{
+    background-color: var(--w2);
+}
+
+nav{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    background-color: var(--w1);
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    box-shadow: 0 -5px 35px rgba(0,0,0,.1);
+    z-index: 99;
+}
+.nav-title-container{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+}
+.title{
+    font-size: 27px;
+}
+.nav-list{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 50px;
+    padding-right: 35px;
+}
+
+.jumbotron{
+    position: relative;
+    width: 100%;
+    height: 830px;
+    padding-left: 80px;
+}
+.text-jumbotron-container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.title-jumbotron *{
+    font-size: 55px;
+    font-weight: 600;
+}
+.subtitle-jumbotron{
+    font-size: 20px;
+}
+.action-button{
+    width: max-content;
+    background-color: var(--c5);
+    color: var(--w1);
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-size: 20px;
+    margin-top: 30px;
+}
+.jumbotron>img{
+    position: absolute;
+    top: 202px;
+    right: 146px;
+}
+
+/* Fitur */
+#fitur{
+    transition: 0.3s;
+    width: 100%;
+    height: 833px;
+    padding: 100px;
+    padding-top: 46px;
+    background: var(--c4);
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+.fitur *{
+    color: var(--w1);
+}
+.title-fitur-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title-fitur-container *{
+    color: var(--w1);
+}
+.title-fitur-container > h1{
+    font-size: 64px;
+    font-weight: 600;
+}
+.subtitle-fitur{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.subtitle-fitur *{
+    font-size: 14px;
+}
+.content-fitur-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+.row-fitur{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.col-fitur{
+    width: 45%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+.box-icon{
+    height: 170px;
+    width: 250px;
+    align-self: center;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--w1);
+}
+.box-icon p{
+    color: var(--b1);
+}
+.box-icon img{
+    width: 80px;
+    height: 80px;
+}
+.box-content-description{
+    width: 100%;
+}
+
+
+
+/* About */
+.about{
+    height: 600px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 70px 80px;
+}
+.col-about{
+    width: 45%;
+    height: 100%;
+}
+.bg-about-img{
+    position: relative;
+    top: 70px;
+    width: 536px;
+    height: 406px;
+    border-radius: 10px;
+    background-color: var(--c5);
+}
+.bg-about-img img{
+    position: relative;
+    bottom: 33px;
+    left: 21px;
+}
+.col-about-2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.title-about *{
+    font-size: 42px;
+}
+.subtitle-about *{
+    font-size: 16px;
+}
+.list-fitur-about {
+    margin-top: 10px;
+}
+.list-fitur-about *{
+    font-size: 14px;
+}

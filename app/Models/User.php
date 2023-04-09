@@ -12,15 +12,13 @@ use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements HasMedia
+class User extends Authenticatable implements JWTSubject, HasMedia
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles, InteractsWithMedia;
     
-    protected $fillable = [
-        'username',
-        'email',
-        'password',
-        'nama_panggilan',
+    // protected $fillable = ['fullname','email','password',];
+    protected $guarded = [
+        'id',
     ];
 
     protected $hidden = [

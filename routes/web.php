@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AuthLoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +16,16 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function () {return view('landing');})->name("landing");
+
+Route::middleware('auth')->group(function(){
+    Route::get('/home', function () {return view('home');});
+    Route::get('/logout', [LoginController::class,'logout']);
 });
 
-
 Route::middleware('guest')->group(function(){
-    Route::get('/login', [LoginController::class,'index']);
-    Route::post('/login', [LoginController::class,'login']);
+    Route::get('/login', [LoginController::class,'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'login']);
+    Route::get('/register', [RegisterController::class,'index']);
+    Route::post('/register', [RegisterController::class,'register']);
 });

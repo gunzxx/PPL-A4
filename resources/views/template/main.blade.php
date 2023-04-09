@@ -6,14 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ isset($title) ? ucwords($title)." - " : "" }}SoyChain</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/desktop.css">
+    @if(isset($css) && gettype($css)=='array')
+        @foreach ($css as $cssitem)
+            <link rel="stylesheet" href="css/{{ $cssitem }}.css">
+        @endforeach
+    @endif
+    <script src="js/jquery.min.js"></script>
 </head>
 <body>
-    <div class="main-container">
-        @yield('container')
-    </div>
+    @yield('content')
     
-    {{-- <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script> --}}
+    @yield('script')
     <script src="/js/jquery.min.js"></script>
     <script src="/js/script.js"></script>
 </body>

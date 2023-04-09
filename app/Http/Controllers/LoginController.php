@@ -11,26 +11,37 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('login.index',[
-            "title" => "Login"
+        return view('auth.login',[
+            "title" => "Login",
+            'css'=>['login']
         ]);
     }
 
     public function login(Request $request)
     {
-        $request->validate([
-            'username'=>'required',
+        $validate = $request->validate([
+            'email'=>'required',
             'password'=>'required',
         ]);
 
-        if(Auth::attempt([
-            "username" => $request->post('username'),
-            "password" => $request->post('password'),
-        ])){
-            dd("Login berhasil");
+        if(Auth::attempt($validate)){
+            $request->session()->regenerate();
+            return redirect()->intended('/home');
         }
         else{
-            return redirect()->back()->with('error',"Login gagal");
+            dd($validate);
+            return redirect()->back()->with('loginError',"Login gagal");
         }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        request()->session()->invalidate();
+
+        request()->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

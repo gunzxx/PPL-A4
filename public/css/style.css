@@ -1,10 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 
 :root{
-    --c1 : rgb(113, 73, 198);
-    --c2 : rgb(252, 41, 71);
-    --c3 : rgb(254, 98, 68);
-    --c4 : rgb(252, 240, 225);
+    --c1 : #FED049;
+    --c2 : #CFFDE1;
+    --c3 : #3D5656;
+    --c4 : #41B167;
+    --c5 : #52A34C;
+    --c6 : #56A151;
+
+    --g1 : #CFFDE1;
+    --g2 : #41B167;
+    --g3 : #52A34C;
+    --g4 : #56A151;
+    --g5 : #3D5656;
+
+    --w1:#fff;
+    --w2:#fafafa;
+    --w3:#e8e8e8;
+    --w4:#d9d9d9;
+
+    --b1:#000;
+    --b2:#1b1e23;
+
+    --r1: #FF0000;
+    --r2: #FFCDD2;
+    --r3: #FFB6C1;
+    --r4: #e76666;
 
     --sc1 : rgba(113, 73, 198,.7);
     --sc2 : rgba(252, 41, 71,.7);
@@ -13,32 +34,53 @@
 }
 
 * {
-    font-family: 'Poppins', sans-serif;
     padding: 0;
     margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    color: var(--b1);
     box-sizing: border-box;
-    color: var(--c4);
+}
+
+button{
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+li {
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+li:before {
+    content: "+";
+    margin-right: 5px;
 }
 
 .w-full {
     width: 100%;
 }
 
-.main-container {
-    width: 100%;
-    height: 100vh;
-}
-
-.container {
-    width: 100%;
-}
 
 .mb-2{
     margin-bottom: 2rem;
 }
 
 .error{
-    color: white;
+    color: var(--w1);
     margin-top: 3px;
 }
 
@@ -60,7 +102,24 @@
     cursor: pointer;
 }
 
+.action-button {
+    width: max-content;
+    background-color: var(--c4);
+    color: var(--w1);
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-size: 20px;
+    margin-top: 30px;
+    box-shadow: 0 5px 35px rgba(0,0,0,.1);
+    transition: 0.15s;
+}
+.action-button:hover{
+    transform: scale(1.1);
+}
 
-button{
-    cursor: pointer;
+.form-group .invalid{
+    border: 2px solid var(--r4);
+}
+.error{
+    color: var(--r4);
 }

@@ -16,21 +16,8 @@ class RoleSeeder extends Seeder
 
     public function run(): void
     {
-        Permission::create(['name' => 'view posts']);
-
-        $admin = Role::create(['name' => 'admin']);
-        $admin->givePermissionTo('view posts');
-        
+        Role::create(['name' => 'admin']);
         Role::create(['name' => 'petani']);
-        Role::create(['name' => 'penjual']);
-
-        $user = User::create([
-            'username'=>'gunz',
-            'nama_panggilan'=>'Guntur',
-            'password'=>password_hash('123',PASSWORD_DEFAULT),
-            'email'=>"gunz@mail.com"
-        ]);
-
-        $user->assignRole($admin);
+        Role::create(['name' => 'pengelola']);
     }
 }
