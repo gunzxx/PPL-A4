@@ -20,5 +20,4 @@ idnumber.on('keydown', function () {
         error.innerHTML = "Nomor identitas harus angka"
         idnumber.parent().append(error)
     }
-    console.log(idnumber.parentElement);
 });
