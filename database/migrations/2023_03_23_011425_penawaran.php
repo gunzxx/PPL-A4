@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('stok_kedelai', function (Blueprint $table) {
-            $table->id();
-            $table->integer('stok');
-            $table->foreignId('user_id')->references('id')->on('users');
+        Schema::table('penawaran', function (Blueprint $table) {
+            //
         });
     }
 
@@ -23,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('stok_kedelai');
+        Schema::table('penawaran', function (Blueprint $table) {
+            //
+        });
     }
 };

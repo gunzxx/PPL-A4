@@ -15,13 +15,6 @@
             @endif
             <form method="POST" action="/login" class="form-container">
                 @csrf
-                {{-- <div class="role-group">
-                    <p>Masuk sebagai</p>
-                    <div class="select-role">
-                        <label class="role-button" for="petani"><input required type="radio" checked name="role" id="petani" value="petani">Petani</label>
-                        <label class="role-button role-2" for="pengelola"><input required type="radio" name="role" id="pengelola" value="pengelola">Pengelola</label>
-                    </div>
-                </div> --}}
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input required type="email" name="email" id="email" placeholder="Masukkan nomor hp">

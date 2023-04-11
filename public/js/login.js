@@ -1,11 +1,5 @@
 const idnumber = $('#id_number');
 
-// create error
-const error = document.createElement('p');
-error.classList.add('error');
-error.style.color = "#e76666";
-error.innerHTML = "Error";
-
 idnumber.on('keydown', function () {
     const inputValue = this.value;
 

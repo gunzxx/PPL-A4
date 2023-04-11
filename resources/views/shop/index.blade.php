@@ -19,18 +19,8 @@
             </div>
         </div>
 
-        <div class="search-partner">
-            <input type="text" placeholder="Cari kerja sama">
-            <span><i class="bi bi-search pointer"></i></span>
-        </div>
-
-        {{-- @if (count($partner))
-            
-        @endif --}}
-        <div class="partner-container center">
-            <p align="center">Kerja sama belum ada yang dibuat.</p>
-            <p align="center">Silahkan buat kerja sama terlebih dahulu.</p>
-            <div class="action-button">Tambah</div>
+        <div style="text-align: center;">
+            <h1>Jual beli</h1>
         </div>
     </main>
 @endsection

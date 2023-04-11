@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Inventories;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\Permission\Traits\HasRoles;
@@ -29,6 +30,11 @@ class User extends Authenticatable implements JWTSubject, HasMedia
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function inventory()
+    {
+        return $this->hasMany(Inventories::class);
+    }
 
     public function getJWTIdentifier()
     {

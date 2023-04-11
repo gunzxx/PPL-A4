@@ -54,7 +54,6 @@ nav{
 }
 
 
-
 /* Main */
 main{
     padding: 45px 105px;
@@ -65,7 +64,6 @@ main{
     justify-content: start;
 }
 .menu-item{
-    /* max-width: 150px; */
     padding: 11px 28px;
     border-radius: 15px 15px 0 0;
 }
@@ -78,6 +76,7 @@ main{
 .menu-item a{
     font-size: 16px;
 }
+
 
 /* Search partner */
 .search-partner{

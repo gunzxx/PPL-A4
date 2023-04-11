@@ -29,6 +29,9 @@
     --r3: #FFB6C1;
     --r4: #e76666;
 
+    --bl1:#0000FF;
+    --bl2:#00EBD7;
+
     --sc1 : rgba(113, 73, 198,.7);
     --sc2 : rgba(252, 41, 71,.7);
     --sc3 : rgba(254, 98, 68,.7);
@@ -81,11 +84,15 @@ li:before {
     margin-bottom: 2rem;
 }
 
-.error{
-    color: var(--w1);
-    margin-top: 3px;
-}
 
+/* Flexbox */
+.justify-between{
+    justify-content: space-between;
+}
+/* Flexbox end */
+
+
+/* Alert */
 .alert-container *{
     color: var(--c1);
 }
@@ -104,6 +111,42 @@ li:before {
     cursor: pointer;
 }
 
+
+/* Form */
+.form-group .invalid{
+    border: 2px solid var(--r4);
+}
+.error{
+    color: var(--r4);
+}
+
+
+/* Pointer */
+.pointer{
+    cursor: pointer;
+}
+
+
+
+/* Button */
+.btn-danger {
+    width: 100%;
+    outline: none;
+    background: var(--w1);
+    border: 1px solid var(--r4);
+    color: var(--r1);
+    display: flex;
+    justify-content: center;
+    border-radius: 6px;
+    padding: 18px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+.btn-danger:hover {
+    background: var(--r1);
+    color: var(--w1);
+}
+
 .action-button {
     width: max-content;
     background-color: var(--c4);
@@ -118,15 +161,4 @@ li:before {
 }
 .action-button:hover{
     transform: scale(1.05);
-}
-
-.form-group .invalid{
-    border: 2px solid var(--r4);
-}
-.error{
-    color: var(--r4);
-}
-
-.pointer{
-    cursor: pointer;
 }

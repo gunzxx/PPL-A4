@@ -1,0 +1,107 @@
+.card-container{
+    padding: 45px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.card{
+    width: 30%;
+    min-height: 490px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--w2);
+    border-radius: 17px;
+    box-shadow: 0 0 35px rgba(0,0,0,.095);
+    margin-bottom: 45px;
+}
+.card-img{
+    height: 240px;
+}
+.card-body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 20px;
+    background: var(--w1);
+}
+
+.form-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 20px;
+}
+
+.form-container * {
+    font-size: 20px;
+}
+.form-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group>label {
+    margin-bottom: 10px;
+}
+
+.form-group>input {
+    padding: 15px 0;
+    padding-left: 20px;
+    border: 2px solid var(--w4);
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-group.text {
+    justify-content: center;
+    align-items: center;
+}
+.form-group.button {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+.form-group.button>button {
+    width: 100%;
+    background: var(--g4);
+    outline: none;
+    border: none;
+    color: var(--w1);
+    border-radius: 6px;
+    padding: 18px;
+    font-size: 18px;
+}
+
+.btn-danger{
+    width: 100%;
+    outline: none;
+    background: var(--w1);
+    border: 1px solid var(--r4);
+    color: var(--r1);
+    display: flex;
+    justify-content: center;
+    border-radius: 6px;
+    padding: 18px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+.btn-danger *{
+    color: var(--r1);
+}
+.btn-danger:hover{
+    background: var(--r1);
+    color: var(--w1);
+}
+.btn-danger:hover *{
+    color: var(--w1);
+}
+

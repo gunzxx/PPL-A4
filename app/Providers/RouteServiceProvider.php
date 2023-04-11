@@ -17,7 +17,9 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    // private $myRoute = auth()->user()->getRoleNames()[0] + "/home";
+    // public const HOME = $this->myRoute;
+    public const HOME = "/home";
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
