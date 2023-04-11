@@ -8,16 +8,18 @@
     <link rel="stylesheet" href="/css/style.css">
     @if(isset($css) && gettype($css)=='array')
         @foreach ($css as $cssitem)
-            <link rel="stylesheet" href="css/{{ $cssitem }}.css">
+            <link rel="stylesheet" href="/css/{{ $cssitem }}.css">
         @endforeach
     @endif
-    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <script src="/js/jquery.min.js"></script>
 </head>
 <body>
     @yield('content')
-    
-    @yield('script')
+
+
     <script src="/js/jquery.min.js"></script>
+    @yield('script')
     <script src="/js/script.js"></script>
 </body>
 </html>

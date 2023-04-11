@@ -9,10 +9,11 @@
     --c6 : #56A151;
 
     --g1 : #CFFDE1;
-    --g2 : #41B167;
+    --g2 : #56A151;
     --g3 : #52A34C;
-    --g4 : #56A151;
+    --g4 : #41B167;
     --g5 : #3D5656;
+    --g6 : #1D673F;
 
     --w1:#fff;
     --w2:#fafafa;
@@ -21,6 +22,7 @@
 
     --b1:#000;
     --b2:#1b1e23;
+    --b3:#9F9A9A;
 
     --r1: #FF0000;
     --r2: #FFCDD2;
@@ -112,9 +114,10 @@ li:before {
     margin-top: 30px;
     box-shadow: 0 5px 35px rgba(0,0,0,.1);
     transition: 0.15s;
+    cursor: pointer;
 }
 .action-button:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .form-group .invalid{
@@ -122,4 +125,8 @@ li:before {
 }
 .error{
     color: var(--r4);
+}
+
+.pointer{
+    cursor: pointer;
 }

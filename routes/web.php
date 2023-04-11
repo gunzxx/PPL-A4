@@ -1,25 +1,27 @@
 <?php
 
-use App\Http\Controllers\AuthLoginController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\AuthLoginController;
+use App\Http\Controllers\Pengelola\PengelolaHomeController;
 
 Route::get('/', function () {return view('landing');})->name("landing");
+// Route::get('/delete', function () {User::find(2)->delete();})->name("landing");
 
+Route::middleware(['auth','role:pengelola'])->group(function(){
+    Route::get('/pengelola/home', [PengelolaHomeController::class,'index']);
+
+    Route::get('/pengelola/partners', [PengelolaHomeController::class,'partner']);
+
+    Route::get('/pengelola/shop', [PengelolaHomeController::class,'index']);
+    
+    Route::get('/pengelola/inventory', [PengelolaHomeController::class,'inventory']);
+    Route::get('/pengelola/inventory/create', [PengelolaHomeController::class,'inventory']);
+    Route::get('/pengelola/inventory/update', [PengelolaHomeController::class,'inventory']);
+});
 Route::middleware('auth')->group(function(){
-    Route::get('/home', function () {return view('home');});
     Route::get('/logout', [LoginController::class,'logout']);
 });
 

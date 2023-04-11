@@ -26,7 +26,7 @@ class LoginController extends Controller
 
         if(Auth::attempt($validate)){
             $request->session()->regenerate();
-            return redirect()->intended('/home');
+            return redirect()->intended(auth()->user()->getRoleNames()[0]."/home");
         }
         else{
             dd($validate);
