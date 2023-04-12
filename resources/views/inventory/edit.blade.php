@@ -6,7 +6,7 @@
     <main>
         <x-inventory-menu></x-inventory-menu>
         <div class="card-container">
-            <form class="form-container" method="POST" action="/pengelola/inventory/update">
+            <form class="form-container" method="POST" action="/inventory/update">
                 @csrf
                 <div class="form-group">
                     <input name="jenis_kedelai" class="@error('email') invalid @enderror" value="{{ old('jenis_kedelai') ? old('jenis_kedelai') : $inventory->jenis_kedelai }}" type="text" placeholder="Masukkan jenis kedelai">
@@ -22,7 +22,7 @@
                 </div>
                 <input type="hidden" name="inv_id" value="{{ $inventory->id }}">
                 <div class="form-group button">
-                    <a href="/pengelola/inventory/update" class="btn-danger">Batal</a>
+                    <a href="/inventory/update" class="btn-danger">Batal</a>
                     <button type="submit">Simpan</button>
                 </div>
             </form>

@@ -9,7 +9,7 @@ class InventoryController extends Controller
 {
     public function index()
     {
-        $inventories = Inventory::paginate(10);
+        $inventories = Inventory::where('user_id',auth()->user()->id)->paginate(10);
         return view('inventory.inventory', [
             "css" => ['main', 'inventory/inventory'],
             'inventories' => $inventories,
@@ -34,12 +34,12 @@ class InventoryController extends Controller
 
         Inventory::create($validated);
 
-        return redirect('/pengelola/inventory/')->with('sukses', 'Data has been added');
+        return redirect('/inventory')->with('sukses', 'Data has been added');
     }
     
     public function manage()
     {
-        $inventories = Inventory::paginate(10);
+        $inventories = Inventory::where('user_id', auth()->user()->id)->paginate(10);
         return view('inventory.manage', [
             "css" => ['main', 'inventory/inventory', 'inventory/manage'],
             'inventories' => $inventories,
@@ -67,7 +67,7 @@ class InventoryController extends Controller
         $id = $request->only('inv_id');
 
         Inventory::where('id',$id)->update($validated);
-        return redirect('/pengelola/inventory/update');
+        return redirect('/inventory/update');
     }
     
     public function delete(Request $request)

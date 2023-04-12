@@ -8,7 +8,6 @@
 
         <div class="search-partner">
             <input type="text" placeholder="Masukkan judul kerja sama">
-            <span><i class="bi bi-search pointer"></i></span>
         </div>
 
     </main>

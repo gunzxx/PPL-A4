@@ -6,6 +6,7 @@
     <main>
         <x-inventory-menu></x-inventory-menu>
 
+        @if (count($inventories)>1)
         <div class="title-page">
             <h1>Pilih persediaan yang ingin anda perbarui</h1>
         </div>
@@ -17,13 +18,16 @@
                     <p>Jenis kedelai : {{ $inventory->jenis_kedelai }}</p>
                     <p>Tersedia : {{ number_format($inventory->stok/1000,2,',','.') }} kg kedelai</p>
                     <div class="action-container">
-                        <a href="/pengelola/inventory/update/{{ $inventory->id }}" class="btn-danger edit-inv pointer"><i class="bi bi-pencil"></i></a>
+                        <a href="/inventory/update/{{ $inventory->id }}" class="btn-danger edit-inv pointer"><i class="bi bi-pencil"></i></a>
                         <span data-inv-id="{{ $inventory->id }}" class="btn-danger delete-inv pointer"><i class="bi bi-trash"></i></span>
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
+        @else
+            <h1 style="text-align: center;padding:50px 0;">Persediaan masih kosong. <a href="/inventory/create">Tambah sekarang!</a></h1>
+        @endif
     </main>
 @endsection
 @section('script')

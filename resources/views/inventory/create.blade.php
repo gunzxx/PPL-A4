@@ -7,7 +7,7 @@
         <x-inventory-menu></x-inventory-menu>
 
         <div class="card-container">
-            <form class="form-container" method="POST" action="/pengelola/inventory/create">
+            <form class="form-container" method="POST" action="/inventory/create">
                 @csrf
                 <div class="form-group">
                     <input class="@error('jenis_kedelai') invalid @enderror" value="{{ old('jenis_kedelai') }}" name="jenis_kedelai" type="text" placeholder="Masukkan jenis kedelai">
@@ -22,7 +22,7 @@
                     @enderror
                 </div>
                 <div class="form-group button">
-                    <a href="/pengelola/inventory" class="btn-danger">Batal</a>
+                    <a href="/inventory" class="btn-danger">Batal</a>
                     <button type="submit">Tambah</button>
                 </div>
             </form>
