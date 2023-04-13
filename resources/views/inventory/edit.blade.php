@@ -4,7 +4,7 @@
     <x-nav-all></x-nav-all>
 
     <main>
-        <x-inventory-menu></x-inventory-menu>
+        <x-menu-inventory></x-menu-inventory>
         <div class="card-container">
             <form class="form-container" method="POST" action="/inventory/update">
                 @csrf
@@ -22,13 +22,10 @@
                 </div>
                 <input type="hidden" name="inv_id" value="{{ $inventory->id }}">
                 <div class="form-group button">
-                    <a href="/inventory/update" class="btn-danger">Batal</a>
-                    <button type="submit">Simpan</button>
+                    <button type="button" href="/inventory/update" class="btn-danger cancel-action">Batal</button>
+                    <button class="save-btn" type="submit">Simpan</button>
                 </div>
             </form>
         </div>
     </main>
-@endsection
-@section('script')
-    {{-- <script src="/js/pengelola.js"></script> --}}
 @endsection

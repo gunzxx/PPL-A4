@@ -10,30 +10,46 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {return view('landing');})->name("landing");
 
+// Route untuk role petani
+Route::middleware(['auth','role:petani'])->group(function(){
+    Route::get('/petani/partners/', [PartnerController::class,'showPartner']);
+    Route::get('/petani/partners/partners', [PartnerController::class,'showPartner']);
+    Route::get('/petani/partners/create', [PartnerController::class,'create']);
+
+    Route::get('/petani/shop', [ShopController::class,'index']);
+});
+
+// Route untuk role pengelola
 Route::middleware(['auth','role:pengelola'])->group(function(){
     
-    Route::get('/pengelola/partners/', [PartnerController::class,'index']);
-    Route::get('/pengelola/partners/partners', [PartnerController::class,'index']);
-    Route::get('/pengelola/partners/create', [PartnerController::class,'create']);
     
     Route::get('/pengelola/shop', [ShopController::class,'index']);
-    
 });
 
 // Route untuk semua role
 Route::middleware('auth')->group(function(){
-    Route::get('/pengelola/home', [HomeController::class,'index']);
-    Route::get('/petani/home', [HomeController::class,'index']);
+    // Route home
+    Route::get('/home', [HomeController::class,'showHome']);
+    Route::get('/pengelola/home', [HomeController::class,'showHome']);
+    Route::get('/petani/home', [HomeController::class,'showHome']);
 
-    // Route Inventory
-    Route::get('/inventory', [InventoryController::class,'index']);
-    Route::get('/inventory/home', [InventoryController::class,'index']);
+    // Route kerja sama
+    Route::get('/partners', [PartnerController::class, 'showPartner']);
+    Route::get('/partners/partners', [PartnerController::class, 'showPartner']);
+    Route::get('/partners/create', [PartnerController::class, 'create']);
+    Route::post('/partners/create', [PartnerController::class, 'store']);
+    Route::get('/partners/edit', function(){return redirect('/partners');});
+    Route::get('/partners/edit/{partner}', [PartnerController::class, 'edit']);
+    Route::post('/partners/edit', [PartnerController::class, 'update']);
+
+    // Route inventory
+    Route::get('/inventory', [InventoryController::class,'showInventory']);
+    Route::get('/inventory/home', [InventoryController::class,'showInventory']);
     Route::get('/inventory/create', [InventoryController::class,'create']);
     Route::post('/inventory/create', [InventoryController::class,'store']);
-    Route::post('/inventory/update', [InventoryController::class,'update']);
     Route::get('/inventory/update', [InventoryController::class,'manage']);
+    Route::post('/inventory/update', [InventoryController::class,'update']);
     Route::get('/inventory/update/{inventory}', [InventoryController::class,'edit']);
-    Route::delete('/inventory/delete', [InventoryController::class,'delete']);
 
     // Route logout
     Route::get('/logout', [LoginController::class,'logout']);

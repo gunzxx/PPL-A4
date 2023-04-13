@@ -15,10 +15,11 @@ return new class extends Migration
         Schema::create('partners', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->longText('description');
             $table->string('stok');
             $table->string('harga');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('alamat');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });

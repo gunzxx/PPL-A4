@@ -16,7 +16,7 @@ $('.delete-inv').click(function(e){
             },
             error:(e)=>{
                 console.log(e);
-                console.log("erro");
+                console.log("error");
             }
         })
     }

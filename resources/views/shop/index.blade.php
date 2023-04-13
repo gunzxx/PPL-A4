@@ -24,6 +24,3 @@
         </div>
     </main>
 @endsection
-@section('script')
-    <script src="/js/pengelola.js"></script>
-@endsection

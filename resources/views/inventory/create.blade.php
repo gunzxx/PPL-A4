@@ -4,7 +4,7 @@
     <x-nav-all></x-nav-all>
 
     <main>
-        <x-inventory-menu></x-inventory-menu>
+        <x-menu-inventory></x-menu-inventory>
 
         <div class="card-container">
             <form class="form-container" method="POST" action="/inventory/create">
@@ -22,8 +22,8 @@
                     @enderror
                 </div>
                 <div class="form-group button">
-                    <a href="/inventory" class="btn-danger">Batal</a>
-                    <button type="submit">Tambah</button>
+                    <button class="btn-danger cancel-action" type="button" href="/inventory">Batal</button>
+                    <button class="save-btn" type="submit">Tambah</button>
                 </div>
             </form>
         </div>

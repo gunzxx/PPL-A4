@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Partner;
 use App\Models\Inventories;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
@@ -34,6 +35,11 @@ class User extends Authenticatable implements JWTSubject, HasMedia
     public function inventory()
     {
         return $this->hasMany(Inventories::class);
+    }
+
+    public function partner()
+    {
+        return $this->hasMany(Partner::class);
     }
 
     public function getJWTIdentifier()

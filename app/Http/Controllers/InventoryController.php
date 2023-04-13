@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class InventoryController extends Controller
 {
-    public function index()
+    public function showInventory()
     {
         $inventories = Inventory::where('user_id',auth()->user()->id)->paginate(10);
         return view('inventory.inventory', [
@@ -26,7 +26,7 @@ class InventoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "jenis_kedelai" => "required",
+            "jenis_kedelai" => "required|max:255",
             "stok" => "required|numeric",
         ]);
         $validated['user_id'] = auth()->user()->id;
@@ -60,7 +60,7 @@ class InventoryController extends Controller
     public function update(Request $request)
     {
         $validated = $request->validate([
-            "jenis_kedelai" => "required",
+            "jenis_kedelai" => "required|max:255",
             "stok" => "required|numeric",
         ]);
 
@@ -72,6 +72,12 @@ class InventoryController extends Controller
     
     public function delete(Request $request)
     {
+        if (!$request->post('id')) {
+            return response()->json([
+                'message' => "Id not found",
+            ], 401);
+        }
+        
         $id = $request->post('id');
         
         Inventory::find($id)->delete();
