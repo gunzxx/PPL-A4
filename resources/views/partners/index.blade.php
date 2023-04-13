@@ -4,7 +4,7 @@
     <x-nav-all></x-nav-all>
 
     <main>
-        <x-menu-partners></x-menu-partners>
+        <x-menuPartners></x-menuPartners>
 
         <div class="search-partner">
             <input type="text" placeholder="Cari kerja sama">
@@ -24,7 +24,7 @@
                             <p>{{ ucfirst(auth()->user()->fullname) }}</p>
                         </div>
                         <div class="card-header-col end">
-                            <h1>Rp {{ number_format($partner->harga,0,',','.') }}</h1>
+                            <h1>Rp {{ number_format(round($partner->harga,-2),0,',','.') }}</h1>
                             <p>1 kg kedelai</p>
                         </div>
                     </div>

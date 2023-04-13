@@ -41,6 +41,9 @@ Route::middleware('auth')->group(function(){
     Route::get('/partners/edit', function(){return redirect('/partners');});
     Route::get('/partners/edit/{partner}', [PartnerController::class, 'edit']);
     Route::post('/partners/edit', [PartnerController::class, 'update']);
+    
+    // Route Penawaran
+    Route::get('/partners/offers', [PartnerController::class, 'showPartner']);
 
     // Route inventory
     Route::get('/inventory', [InventoryController::class,'showInventory']);

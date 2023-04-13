@@ -9,10 +9,11 @@ class PartnerController extends Controller
 {
     public function showPartner()
     {
-        $partners = Partner::with(['user'])->paginate(10);
+        $partners = Partner::with(['user'])->where(['user_id'=>auth()->user()->id])->paginate(10);
 
         return view('partners.index',[
             "css"=> ['main', 'partners/partners'],
+            "actives" => 'home',
             'partners' => $partners,
         ]);
     }
@@ -20,6 +21,7 @@ class PartnerController extends Controller
     public function create()
     {
         return view('partners.create',[
+            "active" => 'home',
             "css"=> ['main','partners/create']
         ]);
     }
@@ -44,7 +46,11 @@ class PartnerController extends Controller
 
     public function edit(Partner $partner)
     {
+        if ($partner->user_id != auth()->user()->id) {
+            return abort(403);
+        }
         return view('partners.edit',[
+            "active" => 'home',
             "css"=> ['main','partners/create'],
             'partner' => $partner
         ]);
@@ -80,6 +86,6 @@ class PartnerController extends Controller
         $id = $request->post('id');
 
         Partner::find($id)->delete();
-        return response()->json([$id, 'message' => 'Data berhasil dihapus'], 200);
+        return response()->json(['id'=>$id, 'message' => 'Data berhasil dihapus'], 200);
     }
 }

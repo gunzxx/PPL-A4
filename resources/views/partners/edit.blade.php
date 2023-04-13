@@ -4,7 +4,7 @@
     <x-nav-all></x-nav-all>
 
     <main>
-        <x-menu-partners></x-menu-partners>
+        <x-menuPartners></x-menuPartners>
 
         <form class="search-partner" method="POST" action="/partners/edit">
             @csrf
