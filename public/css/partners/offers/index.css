@@ -1,0 +1,35 @@
+.card-header-col.img{
+    width: min-content;
+    margin-right: 10px;
+}
+.card-header-col.img img{
+    width: 75px;
+    height: 60px;
+}
+.card-price *{
+    font-size: 16px;
+    font-weight: 600;
+    color:var(--g2);
+}
+.card-price{
+    width: 100%;
+    display: flex;
+    gap: 30px;
+}
+.card-action{
+    display: flex;
+    gap: 30px;
+}
+.card-footer{
+    margin-top: 50px;
+}
+.card-header-col.end .tanggal{
+    font-size: 14px;
+}
+
+
+/* Button */
+.btn{
+    cursor: pointer;
+}
+/* Button end */

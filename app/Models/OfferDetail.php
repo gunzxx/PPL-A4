@@ -7,7 +7,7 @@ use App\Models\Partner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class PartnerDetail extends Model
+class OfferDetail extends Model
 {
     use HasFactory;
 
@@ -15,12 +15,11 @@ class PartnerDetail extends Model
 
     public function partner()
     {
-        return $this->hasOne(Partner::class,'id', 'partner_id');
+        return $this->hasOne(Partner::class, 'id', 'partner_id');
     }
 
     public function offer()
     {
         return $this->hasOne(Offer::class, 'id', 'offer_id');
     }
-
 }

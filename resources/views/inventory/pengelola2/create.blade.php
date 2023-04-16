@@ -10,13 +10,13 @@
             <form class="form-container" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/inventory/create">
                 @csrf
                 <div class="form-group">
-                    <input class="@error('bean_type') invalid @enderror" value="{{ old('bean_type') }}" name="bean_type" type="text" placeholder="Masukkan jenis kedelai">
-                    @error('bean_type')
+                    <input class="@error('jenis_kedelai') invalid @enderror" value="{{ old('jenis_kedelai') }}" name="jenis_kedelai" type="text" placeholder="Masukkan jenis kedelai">
+                    @error('jenis_kedelai')
                         <p class="error">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <input class="numeric @error('stok') invalid @enderror" value="{{ old('stok') }}" name="stok" class="numeric" type="text" placeholder="Masukkan stok kedelai kg">
+                    <input class="numeric @error('stok') invalid @enderror" value="{{ old('stok') }}" name="stok" class="numeric" type="text" placeholder="Masukkan stok kedelai (kg)">
                     @error('stok')
                         <p class="error">{{ $message }}</p>
                     @enderror

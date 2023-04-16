@@ -9,8 +9,8 @@
             <form class="form-container" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/inventory/update">
                 @csrf
                 <div class="form-group">
-                    <input name="bean_type" class="@error('email') invalid @enderror" value="{{ old('bean_type') ? old('bean_type') : $inventory->bean_type }}" type="text" placeholder="Masukkan jenis kedelai">
-                    @error('bean_type')
+                    <input name="jenis_kedelai" class="@error('email') invalid @enderror" value="{{ old('jenis_kedelai') ? old('jenis_kedelai') : $inventory->jenis_kedelai }}" type="text" placeholder="Masukkan jenis kedelai">
+                    @error('jenis_kedelai')
                         <p class="error">{{ $message }}</p>
                     @enderror
                 </div>

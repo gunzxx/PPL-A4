@@ -17,6 +17,7 @@
                     <p align="center">Tidak ada kerja sama yang dibuat.</p>
                     <p align="center">Silahkan cari kerja sama terlebih dahulu.</p>
                 </div>
+                <a class="btn create-btn" href="/petani/home">Cari</a>
             @else
                 @foreach ($details as $detail)
                 <div class="list-card">

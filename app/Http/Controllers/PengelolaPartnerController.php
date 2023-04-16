@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Partner;
+use App\Models\Inventory;
 use Illuminate\Http\Request;
 
 class PengelolaPartnerController extends Controller
 {
     public function showPartner()
     {
-        $partners = Partner::with(['user'])->where(['pengelola_id'=>auth()->user()->id])->paginate(10);
+        $partners = Partner::with(['pengelola'])->where(['pengelola_id'=>auth()->user()->id])->paginate(10);
 
-        return view('partners.pengelola.index',[
+        return view('partners.pengelola.partners.index',[
             // "active" => 'home',
             "css"=> ['main', 'partners/partners'],
             'partners' => $partners,
@@ -20,52 +21,56 @@ class PengelolaPartnerController extends Controller
 
     public function create()
     {
-        return view('partners.pengelola.create',[
-            // "active" => 'home',
-            "css"=> ['main','partners/create']
+        $inventories = Inventory::where(['user_id' => auth()->user()->id])->get();
+        return view('partners.pengelola.partners.create',[
+            "css"=> ['main','partners/create'],
+            "inventories"=> $inventories,
         ]);
     }
     
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'stok' => 'required|numeric',
-            'harga' => 'required|numeric',
-            'alamat' => 'required',
-        ], [
-            'harga.min' => 'Harga minimal 1000',
+        $request->validate([
+            'address' => 'required',
         ]);
-        $validate['user_id'] = auth()->user()->id;
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required|max:10000',
+            'stok' => 'required|numeric',
+            'price' => 'required|numeric|min:1000',
+            'bean_id' => 'required',
+        ]);
 
-        Partner::create($validate);
-        // dd($validate);
-        return redirect('/pengelola/partners')->with('sukses', 'Data berhasil ditambahkan!');
+        $validated['pengelola_id'] = auth()->user()->id;
+
+        Partner::create($validated);
+        return redirect('/pengelola/partners/partners')->with('sukses', 'Data berhasil ditambahkan!');
     }
 
     public function edit(Partner $partner)
     {
-        if ($partner->user_id != auth()->user()->id) {
+        if ($partner->pengelola_id != auth()->user()->id) {
             return abort(403);
         }
-        return view('partners.pengelola.edit',[
-            // "active" => 'home',
+        $inventories = Inventory::where(['user_id' => auth()->user()->id])->get();
+        return view('partners.pengelola.partners.edit',[
             "css"=> ['main','partners/create'],
-            'partner' => $partner
+            'partner' => $partner,
+            'inventories' => $inventories,
         ]);
     }
 
     public function update(Request $request)
     {
+        $request->validate([
+            'address' => 'required',
+        ]);
         $validated = $request->validate([
             'name' => 'required|max:255',
             'description' => 'required|max:10000',
             'stok' => 'required|numeric',
-            'harga' => 'required|numeric',
-            'alamat' => 'required',
-        ],[
-            'harga.min'=>'Harga minimal 1000',
+            'price' => 'required|numeric|min:1000',
+            'bean_id' => 'required',
         ]);
 
         $validated['updated_at'] = date("Y-m-d H-i-s", time());

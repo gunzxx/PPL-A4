@@ -1,15 +1,15 @@
 $(".batal-tawar").click(function(){
-    const petani_id = $("#petani_id").text();
-    const id = $(this).attr('data-id');
+    const detail_id = $(this).attr('data-detail-id');
+    const offer_id = $(this).attr('data-offer-id');
 
-    if (confirm("Tawar kedelai?")) {
+    if (confirm("Hapus penawaran?")) {
         $.ajax({
             url: '/api/petani/offers/cancel',
             method: "post",
             dataType: "json",
             data: {
-                id: id,
-                petani_id: petani_id,
+                detail_id: detail_id,
+                offer_id: offer_id,
             },
             success: (e) => {
                 console.log(e);

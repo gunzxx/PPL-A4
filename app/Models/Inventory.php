@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Offer;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Foundation\Auth\User;
@@ -27,5 +28,10 @@ class Inventory extends Model implements HasMedia
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function offer()
+    {
+        return $this->hasOne(Offer::class, 'id', 'bean_id');
     }
 }

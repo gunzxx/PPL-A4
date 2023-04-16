@@ -9,34 +9,33 @@ class PengelolaInventoryController extends Controller
 {
     public function showInventory()
     {
-        $inventories = Inventory::where('user_id',auth()->user()->id)->paginate(10);
+        $inventories = Inventory::where('user_id', auth()->user()->id)->paginate(10);
         return view('inventory.pengelola.inventory', [
             "css" => ['main', 'inventory/inventory'],
             'inventories' => $inventories,
         ]);
     }
-    
+
     public function create()
     {
         return view('inventory.pengelola.create', [
             "css" => ['main', 'inventory/inventory']
         ]);
     }
-    
+
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "jenis_kedelai" => "required|max:255",
+            "bean_type" => "required|max:255",
             "stok" => "required|numeric",
         ]);
         $validated['user_id'] = auth()->user()->id;
-        // dd($validated['user_id']);
 
         Inventory::create($validated);
 
-        return redirect(auth()->user()->getRoleNames()[0].'/inventory')->with('sukses', 'Data has been added');
+        return redirect(auth()->user()->getRoleNames()[0] . '/inventory')->with('sukses', 'Data has been added');
     }
-    
+
     public function manage()
     {
         $inventories = Inventory::where('user_id', auth()->user()->id)->paginate(10);
@@ -45,10 +44,10 @@ class PengelolaInventoryController extends Controller
             'inventories' => $inventories,
         ]);
     }
-    
+
     public function edit(Inventory $inventory)
     {
-        if($inventory->user_id != auth()->user()->id){
+        if ($inventory->user_id != auth()->user()->id) {
             return abort(403);
         }
         return view('inventory.pengelola.edit', [
@@ -56,20 +55,20 @@ class PengelolaInventoryController extends Controller
             "inventory" => $inventory,
         ]);
     }
-    
+
     public function update(Request $request)
     {
         $validated = $request->validate([
-            "jenis_kedelai" => "required|max:255",
+            "bean_type" => "required|max:255",
             "stok" => "required|numeric",
         ]);
 
         $id = $request->only('inv_id');
 
-        Inventory::where('id',$id)->update($validated);
+        Inventory::where('id', $id)->update($validated);
         return redirect(auth()->user()->getRoleNames()[0] . '/inventory/update');
     }
-    
+
     public function delete(Request $request)
     {
         if (!$request->post('id')) {
@@ -77,10 +76,10 @@ class PengelolaInventoryController extends Controller
                 'message' => "Id not found",
             ], 401);
         }
-        
+
         $id = $request->post('id');
-        
+
         Inventory::find($id)->delete();
-        return response()->json([$id,'data'=>'data1'],200);
+        return response()->json([$id, 'data' => 'data1'], 200);
     }
 }

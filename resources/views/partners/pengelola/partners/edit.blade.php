@@ -6,7 +6,7 @@
     <main>
         <x-menuPartners></x-menuPartners>
 
-        <form class="search-partner" method="POST" action="/pengelola/partners/edit">
+        <form class="search-partner" method="POST" action="/pengelola/partners/partners/edit">
             @csrf
             <input type="hidden" name="partner_id" value="{{ $partner->id }}">
             <div class="form-group">
@@ -25,21 +25,33 @@
 
             <div class="input-row mb-3">
                 <div class="input-col">
-                    <input value="{{ old('stok')? old('stok') : $partner->stok }}" required class="input-area numeric @error('stok') invalid @enderror" type="text" name="stok" id="stok" placeholder="Kisaran stok kedelai">
+                    <input value="{{ old('stok')? old('stok') : $partner->stok }}" required class="input input-area numeric @error('stok') invalid @enderror" type="text" name="stok" id="stok" placeholder="Kisaran stok kedelai">
                     @error('stok')
                         <p class="error">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="input-col">
-                    <input value="{{ old('harga')? old('harga') : $partner->harga }}" required class="input-area numeric @error('harga') invalid @enderror" type="text" name="harga" id="harga" placeholder="Harga kedelai">
-                    @error('harga')
+                    <input value="{{ old('price')? old('price') : $partner->price }}" required class="input input-area numeric @error('price') invalid @enderror" type="text" name="price" id="price" placeholder="Price kedelai">
+                    @error('price')
                         <p class="error">{{ $message }}</p>
                     @enderror
+                </div>
+                <div class="input-col">
+                    @if ($inventories->count()>0)
+                        <select class="input @error('bean_id') invalid @enderror" required name="bean_id" id="bean_id">
+                            @foreach ($inventories as $inventory)
+                                <option @if($partner->bean_id == $inventory->id) selected @endif value="{{ $inventory->id }}">{{ $inventory->bean_type }}</option>
+                            @endforeach
+                        </select>
+                    @else
+                        <p class="kosong">Inventori masih kosong, harap </p>
+                        <a href="/pengelola/inventory/create" class="error">tambah inventori</a>
+                    @endif
                 </div>
             </div>
 
             <div class="form-group">
-                <input type="text" value="{{ $partner->alamat }}" name="alamat" placeholder="Masukkan alamat" required>
+                <input type="text" readonly value="{{ $partner->pengelola->address }}" name="address" placeholder="Masukkan alamat" required>
             </div>
 
             <div class="button-row my-5">

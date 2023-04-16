@@ -17,13 +17,16 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: stretch;
     gap: 30px;
 }
 .input-col{
     width: 100%;
 }
-.input-row input{
+.input-row .input{
     width: 100%;
+    padding: 16px 20px;
+    border: 1px solid var(--w4)
 }
 
 .my-3{

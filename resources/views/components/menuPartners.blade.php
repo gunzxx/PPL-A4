@@ -1,8 +1,9 @@
-{{-- {{ dd(explode('/',Request::url())) }} --}}
 <div class="menu">
-    <div class="menu-item {{ explode('/',Request::url())[5] == "partners" ? "active" : '' }}">
-        <a href="/{{ auth()->user()->getRoleNames()[0] }}/partners/partners">Kerja Sama</a>
-    </div>
+    @if (auth()->user()->hasRole('pengelola'))
+        <div class="menu-item {{ explode('/',Request::url())[5] == "partners" ? "active" : '' }}">
+            <a href="/{{ auth()->user()->getRoleNames()[0] }}/partners/partners">Kerja Sama</a>
+        </div>
+    @endif
     <div class="menu-item {{ explode('/',Request::url())[5] == "offers" ? "active" : '' }}">
         <a href="/{{ auth()->user()->getRoleNames()[0] }}/partners/offers">Penawaran</a>
     </div>

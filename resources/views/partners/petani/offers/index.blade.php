@@ -15,31 +15,38 @@
             @if (count($details)<1)
                 <div>
                     <p align="center">Tidak ada penawaran yang dibuat.</p>
-                    <p align="center">Silahkan pilih kerja sama terlebih dahulu.</p>
+                    <p align="center">Silahkan cari kerja sama terlebih dahulu.</p>
                 </div>
-                <a class="btn create-btn" href="/petani/home">Pilih</a>
+                <a class="btn create-btn" href="/petani/home">Cari</a>
             @else
                 @foreach ($details as $detail)
                 <div class="list-card">
                     <div class="card-header-row">
+                        <div class="card-header-col img">
+                            <img src="/img/profile/2.png">
+                        </div>
                         <div class="card-header-col">
-                            <h1>{{ ucfirst($detail->partner->name) }}</h1>
-                            <p>{{ ucfirst($detail->partner->pengelola->fullname) }}</p>
+                            <h1>{{ ucfirst($detail->offer->petani->fullname) }}</h1>
+                            <p>No Telp. {{ ucfirst($detail->offer->petani->number_phone) }}</p>
                         </div>
                         <div class="card-header-col end">
-                            <h1>Rp {{ number_format(round($detail->partner->price,-2),0,',','.') }}</h1>
-                            <p>1 kg kedelai</p>
+                            <p class="tanggal">{{ date("d F Y",strtotime($detail->offer->created_at)) }}</p>
                         </div>
                     </div>
                     <div class="card-body">
-                        <p>{{ Str::limit(strip_tags($detail->partner->description),500) }}</p>
+                        <p>{{ Str::limit(strip_tags($detail->offer->description),500) }}</p>
+                    </div>
+                    <div class="card-price">
+                        <p>{{ $detail->offer->stok }}kg/bulan</p>
+                        <p>{{ $detail->offer->price }}</p>
+                        <p>{{ $detail->offer->inventory->bean_type }}</p>
                     </div>
                     <div class="card-footer">
-                        <h3>{{ $detail->partner->pengelola->address }}</h3>
-                        <p>{{ date("d F Y", strtotime($detail->partner->updated_at)) }}</p>
+                        <h3>{{ $detail->offer->petani->address }}</h3>
                     </div>
                     <div class="card-action">
-                        <button class="btn delete batal-tawar" data-id="{{ $detail->partner->id }}" type="button">Batal tawar</button>
+                        <a class="btn" href="/petani/partners/offers/edit/{{ $detail->id }}">Update</a>
+                        <button class="btn delete batal-tawar" data-offer-id="{{ $detail->offer->id }}" data-detail-id="{{ $detail->id }}" type="button">Delete</button>
                     </div>
                 </div>
                 @endforeach
@@ -51,6 +58,5 @@
 @endsection
 
 @section('script')
-    <span id="petani_id" style="display: none;">{{ auth()->user()->id }}</span>
     <script src="/js/partner/petani/offers.js"></script>
 @endsection

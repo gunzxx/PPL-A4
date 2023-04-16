@@ -12,11 +12,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('partner_details', function (Blueprint $table) {
+        Schema::create('offer_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId("partner_id")->references('id')->on('partners')->onDelete('cascade');
             $table->foreignId("offer_id")->references('id')->on('offers')->onDelete('cascade');
             $table->boolean("is_approved")->default(0);
+            $table->boolean("is_rejected")->default(0);
+            $table->foreignId('petani_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('partner_details');
+        Schema::dropIfExists('offer_details');
     }
 };

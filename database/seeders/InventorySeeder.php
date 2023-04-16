@@ -18,5 +18,11 @@ class InventorySeeder extends Seeder
             'stok' => 1000,
             'user_id' => 3
         ]);
+
+        Inventory::create([
+            'bean_type' => 'Kedelai ungu',
+            'stok' => 999,
+            'user_id' => 1
+        ]);
     }
 }

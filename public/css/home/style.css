@@ -1,21 +1,22 @@
-.action-container{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    transition: 0.3s;
-    padding-bottom: 10px;
+.card-container{
+    padding-top: 30px;
 }
-.action-container .tawar{
+.card-header-row{
+    justify-content: start;
+}
+.card-header-col{
+    align-items: start;
+}
+.card-body{
+    text-align: left;
+}
+.tawar{
     padding: 10px 30px;
     background-color: var(--g3);
     box-shadow: 0 4px 15px rgba(0,0,0,.25);
     color: var(--w1);
     border-radius: 10px;
 }
-.action-container:hover {
-    transform: scale(1.1);
-}
-.action-container .tawar:hover {
+.tawar:hover {
     text-decoration: none !important;
 }

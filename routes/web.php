@@ -1,27 +1,32 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PengelolaPartnerController;
+use App\Http\Controllers\PetaniOfferController;
 use App\Http\Controllers\PetaniPartnerController;
+use App\Http\Controllers\PengelolaOfferController;
 use App\Http\Controllers\PetaniInventoryController;
+use App\Http\Controllers\PengelolaPartnerController;
+use App\Http\Controllers\PengelolaInventoryController;
 
 Route::get('/', function () {return view('landing');})->name("landing");
 
 // Route untuk role petani
 Route::middleware(['auth','role:petani'])->group(function(){
-    // Route kerja sama
-    Route::get('/petani/partners', function(){return redirect('/petani/partners/partners');});
-    Route::get('/petani/partners/partners', [PetaniPartnerController::class,'showPartner']);
-    Route::get('/petani/partners/partners/detail/{partner}', [PetaniPartnerController::class,'detailPartner']);
-    //
-    Route::get('/petani/partners/offers', [PetaniPartnerController::class,'showOffers']);
-    Route::get('/petani/partners/offers/create/{partner}', [PetaniPartnerController::class,'createOffers']);
-    Route::post('/petani/partners/offers/create', [PetaniPartnerController::class,'saveOffers']);
-    //
+    // Kerja sama
+    Route::get('/petani/partners', function(){return redirect('/petani/partners/offers');});
+    
+    // Penawaran
+    Route::get('/petani/partners/offers', [PetaniOfferController::class,'showOffers']);
+    Route::get('/petani/partners/offers/create/{partner}', [PetaniOfferController::class,'createOffers']);
+    Route::post('/petani/partners/offers/create', [PetaniOfferController::class,'saveOffers']);
+    Route::get('/petani/partners/offers/edit/{detail}', [PetaniOfferController::class,'editOffers']);
+    Route::post('/petani/partners/offers/update', [PetaniOfferController::class,'updateOffers']);
+
+    // Persetujuan
     Route::get('/petani/partners/agreements', [PetaniPartnerController::class,'showAgreements']);
 
     // Route jual beli
@@ -39,30 +44,38 @@ Route::middleware(['auth','role:petani'])->group(function(){
 
 // Route untuk role pengelola
 Route::middleware(['auth','role:pengelola'])->group(function(){
-    Route::get('/pengelola/partners', [PengelolaPartnerController::class, 'showPartner']);
-    Route::get('/pengelola/partners/create', [PengelolaPartnerController::class, 'create']);
-    Route::post('/pengelola/partners/create', [PengelolaPartnerController::class, 'store']);
-    Route::get('/pengelola/partners/edit', function(){return redirect('/partners');});
-    Route::get('/pengelola/partners/edit/{partner}', [PengelolaPartnerController::class, 'edit']);
-    Route::post('/pengelola/partners/edit', [PengelolaPartnerController::class, 'update']);
+    // Kerja sana
+    Route::get('/pengelola/partners', function(){return redirect('/pengelola/partners/partners');});
+    Route::get('/pengelola/partners/partners', [PengelolaPartnerController::class, 'showPartner']);
+    Route::get('/pengelola/partners/partners/create', [PengelolaPartnerController::class, 'create']);
+    Route::post('/pengelola/partners/partners/create', [PengelolaPartnerController::class, 'store']);
+    Route::get('/pengelola/partners/partners/edit', function(){return redirect('/pengelola/partners/partners');});
+    Route::get('/pengelola/partners/partners/edit/{partner}', [PengelolaPartnerController::class, 'edit']);
+    Route::post('/pengelola/partners/partners/edit', [PengelolaPartnerController::class, 'update']);
 
-    // // Route Penawaran
-    Route::get('/pengelola/offers', [PengelolaPartnerController::class, 'showPartner']);
+    // // Penawaran
+    Route::get('/pengelola/partners/offers', [PengelolaOfferController::class, 'showOffers']);
 
-    // Route jual beli
+    // Jual beli
     Route::get('/pengelola/shop', [ShopController::class,'index']);
 
     // Route inventory
-    
+    Route::get('/pengelola/inventory', [PengelolaInventoryController::class, 'showInventory']);
+    Route::get('/pengelola/inventory/home', [PengelolaInventoryController::class, 'showInventory']);
+    Route::get('/pengelola/inventory/create', [PengelolaInventoryController::class, 'create']);
+    Route::post('/pengelola/inventory/create', [PengelolaInventoryController::class, 'store']);
+    Route::get('/pengelola/inventory/update', [PengelolaInventoryController::class, 'manage']);
+    Route::post('/pengelola/inventory/update', [PengelolaInventoryController::class, 'update']);
+    Route::get('/pengelola/inventory/update/{inventory}', [PengelolaInventoryController::class, 'edit']);
 });
+
 
 // Route untuk semua role
 Route::middleware('auth')->group(function(){
     // Route home
-    // Route::get('/home', [HomeController::class,'showHome']);
-    Route::get('/pengelola/home', [HomeController::class,'showHome']);
-    Route::get('/petani/home', [HomeController::class,'showHome']);
-
+    // $role = auth()->user()->getRoleNames()[0];
+    Route::get("/pengelola/home", [HomeController::class,"showHome"]);
+    Route::get("/petani/home", [HomeController::class,'showHome']);
 
     // Route logout
     Route::get('/logout', [LoginController::class,'logout']);
