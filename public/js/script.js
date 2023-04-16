@@ -22,9 +22,6 @@ $(".numeric").on('keydown', function () {
         error.style.display = 'block';
         error.innerHTML = "Harus angka";
         this.parentElement.append(error)
-        // if (this.parentElement.children("p.error").length<2){
-        //     this.parent().append(error)
-        // }
     }
 });
 

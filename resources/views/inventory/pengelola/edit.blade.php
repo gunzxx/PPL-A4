@@ -4,9 +4,9 @@
     <x-nav-all></x-nav-all>
 
     <main>
-        <x-menu-inventory></x-menu-inventory>
+        <x-menuInventory></x-menuInventory>
         <div class="card-container">
-            <form class="form-container" method="POST" action="/inventory/update">
+            <form class="form-container" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/inventory/update">
                 @csrf
                 <div class="form-group">
                     <input name="jenis_kedelai" class="@error('email') invalid @enderror" value="{{ old('jenis_kedelai') ? old('jenis_kedelai') : $inventory->jenis_kedelai }}" type="text" placeholder="Masukkan jenis kedelai">
@@ -22,7 +22,7 @@
                 </div>
                 <input type="hidden" name="inv_id" value="{{ $inventory->id }}">
                 <div class="form-group button">
-                    <button type="button" href="/inventory/update" class="btn-danger cancel-action">Batal</button>
+                    <button type="button" class="btn-danger cancel-action">Batal</button>
                     <button class="save-btn" type="submit">Simpan</button>
                 </div>
             </form>

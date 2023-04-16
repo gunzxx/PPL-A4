@@ -12,7 +12,7 @@ $('.delete-inv').click(function(e){
             },
             success:(e)=>{
                 console.log(e);
-                window.location.href ='/inventory/update'
+                window.location.href ='/pengelola/inventory/update'
             },
             error:(e)=>{
                 console.log(e);

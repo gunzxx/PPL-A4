@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\PartnerSeeder;
+use Database\Seeders\InventorySeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,15 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
         $this->call([RoleSeeder::class]);
         $this->call([UserSeeder::class]);
+        $this->call([InventorySeeder::class]);
         $this->call([PartnerSeeder::class]);
     }
 }

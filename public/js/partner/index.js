@@ -7,12 +7,12 @@ $('.delete').click(function(e){
             method:"post",
             dataType:"json",
             data:{
-                id,id,
+                id:id,
             },
             success:(e)=>{
                 console.log(e);
                 alert(e.message);
-                window.location.href = "/partners";
+                window.location.href = "/pengelola/partners";
             },
             error:(e)=>{
                 console.log(e);

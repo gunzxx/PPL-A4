@@ -6,7 +6,7 @@
     <main>
         <x-menuPartners></x-menuPartners>
 
-        <form class="search-partner" method="POST" action="/partners/edit">
+        <form class="search-partner" method="POST" action="/pengelola/partners/edit">
             @csrf
             <input type="hidden" name="partner_id" value="{{ $partner->id }}">
             <div class="form-group">

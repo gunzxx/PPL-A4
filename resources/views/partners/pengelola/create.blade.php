@@ -6,7 +6,7 @@
     <main>
         <x-menuPartners></x-menuPartners>
 
-        <form class="search-partner" method="POST" action="/partners/create">
+        <form class="search-partner" method="POST" action="/pengelola/partners/create">
             @csrf
             <div class="form-group">
                 <input autofocus value="{{ old('name') }}" required name="name" type="text" class="input-area name @error('name') invalid @enderror" placeholder="Masukkan judul kerja sama">
@@ -35,7 +35,7 @@
             </div>
 
             <div class="form-group">
-                <input type="text" value="{{ old('alamat')?old('alamat') : $partner->alamat }}" name="alamat" placeholder="Masukkan alamat" required>
+                <input type="text" value="{{ old('alamat') }}" name="alamat" placeholder="Masukkan alamat" required>
             </div>
 
             <div class="button-row my-5">

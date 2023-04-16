@@ -5,23 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\Partner;
 use Illuminate\Http\Request;
 
-class PartnerController extends Controller
+class PengelolaPartnerController extends Controller
 {
     public function showPartner()
     {
-        $partners = Partner::with(['user'])->where(['user_id'=>auth()->user()->id])->paginate(10);
+        $partners = Partner::with(['user'])->where(['pengelola_id'=>auth()->user()->id])->paginate(10);
 
-        return view('partners.index',[
+        return view('partners.pengelola.index',[
+            // "active" => 'home',
             "css"=> ['main', 'partners/partners'],
-            "actives" => 'home',
             'partners' => $partners,
         ]);
     }
 
     public function create()
     {
-        return view('partners.create',[
-            "active" => 'home',
+        return view('partners.pengelola.create',[
+            // "active" => 'home',
             "css"=> ['main','partners/create']
         ]);
     }
@@ -32,7 +32,7 @@ class PartnerController extends Controller
             'name' => 'required',
             'description' => 'required',
             'stok' => 'required|numeric',
-            'harga' => 'required|min:1000|numeric',
+            'harga' => 'required|numeric',
             'alamat' => 'required',
         ], [
             'harga.min' => 'Harga minimal 1000',
@@ -41,7 +41,7 @@ class PartnerController extends Controller
 
         Partner::create($validate);
         // dd($validate);
-        return redirect('/partners')->with('sukses', 'Data berhasil ditambahkan!');
+        return redirect('/pengelola/partners')->with('sukses', 'Data berhasil ditambahkan!');
     }
 
     public function edit(Partner $partner)
@@ -49,8 +49,8 @@ class PartnerController extends Controller
         if ($partner->user_id != auth()->user()->id) {
             return abort(403);
         }
-        return view('partners.edit',[
-            "active" => 'home',
+        return view('partners.pengelola.edit',[
+            // "active" => 'home',
             "css"=> ['main','partners/create'],
             'partner' => $partner
         ]);
@@ -62,7 +62,7 @@ class PartnerController extends Controller
             'name' => 'required|max:255',
             'description' => 'required|max:10000',
             'stok' => 'required|numeric',
-            'harga' => 'required|min:1000|numeric',
+            'harga' => 'required|numeric',
             'alamat' => 'required',
         ],[
             'harga.min'=>'Harga minimal 1000',
@@ -73,7 +73,7 @@ class PartnerController extends Controller
         $id = $request->only('partner_id');
         Partner::where('id', $id)->update($validated);
 
-        return redirect('/partners')->with('sukses', 'Data berhasil diedit!');
+        return redirect('/pengelola/partners')->with('sukses', 'Data berhasil diedit!');
     }
 
     public function delete(Request $request)
@@ -82,6 +82,11 @@ class PartnerController extends Controller
             return response()->json([
                 'message'=>"Id not found",
             ],401);
+        }
+        if(auth()->check()=='false'){
+            return response()->json([
+                'message'=>"Please login!",
+            ],403);
         }
         $id = $request->post('id');
 

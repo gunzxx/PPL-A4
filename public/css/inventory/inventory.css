@@ -76,7 +76,7 @@
     width: 100%;
     outline: none;
     background: var(--w1);
-    border: 1px solid var(--r4);
+    border: 1px solid var(--r3);
     color: var(--r1);
     display: flex;
     justify-content: center;

@@ -2,29 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Partner;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
     public function showHome()
     {
+        // $partners = Partner_detail::with(['partner'])->where(['is_approved' => 0])->paginate(10);
+        $partners = Partner::paginate(10);
         return view('home.home', [
+            "css" => ['main','inventory/inventory','home/style'],
+            "partners" => $partners
+        ]);
+    }
+
+    public function pengelola()
+    {
+        return view('home.pengelola.home', [
             "css" => ['main']
         ]);
     }
 
-    public function partner()
+    public function petani()
     {
-        return view('partners.home', [
+        return view('home.petani.home', [
             "css" => ['main']
         ]);
     }
 
-    public function shop()
-    {
-        return view('shop.home', [
-            "css" => ['main']
-        ]);
-    }
 }

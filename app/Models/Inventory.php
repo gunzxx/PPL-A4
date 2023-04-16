@@ -22,9 +22,7 @@ class Inventory extends Model implements HasMedia
     //         ->nonQueued();
     // }
 
-    protected $guarded = [
-        'id',
-    ];
+    protected $guarded = ['id'];
 
     public function user()
     {

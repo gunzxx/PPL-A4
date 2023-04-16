@@ -8,15 +8,15 @@ use App\Models\PartnerDetail;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Partner extends Model
+class Offer extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id'];
 
-    public function pengelola()
+    public function petani()
     {
-        return $this->belongsTo(User::class,'pengelola_id','id');
+        return $this->belongsTo(User::class, 'petani_id', 'id');
     }
 
     public function inventory()

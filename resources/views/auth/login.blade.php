@@ -17,11 +17,11 @@
                 @csrf
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input required type="email" name="email" id="email" placeholder="Masukkan nomor hp">
+                    <input required type="email" name="email" id="email" placeholder="Masukkan email">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input required type="password" name="password" id="password" placeholder="Masukkan nomor hp">
+                    <input required type="password" name="password" id="password" placeholder="Masukkan password">
                 </div>
                 <div class="form-group">
                     <button type="submit">Login</button>

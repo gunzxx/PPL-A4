@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Inventory;
 use Illuminate\Http\Request;
 
-class InventoryController extends Controller
+class PengelolaInventoryController extends Controller
 {
     public function showInventory()
     {
         $inventories = Inventory::where('user_id',auth()->user()->id)->paginate(10);
-        return view('inventory.inventory', [
+        return view('inventory.pengelola.inventory', [
             "css" => ['main', 'inventory/inventory'],
             'inventories' => $inventories,
         ]);
@@ -18,7 +18,7 @@ class InventoryController extends Controller
     
     public function create()
     {
-        return view('inventory.create', [
+        return view('inventory.pengelola.create', [
             "css" => ['main', 'inventory/inventory']
         ]);
     }
@@ -34,13 +34,13 @@ class InventoryController extends Controller
 
         Inventory::create($validated);
 
-        return redirect('/inventory')->with('sukses', 'Data has been added');
+        return redirect(auth()->user()->getRoleNames()[0].'/inventory')->with('sukses', 'Data has been added');
     }
     
     public function manage()
     {
         $inventories = Inventory::where('user_id', auth()->user()->id)->paginate(10);
-        return view('inventory.manage', [
+        return view('inventory.pengelola.manage', [
             "css" => ['main', 'inventory/inventory', 'inventory/manage'],
             'inventories' => $inventories,
         ]);
@@ -51,7 +51,7 @@ class InventoryController extends Controller
         if($inventory->user_id != auth()->user()->id){
             return abort(403);
         }
-        return view('inventory.edit', [
+        return view('inventory.pengelola.edit', [
             "css" => ['main', 'inventory/inventory', 'inventory/edit'],
             "inventory" => $inventory,
         ]);
@@ -67,7 +67,7 @@ class InventoryController extends Controller
         $id = $request->only('inv_id');
 
         Inventory::where('id',$id)->update($validated);
-        return redirect('/inventory/update');
+        return redirect(auth()->user()->getRoleNames()[0] . '/inventory/update');
     }
     
     public function delete(Request $request)

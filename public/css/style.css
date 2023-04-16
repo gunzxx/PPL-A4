@@ -12,8 +12,8 @@
     --g2 : #56A151;
     --g3 : #52A34C;
     --g4 : #41B167;
-    --g5 : #3D5656;
     --g6 : #1D673F;
+    --g5 : #3D5656;
 
     --w1:#fff;
     --w2:#fafafa;
@@ -157,7 +157,7 @@ li:before {
     margin-top: 8px;
     margin-left: 8px;
     font-size: 12px;
-    color: var(--r4);
+    color: var(--r2);
 }
 
 

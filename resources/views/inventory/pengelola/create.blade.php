@@ -4,10 +4,10 @@
     <x-nav-all></x-nav-all>
 
     <main>
-        <x-menu-inventory></x-menu-inventory>
+        <x-menuInventory></x-menuInventory>
 
         <div class="card-container">
-            <form class="form-container" method="POST" action="/inventory/create">
+            <form class="form-container" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/inventory/create">
                 @csrf
                 <div class="form-group">
                     <input class="@error('jenis_kedelai') invalid @enderror" value="{{ old('jenis_kedelai') }}" name="jenis_kedelai" type="text" placeholder="Masukkan jenis kedelai">
@@ -16,7 +16,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <input class="numeric @error('stok') invalid @enderror" value="{{ old('stok') }}" name="stok" class="numeric" type="text" placeholder="Masukkan stok kedelai (dalam gram)">
+                    <input class="numeric @error('stok') invalid @enderror" value="{{ old('stok') }}" name="stok" class="numeric" type="text" placeholder="Masukkan stok kedelai (kg)">
                     @error('stok')
                         <p class="error">{{ $message }}</p>
                     @enderror

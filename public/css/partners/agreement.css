@@ -1,0 +1,14 @@
+.label{
+    color: var(--w1) ;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 35px rgba(0,0,0,.12);
+    display: flex;
+    justify-content: center;
+}
+.approved{
+    background-color: var(--g3);
+}
+.not-approved{
+    background-color: var(--r3);
+}

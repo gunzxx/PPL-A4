@@ -12,11 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inventories', function (Blueprint $table) {
+        Schema::create('partner_details', function (Blueprint $table) {
             $table->id();
-            $table->string('bean_type');
-            $table->integer('stok');
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId("partner_id")->references('id')->on('partners')->onDelete('cascade');
+            $table->foreignId("offer_id")->references('id')->on('offers')->onDelete('cascade');
+            $table->boolean("is_approved")->default(0);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::drop('inventories');
+        Schema::dropIfExists('partner_details');
     }
 };

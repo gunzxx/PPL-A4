@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string('name');
             $table->longText('description');
             $table->string('stok');
-            $table->string('harga');
-            $table->string('alamat');
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('price');
+            // $table->string("bean_id");
+            $table->foreignId("bean_id")->references('id')->on('inventories')->onDelete('cascade');
+            $table->foreignId('pengelola_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('partners');
+        Schema::drop('partners');
     }
 };

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Offer;
 use App\Models\Partner;
 use App\Models\Inventories;
 use Laravel\Sanctum\HasApiTokens;
@@ -40,6 +41,11 @@ class User extends Authenticatable implements JWTSubject, HasMedia
     public function partner()
     {
         return $this->hasMany(Partner::class);
+    }
+
+    public function offer()
+    {
+        return $this->hasMany(Offer::class);
     }
 
     public function getJWTIdentifier()

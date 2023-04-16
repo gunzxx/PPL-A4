@@ -11,7 +11,7 @@
             <link rel="stylesheet" href="/css/{{ $cssitem }}.css">
         @endforeach
     @endif
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"> --}}
     <script src="/js/jquery.min.js"></script>
 </head>
 <body>

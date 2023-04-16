@@ -22,9 +22,9 @@ class PartnerFactory extends Factory
             'name' => fake()->sentence(3,true),
             'description' => collect(fake()->paragraphs(mt_rand(10, 50)))->implode(''),
             'stok'=>mt_rand(10000,100000),
-            'harga'=>mt_rand(1000,100000),
-            'alamat'=>fake()->streetAddress(),
-            'user_id'=>mt_rand(1,3),
+            'price'=>mt_rand(1000,100000),
+            'bean_id'=>1,
+            'pengelola_id'=>mt_rand(1,2),
         ];
     }
 }
