@@ -15,12 +15,12 @@ class PartnerDetail extends Model
 
     public function partner()
     {
-        return $this->hasOne(Partner::class, 'partner_id', 'id');
+        return $this->hasOne(Partner::class,'id', 'partner_id');
     }
 
     public function offer()
     {
-        return $this->hasOne(Offer::class, 'offer_id', 'id');
+        return $this->hasOne(Offer::class, 'id', 'offer_id');
     }
 
 }

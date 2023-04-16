@@ -12,34 +12,34 @@
         </div>
 
         <div class="partner-container">
-            @if (count($partners)<1)
+            @if (count($details)<1)
                 <div>
                     <p align="center">Tidak ada kerja sama yang dibuat.</p>
                     <p align="center">Silahkan cari kerja sama terlebih dahulu.</p>
                 </div>
             @else
-                @foreach ($partners as $partner)
+                @foreach ($details as $detail)
                 <div class="list-card">
                     <div class="card-header-row">
                         <div class="card-header-col">
-                            <h1>{{ ucfirst($partner->name) }}</h1>
-                            <p>{{ ucfirst($partner->user->fullname) }}</p>
+                            <h1>{{ ucfirst($detail->partner->name) }}</h1>
+                            <p>{{ ucfirst($detail->partner->pengelola->fullname) }}</p>
                         </div>
                         <div class="card-header-col end">
-                            <h1>Rp {{ number_format(round($partner->harga,-2),0,',','.') }}</h1>
+                            <h1>Rp {{ number_format(round($detail->partner->price,-2),0,',','.') }}</h1>
                             <p>1 kg kedelai</p>
                         </div>
                     </div>
                     <div class="card-body">
-                        <p>{{ Str::limit(strip_tags($partner->description),500) }}</p>
+                        <p>{{ Str::limit(strip_tags($detail->partner->description),500) }}</p>
                     </div>
                     <div class="card-footer">
-                        <h3>{{ $partner->alamat }}</h3>
-                        <p>{{ date("d F Y", strtotime($partner->updated_at)) }}</p>
+                        <h3>{{ $detail->partner->pengelola->address }}</h3>
+                        <p>{{ date("d F Y", strtotime($detail->partner->updated_at)) }}</p>
                     </div>
-                    <div class="card-action">
-                        <button class="btn delete tawar" data-id="{{ $partner->id }}" type="button">Tawar<i class="bi bi-chevron-right"></i></button>
-                    </div>
+                    {{-- <div class="card-action">
+                        <button class="btn delete tawar" data-id="{{ $detail->partner->id }}" type="button">Tawar<i class="bi bi-chevron-right"></i></button>
+                    </div> --}}
                 </div>
                 @endforeach
             @endif

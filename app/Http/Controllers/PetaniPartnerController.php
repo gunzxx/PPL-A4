@@ -13,11 +13,11 @@ class PetaniPartnerController extends Controller
     // Halaman kerja sama
     public function showPartner()
     {
-        $partners = PartnerDetail::with(['partner'])->where(['is_approved' => 0])->paginate(10);
+        $details = PartnerDetail::with(['partner'])->where(['is_approved' => 0])->paginate(10);
 
         return view('partners.petani.partners.index', [
             "css" => ['main', 'partners/partners'],
-            'partners' => $partners,
+            'details' => $details,
         ]);
     }
 
@@ -30,11 +30,11 @@ class PetaniPartnerController extends Controller
     // Halaman penawaran
     public function showOffers()
     {
-        $partners = PartnerDetail::with(['user'])->where(['is_approved' => 0])->paginate(10);
+        $details = PartnerDetail::with(['partner'])->where(['is_approved' => 0])->paginate(10);
 
         return view('partners.petani.offers.offers', [
             "css" => ['main', 'partners/partners'],
-            'partners' => $partners,
+            'details' => $details,
         ]);
     }
 
@@ -73,11 +73,11 @@ class PetaniPartnerController extends Controller
     // Halaman persetujuan
     public function showAgreements()
     {
-        $partners = PartnerDetail::with(['user'])->where(['is_approved' => 1])->paginate(10);
+        $details = PartnerDetail::with(['partner'])->where(['is_approved' => 0])->paginate(10);
 
         return view('partners.petani.agreements.index', [
             "css" => ['main', 'partners/partners',"partners/agreement"],
-            'partners' => $partners,
+            'details' => $details,
         ]);
     }
 }
