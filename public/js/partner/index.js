@@ -3,7 +3,7 @@ $('.delete').click(function(e){
     
     if(confirm("Hapus data?")){
         $.ajax({
-            url:'/api/partners/delete',
+            url:'/api/pengelola/partners/delete',
             method:"post",
             dataType:"json",
             data:{

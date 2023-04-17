@@ -13,18 +13,15 @@ class PengelolaPartnerController extends Controller
         $partners = Partner::with(['pengelola'])->where(['pengelola_id'=>auth()->user()->id])->paginate(10);
 
         return view('partners.pengelola.partners.index',[
-            // "active" => 'home',
-            "css"=> ['main', 'partners/partners'],
+            "css"=> ['main', 'partners/partners','partners/offers/index'],
             'partners' => $partners,
         ]);
     }
 
     public function create()
     {
-        $inventories = Inventory::where(['user_id' => auth()->user()->id])->get();
         return view('partners.pengelola.partners.create',[
             "css"=> ['main','partners/create'],
-            "inventories"=> $inventories,
         ]);
     }
     
@@ -52,11 +49,9 @@ class PengelolaPartnerController extends Controller
         if ($partner->pengelola_id != auth()->user()->id) {
             return abort(403);
         }
-        $inventories = Inventory::where(['user_id' => auth()->user()->id])->get();
         return view('partners.pengelola.partners.edit',[
             "css"=> ['main','partners/create'],
             'partner' => $partner,
-            'inventories' => $inventories,
         ]);
     }
 

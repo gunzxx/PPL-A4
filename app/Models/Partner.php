@@ -22,7 +22,7 @@ class Partner extends Model
 
     public function inventory()
     {
-        return $this->belongsTo(Inventory::class,'bean_type','id');
+        return $this->hasOne(Inventory::class,'id', 'bean_id');
     }
 
     public function offerDetail()

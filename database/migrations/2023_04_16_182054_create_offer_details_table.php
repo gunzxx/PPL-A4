@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId("offer_id")->references('id')->on('offers')->onDelete('cascade');
             $table->boolean("is_approved")->default(0);
             $table->boolean("is_rejected")->default(0);
+            $table->foreignId('pengelola_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('petani_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));

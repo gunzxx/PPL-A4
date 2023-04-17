@@ -45,7 +45,8 @@
         </div>
         
         @if (auth()->user()->hasRole('pengelola'))
-            <a href="/pengelola/partners/partners/create" class="partner-add"><i class="bi bi-plus-lg"></i></a>
+            <a class="btn fixed create-btn" href="/pengelola/partners/partners/create">Tambah</a>
+            {{-- <a href="/pengelola/partners/partners/create" class="partner-add"><i class="bi bi-plus-lg"></i></a> --}}
         @endif
     </main>
 @endsection

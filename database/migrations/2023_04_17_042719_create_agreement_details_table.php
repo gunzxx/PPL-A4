@@ -12,15 +12,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('partners', function (Blueprint $table) {
+        Schema::create('agreement_details', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->longText('description');
-            $table->string('stok');
-            $table->string('price');
-            $table->string("bean_type");
-            // $table->foreignId("bean_id")->references('id')->on('inventories')->onDelete('cascade');
+            $table->foreignId("agreement_id")->references("id")->on('agreements')->onDelete("cascade");
+            $table->foreignId("offer_detail_id")->references("id")->on('offer_details')->onDelete("cascade");
+            $table->boolean("is_approved")->default(0);
+            $table->boolean("is_rejected")->default(0);
             $table->foreignId('pengelola_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('petani_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::drop('partners');
+        Schema::dropIfExists('agreement_details');
     }
 };

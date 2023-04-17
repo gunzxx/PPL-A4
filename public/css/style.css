@@ -12,8 +12,8 @@
     --g2 : #56A151;
     --g3 : #52A34C;
     --g4 : #41B167;
-    --g6 : #1D673F;
     --g5 : #3D5656;
+    --g6 : #1D673F;
 
     --w1:#fff;
     --w2:#fafafa;
@@ -124,6 +124,11 @@ li:before {
     justify-content: start;
     gap: 20px;
 }
+.form-group.row{
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30px;
+}
 
 .form-container * {
     font-size: 20px;
@@ -139,7 +144,7 @@ li:before {
     margin-bottom: 10px;
 }
 
-.form-group>input {
+.form-group>input,.form-group>.form-input {
     padding: 15px 0;
     padding-left: 20px;
     border: 2px solid var(--w4);
@@ -234,4 +239,60 @@ li:before {
 .mb-6{
     margin-bottom: 60px;
 }
+/*  */
+.mt-1{
+    margin-top: 10px;
+}
+.mt-2{
+    margin-top: 20px;
+}
+.mt-3{
+    margin-top: 30px;
+}
+.mt-4{
+    margin-top: 40px;
+}
+.mt-5{
+    margin-top: 50px;
+}
+.mt-6{
+    margin-top: 60px;
+}
+/*  */
+.my-1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.my-2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.my-3 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.my-4 {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.my-5 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.my-6 {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
 /* Margin End */
+
+
+
+
+/* Flex */
+.flex-row{
+    flex-direction: row;
+}
+.flex-row{
+    flex-direction: column;
+}
+/* Flex end */

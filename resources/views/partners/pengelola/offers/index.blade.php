@@ -35,22 +35,40 @@
                     <div class="card-body">
                         <p>{{ Str::limit(strip_tags($detail->offer->description),500) }}</p>
                     </div>
-                    <div class="card-price">
-                        <p>{{ $detail->offer->stok }}kg/bulan</p>
-                        <p>{{ $detail->offer->price }}</p>
-                        <p>{{ $detail->offer->inventory->bean_type }}</p>
+                    <div class="card-information">
+                        <div class="card-price">
+                            <p>{{ $detail->offer->stok }}kg/bulan</p>
+                            <p>Rp {{ number_format($detail->offer->price,2,',','.') }}/kg</p>
+                            <p>{{ $detail->offer->inventory->bean_type }}</p>
+                        </div>
+                        <div class="keterangan-partner">
+                            <div class="keterangan-list">
+                                <p>Nama kerja sama : </p>
+                                <p>{{ " {$detail->partner->name}" }}</p>
+                            </div>
+                            <div class="keterangan-list">
+                                <p>Nama pengelola : </p>
+                                <p>&nbsp;{{ " {$detail->pengelola->fullname}" }}</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-footer">
                         <h3>{{ $detail->offer->petani->address }}</h3>
                     </div>
                     <div class="card-action">
-                        <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}"  class="btn confirm" type="button">Terima</button>
-                        <button class="btn cancel" type="button">Tolak</button>
+                        @if ($detail->is_approved == 0 && $detail->is_rejected == 0)
+                            <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn confirm" type="button">Terima</button>
+                            <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn cancel" type="button">Tolak</button>
+                        @elseif($detail->is_approved == 1)
+                            <span class="status is_confirm">Diterima</span>
+                            <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn cancel" type="button">Hapus</button>
+                        @elseif($detail->is_rejected == 1)
+                            <span class="status is_reject">Ditolak</span>
+                            <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn cancel" type="button">Hapus</button>
+                        @endif
                     </div>
                 </div>
                 @endforeach
-                <a class="btn create-btn" href="/petani/home">Tambah</a>
-                <a href="/petani/offers/create" class="create-button"></a>
             @endif
         </div>
     </main>
@@ -58,5 +76,5 @@
 
 @section('script')
     <script src="/js/partner/petani/offers.js"></script>
-    <script src="/js/partner/petani/offers/index.js"></script>
+    <script src="/js/partner/offers/index.js"></script>
 @endsection

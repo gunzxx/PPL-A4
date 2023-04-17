@@ -27,7 +27,9 @@
                             <p>{{ date("d F Y", strtotime($partner->updated_at)) }}</p>
                         </div>
                         <div class="card-action">
-                            <a class="tawar" href="/petani/partners/offers/create/{{ $partner->id }}">Tawar</a>
+                            @if (auth()->user()->hasRole('petani'))
+                                <a class="tawar" href="/petani/partners/offers/create/{{ $partner->id }}">Tawar</a>
+                            @endif
                         </div>
                     </div>
                 @endforeach

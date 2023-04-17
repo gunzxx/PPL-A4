@@ -10,7 +10,9 @@ use App\Http\Controllers\PetaniPartnerController;
 use App\Http\Controllers\PengelolaOfferController;
 use App\Http\Controllers\PetaniInventoryController;
 use App\Http\Controllers\PengelolaPartnerController;
+use App\Http\Controllers\PetaniAgreementsController;
 use App\Http\Controllers\PengelolaInventoryController;
+use App\Http\Controllers\PengelolaAgreementsController;
 
 Route::get('/', function () {return view('landing');})->name("landing");
 
@@ -23,11 +25,11 @@ Route::middleware(['auth','role:petani'])->group(function(){
     Route::get('/petani/partners/offers', [PetaniOfferController::class,'showOffers']);
     Route::get('/petani/partners/offers/create/{partner}', [PetaniOfferController::class,'createOffers']);
     Route::post('/petani/partners/offers/create', [PetaniOfferController::class,'saveOffers']);
-    Route::get('/petani/partners/offers/edit/{detail}', [PetaniOfferController::class,'editOffers']);
+    Route::get('/petani/partners/offers/edit/{detail_id}', [PetaniOfferController::class,'editOffers']);
     Route::post('/petani/partners/offers/update', [PetaniOfferController::class,'updateOffers']);
 
     // Persetujuan
-    Route::get('/petani/partners/agreements', [PetaniPartnerController::class,'showAgreements']);
+    Route::get('/petani/partners/agreements', [PetaniAgreementsController::class,'showAgreements']);
 
     // Route jual beli
     Route::get('/petani/shop', [ShopController::class,'index']);
@@ -52,9 +54,16 @@ Route::middleware(['auth','role:pengelola'])->group(function(){
     Route::get('/pengelola/partners/partners/edit', function(){return redirect('/pengelola/partners/partners');});
     Route::get('/pengelola/partners/partners/edit/{partner}', [PengelolaPartnerController::class, 'edit']);
     Route::post('/pengelola/partners/partners/edit', [PengelolaPartnerController::class, 'update']);
-
-    // // Penawaran
+    
+    // Penawaran
     Route::get('/pengelola/partners/offers', [PengelolaOfferController::class, 'showOffers']);
+
+    // Persetujuan
+    Route::get('/pengelola/partners/agreements', [PengelolaAgreementsController::class, 'showAgreements']);
+    Route::get('/pengelola/partners/agreements/create', [PengelolaAgreementsController::class, 'createAgreements']);
+    Route::post('/pengelola/partners/agreements/create', [PengelolaAgreementsController::class, 'saveAgreements']);
+    Route::get('/pengelola/partners/agreements/edit/{agreementDetailId}', [PengelolaAgreementsController::class, 'editAgreements']);
+    Route::post('/pengelola/partners/agreements/edit', [PengelolaAgreementsController::class, 'updateAgreements']);
 
     // Jual beli
     Route::get('/pengelola/shop', [ShopController::class,'index']);
@@ -73,7 +82,7 @@ Route::middleware(['auth','role:pengelola'])->group(function(){
 // Route untuk semua role
 Route::middleware('auth')->group(function(){
     // Route home
-    // $role = auth()->user()->getRoleNames()[0];
+    Route::get('/home',function(){return redirect("/".auth()->user()->getRoleNames()[0]."/home");});
     Route::get("/pengelola/home", [HomeController::class,"showHome"]);
     Route::get("/petani/home", [HomeController::class,'showHome']);
 

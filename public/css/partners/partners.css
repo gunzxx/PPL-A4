@@ -155,6 +155,27 @@
     justify-content: end;
     gap: 15px;
 }
+/* Keterangan */
+.card-information{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.keterangan-partner *{
+    font-size: 16px !important;
+    font-weight: 500;
+}
+.keterangan-partner{
+    display: flex;
+    flex-direction: column;
+}
+.keterangan-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/* Button */
 .btn{
     padding: 7px 35px;
     border-radius: 5px;
@@ -213,4 +234,21 @@
 i{
     display: block;
     font-size: 20px !important;
+}
+
+
+
+/* Status */
+.status {
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: var(--w1);
+}
+
+.status.is_confirm {
+    background-color: var(--g2);
+}
+
+.status.is_reject {
+    background-color: var(--r2);
 }

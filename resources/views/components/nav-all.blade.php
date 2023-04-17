@@ -21,6 +21,6 @@
             <h1>{{ auth()->user()->fullname }}</h1>
             <p>{{ ucfirst(auth()->user()->getRoleNames()[0]) }} kedelai</p>
         </div>
-        <img src="/img/profile/1.png" alt="">
+        <img src="/img/profile/{{ auth()->user()->hasRole('pengelola')? 1 : 2 }}.png" alt="">
     </div>
 </nav>

@@ -31,6 +31,10 @@ nav{
 .nav-item.active > a{
     text-decoration: underline !important;
 }
+.profile-nav img{
+    height: min-content;
+    height: 100%;
+}
 .profile-nav{
     width: 20%;
     height: 100%;
@@ -78,3 +82,38 @@ main{
 }
 
 
+/* Search partner */
+.search-partner {
+    position: relative;
+    width: 100%;
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+}
+
+.search-partner input::placeholder {
+    font-size: 22px;
+    color: var(--b3);
+}
+
+.search-partner input {
+    width: 100%;
+    padding: 20px 30px;
+    font-size: 22px;
+    border: 1px solid var(--b3);
+    border-radius: 15px;
+    outline: none;
+}
+
+.search-partner span {
+    position: absolute;
+    right: 20px;
+    width: 35px;
+    font-size: 35px;
+    color: var(--b3);
+}
+
+.search-partner span i {
+    width: 100%;
+    height: 100%;
+}

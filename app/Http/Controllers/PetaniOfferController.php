@@ -13,11 +13,12 @@ class PetaniOfferController extends Controller
     // Halaman penawaran
     public function showOffers()
     {
-        $details = OfferDetail::with([
+        $details = OfferDetail::where(['petani_id'=>auth()->user()->id])->with([
             'offer'=>function($query){
                 $query->with(['petani','inventory']);
-            }
-        ])->where(['is_approved' => 0])->paginate(10);
+            },
+            'petani'
+        ])->latest()->paginate(10);
 
         return view('partners.petani.offers.index', [
             "css" => ['main', 'partners/partners', 'partners/offers/index'],
@@ -27,7 +28,10 @@ class PetaniOfferController extends Controller
 
     public function createOffers(Partner $partner)
     {
-        $cekpartner = OfferDetail::where(['partner_id' => $partner->id, "petani_id" => auth()->user()->id])->get();
+        $cekpartner = OfferDetail::where([
+            'partner_id' => $partner->id, 
+            "petani_id" => auth()->user()->id,
+        ])->get();
         if ($cekpartner->count() > 0) {
             return redirect()->back()->with(['duplicate' => 'Kerja sama sudah pernah ditawar, silahkan cek penawaran anda!']);
         }
@@ -52,8 +56,15 @@ class PetaniOfferController extends Controller
         ]);
         $validated['petani_id'] = auth()->user()->id;
         $partner_id = $request->post('partner_id');
+        $partner = Partner::find($partner_id);
+        $pengelola_id = $partner->pengelola_id;
 
-        $cekpartner = OfferDetail::where(['partner_id' => $partner_id, "petani_id" => $validated['petani_id']])->get();
+        $cekpartner = OfferDetail::where([
+            'partner_id' => $partner_id,
+            "petani_id" => auth()->user()->id,
+            'is_rejected' => 0,
+            'is_approved' => 0,
+        ])->get();
         if ($cekpartner->count() > 0) {
             return redirect()->back()->withErrors(['duplicate' => 'Kerja sama sudah pernah ditawar'])->withInput();
         }
@@ -64,13 +75,19 @@ class PetaniOfferController extends Controller
             'partner_id' => $partner_id,
             "offer_id" => $offer->id,
             "petani_id" => auth()->user()->id,
+            "pengelola_id" => $pengelola_id,
         ]);
 
         return redirect(auth()->user()->getRoleNames()[0] . '/partners');
     }
 
-    public function editOffers(OfferDetail $detail)
+    public function editOffers($detail_id)
     {
+        $detail = OfferDetail::where(['id'=>$detail_id,'is_approved'=>0,'is_rejected'=>0])->with(['partner','offer'])->get();
+        if($detail->count()<1){
+            return redirect()->back()->withErrors(["message"=>"Data tidak ditemukan"]);
+        }
+        $detail = $detail->first();
         $inventories = Inventory::where(['user_id' => auth()->user()->id])->get();
 
         return view('partners.petani.offers.editOffers', [
@@ -101,7 +118,7 @@ class PetaniOfferController extends Controller
         if (!$request->post()) {
             return response()->json(["message" => "method not allowed"], 401);
         }
-        if (!$request->post('offer_id') && !$request->post('detail_id')) {
+        if (!$request->post('offer_id') || !$request->post('detail_id')) {
             return response()->json(["message" => "Data tidak lengkap"], 403);
         }
         $detail_id = $request->post('detail_id');

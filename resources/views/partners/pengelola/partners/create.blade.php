@@ -6,7 +6,7 @@
     <main>
         <x-menuPartners></x-menuPartners>
 
-        <form class="search-partner" method="POST" action="/pengelola/partners/partners/create">
+        <form class="form-container flex-col mt-3" method="POST" action="/pengelola/partners/partners/create">
             @csrf
             <div class="form-group">
                 <input autofocus value="{{ old('name') }}" required name="name" type="text" class="input-area name @error('name') invalid @enderror" placeholder="Masukkan judul kerja sama">
@@ -22,7 +22,7 @@
                 @enderror
             </div>
 
-            <div class="input-row mb-3">
+            <div class="input-row">
                 <div class="input-col">
                     <input value="{{ old('stok') }}" required class="input input-area numeric @error('stok') invalid @enderror" type="text" name="stok" id="stok" placeholder="Kisaran stok kedelai">
                     @error('stok')
@@ -36,16 +36,7 @@
                     @enderror
                 </div>
                 <div class="input-col">
-                    @if ($inventories->count()>0)
-                        <select class="input @error('bean_id') invalid @enderror" required name="bean_id" id="bean_id">
-                            @foreach ($inventories as $inventory)
-                                <option value="{{ $inventory->id }}">{{ $inventory->bean_type }}</option>
-                            @endforeach
-                        </select>
-                    @else
-                        <p class="kosong">Inventori masih kosong, harap </p>
-                        <a href="/pengelola/inventory/create" class="error">tambah inventori</a>
-                    @endif
+                    <input class="input input-area @error('bean_id') invalid @enderror" required name="bean_id" id="bean_id" placeholder="Masukkan jenis kedelai">
                 </div>
             </div>
 
@@ -53,7 +44,7 @@
                 <input type="text" readonly value="{{ auth()->user()->address }}" name="address" placeholder="Masukkan alamat" required>
             </div>
 
-            <div class="button-row my-5">
+            <div class="button-row">
                 <button type="button" class="cancel-action btn-danger">Batal</button>
                 <button type="submit" class="save-btn">Simpan</button>
             </div>

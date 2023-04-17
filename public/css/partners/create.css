@@ -10,7 +10,7 @@
     padding: 10px 20px;
 }
 .form-group:has(.desc){
-    margin: 30px 0;
+    /* margin: 30px 0; */
 }
 
 .input-row{
@@ -29,14 +29,7 @@
     border: 1px solid var(--w4)
 }
 
-.my-3{
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-.my-5{
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
+
 .button-row{
     width: 100%;
     display: flex;

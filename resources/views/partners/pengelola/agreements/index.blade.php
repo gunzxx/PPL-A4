@@ -53,23 +53,29 @@
                         </div>
                     </div>
                     <div class="card-action">
-                        @if ($agreement_detail->is_approved == 0)
-                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn confirm confirm-agreement" type="button">Terima</button>
-                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel cancel-agreement" type="button">Tolak</button>
+                        @if ($agreement_detail->is_approved == 0 && $agreement_detail->is_rejected == 0)
+                            <a class="btn" href="/pengelola/partners/agreements/edit/{{ $agreement_detail->id }}">Update</a>
+                            <button class="btn delete delete-agreement" data-agreement-id="{{ $agreement_detail->agreement->id }}" data-agrement-detail-id="{{ $agreement_detail->id }}" type="button">Hapus</button>
                         @elseif($agreement_detail->is_approved == 1)
                             <span class="status is_confirm">Diterima</span>
-                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel cancel-agreement" type="button">Hapus</button>
+                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel delete-agreement" type="button">Hapus</button>
+                        @elseif($agreement_detail->is_rejected == 1)
+                            <span class="status is_reject">Ditolak</span>
                         @endif
                     </div>
                 </div>
                 @endforeach
             @else
             <div class="">
-                <p align="center">Tidak ada persetujuan.</p>
-                <p align="center">Tunggu persetujuan dari pengelola.</p>
+                <p align="center">Tidak ada persetujuan yang dibuat.</p>
+                <p align="center">Silahkan buat persetujuan terlebih dahulu.</p>
             </div>
             @endif
         </div>
+        
+        @if (auth()->user()->hasRole('pengelola'))
+            <a class="btn fixed create-btn" href="/pengelola/partners/agreements/create">Tambah</a>
+        @endif
     </main>
 
     @error("message")
@@ -81,5 +87,11 @@
 @endsection
 
 @section('script')
-    <script src="/js/partner/petani/agreement.js"></script>
+    <script src="/js/partner/pengelola/agreement.js"></script>
 @endsection
+
+<?php
+
+// array_has($array, key)
+
+?>
