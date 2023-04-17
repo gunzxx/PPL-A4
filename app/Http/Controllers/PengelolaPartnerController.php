@@ -35,7 +35,7 @@ class PengelolaPartnerController extends Controller
             'description' => 'required|max:10000',
             'stok' => 'required|numeric',
             'price' => 'required|numeric|min:1000',
-            'bean_id' => 'required',
+            'bean_type' => 'required',
         ]);
 
         $validated['pengelola_id'] = auth()->user()->id;
@@ -65,7 +65,7 @@ class PengelolaPartnerController extends Controller
             'description' => 'required|max:10000',
             'stok' => 'required|numeric',
             'price' => 'required|numeric|min:1000',
-            'bean_id' => 'required',
+            'bean_type' => 'required',
         ]);
 
         $validated['updated_at'] = date("Y-m-d H-i-s", time());

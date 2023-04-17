@@ -36,7 +36,7 @@
                     @enderror
                 </div>
                 <div class="input-col">
-                    <input class="input input-area @error('bean_id') invalid @enderror" required name="bean_id" id="bean_id" placeholder="Masukkan jenis kedelai">
+                    <input class="input input-area @error('bean_type') invalid @enderror" required name="bean_type" id="bean_type" placeholder="Masukkan jenis kedelai">
                 </div>
             </div>
 

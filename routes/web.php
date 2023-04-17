@@ -1,20 +1,38 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ShopController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\PetaniOfferController;
-use App\Http\Controllers\PetaniPartnerController;
-use App\Http\Controllers\PengelolaOfferController;
-use App\Http\Controllers\PetaniInventoryController;
-use App\Http\Controllers\PengelolaPartnerController;
-use App\Http\Controllers\PetaniAgreementsController;
 use App\Http\Controllers\PengelolaInventoryController;
 use App\Http\Controllers\PengelolaAgreementsController;
+use App\Http\Controllers\PengelolaOfferController;
+use App\Http\Controllers\PengelolaPartnerController;
+use App\Http\Controllers\PetaniInventoryController;
+use App\Http\Controllers\PetaniAgreementsController;
+use App\Http\Controllers\PetaniOfferController;
+use App\Http\Controllers\ShopController;
 
 Route::get('/', function () {return view('landing');})->name("landing");
+
+// Route guest
+Route::middleware('guest')->group(function(){
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/register', [AuthController::class,'showRegister']);
+    Route::post('/register', [AuthController::class,'register']);
+});
+
+// Route untuk semua role
+Route::middleware('auth')->group(function(){
+    // Route home
+    Route::get('/home',function(){return redirect("/".auth()->user()->getRoleNames()[0]."/home");});
+    Route::get("/pengelola/home", [HomeController::class,"showHome"]);
+    Route::get("/petani/home", [HomeController::class,'showHome']);
+
+    // Route logout
+    Route::get('/logout', [AuthController::class,'logout']);
+});
+
 
 // Route untuk role petani
 Route::middleware(['auth','role:petani'])->group(function(){
@@ -78,21 +96,3 @@ Route::middleware(['auth','role:pengelola'])->group(function(){
     Route::get('/pengelola/inventory/update/{inventory}', [PengelolaInventoryController::class, 'edit']);
 });
 
-
-// Route untuk semua role
-Route::middleware('auth')->group(function(){
-    // Route home
-    Route::get('/home',function(){return redirect("/".auth()->user()->getRoleNames()[0]."/home");});
-    Route::get("/pengelola/home", [HomeController::class,"showHome"]);
-    Route::get("/petani/home", [HomeController::class,'showHome']);
-
-    // Route logout
-    Route::get('/logout', [LoginController::class,'logout']);
-});
-
-Route::middleware('guest')->group(function(){
-    Route::get('/login', [LoginController::class,'index'])->name('login');
-    Route::post('/login', [LoginController::class, 'login']);
-    Route::get('/register', [RegisterController::class,'index']);
-    Route::post('/register', [RegisterController::class,'register']);
-});

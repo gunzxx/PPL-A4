@@ -13,8 +13,10 @@
 
         <div class="partner-container">
             @if (count($partners)<1)
-                <p align="center">Tidak ada kerja sama yang dibuat.</p>
-                <p align="center">Silahkan buat kerja sama terlebih dahulu.</p>
+                <div class="">
+                    <p align="center">Tidak ada kerja sama yang dibuat.</p>
+                    <p align="center">Silahkan buat kerja sama terlebih dahulu.</p>
+                </div>
             @else
                 @foreach ($partners as $partner)
                 <div class="list-card">
