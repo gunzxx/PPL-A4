@@ -16,7 +16,7 @@
 - kalo ada error bisa hubungi <a href="https://wa.me/+62895370015252" target="_blank"> aku </a>
 
 ## Step 3 : Konfigurasi database
-- buat database baru dengan nama <pre>soychain</pre> di <strong>phpmyadmin</strong>
+- buat database baru dengan nama <pre>gunzxxmy_ppl</pre> di <strong>phpmyadmin</strong>
 - atau kalian bisa konfigurasi sendiri di file .env kalo mau
 - lalu jalankan perintah : <pre>php artisan migrate</pre> di <strong>terminal</strong>
 ## Step 4 : Cara menjalankan aplikasinya
