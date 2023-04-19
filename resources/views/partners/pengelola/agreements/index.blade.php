@@ -54,11 +54,11 @@
                     </div>
                     <div class="card-action">
                         @if ($agreement_detail->is_approved == 0 && $agreement_detail->is_rejected == 0)
-                            <a class="btn" href="/pengelola/partners/agreements/edit/{{ $agreement_detail->id }}">Update</a>
-                            <button class="btn delete delete-agreement" data-agreement-id="{{ $agreement_detail->agreement->id }}" data-agrement-detail-id="{{ $agreement_detail->id }}" type="button">Hapus</button>
+                            <a class="btn" href="/pengelola/partners/agreements/edit/{{ $agreement_detail->id }}">Update <i class="bi bi-pencil-square"></i></a>
+                            <button class="btn delete delete-agreement" data-agreement-id="{{ $agreement_detail->agreement->id }}" data-agrement-detail-id="{{ $agreement_detail->id }}" type="button">Hapus <i class="bi bi-trash3-fill"></i></button>
                         @elseif($agreement_detail->is_approved == 1)
-                            <span class="status is_confirm">Diterima</span>
-                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel delete-agreement" type="button">Hapus</button>
+                            <span class="status is_confirm">Diterima <i class="bi bi-check-circle"></i></span>
+                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel delete-agreement" type="button">Hapus<i class="bi bi-trash3-fill"></i></button>
                         @elseif($agreement_detail->is_rejected == 1)
                             <span class="status is_reject">Ditolak</span>
                         @endif

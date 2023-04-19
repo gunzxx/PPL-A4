@@ -27,8 +27,8 @@ class AuthController extends Controller
             $request->session()->regenerate();
             return redirect()->intended(auth()->user()->getRoleNames()[0] . "/home");
         } else {
-            dd($validate);
-            return redirect()->back()->with('loginError', "Login gagal");
+            // dd($validate);
+            return redirect()->back()->withErrors(['gagal'=> "Login gagal"])->withInput();
         }
     }
 

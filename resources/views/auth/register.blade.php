@@ -33,18 +33,18 @@
                 </div>
                 <div class="form-group">
                     <label for="address">Alamat</label>
-                    <input value="{{ old('address') }}" required type="text" name="address" id="address" placeholder="Masukkan nomor hp">
+                    <input value="{{ old('address') }}" required type="text" name="address" id="address" placeholder="Masukkan alamat">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input value="{{ old('email') }}" required type="email" name="email" id="email" placeholder="Masukkan nomor hp" class="@error('email') invalid @enderror">
+                    <input value="{{ old('email') }}" required type="email" name="email" id="email" placeholder="Masukkan email" class="@error('email') invalid @enderror">
                     @error('email')
                         <p class="error">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input value="{{ old('password') }}" required type="password" name="password" id="password" placeholder="Masukkan nomor hp">
+                    <input value="{{ old('password') }}" required type="password" name="password" id="password" placeholder="Masukkan password">
                 </div>
                 <div class="form-group">
                     <button type="submit">Daftar</button>

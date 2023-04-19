@@ -54,11 +54,11 @@
                     </div>
                     <div class="card-action">
                         @if ($agreement_detail->is_approved == 0)
-                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn confirm confirm-agreement" type="button">Terima</button>
-                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel cancel-agreement" type="button">Tolak</button>
+                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn confirm confirm-agreement" type="button">Terima<i class="bi bi-check-lg"></i></button>
+                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel cancel-agreement" type="button">Tolak<i class="bi bi-x-lg"></i></button>
                         @elseif($agreement_detail->is_approved == 1)
-                            <span class="status is_confirm">Diterima</span>
-                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel cancel-agreement" type="button">Hapus</button>
+                            <span class="status is_confirm">Diterima <i class="bi bi-check-circle"></i></span>
+                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel cancel-agreement" type="button">Hapus <i class="bi bi-trash3-fill"></i></button>
                         @endif
                     </div>
                 </div>

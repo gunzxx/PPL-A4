@@ -51,7 +51,7 @@
                         <p>Forecasting</p>
                     </div>
                     <div class="box-content-description">
-                        <p>Memberikan informasi Harga Pasar bahan baku kedelai Indonesia yang dapat dijadikan pemantauan harga jual beli kedelai</p>
+                        <p>Memberikan informasi Harga Pasar bahan baku kedelai Indonesia yang dapat dijadikan pemantauan harga jual beli kedelai.</p>
                     </div>
                 </div>
                 <div class="col-fitur">
@@ -68,19 +68,19 @@
                 <div class="col-fitur">
                     <div class="box-icon">
                         <img src="img/handshake.png" alt="">
-                        <p>Forecasting</p>
+                        <p>Kerja sama</p>
                     </div>
                     <div class="box-content-description">
-                        <p>Memberikan informasi Harga Pasar bahan baku kedelai Indonesia yang dapat dijadikan pemantauan harga jual beli kedelai</p>
+                        <p>Layanan kerja sama yang memudahkan keterkaitan petani kedelai dan pengelola susu kedelai untuk mendapatkan keuntungan.</p>
                     </div>
                 </div>
                 <div class="col-fitur">
                     <div class="box-icon">
                         <img src="img/discount.png" alt="">
-                        <p>Inventori</p>
+                        <p>Jual beli</p>
                     </div>
                     <div class="box-content-description">
-                        <p>Pemantauan stok inventori untuk bahan baku susu dan hasil kedelai antar keduanya yang saling terintegrasi.</p>
+                        <p>Jual beli kedelai yang sangat terjangkau dengan harga normal yang dapat memberikan keuntungan lebih dalam proses kerja sama.</p>
                     </div>
                 </div>
             </div>

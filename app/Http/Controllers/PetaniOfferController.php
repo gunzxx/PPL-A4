@@ -14,10 +14,10 @@ class PetaniOfferController extends Controller
     public function showOffers()
     {
         $details = OfferDetail::where(['petani_id'=>auth()->user()->id])->with([
+            'petani','pengelola',
             'offer'=>function($query){
                 $query->with(['petani','inventory']);
             },
-            'petani'
         ])->latest()->paginate(10);
 
         return view('partners.petani.offers.index', [
@@ -78,7 +78,7 @@ class PetaniOfferController extends Controller
             "pengelola_id" => $pengelola_id,
         ]);
 
-        return redirect(auth()->user()->getRoleNames()[0] . '/partners');
+        return redirect(auth()->user()->getRoleNames()[0] . '/partners/offers');
     }
 
     public function editOffers($detail_id)

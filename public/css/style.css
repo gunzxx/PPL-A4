@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap'); */
+@import url('/css/font/poppins.css');
 
 :root{
     --c1 : #FED049;
@@ -61,17 +61,21 @@ a:hover{
     text-decoration: underline;
 }
 
+i{
+    color: inherit;
+    display: inline-block;
+    font-size: 20px;
+}
+
 ul {
     list-style: none;
     margin-left: 0;
     padding-left: 0;
 }
-
 li {
     padding-left: 1em;
     text-indent: -1em;
 }
-
 li:before {
     content: "+";
     margin-right: 5px;
@@ -79,11 +83,6 @@ li:before {
 
 .w-full {
     width: 100%;
-}
-
-
-.mb-2{
-    margin-bottom: 2rem;
 }
 
 

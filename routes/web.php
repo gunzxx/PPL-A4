@@ -36,8 +36,8 @@ Route::middleware('auth')->group(function(){
 
 // Route untuk role petani
 Route::middleware(['auth','role:petani'])->group(function(){
-    
     // Penawaran
+    Route::get('/petani/partners', function(){return redirect('/petani/partners/offers');});
     Route::get('/petani/partners/offers', [PetaniOfferController::class,'showOffers']);
     Route::get('/petani/partners/offers/create/{partner}', [PetaniOfferController::class,'createOffers']);
     Route::post('/petani/partners/offers/create', [PetaniOfferController::class,'saveOffers']);

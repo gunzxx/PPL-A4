@@ -37,7 +37,7 @@
                     @enderror
                 </div>
                 <div class="input-col">
-                    <input value="{{ $partner->bean_type }}" class="input input-area @error('bean_type') invalid @enderror" required name="bean_type" id="bean_type" placeholder="Masukkan jenis kedelai">
+                    <input value="{{ old("bean_type")?old("bean_type"):$partner->bean_type }}" class="input input-area @error('bean_type') invalid @enderror" required name="bean_type" id="bean_type" placeholder="Masukkan jenis kedelai">
                 </div>
             </div>
 

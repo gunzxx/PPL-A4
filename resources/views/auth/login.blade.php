@@ -17,11 +17,11 @@
                 @csrf
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input required type="email" name="email" id="email" placeholder="Masukkan email">
+                    <input autofocus value="{{ old("email") }}" required type="email" name="email" id="email" placeholder="Masukkan email">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input required type="password" name="password" id="password" placeholder="Masukkan password">
+                    <input value="{{ old("password") }}" required type="password" name="password" id="password" placeholder="Masukkan password">
                 </div>
                 <div class="form-group">
                     <button type="submit">Login</button>
@@ -32,6 +32,13 @@
             </form>
         </div>
     </div>
+
+    @error('gagal')
+        <input type="hidden" id="login-gagal" value="{{ $message }}">
+        <script>
+            alert($("#login-gagal").val())
+        </script>
+    @enderror
 @endsection
 
 
