@@ -2,6 +2,11 @@ nav *{
     color: var(--w1);
 }
 nav{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 9;
     width: 100%;
     height: 75px;
     background: var(--g4);
@@ -50,6 +55,9 @@ nav{
     align-items: end;
     margin-right: 10px;
 }
+.profile-nav img{
+    cursor: pointer;
+}
 .name-profile-nav h1{
     font-size: 16px;
 }
@@ -58,8 +66,58 @@ nav{
 }
 
 
+
+/* Profile menu */
+.backdrop-profile{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9;
+    transition: 0.3s;
+}
+.profile-menu-container *{
+    font-size: 16px !important;
+}
+.profile-menu-container{
+    display: none;
+}
+.profile-menu-container hr{
+    width: 100%;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.3);
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+.card-profile-menu{
+    position: fixed;
+    top: 60px;
+    right: 40px;
+    z-index: 11;
+    width: 250px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 4px 25px rgba(0,0,0,.1);
+    border-radius: 10px;
+    display: flex;
+    /* display: none; */
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 10px 25px;
+}
+.profile-menu-list{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
 /* Main */
 main{
+    margin-top: 80px;
     padding: 45px 105px;
 }
 .menu{

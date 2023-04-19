@@ -62,7 +62,7 @@
                             <button class="btn delete batal-tawar" data-offer-id="{{ $detail->offer->id }}" data-detail-id="{{ $detail->id }}" type="button">Hapus<i class="bi bi-trash3-fill"></i></button>
                         @elseif($detail->is_approved == 1)
                             <span class="status is_confirm">Diterima <i class="bi bi-check-circle-fill"></i></span>
-                            <button class="btn delete batal-tawar" data-offer-id="{{ $detail->offer->id }}" data-detail-id="{{ $detail->id }}" type="button">Hapus<i class="bi bi-trash3-fill"></i></button>
+                            <button class="btn delete batal-tawar" data-offer-id="{{ $detail->offer->id }}" data-detail-id="{{ $detail->id }}" type="button">Batalkan<i class="bi bi-x-lg"></i></button>
                         @elseif($detail->is_rejected == 1)
                             <span class="status is_reject">Ditolak</span>
                             <button class="btn delete batal-tawar" data-offer-id="{{ $detail->offer->id }}" data-detail-id="{{ $detail->id }}" type="button">Hapus<i class="bi bi-trash3-fill"></i></button>

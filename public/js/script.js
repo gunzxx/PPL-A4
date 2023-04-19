@@ -33,3 +33,17 @@ $('.cancel-action').click(function () {
     }
     return false;
 });
+
+
+$(".profile-img").click(function(e){
+    $(".profile-menu-container").show()
+})
+$(".backdrop-profile").click(function(e){
+    $(".profile-menu-container").hide()
+})
+$(".logout").click(function(e){
+    e.preventDefault();
+    if(confirm("Yakin logout?")){
+        window.location.href = "/logout";
+    }
+})

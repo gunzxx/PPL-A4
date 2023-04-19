@@ -1,7 +1,7 @@
 $('.delete').click(function(e){
     const id = $(this).attr('data-id');
     
-    if(confirm("Hapus data?")){
+    if(confirm("Hapus kerja sama?")){
         $.ajax({
             url:'/api/pengelola/partners/delete',
             method:"post",

@@ -16,11 +16,31 @@
             <a href="/{{ auth()->user()->getRoleNames()[0] }}/inventory">Inventori</a>
         </div>
     </div>
+
     <div class="profile-nav">
         <div class="name-profile-nav">
             <h1>{{ auth()->user()->fullname }}</h1>
             <p>{{ ucfirst(auth()->user()->getRoleNames()[0]) }} kedelai</p>
         </div>
-        <img src="/img/profile/{{ auth()->user()->hasRole('pengelola')? 1 : 2 }}.png" alt="">
+        <img class="profile-img" src="/img/profile/{{ auth()->user()->hasRole('pengelola')? 1 : 2 }}.png" alt="">
     </div>
 </nav>
+
+<div class="profile-menu-container">
+    <div class="backdrop-profile"></div>
+    <div class="card-profile-menu">
+        <div class="profile-menu-list">
+            <a>Menu 1</a>
+        </div>
+        <div class="profile-menu-list">
+            <a>Menu 2</a>
+        </div>
+        <div class="profile-menu-list">
+            <a>Menu 3</a>
+        </div>
+        <hr>
+        <div class="profile-menu-list">
+            <a class="logout">Logout&nbsp;<i class="bi bi-box-arrow-right"></i></a>
+        </div>
+    </div>
+</div>

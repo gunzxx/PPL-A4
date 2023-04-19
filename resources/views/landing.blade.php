@@ -7,6 +7,7 @@
     <title>SoySync</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/landing.css">
+    <link rel="shortcut icon" href="/img/icon.png" type="image/x-icon">
 </head>
 <body>
     <nav>
