@@ -49,7 +49,7 @@ $(".logout").click(function(e){
 })
 
 
-$("form").submit(function(e){
+$(".form-update").submit(function(e){
     if(!confirm("Apakah data sesuai")){
         e.preventDefault();
     }

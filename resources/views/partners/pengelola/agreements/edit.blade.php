@@ -7,7 +7,7 @@
         <x-menuPartners></x-menuPartners>
 
         <div class="card-container">
-            <form class="form-container" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/partners/agreements/edit">
+            <form class="form-container form-update" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/partners/agreements/edit">
                 @csrf
                 <input type="hidden" name="agreement_detail_id" value="{{ $agreement_detail->id }}">
                 <input type="hidden" name="agreement_id" value="{{ $agreement_detail->agreement->id }}">

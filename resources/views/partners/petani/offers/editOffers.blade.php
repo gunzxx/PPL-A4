@@ -27,7 +27,7 @@
         </div>
 
         <div class="card-container">
-            <form class="form-container" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/partners/offers/update">
+            <form class="form-container form-update" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/partners/offers/update">
                 @csrf
                 <div class="form-group">
                     <input value="{{ $detail->offer->name }}" class="form-input" required name="name" placeholder="Nama penawaran" id="name" cols="30" rows="10">
