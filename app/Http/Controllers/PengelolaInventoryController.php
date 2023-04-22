@@ -80,6 +80,6 @@ class PengelolaInventoryController extends Controller
         $id = $request->post('id');
 
         Inventory::find($id)->delete();
-        return response()->json([$id, 'data' => 'data1'], 200);
+        return response()->json([$id, 'data' => 'data1','message'=>"Data berhasil dihapus"], 200);
     }
 }

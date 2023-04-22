@@ -15,9 +15,14 @@
             <a href="/"><h1 class="title">Soysync</h1></a>
         </div>
         <div class="nav-list">
-            <a href="#home" class="nav-item">Utama</a>
+            <a href="#home" class="nav-item">Home</a>
             <a href="#fitur" class="nav-item">Fitur</a>
-            <a href="#about" class="nav-item">Tentang</a>
+            <a href="#about" class="nav-item">About</a>
+            @if (auth()->check()!=true)
+            <a class="login-button" href="/login">Login</a>
+            @else
+            <a href="/{{ auth()->user()->getRoleNames()[0] }}/home">Home</a>
+            @endif
         </div>
     </nav>
 
@@ -31,7 +36,7 @@
                 <p>Memudahkan kerja sama  kedua mitra dengan keuntungan </p>
                 <p>yang balance.</p>
             </div>
-            <a href="register" class="action-button">Daftar</a>
+            <a href="register" class="action-button">Daftar sekarang</a>
         </div>
         <img src="img/hero.png" title="SoySync" width="345" height="474">
     </div>
@@ -109,7 +114,7 @@
                     <li>Harga yang terjangkau</li>
                 </ul>
             </div>
-            <a class="action-button" href="login">Coba sekarang</a>
+            <a class="action-button" href="/home">Coba sekarang</a>
         </div>
     </div>
 </body>

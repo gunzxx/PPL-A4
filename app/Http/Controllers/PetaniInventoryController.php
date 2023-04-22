@@ -33,7 +33,7 @@ class PetaniInventoryController extends Controller
 
         Inventory::create($validated);
 
-        return redirect(auth()->user()->getRoleNames()[0].'/inventory')->with('sukses', 'Data has been added');
+        return redirect(auth()->user()->getRoleNames()[0].'/inventory')->with('success', 'Data berhasil ditambahkan');
     }
     
     public function manage()
@@ -66,7 +66,7 @@ class PetaniInventoryController extends Controller
         $id = $request->only('inv_id');
 
         Inventory::where('id',$id)->update($validated);
-        return redirect(auth()->user()->getRoleNames()[0] . '/inventory/update');
+        return redirect(auth()->user()->getRoleNames()[0] . '/inventory/update')->with('success', 'Data berhasil diubah');
     }
     
     public function delete(Request $request)
@@ -80,6 +80,6 @@ class PetaniInventoryController extends Controller
         $id = $request->post('id');
         
         Inventory::find($id)->delete();
-        return response()->json([$id,'data'=>'data1'],200);
+        return response()->json([$id,'data'=>'data1','message'=>"Data berhasil dihapus"],200);
     }
 }

@@ -78,7 +78,7 @@ class PetaniOfferController extends Controller
             "pengelola_id" => $pengelola_id,
         ]);
 
-        return redirect(auth()->user()->getRoleNames()[0] . '/partners/offers');
+        return redirect(auth()->user()->getRoleNames()[0] . '/partners/offers')->with(['success','Data berhasil ditambahkan!']);
     }
 
     public function editOffers($detail_id)

@@ -50,7 +50,7 @@
                     <button type="submit">Daftar</button>
                 </div>
                 <div class="form-group text">
-                    <p>Sudah punya akun? <a href="/login">Masuk</a></p>
+                    <p>Sudah punya akun? <a style="color: blue;" href="/login">Masuk</a></p>
                 </div>
             </form>
         </div>

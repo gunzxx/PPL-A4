@@ -38,17 +38,13 @@
                     <div class="card-information">
                         <div class="card-price">
                             <p>{{ $detail->offer->stok }}kg/bulan</p>
-                            <p>Rp {{ number_format($detail->offer->price,2,',','.') }}/kg</p>
+                            <p>Rp {{ number_format($detail->offer->price,0,',','.') }}/kg</p>
                             <p>{{ $detail->offer->inventory->bean_type }}</p>
                         </div>
                         <div class="keterangan-partner">
                             <div class="keterangan-list">
-                                <p>Nama kerja sama :</p>
+                                <p>Untuk kerja sama :</p>
                                 <p>&nbsp;{{ " {$detail->partner->name}" }}</p>
-                            </div>
-                            <div class="keterangan-list">
-                                <p>Nama pengelola : </p>
-                                <p>&nbsp;{{ " {$detail->pengelola->fullname}" }}</p>
                             </div>
                         </div>
                     </div>
@@ -57,8 +53,8 @@
                     </div>
                     <div class="card-action">
                         @if ($detail->is_approved == 0 && $detail->is_rejected == 0)
-                            <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn confirm" type="button">Terima<i class="bi bi-check-lg"></i></button>
-                            <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn cancel" type="button">Tolak<i class="bi bi-x-lg"></i></button>
+                            <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn confirm" type="button">Accept<i class="bi bi-check-lg"></i></button>
+                            <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn cancel" type="button">Reject<i class="bi bi-x-lg"></i></button>
                         @elseif($detail->is_approved == 1)
                             <span class="status is_confirm">Diterima <i class="bi bi-check-circle-fill"></i></span>
                             <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn cancel" type="button">Batalkan<i class="bi bi-x-lg"></i></button>
@@ -72,6 +68,16 @@
             @endif
         </div>
     </main>
+
+    <div class="popup-backdrop">
+        <div class="popup-container">
+            <div class="popup-text">Batalkan penawaran dengan petani?</div>
+            <div class="popup-alert">
+                <button value="true" class="popup-confirm popup-yes" type="button">Yes</button>
+                <button value="false" class="popup-confirm popup-no" type="button">No</button>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('script')

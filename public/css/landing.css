@@ -195,3 +195,19 @@ nav{
 .list-fitur-about *{
     font-size: 14px;
 }
+
+
+
+
+/* Login button */
+.login-button{
+    background: var(--g1);
+    border-radius: 10px;
+    padding: 10px 20px;
+    transition: 0.3s;
+}
+.login-button:hover{
+    text-decoration: none;
+    color: var(--w1);
+    background: var(--g3);
+}

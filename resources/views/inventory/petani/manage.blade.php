@@ -17,7 +17,6 @@
                 <div class="card-body">
                     <p style="text-align: center;">Jenis kedelai : {{ $inventory->bean_type }}</p>
                     <p style="text-align: center;">Tersedia : {{ $inventory->stok }} kg kedelai</p>
-                    {{-- <p style="text-align: center;">Tersedia : {{ number_format($inventory->stok/1000,2,',','.') }} kg kedelai</p> --}}
                     <div class="action-container">
                         <a href="/{{ auth()->user()->getRoleNames()[0] }}/inventory/update/{{ $inventory->id }}" class="btn-danger edit-inv pointer"><i class="bi bi-pencil"></i></a>
                         <span data-inv-id="{{ $inventory->id }}" class="btn-danger delete-inv pointer"><i class="bi bi-trash"></i></span>

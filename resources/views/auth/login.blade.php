@@ -24,10 +24,10 @@
                     <input value="{{ old("password") }}" required type="password" name="password" id="password" placeholder="Masukkan password">
                 </div>
                 <div class="form-group">
-                    <button type="submit">Login</button>
+                    <button type="submit">Masuk</button>
                 </div>
                 <div class="form-group text">
-                    <p>Belum punya akun? <a href="/register">Daftar</a></p>
+                    <p>Belum punya akun? <a style="color: blue;" href="/register">Daftar</a></p>
                 </div>
             </form>
         </div>

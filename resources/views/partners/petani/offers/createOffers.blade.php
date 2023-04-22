@@ -72,7 +72,7 @@
                 <input type="hidden" name="partner_id" value="{{ $partner->id }}">
                 <div class="form-row button">
                     <button class="btn-danger cancel-action" type="button" href="/inventory">Batal</button>
-                    <button class="save-btn" type="submit">Tambah</button>
+                    <button class="save-btn" type="submit">Place bid</button>
                 </div>
             </form>
         </div>

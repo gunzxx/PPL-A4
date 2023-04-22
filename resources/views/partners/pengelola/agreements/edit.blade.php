@@ -38,12 +38,12 @@
                             @endforeach
                         </select>
                     @else
-                        <p class="kosong">Tidak ada penawaran, harap <a href="/petani/inventory/create" class="error">simpan</a></p>
+                        <p class="kosong">Tidak ada penawaran, harap <a href="/petani/inventory/create" class="error">Tambah penawaran</a></p>
                     @endif
                 </div>
                 <div class="form-group row">
                     <button class="btn-danger cancel-action" type="button" href="/inventory">Batal</button>
-                    <button class="save-btn" type="submit">Edit</button>
+                    <button class="save-btn" type="submit">Save</button>
                 </div>
             </form>
         </div>

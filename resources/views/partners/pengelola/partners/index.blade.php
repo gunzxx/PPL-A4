@@ -27,7 +27,7 @@
                         </div>
                         <div class="card-header-col end">
                             <h1>Rp {{ number_format(round($partner->price,-2),0,',','.') }}</h1>
-                            <p>1 kg kedelai</p>
+                            <p>{{ $partner->stok }} kg kedelai</p>
                         </div>
                     </div>
                     <div class="card-body">
@@ -38,7 +38,7 @@
                         <p>{{ date("d F Y", strtotime($partner->updated_at)) }}</p>
                     </div>
                     <div class="card-action">
-                        <a class="btn" href="/pengelola/partners/partners/edit/{{ $partner->id }}" type="button">Edit<i class="bi bi-pencil-square"></i></a>
+                        <a class="btn" href="/pengelola/partners/partners/edit/{{ $partner->id }}" type="button">Update<i class="bi bi-pencil-square"></i></a>
                         <button class="btn delete" data-id="{{ $partner->id }}" type="button">Hapus<i class="bi bi-trash3-fill"></i></button>
                     </div>
                 </div>
@@ -51,6 +51,23 @@
             {{-- <a href="/pengelola/partners/partners/create" class="partner-add"><i class="bi bi-plus-lg"></i></a> --}}
         @endif
     </main>
+
+    <div class="popup-backdrop">
+        <div class="popup-container">
+            <div class="popup-text">Hapus kerja sama?</div>
+            <div class="popup-alert">
+                <button value="true" class="popup-confirm popup-yes" type="button">Yes</button>
+                <button value="false" class="popup-confirm popup-no" type="button">No</button>
+            </div>
+        </div>
+    </div>
+
+    @if(session()->has('success'))
+        <input type="hidden" id="error-msg" value="{{ session()->get('success') }}">
+        <script>
+            alert($("#error-msg").val())
+        </script>
+    @endif
 @endsection
 
 @section('script')

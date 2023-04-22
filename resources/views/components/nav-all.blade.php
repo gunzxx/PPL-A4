@@ -30,7 +30,7 @@
     <div class="backdrop-profile"></div>
     <div class="card-profile-menu">
         <div class="profile-menu-list">
-            <a>Menu 1</a>
+            <a>Edit Profil</a>
         </div>
         <div class="profile-menu-list">
             <a>Menu 2</a>

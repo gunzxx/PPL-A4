@@ -47,3 +47,10 @@ $(".logout").click(function(e){
         window.location.href = "/logout";
     }
 })
+
+
+$("form").submit(function(e){
+    if(!confirm("Apakah data sesuai")){
+        e.preventDefault();
+    }
+})

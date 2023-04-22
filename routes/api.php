@@ -2,10 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\InventoryController;
+// use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\PetaniOfferController;
 use App\Http\Controllers\PengelolaOfferController;
+use App\Http\Controllers\PetaniInventoryController;
 use App\Http\Controllers\PengelolaPartnerController;
+use App\Http\Controllers\PengelolaInventoryController;
 use App\Http\Controllers\PengelolaAgreementsController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -13,7 +15,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Route inventory all
-Route::post('/inventory/delete', [InventoryController::class, 'delete']);
+Route::post('/petani/inventory/delete', [PetaniInventoryController::class, 'delete']);
+Route::post('/pengelola/inventory/delete', [PengelolaInventoryController::class, 'delete']);
 
 // Route partner pengelola
 Route::post('/pengelola/partners/delete', [PengelolaPartnerController::class, 'delete']);

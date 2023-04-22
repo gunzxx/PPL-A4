@@ -69,7 +69,7 @@ class PengelolaAgreementsController extends Controller
             'pengelola_id' => $validated['pengelola_id'],
             'petani_id' => $petani_id,
         ]);
-        return redirect(auth()->user()->getRoleNames()[0] . '/partners/agreements')->with('sukses', 'Data sudah ditambahkan!');
+        return redirect(auth()->user()->getRoleNames()[0] . '/partners/agreements')->with('success', 'Data berhasil dikirim!');
     }
 
     public function editAgreements($agreementDetailId)

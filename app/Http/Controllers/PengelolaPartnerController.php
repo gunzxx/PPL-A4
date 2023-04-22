@@ -10,7 +10,7 @@ class PengelolaPartnerController extends Controller
 {
     public function showPartner()
     {
-        $partners = Partner::with(['pengelola'])->where(['pengelola_id'=>auth()->user()->id])->paginate(10);
+        $partners = Partner::with(['pengelola'])->where(['pengelola_id'=>auth()->user()->id])->latest()->paginate(10);
 
         return view('partners.pengelola.partners.index',[
             "css"=> ['main', 'partners/partners','partners/offers/index'],
@@ -27,6 +27,10 @@ class PengelolaPartnerController extends Controller
     
     public function store(Request $request)
     {
+        $messages = array(
+            'required' => 'Data tidak valid!',
+        );
+        
         $request->validate([
             'address' => 'required',
         ]);
@@ -41,7 +45,7 @@ class PengelolaPartnerController extends Controller
         $validated['pengelola_id'] = auth()->user()->id;
 
         Partner::create($validated);
-        return redirect('/pengelola/partners/partners')->with('sukses', 'Data berhasil ditambahkan!');
+        return redirect('/pengelola/partners/partners')->with('success', 'Data berhasil ditambahkan!');
     }
 
     public function edit(Partner $partner)

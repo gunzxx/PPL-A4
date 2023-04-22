@@ -295,3 +295,57 @@ li:before {
     flex-direction: column;
 }
 /* Flex end */
+
+
+
+
+
+/* Alert */
+.popup-backdrop{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 99;
+    backdrop-filter: blur(10px);
+    transition: 0.1s;
+    width: 100vw;
+    height: 100vh;
+}
+.popup-container{
+    width: 40%;
+    padding: 20px;
+    background: rgb(220,220,220);
+    box-shadow: 0 4px 15px rgba(0,0,0,.3);
+    border-radius: 10px;
+    top: 30px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+.popup-alert button{
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,.3);
+    border-radius: 10px;
+    color: var(--w2);
+}
+.popup-alert .popup-yes{
+    background: green !important;
+}
+.popup-alert .popup-no{
+    background: red !important;
+}
+.popup-alert{
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+}
+/* Alert End */

@@ -4,7 +4,7 @@ $('.delete-inv').click(function(e){
         const id = this.getAttribute('data-inv-id');
     
         $.ajax({
-            url: '/api/inventory/delete',
+            url: '/api/pengelola/inventory/delete',
             method:'post',
             dataType:'json',
             data:{
@@ -12,11 +12,12 @@ $('.delete-inv').click(function(e){
             },
             success:(e)=>{
                 console.log(e);
+                alert(e.message)
                 window.location.href ='/pengelola/inventory/update'
             },
             error:(e)=>{
                 console.log(e);
-                console.log("error");
+                alert("error");
             }
         })
     }

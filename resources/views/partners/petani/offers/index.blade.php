@@ -44,12 +44,8 @@
                         </div>
                         <div class="keterangan-partner">
                             <div class="keterangan-list">
-                                <p>Nama kerja sama : </p>
+                                <p>Untuk kerja sama : </p>
                                 <p>&nbsp;{{ " {$detail->partner->name}" }}</p>
-                            </div>
-                            <div class="keterangan-list">
-                                <p>Nama pengelola : </p>
-                                <p>&nbsp;{{ $detail->pengelola->fullname }}</p>
                             </div>
                         </div>
                     </div>
@@ -75,12 +71,29 @@
         </div>
     </main>
 
+    <div class="popup-backdrop">
+        <div class="popup-container">
+            <div class="popup-text">Batalkan penawaran?</div>
+            <div class="popup-alert">
+                <button value="true" class="popup-confirm popup-yes" type="button">Yes</button>
+                <button value="false" class="popup-confirm popup-no" type="button">No</button>
+            </div>
+        </div>
+    </div>
+
     @error('message')
         <input type="hidden" id="error-msg" value="{{ $message }}">
         <script>
             alert($("#error-msg").val())
         </script>
     @enderror
+
+    @if(session()->has('success'))
+        <input type="hidden" id="error-msg" value="{{ session()->get('success') }}">
+        <script>
+            alert($("#error-msg").val())
+        </script>
+    @endif
 @endsection
 
 @section('script')

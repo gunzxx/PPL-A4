@@ -40,7 +40,7 @@ class PengelolaOfferController extends Controller
         ])->update([
             "is_approved"=>1,
         ]);
-        return response()->json(["message"=>"Penawaran berhasil disetujui"],200);
+        return response()->json(["message"=>"Anda berhasil menerima penawaran petani!"],200);
     }
 
     public function cancelOffers(Request $request)

@@ -16,7 +16,7 @@
                             </div>
                             <div class="card-header-col end">
                                 <h1>Rp {{ number_format(round($partner->price,-2),0,',','.') }}</h1>
-                                <p>1 kg kedelai</p>
+                                <p>{{ $partner->stok }} kg kedelai</p>
                             </div>
                         </div>
                         <div class="card-body">
@@ -26,11 +26,11 @@
                             <h3>{{ $partner->pengelola->address }}</h3>
                             <p>{{ date("d F Y", strtotime($partner->updated_at)) }}</p>
                         </div>
-                        <div class="card-action">
-                            @if (auth()->user()->hasRole('petani'))
-                                <a class="tawar" href="/petani/partners/offers/create/{{ $partner->id }}">Tawar</a>
-                            @endif
-                        </div>
+                        @if (auth()->user()->hasRole('petani'))
+                            <div class="card-action">
+                                <a class="tawar" href="/petani/partners/offers/create/{{ $partner->id }}">Bid</a>
+                            </div>
+                        @endif
                     </div>
                 @endforeach
             </div>
