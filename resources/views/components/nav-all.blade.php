@@ -1,6 +1,6 @@
 <nav>
     <div class="title-nav">
-        <h1>SoySync</h1>
+        <a href="/home">SoySync</a>
     </div>
     <div class="nav-list">
         <div class="nav-item {{ array_reverse(explode('/',Request::url()))[0] == "home" || array_reverse(explode('/',Request::url()))[1] == "home" || array_reverse(explode('/',Request::url()))[2] == "home" ? "active" : '' }}">
