@@ -1,6 +1,9 @@
 nav *{
     color: var(--w1);
 }
+nav .title:hover{
+    text-decoration: none;
+}
 nav{
     position: fixed;
     top: 0;
