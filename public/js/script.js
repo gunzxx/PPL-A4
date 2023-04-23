@@ -65,6 +65,7 @@ $("form.form-container").submit(function(e){
     });
     if(gagal==true){
         e.preventDefault();
+        // tes
         alert("Data tidak valid!");
     }
 })
