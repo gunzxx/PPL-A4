@@ -5,7 +5,7 @@
     justify-content: start;
 }
 .card-header-row *{
-    text-align: justify;
+    text-align: left;
 }
 .card-header-col{
     align-items: start;
