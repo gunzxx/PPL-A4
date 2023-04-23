@@ -56,7 +56,26 @@ $(".form-update").submit(function(e){
 })
 
 
-$("input").on("keydown",function(){
-    alert("Tes pop up")
-    
+$("form").submit(function(e){
+    e.preventDefault();
+    var gagal = false;
+     $("form.form-container input").each((key,element)=>{
+        // console.log(element);
+        if(element.value == ""){
+            gagal = true;
+        }
+    });
+    // console.log(element);
+    // $("input").each(function(){
+    //     const x = $("input").val();
+    //     console.log(x);
+    //     if (x == "") {
+    //         gagal = true;
+    //     }
+    // })
+    if(gagal==true){
+        alert("Pop up jika kosong!");
+    }else{
+        // e.unbind();
+    }
 })
