@@ -349,3 +349,13 @@ li:before {
     justify-content: space-around;
 }
 /* Alert End */
+
+
+
+
+/* Pagination */
+.container-pagination{
+    width: 100%;
+    
+}
+/* Pagination End */

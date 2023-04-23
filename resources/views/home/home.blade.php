@@ -4,8 +4,8 @@
     <x-nav-all></x-nav-all>
 
     <main>
-        <div style="text-align: center;">
-            <h1>Beranda</h1>
+        <div>
+            <h1 style="text-align: center;">Beranda</h1>
             <div class="card-container">
                 @foreach ($partners as $partner)
                     <div class="list-card">
@@ -33,7 +33,6 @@
                         @endif
                     </div>
                 @endforeach
-
                 {{ $partners->links() }}
             </div>
         </div>

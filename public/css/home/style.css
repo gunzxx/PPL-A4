@@ -4,6 +4,9 @@
 .card-header-row{
     justify-content: start;
 }
+.card-header-row *{
+    text-align: justify;
+}
 .card-header-col{
     align-items: start;
 }
