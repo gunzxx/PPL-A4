@@ -66,6 +66,7 @@
                     </div>
                 </div>
                 @endforeach
+                {{ $details->links() }}
                 <a class="btn fixed create-btn" href="/petani/home">Tambah</a>
             @endif
         </div>

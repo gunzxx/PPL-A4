@@ -21,6 +21,7 @@
                 </div>
             </a>
             @endforeach
+            {{ $inventories->links() }}
         </div>
         @else
         <h1 style="text-align: center;padding:50px 0;">Persediaan masih kosong. <a href="/inventory/create">Tambah sekarang!</a></h1>

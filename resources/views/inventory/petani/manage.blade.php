@@ -24,6 +24,7 @@
                 </div>
             </div>
             @endforeach
+            {{ $inventories->links() }}
         </div>
         @else
             <h1 style="text-align: center;padding:50px 0;">Persediaan masih kosong. <a href="/{{ auth()->user()->getRoleNames()[0] }}/inventory/create">Tambah sekarang!</a></h1>

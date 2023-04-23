@@ -43,6 +43,7 @@
                     </div>
                 </div>
                 @endforeach
+                {{ $partners->links() }}
             @endif
         </div>
         

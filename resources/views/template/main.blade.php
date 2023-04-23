@@ -12,6 +12,8 @@
             <link rel="stylesheet" href="/css/{{ $cssitem }}.css">
         @endforeach
     @endif
+    @yield("head")
+    <script src="/js/npm/chart.js"></script>
     <link rel="stylesheet" href="/css/bs-icon/icon.css">
     <link rel="shortcut icon" href="/img/icon.png" type="image/x-icon">
     <script src="/js/jquery.min.js"></script>

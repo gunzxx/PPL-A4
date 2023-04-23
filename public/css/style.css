@@ -354,8 +354,7 @@ li:before {
 
 
 /* Pagination */
-.container-pagination{
-    width: 100%;
-    
+.pagination-container *{
+    font-size: 16px !important;
 }
 /* Pagination End */

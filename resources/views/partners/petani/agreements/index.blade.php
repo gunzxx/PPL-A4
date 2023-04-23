@@ -63,6 +63,7 @@
                     </div>
                 </div>
                 @endforeach
+                {{ $agreement_details->links() }}
             @else
             <div class="">
                 <p align="center">Tidak ada persetujuan.</p>

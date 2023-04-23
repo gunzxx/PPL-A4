@@ -7,6 +7,7 @@
     <title>SoySync</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="/css/bs-icon/icon.css">
     <link rel="shortcut icon" href="/img/icon.png" type="image/x-icon">
 </head>
 <body>
@@ -21,7 +22,7 @@
             @if (auth()->check()!=true)
             <a class="login-button" href="/login">Login</a>
             @else
-            <a href="/{{ auth()->user()->getRoleNames()[0] }}/home">Home</a>
+            <a class="login-button" href="/{{ auth()->user()->getRoleNames()[0] }}/home"><i class="bi bi-house-fill"></i></a>
             @endif
         </div>
     </nav>

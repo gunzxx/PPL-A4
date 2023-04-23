@@ -1,5 +1,8 @@
 .card-container{
     padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 .card-header-row{
     justify-content: start;
