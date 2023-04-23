@@ -54,3 +54,9 @@ $(".form-update").submit(function(e){
         e.preventDefault();
     }
 })
+
+
+$("input").on("keydown",function(){
+    alert("OK")
+    
+})
