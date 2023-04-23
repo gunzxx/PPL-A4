@@ -33,6 +33,8 @@
                         @endif
                     </div>
                 @endforeach
+
+                {{ $partners->links() }}
             </div>
         </div>
     </main>
