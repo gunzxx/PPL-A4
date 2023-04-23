@@ -57,15 +57,15 @@ $(".form-update").submit(function(e){
 
 
 $("form").submit(function(e){
-    e.preventDefault();
     var gagal = false;
-     $("form.form-container input").each((key,element)=>{
+    $("form.form-container input").each((key,element)=>{
         if(element.value == ""){
             gagal = true;
         }
     });
     if(gagal==true){
-        alert("Pop up jika kosong!");
+        e.preventDefault();
+        alert("Data tidak valid!");
     }else{
         // e.unbind();
     }
