@@ -56,7 +56,7 @@ $(".form-update").submit(function(e){
 })
 
 
-$("form").submit(function(e){
+$("form.form-container").submit(function(e){
     var gagal = false;
     $("form.form-container input").each((key,element)=>{
         if(element.value == ""){
@@ -66,7 +66,5 @@ $("form").submit(function(e){
     if(gagal==true){
         e.preventDefault();
         alert("Data tidak valid!");
-    }else{
-        // e.unbind();
     }
 })
