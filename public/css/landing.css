@@ -25,6 +25,9 @@ nav{
 .title{
     font-size: 27px;
 }
+a:has(.title):hover{
+    text-decoration: none;
+}
 .nav-list{
     width: 50%;
     height: 100%;

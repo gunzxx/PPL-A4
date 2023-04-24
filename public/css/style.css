@@ -163,12 +163,21 @@ li:before {
     font-size: 12px;
     color: var(--r2);
 }
+/* Form End */
+
+
+/* Text Decoration */
+.td-none{
+    text-decoration: none !important;
+}
+/* Text Decoration End */
 
 
 /* Pointer */
 .pointer{
     cursor: pointer;
 }
+/* Pointer End*/
 
 
 
