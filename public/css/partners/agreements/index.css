@@ -41,7 +41,7 @@
 }
 .detail-container{
     /* width: 30%; */
-    max-width: 60%;
+    max-width: 50%;
     display: flex;
     flex-direction: column;
     gap: 5px;
