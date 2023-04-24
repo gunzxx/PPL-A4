@@ -6,7 +6,7 @@
     <main>
         <x-menuPartners></x-menuPartners>
 
-        <form class="form-container flex-col mt-3" method="POST" action="/pengelola/partners/partners/create">
+        <form class="form-container required-form flex-col mt-3" method="POST" action="/pengelola/partners/partners/create">
             @csrf
             <div class="form-group">
                 <input autofocus value="{{ old('name') }}" name="name" type="text" class="input-area name @error('name') invalid @enderror" placeholder="Masukkan judul kerja sama">

@@ -7,7 +7,7 @@
         <x-menuPartners></x-menuPartners>
 
         <div class="card-container">
-            <form class="form-container" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/partners/agreements/create">
+            <form class="form-container required-form" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/partners/agreements/create">
                 @csrf
                 <div class="form-group">
                     <input value="{{ old('bean_type') }}" class="form-input" name="bean_type" placeholder="Masukkan jenis kedelai" id="bean_type" cols="30" rows="10">

@@ -30,36 +30,36 @@
         </div>
 
         <div class="card-container">
-            <form class="form-container" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/partners/offers/create">
+            <form class="form-container required-form" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/partners/offers/create">
                 @csrf
                 <div class="form-group">
-                    <input value="{{ old('name') }}" class="form-input" required name="name" placeholder="Nama penawaran" id="name" cols="30" rows="10">
+                    <input value="{{ old('name') }}" class="form-input" name="name" placeholder="Nama penawaran" id="name" cols="30" rows="10">
                     @error('name')
                         <p class="error">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <textarea class="form-input" required name="description" placeholder="Deskripsikan penawaran anda" id="description" cols="30" rows="10">{{ old("description") }}</textarea>
+                    <textarea class="form-input" name="description" placeholder="Deskripsikan penawaran anda" id="description" cols="30" rows="10">{{ old("description") }}</textarea>
                     @error('description')
                         <p class="error">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-row">
                     <div class="form-col">
-                        <input value="{{ old('stok') }}" class="numeric form-input @error('stok') invalid @enderror" value="{{ old('stok') }}" required name="stok" class="numeric" type="text" placeholder="Range stok (kg/bulan)">
+                        <input value="{{ old('stok') }}" class="numeric form-input @error('stok') invalid @enderror" value="{{ old('stok') }}" name="stok" class="numeric" type="text" placeholder="Range stok (kg/bulan)">
                         @error('stok')
                             <p class="error">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-col">
-                        <input value="{{ old('price') }}" class="numeric form-input @error('price') invalid @enderror" value="{{ old('price') }}" required name="price" class="numeric" type="text" placeholder="Harga kedelai (kg)">
+                        <input value="{{ old('price') }}" class="numeric form-input @error('price') invalid @enderror" value="{{ old('price') }}" name="price" class="numeric" type="text" placeholder="Harga kedelai (kg)">
                         @error('price')
                             <p class="error">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-col">
                         @if ($inventories->count()>0)
-                            <select class="form-input @error('bean_id') invalid @enderror" required name="bean_id" id="bean_id">
+                            <select class="form-input @error('bean_id') invalid @enderror" name="bean_id" id="bean_id">
                                 @foreach ($inventories as $inventory)
                                     <option value="{{ $inventory->id }}">{{ $inventory->bean_type }}</option>
                                 @endforeach

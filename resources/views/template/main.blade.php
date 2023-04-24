@@ -23,7 +23,7 @@
 
 
     <script src="/js/jquery.min.js"></script>
-    @yield('script')
     <script src="/js/script.js"></script>
+    @yield('script')
 </body>
 </html>

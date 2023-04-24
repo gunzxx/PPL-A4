@@ -56,9 +56,9 @@ $(".form-update").submit(function(e){
 })
 
 
-$("form.form-container").submit(function(e){
+$("form.required-form").submit(function(e){
     var gagal = false;
-    $("form.form-container input").each((key,element)=>{
+    $("form.required-form input").each((key,element)=>{
         if(element.value == ""){
             gagal = true;
         }
