@@ -20,11 +20,6 @@ class Partner extends Model
         return $this->belongsTo(User::class,'pengelola_id','id');
     }
 
-    public function inventory()
-    {
-        return $this->hasOne(Inventory::class,'id', 'bean_id');
-    }
-
     public function offerDetail()
     {
         return $this->hasOne(OfferDetail::class);

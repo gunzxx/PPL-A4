@@ -13,10 +13,12 @@ use App\Http\Controllers\PengelolaPartnerController;
 use App\Http\Controllers\PetaniAgreementsController;
 use App\Http\Controllers\PengelolaInventoryController;
 use App\Http\Controllers\PengelolaAgreementsController;
+use App\Http\Controllers\PengelolaPartnerHistoryController;
 
 Route::get('/', function () {return view('landing');})->name("landing");
 Route::get("/tes-media",function(){
-    // User::find(1)->getMedia("profile")->each->delete();
+    // $user =  User::find(1)->getMedia("profile")->each->delete();
+    // return view("tes",compact('user'));
     return view("tes");
 });
 Route::post('/tes-media',function(Request $request){
@@ -87,6 +89,9 @@ Route::middleware(['auth','role:pengelola'])->group(function(){
     
     // Penawaran
     Route::get('/pengelola/partners/offers', [PengelolaOfferController::class, 'showOffers']);
+
+    // Riwayat
+    Route::get("/pengelola/partners/history", [PengelolaPartnerHistoryController::class, 'index']);
 
     // Persetujuan
     Route::get('/pengelola/partners/agreements', [PengelolaAgreementsController::class, 'showAgreements']);

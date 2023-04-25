@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Partner;
 use App\Models\Inventory;
+use App\Models\PartnerHistory;
 use Illuminate\Http\Request;
 
 class PengelolaPartnerController extends Controller
@@ -94,7 +95,11 @@ class PengelolaPartnerController extends Controller
         }
         $id = $request->post('id');
 
-        Partner::find($id)->delete();
-        return response()->json(['id'=>$id, 'message' => 'Data berhasil dihapus'], 200);
+        $partner = Partner::where('id', $id)->get(["name", "description", 'stok', 'price', 'bean_type', 'pengelola_id'])->first();
+        $partnerHistory = PartnerHistory::create($partner->toArray());
+        $partner->find($id)->delete();
+
+
+        return response()->json(['id'=>$id, 'message' => 'Data berhasil dihapus','data'=>$partnerHistory], 200);
     }
 }

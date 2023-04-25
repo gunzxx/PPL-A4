@@ -14,6 +14,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class User extends Authenticatable implements JWTSubject, HasMedia
 {
@@ -63,5 +64,10 @@ class User extends Authenticatable implements JWTSubject, HasMedia
         $this
             ->addMediaCollection('profile')
             ->singleFile();
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        // $this->addMediaCollection('profile')
     }
 }
