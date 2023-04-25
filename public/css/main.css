@@ -43,10 +43,6 @@ nav{
 .nav-item.active > a{
     text-decoration: underline !important;
 }
-.profile-nav img{
-    height: min-content;
-    height: 100%;
-}
 .profile-nav{
     width: 20%;
     height: 100%;
@@ -62,8 +58,17 @@ nav{
     align-items: end;
     margin-right: 10px;
 }
-.profile-nav img{
+.profile-nav .profile-image-container{
+    height: 75%;
+    background-color: var(--w2);
+    display: flex;
+    justify-content: center;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
     cursor: pointer;
+}
+.profile-nav .profile-image-container img{
+    height: 100%;
 }
 .name-profile-nav h1{
     font-size: 16px;

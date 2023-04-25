@@ -1,18 +1,32 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\PetaniOfferController;
+use App\Http\Controllers\PengelolaOfferController;
+use App\Http\Controllers\PetaniInventoryController;
+use App\Http\Controllers\PengelolaPartnerController;
+use App\Http\Controllers\PetaniAgreementsController;
 use App\Http\Controllers\PengelolaInventoryController;
 use App\Http\Controllers\PengelolaAgreementsController;
-use App\Http\Controllers\PengelolaOfferController;
-use App\Http\Controllers\PengelolaPartnerController;
-use App\Http\Controllers\PetaniInventoryController;
-use App\Http\Controllers\PetaniAgreementsController;
-use App\Http\Controllers\PetaniOfferController;
-use App\Http\Controllers\ShopController;
 
 Route::get('/', function () {return view('landing');})->name("landing");
+Route::get("/tes-media",function(){
+    // User::find(1)->getMedia("profile")->each->delete();
+    return view("tes");
+});
+Route::post('/tes-media',function(Request $request){
+    $request->validate([
+        'image' => 'mimes:jpg,png,jpeg'
+    ]);
+    $user = User::find(1);
+    $user->addMediaFromRequest("image")->toMediaCollection('profile');
+    return back();
+});
 
 // Route guest
 Route::middleware('guest')->group(function(){

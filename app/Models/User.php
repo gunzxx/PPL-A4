@@ -57,4 +57,11 @@ class User extends Authenticatable implements JWTSubject, HasMedia
     {
         return [];
     }
+
+    public function registerMediaCollections():void
+    {
+        $this
+            ->addMediaCollection('profile')
+            ->singleFile();
+    }
 }

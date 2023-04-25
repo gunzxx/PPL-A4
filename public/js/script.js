@@ -35,7 +35,7 @@ $('.cancel-action').click(function () {
 });
 
 
-$(".profile-img").click(function(e){
+$(".profile-image-container").click(function(e){
     $(".profile-menu-container").show()
 })
 $(".backdrop-profile").click(function(e){

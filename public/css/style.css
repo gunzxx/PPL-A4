@@ -318,7 +318,7 @@ li:before {
     left: 0;
     z-index: 99;
     backdrop-filter: blur(10px);
-    transition: 0.1s;
+    /* transition: 0.1s; */
     width: 100vw;
     height: 100vh;
 }

@@ -22,7 +22,9 @@
             <h1>{{ auth()->user()->fullname }}</h1>
             <p>{{ ucfirst(auth()->user()->getRoleNames()[0]) }} kedelai</p>
         </div>
-        <img class="profile-img" src="/img/profile/{{ auth()->user()->hasRole('pengelola')? 1 : 2 }}.png" alt="">
+        <div class="profile-image-container">
+            <img class="profile-img" src="{{ auth()->user()->getFirstMediaUrl("profile") != "" ? auth()->user()->getFirstMediaUrl("profile") : "/img/profile/default.jpg" }}" alt="">
+        </div>
     </div>
 </nav>
 
