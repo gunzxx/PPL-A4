@@ -13,7 +13,7 @@
         <div class="partner-container">
             @if ($partnerHistories->count()<1)
                 <div class="">
-                    <p align="center">Tidak ada kerja sama yang dibuat.</p>
+                    <p align="center">Tidak ada history.</p>
                     <p align="center">Silahkan buat kerja sama terlebih dahulu.</p>
                 </div>
             @else

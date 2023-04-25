@@ -19,10 +19,10 @@ class PartnerFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => "Kerja sama dengan ".fake()->name(),
+            'name' => "Mencari kedelai ".fake()->word,
             'description' => collect(fake()->paragraphs(mt_rand(10, 50)))->implode(''),
             'stok'=>mt_rand(10000,100000),
-            'price'=>mt_rand(1000,100000),
+            'price'=>mt_rand(1000,30000),
             'bean_type'=>"Kedelai hitam",
             'pengelola_id'=>mt_rand(1,2),
         ];

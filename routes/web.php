@@ -5,8 +5,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ShopController;
+use App\Http\Controllers\PetaniShopController;
 use App\Http\Controllers\PetaniOfferController;
+use App\Http\Controllers\PengelolaShopController;
 use App\Http\Controllers\PengelolaOfferController;
 use App\Http\Controllers\PetaniInventoryController;
 use App\Http\Controllers\PengelolaPartnerController;
@@ -64,7 +65,8 @@ Route::middleware(['auth','role:petani'])->group(function(){
     Route::get('/petani/partners/agreements', [PetaniAgreementsController::class,'showAgreements']);
 
     // Route jual beli
-    Route::get('/petani/shop', [ShopController::class,'index']);
+    Route::get('/petani/shop', function(){return redirect('/petani/shop/shop');});
+    Route::get('/petani/shop/shop', [PetaniShopController::class,'index']);
 
     // Route inventory
     Route::get('/petani/inventory', [PetaniInventoryController::class, 'showInventory']);
@@ -101,7 +103,8 @@ Route::middleware(['auth','role:pengelola'])->group(function(){
     Route::post('/pengelola/partners/agreements/edit', [PengelolaAgreementsController::class, 'updateAgreements']);
 
     // Jual beli
-    Route::get('/pengelola/shop', [ShopController::class,'index']);
+    Route::get('/pengelola/shop', function(){return redirect('/pengelola/shop/shop');});
+    Route::get('/pengelola/shop/shop', [PengelolaShopController::class,'index']);
 
     // Route inventory
     Route::get('/pengelola/inventory', [PengelolaInventoryController::class, 'showInventory']);
