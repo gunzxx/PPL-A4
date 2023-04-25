@@ -34,10 +34,10 @@
                     </div>
                     <div class="card-footer">
                         <h3>{{ $partnerHistory->pengelola->address }}</h3>
-                        <p>{{ date("d F Y", strtotime($partnerHistory->updated_at)) }}</p>
+                        <p>{{ date("d F Y", strtotime($partnerHistory->created_at)) }}</p>
                     </div>
                     <div class="card-action">
-                        <span class="stop-partner">berhenti bekerja sama pada {{ date('d / m / Y',strtotime($partnerHistory->created_at)) }}</span>
+                        <span class="stop-partner">berhenti bekerja sama pada {{ date('d / m / Y',strtotime($partnerHistory->stoped_at)) }}</span>
                     </div>
                 </div>
                 @endforeach

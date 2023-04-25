@@ -95,9 +95,17 @@ class PengelolaPartnerController extends Controller
         }
         $id = $request->post('id');
 
-        $partner = Partner::where('id', $id)->get(["name", "description", 'stok', 'price', 'bean_type', 'pengelola_id'])->first();
-        $partnerHistory = PartnerHistory::create($partner->toArray());
-        $partner->find($id)->delete();
+        $partner = Partner::where('id', $id)->get(["name", "description", 'stok', 'price', 'bean_type', 'pengelola_id','created_at'])->first();
+        $partnerHistory = PartnerHistory::create([
+            'name' => $partner->name,
+            'description' => $partner->description,
+            'stok' => $partner->stok,
+            'price' => $partner->price,
+            'bean_type' => $partner->bean_type,
+            'pengelola_id' => $partner->pengelola_id,
+            'created_at' => $partner->created_at,
+        ]);
+        Partner::find($id)->delete();
 
 
         return response()->json(['id'=>$id, 'message' => 'Data berhasil dihapus','data'=>$partnerHistory], 200);

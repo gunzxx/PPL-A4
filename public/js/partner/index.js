@@ -18,6 +18,7 @@ $('.delete').click(function(e){
                     window.location.href = "/pengelola/partners";
                 },
                 error:(e)=>{
+                    alert("gagal");
                     console.log(e);
                 },
             })
