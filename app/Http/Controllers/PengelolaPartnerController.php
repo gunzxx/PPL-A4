@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Offer;
 use App\Models\Partner;
-use App\Models\PartnerHistory;
+use App\Models\OfferDetail;
 use Illuminate\Http\Request;
+use App\Models\PartnerHistory;
 
 class PengelolaPartnerController extends Controller
 {
@@ -99,6 +101,10 @@ class PengelolaPartnerController extends Controller
         $id = $request->post('id');
 
         $partner = Partner::where('id', $id)->update(['is_active'=>false]);
+
+        $offer_detail = OfferDetail::where(["partner_id"=>$id])->get()->first();
+        OfferDetail::where(["partner_id"=>$id])->delete();
+        Offer::find($offer_detail->offer_id)->delete();
 
         return response()->json(['id'=>$id, 'message' => 'Kerja sama berhasil diberhentikan!','data'=>$partner], 200);
     }

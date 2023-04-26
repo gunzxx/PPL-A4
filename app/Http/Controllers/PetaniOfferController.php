@@ -26,14 +26,18 @@ class PetaniOfferController extends Controller
         ]);
     }
 
-    public function createOffers(Partner $partner)
+    public function createOffers($partner_id)
     {
+        $partner = Partner::where(['id'=>$partner_id,'is_active'=>true])->get()->first();
+        if (!$partner) {
+            return back()->with(['duplicate' => 'Kerja sama sudah diberhentikan!']);
+        }
         $cekpartner = OfferDetail::where([
             'partner_id' => $partner->id, 
             "petani_id" => auth()->user()->id,
         ])->get();
         if ($cekpartner->count() > 0) {
-            return redirect()->back()->with(['duplicate' => 'Kerja sama sudah pernah ditawar, silahkan cek penawaran anda!']);
+            return back()->with(['duplicate' => 'Kerja sama sudah pernah ditawar, silahkan cek penawaran anda!']);
         }
 
         $inventories = Inventory::where(['user_id' => auth()->user()->id])->get();
@@ -70,7 +74,7 @@ class PetaniOfferController extends Controller
             'is_approved' => 0,
         ])->get();
         if ($cekpartner->count() > 0) {
-            return redirect()->back()->withErrors(['duplicate' => 'Kerja sama sudah pernah ditawar'])->withInput();
+            return back()->withErrors(['duplicate' => 'Kerja sama sudah pernah ditawar'])->withInput();
         }
 
         $offer = Offer::create($validated);
@@ -89,7 +93,7 @@ class PetaniOfferController extends Controller
     {
         $detail = OfferDetail::where(['id'=>$detail_id,'is_approved'=>0,'is_rejected'=>0])->with(['partner','offer'])->get();
         if($detail->count()<1){
-            return redirect()->back()->withErrors(["message"=>"Data tidak ditemukan"]);
+            return back()->withErrors(["message"=>"Data tidak ditemukan"]);
         }
         $detail = $detail->first();
         $inventories = Inventory::where(['user_id' => auth()->user()->id])->get();
