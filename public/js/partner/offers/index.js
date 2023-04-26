@@ -2,33 +2,42 @@ $(".confirm").click(function(){
     const detail_id = $(this).attr('data-detail-id');
     const offer_id = $(this).attr('data-offer-id');
 
-    if(confirm("Konfirmasi penawaran?")){
-        $.ajax({
-            url:"/api/pengelola/offers/confirm",
-            method:"post",
-            dataType:"json",
-            data:{
-                detail_id:detail_id,
-                offer_id:offer_id,
-            },
-            success:(e)=>{
-                alert(e.message);
-                console.log("OKE");
-                window.location.href = "/pengelola/partners/offers"
-            },
-            error:(e)=>{
-                console.log(e);
-                alert("error");
-            },
-        })
-    }
+    $('.popup-backdrop.confirm-offer').show();
+
+    $(".popup-confirm").click(function () {
+        if ($(this).text() == "Yes") {
+            $.ajax({
+                url: "/api/pengelola/offers/confirm",
+                method: "post",
+                dataType: "json",
+                data: {
+                    detail_id: detail_id,
+                    offer_id: offer_id,
+                },
+                success: (e) => {
+                    alert(e.message);
+                    console.log("OKE");
+                    window.location.reload();
+                },
+                error: (e) => {
+                    console.log(e);
+                    alert("error");
+                    if(confirm("Terjadi kesalahan, ingin memuat ulang halaman?")){
+                        window.location.reload();
+                    }
+                },
+            })
+        } else {
+            $('.popup-backdrop.confirm-offer').hide();
+        }
+    })
 })
 
 $('.cancel').click(function(e){
     const detail_id = $(this).attr('data-detail-id');
     const offer_id = $(this).attr('data-offer-id');
 
-    $('.popup-backdrop').show();
+    $('.popup-backdrop.reject-offer').show();
     
     $(".popup-confirm").click(function(){
         if($(this).text()=="Yes"){
@@ -43,15 +52,18 @@ $('.cancel').click(function(e){
                 success: (e) => {
                     alert(e.message);
                     console.log("OKE");
-                    window.location.href = "/pengelola/partners/offers"
+                    window.location.reload();
                 },
                 error: (e) => {
                     console.log(e);
                     alert("error");
+                    if(confirm("Terjadi kesalahan, ingin memuat ulang halaman?")){
+                        window.location.reload();
+                    }
                 },
             })
         }else{
-            $('.popup-backdrop').hide();
+            $('.popup-backdrop.reject-offer').hide();
         }
     })
 })

@@ -86,7 +86,7 @@ class PetaniOfferController extends Controller
             "pengelola_id" => $pengelola_id,
         ]);
 
-        return redirect(auth()->user()->getRoleNames()[0] . '/partners/offers')->with(['success','Data berhasil ditambahkan!']);
+        return redirect(auth()->user()->getRoleNames()[0] . '/partners/offers')->with('success','Data berhasil ditambahkan!');
     }
 
     public function editOffers($detail_id)
@@ -118,7 +118,7 @@ class PetaniOfferController extends Controller
 
         Offer::where(['id'=>$offer_id])->update($validated);
 
-        return redirect(auth()->user()->getRoleNames()[0] . '/partners/offers')->with(['success', 'Data berhasil diperbarui!']);
+        return redirect(auth()->user()->getRoleNames()[0] . '/partners/offers')->with('success', 'Data berhasil diperbarui!');
     }
 
     public function cancelOffers(Request $request)

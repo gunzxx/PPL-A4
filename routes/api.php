@@ -26,7 +26,7 @@ Route::post('/pengelola/partners/delete', [PengelolaPartnerController::class, 'd
 Route::post('/petani/offers/cancel', [PetaniOfferController::class, 'cancelOffers']);
 // Route offer pengelola
 Route::post('/pengelola/offers/confirm', [PengelolaOfferController::class, 'confirmOffers']);
-Route::post('/pengelola/offers/cancel', [PengelolaOfferController::class, 'cancelOffers']);
+Route::post('/pengelola/offers/cancel', [PengelolaOfferController::class, 'rejectOffers']);
 
 // Route agreements
 Route::post('/pengelola/agreements/delete', [PengelolaAgreementsController::class, 'deleteAgreements']);

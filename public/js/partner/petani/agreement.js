@@ -13,11 +13,14 @@ $(".cancel-agreement").click(function(){
             success:(e)=>{
                 console.log(e);
                 alert(e.message)
-                window.location.href = "/petani/partners/agreements";
+                window.location.reload();
             },
             error:(e)=>{
                 console.log(e);
                 alert("error");
+                if (confirm("Terjadi kesalahan, ingin memuat ulang halaman?")) {
+                    window.location.reload();
+                }
             },
         })
     }
@@ -38,11 +41,14 @@ $(".confirm-agreement").click(function(){
             success:(e)=>{
                 console.log(e);
                 alert(e.message)
-                window.location.href = "/petani/partners/agreements";
+                window.location.reload();
             },
             error:(e)=>{
                 console.log(e);
                 alert("error");
+                if (confirm("Terjadi kesalahan, ingin memuat ulang halaman?")) {
+                    window.location.reload();
+                }
             },
         })
     }

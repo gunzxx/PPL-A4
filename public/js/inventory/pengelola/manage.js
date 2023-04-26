@@ -13,11 +13,14 @@ $('.delete-inv').click(function(e){
             success:(e)=>{
                 console.log(e);
                 alert(e.message)
-                window.location.href ='/pengelola/inventory/update'
+                window.location.reload()
             },
             error:(e)=>{
                 console.log(e);
                 alert("error");
+                if (confirm("Terjadi kesalahan, ingin memuat ulang halaman?")) {
+                    window.location.reload();
+                }
             }
         })
     }

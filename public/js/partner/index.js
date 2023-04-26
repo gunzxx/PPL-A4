@@ -15,15 +15,18 @@ $('.delete').click(function(e){
                 success:(e)=>{
                     console.log(e);
                     alert(e.message);
-                    window.location.href = "/pengelola/partners";
+                    window.location.reload();
                 },
                 error:(e)=>{
                     alert("gagal");
                     console.log(e);
+                    if(confirm("Terjadi kesalahan, ingin memuat ulang halaman?")){
+                        window.location.reload();
+                    }
                 },
             })
         }else{
-            $('.popup-backdrop').hide();
+            $('.popup-backdrop.delete-partner').hide();
         }
     })
 })
@@ -45,15 +48,18 @@ $('.stop').click(function(e){
                 success:(e)=>{
                     console.log(e);
                     alert(e.message);
-                    window.location.href = "/pengelola/partners";
+                    window.location.reload();
                 },
                 error:(e)=>{
                     alert("gagal");
                     console.log(e);
+                    if(confirm("Terjadi kesalahan, ingin memuat ulang halaman?")){
+                        window.location.reload();
+                    }
                 },
             })
         }else{
-            $('.popup-backdrop').hide();
+            $('.popup-backdrop.stop-partner').hide();
         }
     })
 })

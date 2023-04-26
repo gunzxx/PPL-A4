@@ -60,4 +60,24 @@ class PengelolaOfferController extends Controller
         Offer::find($offer_id)->delete();
         return response()->json(["message"=>"Penawaran berhasil dibatalkan"],200);
     }
+
+    public function rejectOffers(Request $request)
+    {
+        if($request->method() != "POST"){
+            return response()->json(['message'=>"Method not allow!"],401);
+        }
+        if(!$request->post("detail_id") || !$request->post("offer_id")){
+            return response()->json(["message" => "Data tidak lengkap"], 403);
+        }
+        $detail_id = $request->post('detail_id');
+        $offer_id = $request->post('offer_id');
+        OfferDetail::where([
+            "id" => $detail_id,
+            "offer_id" => $offer_id,
+        ])->update([
+            "is_rejected"=>1,
+        ]);
+        Offer::find($offer_id)->delete();
+        return response()->json(["message"=>"Penawaran berhasil ditolak"],200);
+    }
 }
