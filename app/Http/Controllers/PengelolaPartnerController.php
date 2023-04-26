@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Partner;
-use App\Models\Inventory;
 use App\Models\PartnerHistory;
 use Illuminate\Http\Request;
 
@@ -78,7 +77,7 @@ class PengelolaPartnerController extends Controller
         $id = $request->only('partner_id');
         Partner::where('id', $id)->update($validated);
 
-        return redirect('/pengelola/partners')->with('sukses', 'Data berhasil diedit!');
+        return redirect('/pengelola/partners')->with('sukses', 'Data berhasil diedit!')->with(['success', 'Data berhasil diperbarui!']);
     }
 
     public function delete(Request $request)

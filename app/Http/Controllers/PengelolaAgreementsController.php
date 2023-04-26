@@ -36,7 +36,7 @@ class PengelolaAgreementsController extends Controller
         }
         return view("partners.pengelola.agreements.create",[
             'css'=>['main', 'partners/partners','partners/agreements/create'],
-            'offer_details' => $offer_details
+            'offer_details' => $offer_details,
         ]);
     }
 
@@ -117,7 +117,7 @@ class PengelolaAgreementsController extends Controller
 
         Agreement::where(["id"=> $agreement_id])->update($validated);
         AgreementDetail::where(['id'=>$agreement_detail_id])->update(['offer_detail_id'=>$offer_detail_id,"petani_id"=>$petani_id]);
-        return redirect(auth()->user()->getRoleNames()[0] . '/partners/agreements')->with('sukses', 'Data sudah diperbarui!');
+        return redirect(auth()->user()->getRoleNames()[0] . '/partners/agreements')->with('sukses', 'Data berhasil diperbarui!');
     }
 
     public function deleteAgreements(Request $request)

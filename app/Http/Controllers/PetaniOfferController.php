@@ -47,12 +47,16 @@ class PetaniOfferController extends Controller
 
     public function saveOffers(Request $request)
     {
+        $inventory = Inventory::find($request->post("bean_id"));
+        // dd($inventory);
         $validated = $request->validate([
             "name" => "required|max:255",
             'description' => 'required|max:10000',
-            "stok" => "required|numeric",
+            "stok" => "required|numeric|max:{$inventory->stok}",
             "price" => "required|numeric",
             "bean_id" => "required",
+        ],[
+            'stok.max' => "Stok melebihi batas inventory"
         ]);
         $validated['petani_id'] = auth()->user()->id;
         $partner_id = $request->post('partner_id');
@@ -110,7 +114,7 @@ class PetaniOfferController extends Controller
 
         Offer::where(['id'=>$offer_id])->update($validated);
 
-        return redirect(auth()->user()->getRoleNames()[0] . '/partners/offers');
+        return redirect(auth()->user()->getRoleNames()[0] . '/partners/offers')->with(['success', 'Data berhasil diperbarui!']);
     }
 
     public function cancelOffers(Request $request)

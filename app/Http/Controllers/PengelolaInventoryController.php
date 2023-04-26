@@ -66,7 +66,7 @@ class PengelolaInventoryController extends Controller
         $id = $request->only('inv_id');
 
         Inventory::where('id', $id)->update($validated);
-        return redirect(auth()->user()->getRoleNames()[0] . '/inventory/update');
+        return redirect(auth()->user()->getRoleNames()[0] . '/inventory/update')->with(['success', 'Data berhasil diperbarui!']);
     }
 
     public function delete(Request $request)

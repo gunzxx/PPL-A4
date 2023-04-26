@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Offer;
-use App\Models\Partner;
-use App\Models\Inventory;
 use App\Models\OfferDetail;
 use Illuminate\Http\Request;
 

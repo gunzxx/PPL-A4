@@ -46,13 +46,13 @@
                 </div>
                 <div class="form-row">
                     <div class="form-col">
-                        <input value="{{ old('stok') }}" class="numeric form-input @error('stok') invalid @enderror" value="{{ old('stok') }}" name="stok" class="numeric" type="text" placeholder="Range stok (kg/bulan)">
+                        <input value="{{ old('stok') }}" class="numeric form-input @error('stok') invalid @enderror" name="stok" class="numeric" type="text" placeholder="Range stok (kg/bulan)">
                         @error('stok')
                             <p class="error">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-col">
-                        <input value="{{ old('price') }}" class="numeric form-input @error('price') invalid @enderror" value="{{ old('price') }}" name="price" class="numeric" type="text" placeholder="Harga kedelai (kg)">
+                        <input value="{{ old('price') }}" class="numeric form-input @error('price') invalid @enderror" name="price" class="numeric" type="text" placeholder="Harga kedelai (kg)">
                         @error('price')
                             <p class="error">{{ $message }}</p>
                         @enderror
