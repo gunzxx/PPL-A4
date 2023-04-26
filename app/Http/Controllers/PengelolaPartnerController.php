@@ -103,10 +103,12 @@ class PengelolaPartnerController extends Controller
         $partner = Partner::where('id', $id)->update(['is_active'=>false]);
 
         $offer_detail = OfferDetail::where(["partner_id"=>$id])->get()->first();
-        OfferDetail::where(["partner_id"=>$id])->delete();
-        Offer::find($offer_detail->offer_id)->delete();
+        if($offer_detail){
+            OfferDetail::where(["partner_id"=>$id])->delete();
+            Offer::find($offer_detail->offer_id)->delete();
+        }
 
-        return response()->json(['id'=>$id, 'message' => 'Kerja sama berhasil diberhentikan!','data'=>$partner], 200);
+        return response()->json(['post'=>$request->post(), 'message' => 'Kerja sama berhasil diberhentikan!','data'=>$partner], 200);
     }
 
     public function delete(Request $request)
