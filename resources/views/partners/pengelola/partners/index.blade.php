@@ -38,8 +38,12 @@
                         <p>{{ date("d F Y", strtotime($partner->updated_at)) }}</p>
                     </div>
                     <div class="card-action">
-                        <a class="btn" href="/pengelola/partners/partners/edit/{{ $partner->id }}" type="button">Update<i class="bi bi-pencil-square"></i></a>
-                        <button class="btn delete" data-id="{{ $partner->id }}" type="button">Hapus<i class="bi bi-trash3-fill"></i></button>
+                        @if ($partner->is_active == 0)
+                            <button class="btn delete" data-id="{{ $partner->id }}" type="button">Hapus<i class="bi bi-trash3-fill"></i></button>
+                        @else
+                            <a class="btn" href="/pengelola/partners/partners/edit/{{ $partner->id }}" type="button">Update<i class="bi bi-pencil-square"></i></a>
+                            <button class="btn stop" data-id="{{ $partner->id }}" type="button">Berhenti<i class="bi bi-x-lg"></i></button>
+                        @endif
                     </div>
                 </div>
                 @endforeach
@@ -49,11 +53,20 @@
         
         @if (auth()->user()->hasRole('pengelola'))
             <a class="btn fixed create-btn" href="/pengelola/partners/partners/create">Tambah</a>
-            {{-- <a href="/pengelola/partners/partners/create" class="partner-add"><i class="bi bi-plus-lg"></i></a> --}}
         @endif
     </main>
 
-    <div class="popup-backdrop">
+    <div class="popup-backdrop stop-partner">
+        <div class="popup-container">
+            <div class="popup-text">Berhenti kerja sama?</div>
+            <div class="popup-alert">
+                <button value="true" class="popup-confirm popup-yes" type="button">Yes</button>
+                <button value="false" class="popup-confirm popup-no" type="button">No</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="popup-backdrop delete-partner">
         <div class="popup-container">
             <div class="popup-text">Hapus kerja sama?</div>
             <div class="popup-alert">

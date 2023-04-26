@@ -86,7 +86,7 @@ Route::middleware(['auth','role:pengelola'])->group(function(){
     Route::get('/pengelola/partners/partners/create', [PengelolaPartnerController::class, 'create']);
     Route::post('/pengelola/partners/partners/create', [PengelolaPartnerController::class, 'store']);
     Route::get('/pengelola/partners/partners/edit', function(){return redirect('/pengelola/partners/partners');});
-    Route::get('/pengelola/partners/partners/edit/{partner}', [PengelolaPartnerController::class, 'edit']);
+    Route::get('/pengelola/partners/partners/edit/{partner_id}', [PengelolaPartnerController::class, 'edit']);
     Route::post('/pengelola/partners/partners/edit', [PengelolaPartnerController::class, 'update']);
     
     // Penawaran

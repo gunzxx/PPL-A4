@@ -210,6 +210,13 @@
     outline: none;
     border: 1px solid var(--r2);
 }
+.btn.stop{
+    background: var(--r2);
+    color: var(--w1);
+    padding: 7px 37px;
+    outline: none;
+    border: 1px solid var(--r2);
+}
 .btn.delete:hover{
     background: var(--w2);
     border: 1px solid var(--r2);

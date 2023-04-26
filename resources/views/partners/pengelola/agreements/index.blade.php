@@ -44,7 +44,7 @@
                             </div>
                             <div class="detail-list">
                                 <p>Penawaran : </p>
-                                <p class="green">{{ $agreement_detail->offerDetail->offer->name }}</p>
+                                <p class="green">{{ $agreement_detail->offerDetail->offer->name }} - {{ $agreement_detail->petani->fullname }}</p>
                             </div>
                             <div class="detail-list">
                                 <p>Status : </p>

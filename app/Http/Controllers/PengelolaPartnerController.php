@@ -48,8 +48,12 @@ class PengelolaPartnerController extends Controller
         return redirect('/pengelola/partners/partners')->with('success', 'Data berhasil ditambahkan!');
     }
 
-    public function edit(Partner $partner)
+    public function edit($partner_id)
     {
+        $partner = Partner::where(['id'=> $partner_id,'is_active'=>1])->get()->first();
+        if(!$partner){
+            return back();
+        }
         if ($partner->pengelola_id != auth()->user()->id) {
             return abort(403);
         }
@@ -80,6 +84,25 @@ class PengelolaPartnerController extends Controller
         return redirect('/pengelola/partners')->with('sukses', 'Data berhasil diedit!')->with(['success', 'Data berhasil diperbarui!']);
     }
 
+    public function stop(Request $request)
+    {
+        if(!$request->post('id')){
+            return response()->json([
+                'message'=>"Id not found",
+            ],401);
+        }
+        if(auth()->check()=='false'){
+            return response()->json([
+                'message'=>"Please login!",
+            ],403);
+        }
+        $id = $request->post('id');
+
+        $partner = Partner::where('id', $id)->update(['is_active'=>false]);
+
+        return response()->json(['id'=>$id, 'message' => 'Kerja sama berhasil diberhentikan!','data'=>$partner], 200);
+    }
+
     public function delete(Request $request)
     {
         if(!$request->post('id')){
@@ -106,7 +129,6 @@ class PengelolaPartnerController extends Controller
         ]);
         Partner::find($id)->delete();
 
-
-        return response()->json(['id'=>$id, 'message' => 'Data berhasil dihapus','data'=>$partnerHistory], 200);
+        return response()->json(['id'=>$id, 'message' => 'Kerja sama berhasil dihapus','data'=>$partnerHistory], 200);
     }
 }

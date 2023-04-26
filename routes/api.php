@@ -19,6 +19,7 @@ Route::post('/petani/inventory/delete', [PetaniInventoryController::class, 'dele
 Route::post('/pengelola/inventory/delete', [PengelolaInventoryController::class, 'delete']);
 
 // Route partner pengelola
+Route::post('/pengelola/partners/stop', [PengelolaPartnerController::class, 'stop']);
 Route::post('/pengelola/partners/delete', [PengelolaPartnerController::class, 'delete']);
 
 // Route offer petani

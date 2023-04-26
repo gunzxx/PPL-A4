@@ -33,7 +33,7 @@ class PengelolaInventoryController extends Controller
 
         Inventory::create($validated);
 
-        return redirect(auth()->user()->getRoleNames()[0] . '/inventory')->with('sukses', 'Data has been added');
+        return redirect(auth()->user()->getRoleNames()[0] . '/inventory')->with('success', 'Data has been added');
     }
 
     public function manage()

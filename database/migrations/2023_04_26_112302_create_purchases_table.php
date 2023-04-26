@@ -12,15 +12,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('partners', function (Blueprint $table) {
+        Schema::create('purchases', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->longText('description');
-            $table->string('stok');
-            $table->string('price');
-            $table->string("bean_type");
-            // $table->boolean("is_active")->default(true);
-            $table->foreignId('pengelola_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId("bean_type");
+            $table->string("weight");
+            $table->integer("amount");
+            $table->string("price");
+            $table->string("address");
+            $table->foreignId("pengelola_id")->references("id")->on("users")->onDelete("cascade");
+            $table->foreignId("agreement_detail_id")->references("id")->on("agreement_details")->onDelete("cascade");
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::drop('partners');
+        Schema::dropIfExists('purchases');
     }
 };

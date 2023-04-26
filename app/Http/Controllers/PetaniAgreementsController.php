@@ -10,7 +10,7 @@ class PetaniAgreementsController extends Controller
     public function showAgreements()
     {
         $agreement_details = AgreementDetail::with([
-            'agreement', 'pengelola',
+            'agreement', 'pengelola','petani',
             "offerDetail" => function ($query) {
                 $query->with('offer');
             }

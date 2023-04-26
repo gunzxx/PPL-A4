@@ -12,7 +12,7 @@ class PengelolaAgreementsController extends Controller
 {
     public function showAgreements()
     {
-        $agreement_details = AgreementDetail::with(['agreement','pengelola',
+        $agreement_details = AgreementDetail::with(['agreement','pengelola','petani',
             "offerDetail"=>function($query){
                 $query->with('offer');
             }
