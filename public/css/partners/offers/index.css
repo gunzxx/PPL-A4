@@ -51,6 +51,18 @@
 .btn.cancel:hover *{
     color: var(--r2) !important;
 }
+.btn.reject{
+    background-color: var(--r2);
+    color:var(--w1);
+    border: 1px solid var(--r2);
+}
+.btn.reject:hover{
+    background-color: var(--w2);
+    color: var(--r2) !important;
+}
+.btn.reject:hover *{
+    color: var(--r2) !important;
+}
 /* Button end */
 
 

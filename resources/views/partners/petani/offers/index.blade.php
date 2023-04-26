@@ -55,13 +55,10 @@
                     <div class="card-action">
                         @if ($detail->is_approved == 0 && $detail->is_rejected == 0)
                             <a class="btn" href="/petani/partners/offers/edit/{{ $detail->id }}">Update<i class="bi bi-pencil-square"></i></a>
-                            <button class="btn delete batal-tawar" data-offer-id="{{ $detail->offer->id }}" data-detail-id="{{ $detail->id }}" type="button">Hapus<i class="bi bi-trash3-fill"></i></button>
+                            <button class="btn delete hapus-tawar" data-offer-id="{{ $detail->offer->id }}" data-detail-id="{{ $detail->id }}" type="button">Hapus<i class="bi bi-trash3-fill"></i></button>
                         @elseif($detail->is_approved == 1)
                             <span class="status is_confirm">Diterima <i class="bi bi-check-circle-fill"></i></span>
                             <button class="btn delete batal-tawar" data-offer-id="{{ $detail->offer->id }}" data-detail-id="{{ $detail->id }}" type="button">Batalkan<i class="bi bi-x-lg"></i></button>
-                        @elseif($detail->is_rejected == 1)
-                            <span class="status is_reject">Ditolak</span>
-                            <button class="btn delete batal-tawar" data-offer-id="{{ $detail->offer->id }}" data-detail-id="{{ $detail->id }}" type="button">Hapus<i class="bi bi-trash3-fill"></i></button>
                         @endif
                     </div>
                 </div>
@@ -72,12 +69,22 @@
         </div>
     </main>
 
-    <div class="popup-backdrop">
+    <div class="popup-backdrop batal-tawar-popup">
         <div class="popup-container">
             <div class="popup-text">Batalkan penawaran?</div>
             <div class="popup-alert">
-                <button value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button value="false" class="popup-confirm popup-no" type="button">No</button>
+                <button onclick="cancelOffer()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
+                <button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" value="false" class="popup-confirm popup-no" type="button">No</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-backdrop hapus-tawar-popup">
+        <div class="popup-container">
+            <div class="popup-text">Hapus penawaran?</div>
+            <div class="popup-alert">
+                <button onclick="deleteOffer()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
+                <button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" value="false" class="popup-confirm popup-no" type="button">No</button>
             </div>
         </div>
     </div>

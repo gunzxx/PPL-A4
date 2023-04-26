@@ -54,7 +54,7 @@
                     <div class="card-action">
                         @if ($detail->is_approved == 0 && $detail->is_rejected == 0)
                             <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn confirm" type="button">Accept<i class="bi bi-check-lg"></i></button>
-                            <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn cancel" type="button">Reject<i class="bi bi-x-lg"></i></button>
+                            <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn reject" type="button">Reject<i class="bi bi-x-lg"></i></button>
                         @elseif($detail->is_approved == 1)
                             <span class="status is_confirm">Diterima <i class="bi bi-check-circle-fill"></i></span>
                             <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn cancel" type="button">Batalkan<i class="bi bi-x-lg"></i></button>
@@ -70,12 +70,22 @@
         </div>
     </main>
 
+    <div class="popup-backdrop cancel-offer">
+        <div class="popup-container">
+            <div class="popup-text">Batalkan penawaran dengan petani?</div>
+            <div class="popup-alert">
+                <button onclick="cancelOffer()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
+                <button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" value="false" class="popup-confirm popup-no" type="button">No</button>
+            </div>
+        </div>
+    </div>
+
     <div class="popup-backdrop reject-offer">
         <div class="popup-container">
             <div class="popup-text">Tolak penawaran dengan petani?</div>
             <div class="popup-alert">
-                <button value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button value="false" class="popup-confirm popup-no" type="button">No</button>
+                <button onclick="rejectOffer()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
+                <button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" value="false" class="popup-confirm popup-no" type="button">No</button>
             </div>
         </div>
     </div>
@@ -84,14 +94,13 @@
         <div class="popup-container">
             <div class="popup-text">Terima penawaran dengan petani?</div>
             <div class="popup-alert">
-                <button value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button value="false" class="popup-confirm popup-no" type="button">No</button>
+                <button onclick="confirmOffer()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
+                <button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" value="false" class="popup-confirm popup-no" type="button">No</button>
             </div>
         </div>
     </div>
 @endsection
 
 @section('script')
-    <script src="/js/partner/petani/offers.js"></script>
-    <script src="/js/partner/offers/index.js"></script>
+    <script src="/js/partner/pengelola/offers.js"></script>
 @endsection

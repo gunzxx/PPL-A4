@@ -55,12 +55,10 @@
                     <div class="card-action">
                         @if ($agreement_detail->is_approved == 0 && $agreement_detail->is_rejected == 0)
                             <a class="btn" href="/pengelola/partners/agreements/edit/{{ $agreement_detail->id }}">Update <i class="bi bi-pencil-square"></i></a>
-                            <button class="btn delete delete-agreement" data-agreement-id="{{ $agreement_detail->agreement->id }}" data-agrement-detail-id="{{ $agreement_detail->id }}" type="button">Batalkan <i class="bi bi-x-lg"></i></button>
+                            <button class="btn delete delete-agreement" data-agreement-id="{{ $agreement_detail->agreement->id }}" data-agrement-detail-id="{{ $agreement_detail->id }}" type="button">Hapus <i class="bi bi-x-lg"></i></button>
                         @elseif($agreement_detail->is_approved == 1)
                             <span class="status is_confirm">Diterima <i class="bi bi-check-circle"></i></span>
-                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel delete-agreement" type="button">Batalkan<i class="bi bi-x-lg"></i></button>
-                        @elseif($agreement_detail->is_rejected == 1)
-                            <span class="status is_reject">Ditolak</span>
+                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel cancel-agreement" type="button">Batalkan<i class="bi bi-x-lg"></i></button>
                         @endif
                     </div>
                 </div>
@@ -78,6 +76,26 @@
             <a class="btn fixed create-btn" href="/pengelola/partners/agreements/create">Tambah</a>
         @endif
     </main>
+
+    <div class="popup-backdrop cancel-agreement-popup">
+        <div class="popup-container">
+            <div class="popup-text">Batalkan persetujuan?</div>
+            <div class="popup-alert">
+                <button onclick="cancelAgreement()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
+                <button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" value="false" class="popup-confirm popup-no" type="button">No</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-backdrop delete-agreement-popup">
+        <div class="popup-container">
+            <div class="popup-text">Hapus persetujuan?</div>
+            <div class="popup-alert">
+                <button onclick="deleteAgreement()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
+                <button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" value="false" class="popup-confirm popup-no" type="button">No</button>
+            </div>
+        </div>
+    </div>
 
     @error("message")
         <input type="hidden" id="error-msg" value="{{ $message }}">

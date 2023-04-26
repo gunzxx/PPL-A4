@@ -120,21 +120,25 @@ class PengelolaAgreementsController extends Controller
         return redirect(auth()->user()->getRoleNames()[0] . '/partners/agreements')->with('sukses', 'Data berhasil diperbarui!');
     }
 
+    public function cancelAgreements(Request $request)
+    {
+        $agreementId = $request->post("agreementId");
+        if (!$agreementId) {
+            return response()->json(["message" => "Data tidak lengkap!"], 401);
+        }
+        Agreement::find($agreementId)->delete();
+
+        return response()->json(["message" => "Persetujuan berhasil dibatalkan."], 200);
+    }
+
     public function deleteAgreements(Request $request)
     {
         $agreementId = $request->post("agreementId");
+        if (!$agreementId) {
+            return response()->json(["message" => "Data tidak lengkap!"], 401);
+        }
         Agreement::find($agreementId)->delete();
-        
-        return response()->json(["message" => "Persetujuan berhasil dibatalkan!"], 200);
-    }
 
-    public function confirmAgreements(Request $request)
-    {
-        $agreementDetailId = $request->post("agreementDetailId");
-        AgreementDetail::where(["id" => $agreementDetailId])->update([
-            "is_approved" => 1,
-        ]);
-        
-        return response()->json(["message" => "Selamat!\nPersetujuan berhasil diterima!"], 200);
+        return response()->json(["message" => "Persetujuan berhasil dihapus."], 200);
     }
 }
