@@ -9,7 +9,7 @@ class PetaniInventoryController extends Controller
 {
     public function showInventory()
     {
-        $inventories = Inventory::where('user_id',auth()->user()->id)->paginate(10);
+        $inventories = Inventory::where('user_id',auth()->user()->id)->latest()->paginate(10);
         return view('inventory.petani.inventory', [
             "css" => ['main', 'inventory/inventory'],
             'inventories' => $inventories,
