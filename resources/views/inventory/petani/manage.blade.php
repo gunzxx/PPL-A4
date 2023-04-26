@@ -30,6 +30,13 @@
             <h1 style="text-align: center;padding:50px 0;">Persediaan masih kosong. <a href="/{{ auth()->user()->getRoleNames()[0] }}/inventory/create">Tambah sekarang!</a></h1>
         @endif
     </main>
+
+    @if(session()->has('success'))
+        <input type="hidden" id="error-msg" value="{{ session()->get('success') }}">
+        <script>
+            alert($("#error-msg").val())
+        </script>
+    @endif
 @endsection
 
 @section('script')
