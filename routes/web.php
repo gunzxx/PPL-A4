@@ -17,19 +17,6 @@ use App\Http\Controllers\PengelolaAgreementsController;
 use App\Http\Controllers\PengelolaPartnerHistoryController;
 
 Route::get('/', function () {return view('landing');})->name("landing");
-Route::get("/tes-media",function(){
-    // $user =  User::find(1)->getMedia("profile")->each->delete();
-    // return view("tes",compact('user'));
-    return view("tes");
-});
-Route::post('/tes-media',function(Request $request){
-    $request->validate([
-        'image' => 'mimes:jpg,png,jpeg'
-    ]);
-    $user = User::find(1);
-    $user->addMediaFromRequest("image")->toMediaCollection('profile');
-    return back();
-});
 
 // Route guest
 Route::middleware('guest')->group(function(){

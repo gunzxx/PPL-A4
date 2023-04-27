@@ -16,9 +16,9 @@
             <a href="/"><h1 class="title">Soysync</h1></a>
         </div>
         <div class="nav-list">
-            <a href="#home" class="nav-item">Home</a>
-            <a href="#fitur" class="nav-item">Fitur</a>
-            <a href="#about" class="nav-item">About</a>
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#fitur" class="nav-link">Fitur</a>
+            <a href="#about" class="nav-link">About</a>
             @if (auth()->check()!=true)
             <a class="login-button" href="/login">Login</a>
             @else
