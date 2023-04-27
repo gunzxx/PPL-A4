@@ -44,6 +44,10 @@
                         </div>
                         <div class="keterangan-partner">
                             <div class="keterangan-list">
+                                <p>Nama penawaran : </p>
+                                <p>&nbsp;{{ " {$detail->offer->name}" }}</p>
+                            </div>
+                            <div class="keterangan-list">
                                 <p>Untuk kerja sama : </p>
                                 <p>&nbsp;{{ " {$detail->partner->name}" }}</p>
                             </div>
