@@ -13,7 +13,7 @@ nav{
     justify-content: space-between;
     flex-grow: 1;
     box-shadow: 0 -5px 35px rgba(0,0,0,.1);
-    z-index: 99;
+    z-index: 20;
 }
 .nav-title-container{
     width: 50%;

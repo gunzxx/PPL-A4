@@ -69,3 +69,8 @@ $("form.required-form").submit(function(e){
         alert("Data tidak valid!");
     }
 })
+
+$(".popup-yes").click(function(e){
+    // e.preventDefault();
+    $(".spinner-container").css('display','flex');
+})

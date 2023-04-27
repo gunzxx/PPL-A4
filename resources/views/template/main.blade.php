@@ -22,6 +22,9 @@
     @yield('content')
 
 
+    <div class="spinner-container">
+        <div class="spinner"></div>
+    </div>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/script.js"></script>
     @yield('script')
