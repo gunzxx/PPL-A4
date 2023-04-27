@@ -258,3 +258,12 @@ i{
 .status.is_reject {
     background-color: var(--r2);
 }
+/* Status end */
+
+
+/* Keterangan Partner */
+.keterangan-partner *{
+    color: var(--b2);
+    font-size: 12px;
+}
+/* Keterangan Partner end */
