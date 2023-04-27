@@ -54,11 +54,19 @@ button{
 }
 
 a{
+    display: inline-block;
     text-decoration: none;
     cursor: pointer;
 }
-a:hover{
-    text-decoration: underline;
+a::after{
+    display: block;
+    content: '';
+    border-bottom: solid 1px inherit;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+a:hover::after{
+    transform:scaleX(1);
 }
 
 i{
