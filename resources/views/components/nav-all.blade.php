@@ -20,7 +20,7 @@
     <div class="profile-nav">
         <div class="name-profile-nav">
             <h1>{{ auth()->user()->fullname }}</h1>
-            <p>{{ ucfirst(auth()->user()->getRoleNames()[0]) }} kedelai</p>
+            <p>{{ auth()->user()->getRoleNames()[0] == "pengelola" ? ucfirst(auth()->user()->getRoleNames()[0])." susu" : ucfirst(auth()->user()->getRoleNames()[0]) }} kedelai</p>
         </div>
         <div class="profile-image-container">
             <img class="profile-img" src="{{ auth()->user()->getFirstMediaUrl("profile") != "" ? auth()->user()->getFirstMediaUrl("profile") : "/img/profile/default.jpg" }}" alt="">

@@ -78,7 +78,7 @@
             <div class="popup-text">Batalkan penawaran?</div>
             <div class="popup-alert">
                 <button onclick="cancelOffer()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" value="false" class="popup-confirm popup-no" type="button">No</button>
+                <button value="false" class="popup-confirm popup-no" type="button">No</button>
             </div>
         </div>
     </div>
@@ -88,7 +88,7 @@
             <div class="popup-text">Hapus penawaran?</div>
             <div class="popup-alert">
                 <button onclick="deleteOffer()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" value="false" class="popup-confirm popup-no" type="button">No</button>
+                <button value="false" class="popup-confirm popup-no" type="button">No</button>
             </div>
         </div>
     </div>

@@ -78,7 +78,7 @@
             <div class="popup-text">Batalkan persetujuan dengan pengelola?</div>
             <div class="popup-alert">
                 <button onclick="cancelAgreement()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" value="false" class="popup-confirm popup-no" type="button">No</button>
+                <button value="false" class="popup-confirm popup-no" type="button">No</button>
             </div>
         </div>
     </div>
@@ -88,7 +88,7 @@
             <div class="popup-text">Tolak persetujuan dengan pengelola?</div>
             <div class="popup-alert">
                 <button onclick="rejectAgreement()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" value="false" class="popup-confirm popup-no" type="button">No</button>
+                <button value="false" class="popup-confirm popup-no" type="button">No</button>
             </div>
         </div>
     </div>
@@ -98,7 +98,7 @@
             <div class="popup-text">Terima persetujuan dengan pengelola?</div>
             <div class="popup-alert">
                 <button onclick="confirmAgreement()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" value="false" class="popup-confirm popup-no" type="button">No</button>
+                <button value="false" class="popup-confirm popup-no" type="button">No</button>
             </div>
         </div>
     </div>

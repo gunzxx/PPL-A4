@@ -82,7 +82,7 @@
             <div class="popup-text">Batalkan persetujuan?</div>
             <div class="popup-alert">
                 <button onclick="cancelAgreement()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" value="false" class="popup-confirm popup-no" type="button">No</button>
+                <button value="false" class="popup-confirm popup-no" type="button">No</button>
             </div>
         </div>
     </div>
@@ -92,7 +92,7 @@
             <div class="popup-text">Hapus persetujuan?</div>
             <div class="popup-alert">
                 <button onclick="deleteAgreement()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" value="false" class="popup-confirm popup-no" type="button">No</button>
+                <button value="false" class="popup-confirm popup-no" type="button">No</button>
             </div>
         </div>
     </div>

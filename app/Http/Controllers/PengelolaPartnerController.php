@@ -108,7 +108,7 @@ class PengelolaPartnerController extends Controller
             Offer::find($offer_detail->offer_id)->delete();
         }
 
-        return response()->json(['post'=>$request->post(), 'message' => 'Kerja sama berhasil diberhentikan!','data'=>$partner], 200);
+        return response()->json(['post'=>$request->post(), 'message' => 'Berhasil berhenti.','data'=>$partner], 200);
     }
 
     public function delete(Request $request)
@@ -137,6 +137,6 @@ class PengelolaPartnerController extends Controller
         ]);
         Partner::find($id)->delete();
 
-        return response()->json(['id'=>$id, 'message' => 'Kerja sama berhasil dihapus','data'=>$partnerHistory], 200);
+        return response()->json(['id'=>$id, 'message' => 'Data berhasil dihapus.','data'=>$partnerHistory], 200);
     }
 }

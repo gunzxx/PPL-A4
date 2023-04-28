@@ -74,3 +74,6 @@ $(".popup-yes").click(function(e){
     // e.preventDefault();
     $(".spinner-container").css('display','flex');
 })
+$(".popup-no").click(function(){
+    this.parentNode.parentNode.parentNode.style.display = "none";
+})

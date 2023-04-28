@@ -13,15 +13,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
-            <form method="POST" action="/login" class="form-container">
+            <form method="POST" action="/login" class="form-container login-required-form">
                 @csrf
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input autofocus value="{{ old("email") }}" required type="email" name="email" id="email" placeholder="Masukkan email">
+                    <input autofocus value="{{ old("email") }}" type="email" name="email" id="email" placeholder="Masukkan email">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input value="{{ old("password") }}" required type="password" name="password" id="password" placeholder="Masukkan password">
+                    <input value="{{ old("password") }}" type="password" name="password" id="password" placeholder="Masukkan password">
                 </div>
                 <div class="form-group">
                     <button type="submit">Masuk</button>
@@ -43,5 +43,5 @@
 
 
 @section('script')
-    <script src="js/register.js"></script>
+    <script src="js/login.js"></script>
 @endsection

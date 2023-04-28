@@ -76,20 +76,20 @@
 
     <div class="popup-backdrop cancel-offer">
         <div class="popup-container">
-            <div class="popup-text">Batalkan penawaran dengan petani?</div>
+            <div class="popup-text">Apakah yakin melakukan penghapusan data?</div>
             <div class="popup-alert">
                 <button onclick="cancelOffer()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" value="false" class="popup-confirm popup-no" type="button">No</button>
+                <button value="false" class="popup-confirm popup-no" type="button">No</button>
             </div>
         </div>
     </div>
 
     <div class="popup-backdrop reject-offer">
         <div class="popup-container">
-            <div class="popup-text">Tolak penawaran dengan petani?</div>
+            <div class="popup-text">Apakah anda yakin menolak penawaran petani?</div>
             <div class="popup-alert">
                 <button onclick="rejectOffer()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" value="false" class="popup-confirm popup-no" type="button">No</button>
+                <button value="false" class="popup-confirm popup-no" type="button">No</button>
             </div>
         </div>
     </div>
@@ -99,7 +99,7 @@
             <div class="popup-text">Terima penawaran dengan petani?</div>
             <div class="popup-alert">
                 <button onclick="confirmOffer()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" value="false" class="popup-confirm popup-no" type="button">No</button>
+                <button value="false" class="popup-confirm popup-no" type="button">No</button>
             </div>
         </div>
     </div>
