@@ -7,7 +7,7 @@
                 <p class="title-login">Selamat datang</p>
                 <h1 class="subtitle-login">Daftarkan diri anda</h1>
             </div>
-            <form action="/register" method="POST" class="form-container">
+            <form action="/register" method="POST" class="form-container required-form">
                 @csrf
                 <div class="role-group">
                     <p>Daftar sebagai</p>
@@ -18,33 +18,33 @@
                 </div>
                 <div class="form-group">
                     <label for="fullname">Nama lengkap</label>
-                    <input value="{{ old('fullname') }}" required type="text" name="fullname" id="fullname" placeholder="Masukkan nama anda">
+                    <input value="{{ old('fullname') }}" type="text" name="fullname" id="fullname" placeholder="Masukkan nama anda">
                     @error('fullname')
                         <p class="error">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="id_number">Nomor identitas (Cth: NIK)</label>
-                    <input value="{{ old('id_number') }}" required type="text" name="id_number" id="id_number" placeholder="Masukkan nomor identitas" maxlength="20" pattern="[0-9]+">
+                    <input value="{{ old('id_number') }}" type="text" name="id_number" id="id_number" placeholder="Masukkan nomor identitas" maxlength="20" pattern="[0-9]+">
                 </div>
                 <div class="form-group">
                     <label for="number_phone">No HP</label>
-                    <input value="{{ old('number_phone') }}" required type="tel" name="number_phone" id="number_phone" placeholder="Masukkan nomor hp" maxlength="15">
+                    <input value="{{ old('number_phone') }}" type="tel" name="number_phone" id="number_phone" placeholder="Masukkan nomor hp" maxlength="15">
                 </div>
                 <div class="form-group">
                     <label for="address">Alamat</label>
-                    <input value="{{ old('address') }}" required type="text" name="address" id="address" placeholder="Masukkan alamat">
+                    <input value="{{ old('address') }}" type="text" name="address" id="address" placeholder="Masukkan alamat">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input value="{{ old('email') }}" required type="email" name="email" id="email" placeholder="Masukkan email" class="@error('email') invalid @enderror">
+                    <input value="{{ old('email') }}" type="email" name="email" id="email" placeholder="Masukkan email" class="@error('email') invalid @enderror">
                     @error('email')
                         <p class="error">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input value="{{ old('password') }}" required type="password" name="password" id="password" placeholder="Masukkan password">
+                    <input value="{{ old('password') }}" type="password" name="password" id="password" placeholder="Masukkan password">
                 </div>
                 <div class="form-group">
                     <button type="submit">Daftar</button>
