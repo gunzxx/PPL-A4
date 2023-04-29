@@ -30,7 +30,7 @@ class PetaniAgreementsController extends Controller
         }
         Agreement::find($agreementId)->delete();
 
-        return response()->json(["message" => "Persetujuan berhasil dibatalkan."], 200);
+        return response()->json(["message" => "Data berhasil dihapus"], 200);
     }
 
     public function rejectAgreements(Request $request)
