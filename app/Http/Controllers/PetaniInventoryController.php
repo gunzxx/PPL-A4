@@ -66,7 +66,7 @@ class PetaniInventoryController extends Controller
         $id = $request->only('inv_id');
 
         Inventory::where('id',$id)->update($validated);
-        return redirect(auth()->user()->getRoleNames()[0] . '/inventory/update')->with('success', 'Data berhasil diubah');
+        return redirect(auth()->user()->getRoleNames()[0] . '/inventory/update')->with('success', 'Data berhasil diupdate');
     }
     
     public function delete(Request $request)
