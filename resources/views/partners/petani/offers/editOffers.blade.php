@@ -74,4 +74,14 @@
             </form>
         </div>
     </main>
+
+    <div class="popup-backdrop cek-update">
+        <div class="popup-container">
+            <div class="popup-text">Apakah data sudah sesuai?</div>
+            <div class="popup-alert">
+                <button value="true" class="popup-confirm popup-yes popup-yes-update" type="button">Yes</button>
+                <button value="false" class="popup-confirm popup-no" type="button">No</button>
+            </div>
+        </div>
+    </div>
 @endsection

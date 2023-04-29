@@ -48,12 +48,21 @@ $(".logout").click(function(e){
     }
 })
 
-
-$(".form-update").submit(function(e){
-    if(!confirm("Apakah data sudah sesuai?")){
+var formUpdate = false;
+$("form.form-update").submit(async function(e){
+    $(".popup-backdrop.cek-update").show();
+    await cekFormUpdate();
+    if(formUpdate == false){
         e.preventDefault();
     }
 })
+async function cekFormUpdate(){
+    await $(".popup-yes-update").click(function(e){
+        $("form.form-update").submit()
+        return formUpdate = true;
+    })
+    return formUpdate = false;
+}
 
 
 $("form.required-form").submit(function(e){
