@@ -54,7 +54,7 @@
                             <button class="btn delete delete-agreement" data-agreement-id="{{ $agreement_detail->agreement->id }}" data-agrement-detail-id="{{ $agreement_detail->id }}" type="button">Hapus <i class="bi bi-x-lg"></i></button>
                         @elseif($agreement_detail->is_approved == 1)
                             <span class="status is_confirm">Diterima <i class="bi bi-check-circle"></i></span>
-                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel cancel-agreement" type="button">Batalkan<i class="bi bi-x-lg"></i></button>
+                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel cancel-agreement" type="button">Hapus<i class="bi bi-x-lg"></i></button>
                         @endif
                     </div>
                 </div>

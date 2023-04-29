@@ -51,19 +51,25 @@ $(".logout").click(function(e){
 var formUpdate = false;
 var gagal = false;
 $("form.form-update").submit(async function(e){
+    e.preventDefault();
     $("form.form-update input").each((key, element) => {
         if (element.value == "") {
             gagal = true;
         }
+        else{
+            gagal = false;
+        }
     });
     if (gagal == true) {
-        e.preventDefault();
         alert("Data tidak valid!");
-        return false;
     }
     else{
         $(".popup-backdrop.cek-update").show();
     }
+})
+
+$(".popup-yes-update").click(function(){
+    $("form.form-update").stopPropagation();
 })
 
 
