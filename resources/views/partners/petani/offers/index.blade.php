@@ -58,7 +58,7 @@
                     </div>
                     <div class="card-action">
                         @if ($detail->is_approved == 0 && $detail->is_rejected == 0)
-                            <a class="btn" href="/petani/partners/offers/edit/{{ $detail->id }}">Update<i class="bi bi-pencil-square"></i></a>
+                            <a class="btn" href="/petani/partners/offers/edit/{{ $detail->id }}">Update<i class="bi bi-pencil-square"></i></a>=
                         @elseif($detail->is_approved == 1)
                             <span class="status is_confirm">Diterima <i class="bi bi-check-circle-fill"></i></span>
                         @endif
