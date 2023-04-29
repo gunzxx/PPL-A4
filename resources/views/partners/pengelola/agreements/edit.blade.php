@@ -30,17 +30,6 @@
                     @enderror
                 </div>
                 <input type="hidden" name="old_offer_detail_id" value="{{ $agreement_detail->offerDetail->id }}">
-                <div class="form-group">
-                    @if ($offer_details->count()>0)
-                        <select class="form-input @error('bean_id') invalid @enderror" name="offer_detail_id" id="bean_id">
-                            @foreach ($offer_details as $offer_detail)
-                                <option @if($offer_detail->id == $agreement_detail->offerDetail->id) selected @endif value="{{ $offer_detail->id }}">{{ ucfirst($offer_detail->petani->fullname) }} - {{ ucfirst($offer_detail->offer->name) }}</option>
-                            @endforeach
-                        </select>
-                    @else
-                        <p class="kosong">Tidak ada penawaran, harap <a href="/petani/inventory/create" class="error">Tambah penawaran</a></p>
-                    @endif
-                </div>
                 <div class="form-group row">
                     <button class="btn-danger cancel-action" type="button" href="/inventory">Batal</button>
                     <button class="save-btn" type="submit">Save</button>
