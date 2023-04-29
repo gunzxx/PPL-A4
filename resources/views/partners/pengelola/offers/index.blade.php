@@ -43,10 +43,6 @@
                         </div>
                         <div class="keterangan-partner">
                             <div class="keterangan-list">
-                                <p>Nama penawaran : </p>
-                                <p>&nbsp;{{ " {$detail->offer->name}" }}</p>
-                            </div>
-                            <div class="keterangan-list">
                                 <p>Untuk kerja sama :</p>
                                 <p>&nbsp;{{ " {$detail->partner->name}" }}</p>
                             </div>
@@ -61,7 +57,7 @@
                             <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn reject" type="button">Reject<i class="bi bi-x-lg"></i></button>
                         @elseif($detail->is_approved == 1)
                             <span class="status is_confirm">Diterima <i class="bi bi-check-circle-fill"></i></span>
-                            <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn cancel" type="button">Hapus<i class="bi bi-x-lg"></i></button>x
+                            <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn cancel" type="button">Hapus<i class="bi bi-x-lg"></i></button>
                         @endif
                     </div>
                 </div>

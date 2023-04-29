@@ -43,10 +43,6 @@
                                 <p class="green">{{ $agreement_detail->agreement->price }}</p>
                             </div>
                             <div class="detail-list">
-                                <p>Penawaran : </p>
-                                <p class="green">{{ $agreement_detail->offerDetail->offer->name }} - {{ $agreement_detail->petani->fullname }}</p>
-                            </div>
-                            <div class="detail-list">
                                 <p>Status : </p>
                                 <p class="@if($agreement_detail->is_approved == 1) is_confirm @elseif($agreement_detail->is_rejected == 1) is_reject @else is_not_confirm @endif">{{ $agreement_detail->is_approved == 0 ? "Belum disetujui" : "Disetujui" }}</p>
                             </div>

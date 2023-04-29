@@ -30,12 +30,6 @@
             <form class="form-container required-form form-update" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/partners/offers/update">
                 @csrf
                 <div class="form-group">
-                    <input value="{{ $detail->offer->name }}" class="form-input" name="name" placeholder="Nama penawaran" id="name" cols="30" rows="10">
-                    @error('name')
-                        <p class="error">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="form-group">
                     <textarea class="form-input" name="description" placeholder="Deskripsikan penawaran anda" id="description" cols="30" rows="10">{{ $detail->offer->description }}</textarea>
                     @error('description')
                         <p class="error">{{ $message }}</p>

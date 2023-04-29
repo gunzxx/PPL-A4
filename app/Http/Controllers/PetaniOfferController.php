@@ -54,7 +54,6 @@ class PetaniOfferController extends Controller
         $inventory = Inventory::find($request->post("bean_id"));
         // dd($inventory);
         $validated = $request->validate([
-            "name" => "required|max:255",
             'description' => 'required|max:10000',
             "stok" => "required|numeric|max:{$inventory->stok}",
             "price" => "required|numeric",
@@ -108,7 +107,6 @@ class PetaniOfferController extends Controller
     public function updateOffers(Request $request)
     {
         $validated = $request->validate([
-            "name" => "required|max:255",
             'description' => 'required|max:10000',
             "stok" => "required|numeric",
             "price" => "required|numeric",

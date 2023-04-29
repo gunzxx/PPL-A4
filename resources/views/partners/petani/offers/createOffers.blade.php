@@ -33,12 +33,6 @@
             <form class="form-container required-form" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/partners/offers/create">
                 @csrf
                 <div class="form-group">
-                    <input value="{{ old('name') }}" class="form-input" name="name" placeholder="Nama penawaran" id="name" cols="30" rows="10">
-                    @error('name')
-                        <p class="error">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="form-group">
                     <textarea class="form-input" name="description" placeholder="Deskripsikan penawaran anda" id="description" cols="30" rows="10">{{ old("description") }}</textarea>
                     @error('description')
                         <p class="error">{{ $message }}</p>
