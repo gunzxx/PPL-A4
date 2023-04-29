@@ -47,7 +47,7 @@
 
             <div class="button-row">
                 <button type="button" class="cancel-action btn-danger">Batal</button>
-                <button type="submit" class="save-btn">Update</button>
+                <button type="submit" class="save-btn">Simpan</button>
             </div>
         </form>
 
