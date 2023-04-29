@@ -42,12 +42,6 @@
                             <p>Rp {{ number_format($detail->offer->price,2,',','.') }}/kg</p>
                             <p>{{ $detail->offer->inventory->bean_type }}</p>
                         </div>
-                        <div class="keterangan-partner">
-                            <div class="keterangan-list">
-                                <p>Untuk kerja sama : </p>
-                                <p>&nbsp;{{ " {$detail->partner->name}" }}</p>
-                            </div>
-                        </div>
                     </div>
                     <div class="card-footer">
                         <h3>{{ $detail->petani->address }}</h3>
