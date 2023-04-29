@@ -6,7 +6,7 @@
     <main>
         <x-menuInventory></x-menuInventory>
         <div class="card-container">
-            <form class="form-container required-form form-update" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/inventory/update">
+            <form class="form-container form-update" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/inventory/update">
                 @csrf
                 <div class="form-group">
                     <input name="bean_type" class="@error('email') invalid @enderror" value="{{ old('bean_type') ? old('bean_type') : $inventory->bean_type }}" type="text" placeholder="Masukkan jenis kedelai">

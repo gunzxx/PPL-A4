@@ -6,7 +6,7 @@
     <main>
         <x-menuPartners></x-menuPartners>
 
-        <form class="required-form form-container mt-3 form-update" method="POST" action="/pengelola/partners/partners/edit">
+        <form class="form-container mt-3 form-update" method="POST" action="/pengelola/partners/partners/edit">
             @csrf
             <input type="hidden" name="partner_id" value="{{ $partner->id }}">
             <div class="form-group">

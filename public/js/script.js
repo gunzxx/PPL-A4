@@ -49,24 +49,26 @@ $(".logout").click(function(e){
 })
 
 var formUpdate = false;
+var gagal = false;
 $("form.form-update").submit(async function(e){
-    $(".popup-backdrop.cek-update").show();
-    await cekFormUpdate();
-    if(formUpdate == false){
+    $("form.form-update input").each((key, element) => {
+        if (element.value == "") {
+            gagal = true;
+        }
+    });
+    if (gagal == true) {
         e.preventDefault();
+        alert("Data tidak valid!");
+        return false;
+    }
+    else{
+        $(".popup-backdrop.cek-update").show();
     }
 })
-async function cekFormUpdate(){
-    await $(".popup-yes-update").click(function(e){
-        $("form.form-update").submit()
-        return formUpdate = true;
-    })
-    return formUpdate = false;
-}
 
 
 $("form.required-form").submit(function(e){
-    var gagal = false;
+    e.preventDefault();
     $("form.required-form input").each((key,element)=>{
         if(element.value == ""){
             gagal = true;
@@ -74,7 +76,6 @@ $("form.required-form").submit(function(e){
     });
     if(gagal==true){
         e.preventDefault();
-        // tes
         alert("Data tidak valid!");
     }
 })

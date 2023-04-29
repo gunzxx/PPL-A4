@@ -27,7 +27,7 @@
         </div>
 
         <div class="card-container">
-            <form class="form-container required-form form-update" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/partners/offers/update">
+            <form class="form-container form-update" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/partners/offers/update">
                 @csrf
                 <div class="form-group">
                     <textarea class="form-input" name="description" placeholder="Deskripsikan penawaran anda" id="description" cols="30" rows="10">{{ $detail->offer->description }}</textarea>
