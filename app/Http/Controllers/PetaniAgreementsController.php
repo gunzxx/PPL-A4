@@ -54,6 +54,6 @@ class PetaniAgreementsController extends Controller
             "is_approved" => 1,
         ]);
 
-        return response()->json(["message" => "Selamat!\nPersetujuan berhasil diterima."], 200);
+        return response()->json(["message" => "Data berhasil diterima."], 200);
     }
 }
