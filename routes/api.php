@@ -15,6 +15,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::middleware("guest")->group(function(){
+    Route::post("/login");
+});
+
 // Route inventory petani
 Route::post('/petani/inventory/delete', [PetaniInventoryController::class, 'delete']);
 // Route inventory pengelola

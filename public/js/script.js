@@ -49,15 +49,14 @@ $(".logout").click(function(e){
 })
 
 var formUpdate = false;
-var gagal = false;
 $("form.form-update").submit(async function(e){
+    let gagal = false;
     e.preventDefault();
-    $("form.form-update input").each((key, element) => {
+    await $("form.form-update input").each((key, element) => {
+        console.log(key);
+        console.log(element.value);
         if (element.value == "") {
             gagal = true;
-        }
-        else{
-            gagal = false;
         }
     });
     if (gagal == true) {
@@ -69,11 +68,13 @@ $("form.form-update").submit(async function(e){
 })
 
 $(".popup-yes-update").click(function(){
-    $("form.form-update").stopPropagation();
+    $("form.form-update").unbind('submit');
+    $("form.form-update").submit();
 })
 
 
 $("form.required-form").submit(function(e){
+    let gagal = false;
     e.preventDefault();
     $("form.required-form input").each((key,element)=>{
         if(element.value == ""){
