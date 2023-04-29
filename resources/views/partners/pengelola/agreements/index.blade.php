@@ -75,7 +75,7 @@
 
     <div class="popup-backdrop cancel-agreement-popup">
         <div class="popup-container">
-            <div class="popup-text">Batalkan persetujuan?</div>
+            <div class="popup-text">Apakah yakin melakukan menghapus data?</div>
             <div class="popup-alert">
                 <button onclick="cancelAgreement()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
                 <button value="false" class="popup-confirm popup-no" type="button">No</button>
@@ -85,7 +85,7 @@
 
     <div class="popup-backdrop delete-agreement-popup">
         <div class="popup-container">
-            <div class="popup-text">Apakah yakin melakaukan menghapus data?</div>
+            <div class="popup-text">Apakah yakin melakaukan pembatalan data?</div>
             <div class="popup-alert">
                 <button onclick="deleteAgreement()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
                 <button value="false" class="popup-confirm popup-no" type="button">No</button>
