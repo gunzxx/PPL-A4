@@ -139,6 +139,6 @@ class PengelolaAgreementsController extends Controller
         }
         Agreement::find($agreementId)->delete();
 
-        return response()->json(["message" => "Persetujuan berhasil dihapus."], 200);
+        return response()->json(["message" => "Data berhasil dihapus"], 200);
     }
 }

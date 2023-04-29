@@ -54,7 +54,7 @@
                             <button class="btn delete delete-agreement" data-agreement-id="{{ $agreement_detail->agreement->id }}" data-agrement-detail-id="{{ $agreement_detail->id }}" type="button">Hapus <i class="bi bi-x-lg"></i></button>
                         @elseif($agreement_detail->is_approved == 1)
                             <span class="status is_confirm">Diterima <i class="bi bi-check-circle"></i></span>
-                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel cancel-agreement" type="button">Hapus<i class="bi bi-x-lg"></i></button>
+                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel delete-agreement" type="button">Hapus<i class="bi bi-x-lg"></i></button>
                         @endif
                     </div>
                 </div>
@@ -75,7 +75,7 @@
 
     <div class="popup-backdrop cancel-agreement-popup">
         <div class="popup-container">
-            <div class="popup-text">Apakah yakin melakukan menghapus data?</div>
+            <div class="popup-text">Apakah yakin melakukan pembatalan data?</div>
             <div class="popup-alert">
                 <button onclick="cancelAgreement()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
                 <button value="false" class="popup-confirm popup-no" type="button">No</button>
@@ -85,7 +85,7 @@
 
     <div class="popup-backdrop delete-agreement-popup">
         <div class="popup-container">
-            <div class="popup-text">Apakah yakin melakaukan pembatalan data?</div>
+            <div class="popup-text">Apakah yakin melakaukan penghapusan data?</div>
             <div class="popup-alert">
                 <button onclick="deleteAgreement()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
                 <button value="false" class="popup-confirm popup-no" type="button">No</button>
