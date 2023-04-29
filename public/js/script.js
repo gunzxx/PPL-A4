@@ -60,16 +60,19 @@ $("form.form-update").submit(async function(e){
         }
     });
     if (gagal == true) {
+        formUpdate = false;
         alert("Data tidak valid!");
     }
     else{
+        formUpdate = true;
         $(".popup-backdrop.cek-update").show();
     }
 })
-
 $(".popup-yes-update").click(function(){
-    $("form.form-update").unbind('submit');
-    $("form.form-update").submit();
+    if(formUpdate == true){
+        $("form.form-update").unbind('submit');
+        $("form.form-update").submit();
+    }
 })
 
 
