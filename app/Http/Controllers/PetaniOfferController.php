@@ -118,7 +118,7 @@ class PetaniOfferController extends Controller
 
         Offer::where(['id'=>$offer_id])->update($validated);
 
-        return redirect(auth()->user()->getRoleNames()[0] . '/partners/offers')->with('success', 'Data berhasil diperbarui!');
+        return redirect(auth()->user()->getRoleNames()[0] . '/partners/offers')->with('success', 'Data berhasil diupdate!');
     }
 
     public function cancelOffer(Request $request)
