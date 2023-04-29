@@ -83,7 +83,7 @@ class PengelolaPartnerController extends Controller
         $id = $request->only('partner_id');
         Partner::where('id', $id)->update($validated);
 
-        return redirect('/pengelola/partners/partners')->with('success', 'Data berhasil diperbarui!');
+        return redirect('/pengelola/partners/partners')->with('success', 'Data berhasil diupdate!');
     }
 
     public function stop(Request $request)
