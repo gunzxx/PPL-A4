@@ -71,7 +71,7 @@
 
     <div class="popup-backdrop cancel-agreement-popup">
         <div class="popup-container">
-            <div class="popup-text">Batalkan persetujuan dengan pengelola?</div>
+            <div class="popup-text">Apakah yakin melakukan penghapusan data?</div>
             <div class="popup-alert">
                 <button onclick="cancelAgreement()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
                 <button value="false" class="popup-confirm popup-no" type="button">No</button>
