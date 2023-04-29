@@ -50,7 +50,7 @@ $(".logout").click(function(e){
 
 
 $(".form-update").submit(function(e){
-    if(!confirm("Apakah data sesuai")){
+    if(!confirm("Apakah data sudah sesuai?")){
         e.preventDefault();
     }
 })
