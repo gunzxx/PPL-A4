@@ -9,8 +9,19 @@
 
   <script>
     async function getDataKedelai(){
-      await fetch("/api")
+      const datas = await fetch("https://ppl.gunzxx.my.id/api/kedelai");
+      const response = await datas.json();
+      
+      // let response;
+      // await fetch("https://ppl.gunzxx.my.id/api/kedelai")
+      // .then(response1=> response1.json())
+      // .then(response2=>{
+      //   console.log(response2);
+      // })
+      return await response;
     }
+
+    console.log(getDataKedelai());;
 
     // Mendefinisikan data
     const data = {
@@ -41,11 +52,12 @@
       options: {
         responsive: true,
         scales: {
-          yAxes: [{
+          yAxes: {
+            max:11000,
             ticks: {
               beginAtZero: true
             }
-          }]
+          }
         }
       }
     });

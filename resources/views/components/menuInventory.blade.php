@@ -5,7 +5,4 @@
     <div class="menu-item {{ array_reverse(explode('/',Request::url()))[0] == "create" || array_reverse(explode('/',Request::url()))[1] == "create" ? "active" : '' }}">
         <a href="/{{ auth()->user()->getRoleNames()[0] }}/inventory/create">Tambah Persediaan</a>
     </div>
-    <div class="menu-item {{ array_reverse(explode('/',Request::url()))[0] == "update" || array_reverse(explode('/',Request::url()))[1] == "update" ? "active" : '' }}">
-        <a href="/{{ auth()->user()->getRoleNames()[0] }}/inventory/update">Update Inventori</a>
-    </div>
 </div>
