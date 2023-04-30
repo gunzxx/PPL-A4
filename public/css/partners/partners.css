@@ -98,7 +98,7 @@
 .card-header-col{
     width: 40%;
     max-width: 40%;
-    background: beige;
+    /* background: beige; */
     display: flex;
     flex-direction: column;
 }
