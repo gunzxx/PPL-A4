@@ -52,6 +52,7 @@ nav{
     border-bottom-width: 1.5px;
     transform: scaleX(1);
 }
+/* Profile */
 .profile-nav{
     width: 20%;
     height: 100%;
@@ -87,6 +88,7 @@ nav{
 .name-profile-nav p{
     font-size: 12px;
 }
+/* Nav end */
 
 
 
@@ -108,13 +110,6 @@ nav{
 .profile-menu-container{
     display: none;
 }
-.profile-menu-container hr{
-    width: 100%;
-    border: 0;
-    border-top: 1px solid rgba(0,0,0,.3);
-    margin-top: 7px;
-    margin-bottom: 7px;
-}
 .card-profile-menu{
     position: fixed;
     top: 60px;
@@ -127,15 +122,33 @@ nav{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3px;
-    padding: 10px 25px;
+    overflow: hidden;
 }
+
 .profile-menu-list{
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
+    padding: 10px 25px;
 }
-
+.profile-menu-list:hover{
+    background-color: var(--g1);
+}
+.profile-menu-list.logout:hover{
+    background-color: var(--r2);
+    color: var(--w1);
+}
+.profile-menu-decide{
+    width: 100%;
+    display: flex;
+    justify-content: stretch;
+}
+.profile-menu-decide hr{
+    width: 100%;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.3);
+}
+/* Profile menu end */
 
 /* Main */
 main{

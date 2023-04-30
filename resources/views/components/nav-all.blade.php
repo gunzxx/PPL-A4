@@ -31,18 +31,12 @@
 <div class="profile-menu-container">
     <div class="backdrop-profile"></div>
     <div class="card-profile-menu">
-        <div class="profile-menu-list">
-            <a>Edit Profil</a>
+        <a class="profile-menu-list">Edit Profil</a>
+        <a class="profile-menu-list">Menu 2</a>
+        <a class="profile-menu-list">Menu 3</a>
+        <div class="profile-menu-decide">
+            <hr>
         </div>
-        <div class="profile-menu-list">
-            <a>Menu 2</a>
-        </div>
-        <div class="profile-menu-list">
-            <a>Menu 3</a>
-        </div>
-        <hr>
-        <div class="profile-menu-list">
-            <a class="logout">Logout&nbsp;<i class="bi bi-box-arrow-right"></i></a>
-        </div>
+        <a class="profile-menu-list logout">Logout&nbsp;<i class="bi bi-box-arrow-right"></i></a>
     </div>
 </div>
