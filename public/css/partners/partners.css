@@ -93,12 +93,12 @@
 .card-header-row{
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between !important;
 }
 .card-header-col{
     width: 40%;
     max-width: 40%;
-    /* background: beige; */
+    background: beige;
     display: flex;
     flex-direction: column;
 }
