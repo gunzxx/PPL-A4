@@ -18,14 +18,16 @@
                 <div class="list-card">
                     <div class="card-header-row">
                         <div class="card-header-col img">
-                            <img src="/img/profile/2.png" alt="">
-                        </div>
-                        <div class="card-header-col">
-                            <h1>{{ $agreement_detail->pengelola->fullname }}</h1>
-                            <p>No. Telp.{{ $agreement_detail->pengelola->number_phone }}</p>
+                            <div class="card-header-img-container">
+                                <img src="{{ $agreement_detail->pengelola->getFirstMediaUrl("profile") != "" ? $agreement_detail->pengelola->getFirstMediaUrl("profile") : "/img/profile/default.jpg" }}">
+                            </div>
+                            <div class="card-header-identity">
+                                <h1>{{ ucfirst($agreement_detail->pengelola->fullname) }}</h1>
+                                <p>No Telp.&nbsp;{{ ucfirst($agreement_detail->pengelola->number_phone) }}</p>
+                            </div>
                         </div>
                         <div class="card-header-col end">
-                            <p>{{ date("d F Y",strtotime($agreement_detail->agreement->created_at)) }}</p>
+                            <p class="tanggal">{{ date("d F Y",strtotime($agreement_detail->agreement->created_at)) }}</p>
                         </div>
                     </div>
                     <div class="card-body">
@@ -44,7 +46,7 @@
                             </div>
                             <div class="detail-list">
                                 <p>Status : </p>
-                                <p class="@if($agreement_detail->is_approved == 1) is_confirm @elseif($agreement_detail->is_rejected == 1) is_reject @else is_not_confirm @endif">{{ $agreement_detail->is_approved == 0 ? "Belum disetujui" : "Disetujui" }}</p>
+                                <p class="@if($agreement_detail->is_approved == 1) is_confirm @else is_not_confirm @endif">{!! $agreement_detail->is_approved == 0 ? "Belum disetujui" : "Disetujui <i class='bi bi-check-circle'></i>" !!}</p>
                             </div>
                         </div>
                     </div>
@@ -53,7 +55,6 @@
                             <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn confirm confirm-agreement" type="button">Terima<i class="bi bi-check-lg"></i></button>
                             <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel reject-agreement" type="button">Tolak<i class="bi bi-x-lg"></i></button>
                         @elseif($agreement_detail->is_approved == 1)
-                            <span class="status is_confirm">Diterima <i class="bi bi-check-circle"></i></span>
                             <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel cancel-agreement" type="button">Hapus <i class="bi bi-x-lg"></i></button>
                         @endif
                     </div>

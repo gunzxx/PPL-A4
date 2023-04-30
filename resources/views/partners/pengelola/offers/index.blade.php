@@ -22,11 +22,13 @@
                 <div class="list-card">
                     <div class="card-header-row">
                         <div class="card-header-col img">
-                            <img src="/img/profile/2.png">
-                        </div>
-                        <div class="card-header-col">
-                            <h1>{{ ucfirst($detail->offer->petani->fullname) }}</h1>
-                            <p>No Telp. {{ ucfirst($detail->offer->petani->number_phone) }}</p>
+                            <div class="card-header-img-container">
+                                <img src="{{ $detail->offer->petani->getFirstMediaUrl("profile") != "" ? $detail->offer->petani->getFirstMediaUrl("profile") : "/img/profile/default.jpg" }}">
+                            </div>
+                            <div class="card-header-identity">
+                                <h1>{{ ucfirst($detail->offer->petani->fullname) }}</h1>
+                                <p>No Telp. {{ ucfirst($detail->offer->petani->number_phone) }}</p>
+                            </div>
                         </div>
                         <div class="card-header-col end">
                             <p class="tanggal">{{ date("d F Y",strtotime($detail->offer->created_at)) }}</p>

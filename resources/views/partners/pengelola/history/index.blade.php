@@ -20,7 +20,7 @@
                 @foreach ($partnerHistories as $partnerHistory)
                 <div class="list-card">
                     <div class="card-header-row">
-                        <div class="card-header-col">
+                        <div class="card-header-col card-header-identity">
                             <h1>{{ ucfirst($partnerHistory->name) }}</h1>
                             <p>{{ ucfirst(auth()->user()->fullname) }}</p>
                         </div>

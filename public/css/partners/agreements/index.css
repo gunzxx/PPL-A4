@@ -1,14 +1,6 @@
 .list-card{
     gap: 20px;
 }
-.card-header-col.img{
-    width: min-content;
-    margin-right: 10px;
-}
-.card-header-col.img img{
-    width: 75px;
-    height: 60px;
-}
 .card-price *{
     font-size: 16px;
     font-weight: 600;
@@ -62,7 +54,7 @@
 .detail-list .is_confirm{
     background-color: var(--g3);
     color: var(--w1);
-    padding: 10px;
+    padding: 10px 30px;
 }
 .detail-list .is_reject{
     color: var(--r2);
