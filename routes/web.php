@@ -60,7 +60,6 @@ Route::middleware(['auth','role:petani'])->group(function(){
     Route::get('/petani/inventory/home', [PetaniInventoryController::class, 'showInventory']);
     Route::get('/petani/inventory/create', [PetaniInventoryController::class, 'create']);
     Route::post('/petani/inventory/create', [PetaniInventoryController::class, 'store']);
-    Route::get('/petani/inventory/update', [PetaniInventoryController::class, 'manage']);
     Route::post('/petani/inventory/update', [PetaniInventoryController::class, 'update']);
     Route::get('/petani/inventory/update/{inventory}', [PetaniInventoryController::class, 'edit']);
 });
@@ -98,7 +97,6 @@ Route::middleware(['auth','role:pengelola'])->group(function(){
     Route::get('/pengelola/inventory/home', [PengelolaInventoryController::class, 'showInventory']);
     Route::get('/pengelola/inventory/create', [PengelolaInventoryController::class, 'create']);
     Route::post('/pengelola/inventory/create', [PengelolaInventoryController::class, 'store']);
-    Route::get('/pengelola/inventory/update', [PengelolaInventoryController::class, 'manage']);
     Route::post('/pengelola/inventory/update', [PengelolaInventoryController::class, 'update']);
     Route::get('/pengelola/inventory/update/{inventory}', [PengelolaInventoryController::class, 'edit']);
 });

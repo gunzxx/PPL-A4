@@ -6,20 +6,24 @@
     flex-wrap: wrap;
 }
 .card{
-    width: 30%;
-    min-height: 490px;
+    width: 45%;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background: var(--w2);
+    padding-top: 30px;
+    padding-left: 35px;
+    padding-right: 35px;
     border-radius: 17px;
-    box-shadow: 0 0 35px rgba(0,0,0,.095);
+    box-shadow: 0 3px 35px rgba(0,0,0,.1);
     margin-bottom: 45px;
 }
 .card-img{
     height: 240px;
 }
 .card-body{
+    position: relative;
     width: 100%;
     height: 100%;
     display: flex;
@@ -27,7 +31,14 @@
     justify-content: start;
     align-items: center;
     padding: 20px;
-    background: var(--w1);
+}
+.card-body h1{
+    font-size: 24px;
+    font-weight: 600;
+}
+.card-body h1 *{
+    font-size: 24px;
+    font-weight: 600;
 }
 
 .form-container {
@@ -72,27 +83,62 @@
 }
 
 
-.btn-danger{
+
+/* Action */
+.action-container{
+    position: absolute;
+    bottom: 30px;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    gap: 30px;
+}
+.btn-inv{
     outline: none;
-    background: var(--w1);
-    border: 1px solid var(--r3);
-    color: var(--r1);
+    background: var(--w2);
+    border: 1px solid var(--b1);
+    color: var(--b1);
     display: flex;
     justify-content: center;
     border-radius: 6px;
-    padding: 18px;
+    padding: 5px 30px;
     font-size: 18px;
     transition: 0.3s;
 }
-.btn-danger *{
-    color: var(--r1);
+.btn-inv.edit-inv *{
+    color: var(--b1);
 }
-.btn-danger:hover{
+.btn-inv.delete-inv{
+    border: none;
     background: var(--r1);
     color: var(--w1);
 }
-.btn-danger:hover *{
+.btn-inv.delete-inv *{
+    color: var(--w1);
+}
+.btn-inv.edit-inv:hover{
+    background: var(--b1);
+    color: var(--w1);
+}
+.btn-inv.edit-inv:hover *{
     color: var(--w1);
 }
 
+
+
+
+/* Plus */
+.plus-inv{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--g1);
+    border-radius: 50%;
+    box-shadow: 0 3px 15px rgba(0,0,0,.1);
+}

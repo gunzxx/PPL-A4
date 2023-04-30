@@ -10,7 +10,7 @@ class PetaniInventoryController extends Controller
     public function showInventory()
     {
         $inventories = Inventory::where('user_id',auth()->user()->id)->latest()->paginate(10);
-        return view('inventory.petani.inventory', [
+        return view('inventory.petani.index', [
             "css" => ['main', 'inventory/inventory'],
             'inventories' => $inventories,
         ]);
@@ -66,7 +66,7 @@ class PetaniInventoryController extends Controller
         $id = $request->only('inv_id');
 
         Inventory::where('id',$id)->update($validated);
-        return redirect(auth()->user()->getRoleNames()[0] . '/inventory/update')->with('success', 'Data berhasil diupdate');
+        return redirect(auth()->user()->getRoleNames()[0] . '/inventory')->with('success', 'Data berhasil diupdate');
     }
     
     public function delete(Request $request)

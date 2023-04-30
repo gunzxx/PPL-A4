@@ -15,12 +15,11 @@
             <div class="card">
                 <img src="/img/inventory/1.png" height="240px" class="card-img">
                 <div class="card-body">
-                    <p style="text-align: center;">Jenis kedelai : {{ $inventory->bean_type }}</p>
-                    <p style="text-align: center;">Tersedia : {{ $inventory->stok }} kg kedelai</p>
-                    {{-- <p style="text-align: center;">Tersedia : {{ number_format($inventory->stok/1000,2,',','.') }} kg kedelai</p> --}}
+                    <h1 style="text-align: center;"><span style="color:#41B167;">Jenis kedelai : </span>{{ $inventory->bean_type }}</h1>
+                    <p style="text-align: center;"><span style="color:#41B167;">Tersedia : </span>{{ $inventory->stok }} kg kedelai</p>
                     <div class="action-container">
-                        <a href="/{{ auth()->user()->getRoleNames()[0] }}/inventory/update/{{ $inventory->id }}" class="btn-danger edit-inv pointer"><i class="bi bi-pencil"></i></a>
-                        <span data-inv-id="{{ $inventory->id }}" class="btn-danger delete-inv pointer"><i class="bi bi-trash"></i></span>
+                        <a href="/{{ auth()->user()->getRoleNames()[0] }}/inventory/update/{{ $inventory->id }}" class="btn-inv edit-inv pointer">Update<i class="bi bi-pencil"></i></a>
+                        <p data-inv-id="{{ $inventory->id }}" class="btn-inv delete-inv pointer">Delete<i class="bi bi-trash-fill"></i></p>
                     </div>
                 </div>
             </div>
@@ -31,6 +30,8 @@
             <h1 style="text-align: center;padding:50px 0;">Persediaan masih kosong. <a href="/{{ auth()->user()->getRoleNames()[0] }}/inventory/create">Tambah sekarang!</a></h1>
         @endif
     </main>
+
+    <a class="plus-inv" href="/pengelola/inventory/create"><i class="bi bi-plus-lg"></i></a>
 
     <div class="popup-backdrop delete-inventory">
         <div class="popup-container">
