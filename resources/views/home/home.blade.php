@@ -27,6 +27,9 @@
                             <h3>{{ $partner->pengelola->address }}</h3>
                             <p>{{ date("d F Y", strtotime($partner->updated_at)) }}</p>
                         </div>
+                        @if (auth()->user()->hasRole('petani'))
+                            <a href="/petani/partners/offers/create/{{ $partner->id }}" class="tawar">Bid</a>
+                        @endif
                     </div>
                 @endforeach
                 {{ $partners->links() }}

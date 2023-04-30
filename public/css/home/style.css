@@ -1,3 +1,6 @@
+.list-card{
+    position: relative;
+}
 .card-container{
     padding-top: 30px;
     display: flex;
@@ -17,6 +20,10 @@
     text-align: left;
 }
 .tawar{
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: min-content;
     padding: 10px 30px;
     background-color: var(--g3);
     box-shadow: 0 4px 15px rgba(0,0,0,.25);
