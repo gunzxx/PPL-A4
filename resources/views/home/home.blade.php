@@ -12,7 +12,7 @@
                         <div class="card-header-row">
                             <div class="card-header-col card-header-identity">
                                 <h1>{{ ucfirst($partner->name) }}</h1>
-                                <p>{{ ucfirst($partner->pengelola->fullname) }}</p>
+                                <p>{{ ucfirst(auth()->user()->fullname) }}</p>
                             </div>
                             <div class="card-header-col end">
                                 <h1>Rp {{ number_format(round($partner->price,-2),0,',','.') }}</h1>
@@ -26,11 +26,14 @@
                             <h3>{{ $partner->pengelola->address }}</h3>
                             <p>{{ date("d F Y", strtotime($partner->updated_at)) }}</p>
                         </div>
-                        @if (auth()->user()->hasRole('petani'))
-                            <div class="card-action">
-                                <a class="tawar" href="/petani/partners/offers/create/{{ $partner->id }}">Bid</a>
-                            </div>
-                        @endif
+                        <div class="card-action">
+                            @if ($partner->is_active == 0)
+                                <button class="btn delete" data-id="{{ $partner->id }}" type="button">Hapus<i class="bi bi-trash3-fill"></i></button>
+                            @else
+                                <a class="btn" href="/pengelola/partners/partners/edit/{{ $partner->id }}" type="button">Update<i class="bi bi-pencil-square"></i></a>
+                                <button class="btn stop" data-id="{{ $partner->id }}" type="button">Berhenti<i class="bi bi-x-lg"></i></button>
+                            @endif
+                        </div>
                     </div>
                 @endforeach
                 {{ $partners->links() }}
