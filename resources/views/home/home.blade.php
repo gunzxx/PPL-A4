@@ -12,7 +12,7 @@
                         <div class="card-header-row">
                             <div class="card-header-col card-header-identity">
                                 <h1>{{ ucfirst($partner->name) }}</h1>
-                                <p>{{ ucfirst(auth()->user()->fullname) }}</p>
+                                <p>{{ ucfirst($partner->pengelola->fullname) }}</p>
                             </div>
                             <div class="card-header-col end">
                                 <h1>Rp {{ number_format(round($partner->price,-2),0,',','.') }}</h1>
