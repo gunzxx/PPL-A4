@@ -26,14 +26,6 @@
                             <h3>{{ $partner->pengelola->address }}</h3>
                             <p>{{ date("d F Y", strtotime($partner->updated_at)) }}</p>
                         </div>
-                        <div class="card-action">
-                            @if ($partner->is_active == 0)
-                                <button class="btn delete" data-id="{{ $partner->id }}" type="button">Hapus<i class="bi bi-trash3-fill"></i></button>
-                            @else
-                                <a class="btn" href="/pengelola/partners/partners/edit/{{ $partner->id }}" type="button">Update<i class="bi bi-pencil-square"></i></a>
-                                <button class="btn stop" data-id="{{ $partner->id }}" type="button">Berhenti<i class="bi bi-x-lg"></i></button>
-                            @endif
-                        </div>
                     </div>
                 @endforeach
                 {{ $partners->links() }}
