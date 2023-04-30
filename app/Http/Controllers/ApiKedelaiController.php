@@ -12,7 +12,7 @@ class ApiKedelaiController extends Controller
      */
     public function index()
     {
-        $apiKedelais = ApiKedelai::all()->toArray();
+        $apiKedelais = ApiKedelai::get(['id','bulan','harga'])->toArray();
         return response()->json($apiKedelais);
     }
 
@@ -27,8 +27,12 @@ class ApiKedelaiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ApiKedelai $apiKedelai)
+    public function show($apiKedelai)
     {
+        $apiKedelai = ApiKedelai::find($apiKedelai);
+        if(!$apiKedelai){
+            return response()->json([]);
+        }
         return response()->json($apiKedelai->toArray());
     }
 
