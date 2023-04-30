@@ -8,16 +8,29 @@
   <canvas id="myChart"></canvas>
 
   <script>
+    async function getDataKedelai(){
+      await fetch("/api")
+    }
+
     // Mendefinisikan data
     const data = {
       labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
-      datasets: [{
-        label: "Data Penjualan",
-        data: [10.123, 10.042, 10.231, 10.273, 10.283, 10.331, 10.385, 10.372, 10.395, 10.383, 10.236, 10.214],
-        backgroundColor: "rgba(54, 162, 235, 0.2)",
-        borderColor: "rgba(54, 162, 235, 1)",
-        borderWidth: 1
-      }]
+      datasets: [
+        {
+          label: "Data Penjualan",
+          data: [10123, 10042, 10231, 10273, 10283, 10331, 10385, 10372, 10395, 10383, 10236, 10214],
+          backgroundColor: "rgba(54, 162, 235, 1)",
+          borderColor: "rgba(54, 162, 235, 1)",
+          borderWidth: 1
+        },
+        {
+          label: "Data Penjualan 2",
+          data: [10001, 10124, 10331, 10973, 10483, 10331, 10372, 10395, 10383, 10236, 10214, 10385],
+          backgroundColor: "red",
+          borderColor: "red",
+          borderWidth: 1
+        },
+      ]
     };
 
     // Menginisialisasi grafik

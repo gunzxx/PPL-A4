@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiKedelaiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\InventoryController;
@@ -44,3 +45,5 @@ Route::post('/petani/agreements/cancel', [PetaniAgreementsController::class, 'ca
 Route::post('/petani/agreements/reject', [PetaniAgreementsController::class, 'rejectAgreements']);
 Route::post('/petani/agreements/confirm', [PetaniAgreementsController::class, 'confirmAgreements']);
 
+Route::get('/kedelai',[ApiKedelaiController::class,'index']);
+Route::get('/kedelai/{apiKedelai}',[ApiKedelaiController::class,'show']);
