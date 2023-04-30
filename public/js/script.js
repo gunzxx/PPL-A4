@@ -78,7 +78,7 @@ $(".popup-yes-update").click(function(){
 
 $("form.required-form").submit(function(e){
     let gagal = false;
-    e.preventDefault();
+    // e.preventDefault();
     $("form.required-form input").each((key,element)=>{
         if(element.value == ""){
             gagal = true;
