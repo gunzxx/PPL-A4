@@ -111,7 +111,7 @@
 }
 .btn-inv.delete-inv{
     border: none;
-    background: var(--r1);
+    background: var(--r2);
     color: var(--w1);
 }
 .btn-inv.delete-inv *{
@@ -141,4 +141,8 @@
     background: var(--g1);
     border-radius: 50%;
     box-shadow: 0 3px 15px rgba(0,0,0,.1);
+    transition: 0.3s;
+}
+.plus-inv:hover{
+    box-shadow: 0 3px 25px rgba(0,0,0,.1);
 }
