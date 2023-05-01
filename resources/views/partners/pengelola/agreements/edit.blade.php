@@ -32,7 +32,7 @@
                 <input type="hidden" name="old_offer_detail_id" value="{{ $agreement_detail->offerDetail->id }}">
                 <div class="form-group row">
                     <button class="btn-danger cancel-action" type="button" href="/inventory">Batal</button>
-                    <button class="save-btn" type="submit">Save</button>
+                    <button class="save-btn" type="submit">Simpan</button>
                 </div>
             </form>
         </div>
