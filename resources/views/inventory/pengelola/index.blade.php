@@ -7,9 +7,6 @@
         <x-menuInventory></x-menuInventory>
 
         @if (count($inventories)>0)
-        <div class="title-page">
-            <h1>Pilih persediaan yang ingin anda perbarui</h1>
-        </div>
         <div class="card-container">
             @foreach ($inventories as $inventory)
             <div class="card">
