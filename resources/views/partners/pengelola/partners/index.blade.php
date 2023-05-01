@@ -32,8 +32,8 @@
                     </div>
                     <div class="card-body">
                         <div class="card-body">
-                            <p>Jenis kedelai : {{ strip_tags($partner->bean_type),20 }}</p>
-                            <p>Deskripsi : {{ strip_tags($partner->description),500 }}</p>
+                            <p>Jenis kedelai : {{ strip_tags($partner->bean_type) }}</p>
+                            <p>Deskripsi : {{ strip_tags($partner->description) }}</p>
                         </div>
                     </div>
                     <div class="card-footer">
