@@ -31,7 +31,7 @@
                     @if ($offer_details->count()>0)
                         <select class="form-input @error('bean_id') invalid @enderror" name="offer_detail_id" id="bean_id">
                             @foreach ($offer_details as $offer_detail)
-                                <option value="{{ $offer_detail->id }}">{{ ucfirst($offer_detail->petani->fullname) }} - {{ ucfirst($offer_detail->offer->created_at) }}</option>
+                                <option value="{{ $offer_detail->id }}">{{ ucfirst($offer_detail->petani->fullname) }} - {{ date("d F Y (H:i:s)", strtotime($offer_detail->offer->created_at)) }}</option>
                             @endforeach
                         </select>
                     @else
