@@ -448,6 +448,9 @@
           background-position: center;
         }
       }
+      .bg-kotak{
+        background: #;
+      }
     </style>
   </head>
   <body class="antialiased font-sans">
@@ -455,7 +458,7 @@
       <div class="w-full md:w-1/2 bg-white flex items-center justify-center ">
         <div class="max-w-sm m-8">
           <div class="text-black text-5xl md:text-15xl font-black">500</div>
-          <div class="w-16 h-1 bg-blue-dark my-3 md:my-6"></div>
+          <div class="w-16 h-1 bg-kotak my-3 md:my-6"></div>
           <p class="text-grey-darker text-2xl md:text-3xl font-light mb-8 leading-normal">Maaf, terdapat kesalahan pada server.</p>
           <a href="/home" class="bg-transparent text-grey-darkest font-bold uppercase tracking-wide py-3 px-6 border-2 border-grey-light hover:border-grey rounded-lg">Go Home</a>
         </div>
