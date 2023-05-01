@@ -103,9 +103,9 @@ class PengelolaAgreementsController extends Controller
         $agreement_id = $request->post('agreement_id');
 
         // $old_offer_detail_id = $request->post('old_offer_detail_id');
-        $offer_detail_id = $request->post('offer_detail_id');
-        $offer_detail = OfferDetail::find($offer_detail_id);
-        $petani_id = $offer_detail->offer->petani->id;
+        // $offer_detail_id = $request->post('offer_detail_id');
+        // $offer_detail = OfferDetail::find($offer_detail_id);
+        // $petani_id = $offer_detail->offer->petani->id;
 
         // if($old_offer_detail_id != $offer_detail_id){
         //     $cekIfExist = AgreementDetail::where(['pengelola_id'=> auth()->user()->id,"offer_detail_id",$offer_detail_id])->get();
@@ -117,8 +117,8 @@ class PengelolaAgreementsController extends Controller
         $agreement_detail_id = $request->post('agreement_detail_id');
 
         Agreement::where(["id"=> $agreement_id])->update($validated);
-        AgreementDetail::where(['id'=>$agreement_detail_id])->update(['offer_detail_id'=>$offer_detail_id,"petani_id"=>$petani_id]);
-        return redirect(auth()->user()->getRoleNames()[0] . '/partners/agreements')->with('succses', 'Data berhasil diperbarui!');
+        // AgreementDetail::where(['id'=>$agreement_detail_id])->update(['offer_detail_id'=>$offer_detail_id,"petani_id"=>$petani_id]);
+        return redirect(auth()->user()->getRoleNames()[0] . '/partners/agreements')->with('success', 'Data berhasil diperbarui!');
     }
 
     public function cancelAgreements(Request $request)
