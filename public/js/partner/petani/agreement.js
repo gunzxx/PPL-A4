@@ -18,8 +18,7 @@ $(".confirm-agreement").click(function(){
     $(".spinner-container").css('display','flex');
     agreementId = $(this).attr('data-agreement-id');
     agreementDetailId = $(this).attr('data-agrement-detail-id');
-    // $('.popup-backdrop.confirm-agreement-popup').show();
-    confirmAgreement();
+    $('.popup-backdrop.confirm-agreement-popup').show();
 })
 
 

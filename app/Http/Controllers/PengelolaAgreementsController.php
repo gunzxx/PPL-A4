@@ -59,7 +59,7 @@ class PengelolaAgreementsController extends Controller
         $cekDetail = AgreementDetail::where(['pengelola_id'=> auth()->user()->id, "offer_detail_id" => $offer_detail_id])->get();
         // dd($cekDetail);
         if($cekDetail->count()>0){
-            return redirect()->back()->withErrors(["message"=>"Penawaran sudah pernah dimintai persetujuan,\nPilih penawaran lain!"])->withInput();
+            return redirect()->back()->withErrors(["duplicate"=>"Penawaran sudah pernah dimintai persetujuan,\nPilih penawaran lain!"])->withInput();
         }
         
         $agreement = Agreement::create($validated);
@@ -98,20 +98,21 @@ class PengelolaAgreementsController extends Controller
             "price.min" => "Harga minimal 1000"
         ]);
         $request->validate(['offer_detail_id' => 'required']);
+        // dd("OK");
         
         $agreement_id = $request->post('agreement_id');
 
-        $old_offer_detail_id = $request->post('old_offer_detail_id');
+        // $old_offer_detail_id = $request->post('old_offer_detail_id');
         $offer_detail_id = $request->post('offer_detail_id');
         $offer_detail = OfferDetail::find($offer_detail_id);
         $petani_id = $offer_detail->offer->petani->id;
 
-        if($old_offer_detail_id != $offer_detail_id){
-            $cekIfExist = AgreementDetail::where(['pengelola_id'=> auth()->user()->id,"offer_detail_id",$offer_detail_id])->get();
-            if($cekIfExist->count()>0){
-                return redirect()->back()->withErrors(["message"=>"Penawaran sudah pernah dimintai persetujuan,\nPilih penawaran lain!"])->withInput();
-            }
-        }
+        // if($old_offer_detail_id != $offer_detail_id){
+        //     $cekIfExist = AgreementDetail::where(['pengelola_id'=> auth()->user()->id,"offer_detail_id",$offer_detail_id])->get();
+        //     if($cekIfExist->count()>0){
+        //         return redirect()->back()->withErrors(["message"=>"Penawaran sudah pernah dimintai persetujuan,\nPilih penawaran lain!"])->withInput();
+        //     }
+        // }
         
         $agreement_detail_id = $request->post('agreement_detail_id');
 
