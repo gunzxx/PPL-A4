@@ -258,21 +258,22 @@
     font-weight: 600;
 }
 .create-btn{
-    padding: 18px 123px;
+    padding: 10px 30px;
     background-color: var(--g3) !important;
     color: var(--w1);
 }
 .partner-btn-container{
     display: flex;
-    gap: 30px;
+    gap: 10px;
 }
 .partner-btn{
-    padding: 10px 30px;
+    padding: 10px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .partner-btn-create{
+    border: none;
     background-color: var(--g3);
     color: var(--w1);
 }
@@ -283,6 +284,9 @@
 .partner-btn-history{
     background-color: var(--w2);
     color: var(--b2);
+}
+.partner-btn-history{
+    border: 1px solid #000;
 }
 
 i{
