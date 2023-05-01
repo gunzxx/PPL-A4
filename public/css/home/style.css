@@ -1,3 +1,76 @@
+/* Jumbotron */
+.jumbotron-container{
+    position: relative;
+    top: 70px;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: var(--g7);
+    display: flex;
+}
+.jumbotron-img{
+    height: 100%;
+    position: absolute;
+    right: 0;
+}
+.jumbotron-text{
+    position: absolute;
+    left: 80px;
+    top: 75px;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.jumbotron-text *{
+    color: var(--w2);
+}
+.jumbotron-text h1{
+    width: 100%;
+    font-size: 48px;
+    font-weight: 700;
+}
+.jumbotron-text p{
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+}
+/* Jumbotron End */
+
+
+/* Forecasting */
+.forecasting-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+.forecasting-container h1{
+    font-weight: 600;
+    font-size: 40px;
+}
+.forecasting-container canvas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Forecasting end */
+
+
+/* Partner */
+.partner-home-container{
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.partner-home-container h1{
+    font-weight: 600;
+    font-size: 40px;
+}
+/* Partner end */
+
+
+/* Data partner */
 .list-card{
     position: relative;
 }
