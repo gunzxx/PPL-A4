@@ -211,7 +211,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
     font-weight: 600;
     transition: 0.3s;
 }
@@ -262,6 +261,28 @@
     padding: 18px 123px;
     background-color: var(--g3) !important;
     color: var(--w1);
+}
+.partner-btn-container{
+    display: flex;
+    gap: 30px;
+}
+.partner-btn{
+    padding: 10px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.partner-btn-create{
+    background-color: var(--g3);
+    color: var(--w1);
+}
+.partner-btn-create:hover{
+    background-color: var(--g3);
+    color: var(--w1);
+}
+.partner-btn-history{
+    background-color: var(--w2);
+    color: var(--b2);
 }
 
 i{

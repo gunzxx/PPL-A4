@@ -16,7 +16,7 @@
             </div>
 
             <div class="form-group">
-                <textarea name="description" class="input-area desc" placeholder="Deskripsikan kerja sama anda" id="description" cols="30" rows="10">{{ old('description') }}</textarea>
+                <textarea name="description" class="input-area desc @error('description') invalid @enderror" placeholder="Deskripsikan kerja sama anda" id="description" cols="30" rows="10">{{ old('description') }}</textarea>
                 @error('description')
                     <p class="error">{{ $message }}</p>
                 @enderror
@@ -37,6 +37,9 @@
                 </div>
                 <div class="input-col">
                     <input value="{{ old("bean_type") }}" class="input input-area @error('bean_type') invalid @enderror" name="bean_type" id="bean_type" placeholder="Masukkan jenis kedelai">
+                    @error('bean_type')
+                        <p class="error">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 

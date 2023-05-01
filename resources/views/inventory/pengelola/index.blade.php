@@ -16,7 +16,7 @@
                     <p style="text-align: center;"><span style="color:#41B167;">Tersedia : </span>{{ $inventory->stok }} kg kedelai</p>
                     <div class="action-container">
                         <a href="/{{ auth()->user()->getRoleNames()[0] }}/inventory/update/{{ $inventory->id }}" class="btn-inv edit-inv pointer">Update<i class="bi bi-pencil"></i></a>
-                        <p data-inv-id="{{ $inventory->id }}" class="btn-inv delete-inv pointer">Delete<i class="bi bi-trash-fill"></i></p>
+                        <p data-inv-id="{{ $inventory->id }}" class="btn-inv delete-inv pointer">Hapus<i class="bi bi-trash-fill"></i></p>
                     </div>
                 </div>
             </div>

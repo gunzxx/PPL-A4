@@ -3,13 +3,13 @@ $(".closeAlert").on('click',function(){
 })
 
 // create error
-const error = document.createElement('p');
+var error = document.createElement('p');
 error.classList.add('error');
 error.style.color = "#e76666";
 error.style.marginTop = '5px'
 error.style.fontSize = '12px';
 error.style.display = 'block';
-error.innerHTML = "Error";
+error.textContent = "Error";
 
 $(".numeric").on('keydown', function () {
     const inputValue = this.value;
@@ -20,7 +20,7 @@ $(".numeric").on('keydown', function () {
     } else {
         this.style.border = "2px solid var(--r4)"
         error.style.display = 'block';
-        error.innerHTML = "Harus angka";
+        error.textContent = "Harus angka";
         this.parentElement.append(error)
     }
 });
@@ -48,47 +48,52 @@ $(".logout").click(function(e){
     }
 })
 
-var formUpdate = false;
-$("form.form-update").submit(async function(e){
-    let gagal = false;
-    e.preventDefault();
-    await $("form.form-update input").each((key, element) => {
-        console.log(key);
-        console.log(element.value);
-        if (element.value == "") {
-            gagal = true;
-        }
-    });
-    if (gagal == true) {
-        formUpdate = false;
-        alert("Data tidak valid!");
-    }
-    else{
-        formUpdate = true;
-        $(".popup-backdrop.cek-update").show();
-    }
-})
-$(".popup-yes-update").click(function(){
-    if(formUpdate == true){
-        $("form.form-update").unbind('submit');
-        $("form.form-update").submit();
-    }
-})
+// var formUpdate = false;
+// $("form.form-updated").submit(async function(e){
+//     let gagal = false;
+//     e.preventDefault();
+//     await $("form.form-update input").each((key, element) => {
+//         console.log(key);
+//         console.log(element.value);
+//         if (element.value == "") {
+//             gagal = true;
+//         }
+//     });
+//     if (gagal == true) {
+//         formUpdate = false;
+//         alert("Data tidak valid!");
+//     }
+//     else{
+//         formUpdate = true;
+//         $(".popup-backdrop.cek-update").show();
+//     }
+// })
+// $(".popup-yes-updated").click(function(){
+//     if(formUpdate == true){
+//         $("form.form-update").unbind('submit');
+//         $("form.form-update").submit();
+//     }
+// })
 
 
-$("form.required-form").submit(function(e){
-    let gagal = false;
-    // e.preventDefault();
-    $("form.required-form input").each((key,element)=>{
-        if(element.value == ""){
-            gagal = true;
-        }
-    });
-    if(gagal==true){
-        e.preventDefault();
-        alert("Data tidak valid!");
-    }
-})
+
+// $("form.required-form").submit(function(e){
+//     let gagal = false;
+//     $("form.required-form input").each((key,element)=>{
+//         if(element.value.trim() == ""){
+//             gagal = true;
+//         }
+//     });
+//     $("form.required-form textarea").each((key,element)=>{
+//         if(element.value.trim() == ""){
+//             gagal = true;
+//         }
+//     });
+//     if(gagal==true){
+//         // e.preventDefault();
+//         alert("Data tidak valid!");
+//     }
+// })
 
 $(".popup-yes").click(function(e){
     // e.preventDefault();

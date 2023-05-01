@@ -29,13 +29,13 @@ class PengelolaPartnerController extends Controller
     
     public function store(Request $request)
     {
-        $messages = array(
-            'required' => 'Data tidak valid!',
-        );
+        // $messages = array(
+        //     'required' => 'Data tidak valid!',
+        // );
         
-        $request->validate([
-            'address' => 'required',
-        ]);
+        // $request->validate([
+        //     'address' => 'required',
+        // ]);
         $validated = $request->validate([
             'name' => 'required|max:255',
             'description' => 'required|max:10000',
