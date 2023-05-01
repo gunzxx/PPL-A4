@@ -156,6 +156,11 @@
     font-size: 14px;
 }
 
+/* Card body partner */
+.card-body-partner *{
+    font-size: 18px !important;
+}
+
 .card-footer{
     margin-top: 20px;
     width: 100%;
@@ -171,6 +176,7 @@
     font-size: 8px;
     color: var(--b3);
 }
+
 
 .card-action{
     position: absolute;
