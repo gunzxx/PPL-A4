@@ -31,7 +31,10 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <p>{{ Str::limit(strip_tags($partner->description),500) }}</p>
+                        <div class="card-body">
+                            <p>Jenis kedelai : {{ strip_tags($partner->bean_type),20 }}</p>
+                            <p>Deskripsi : {{ strip_tags($partner->description),500 }}</p>
+                        </div>
                     </div>
                     <div class="card-footer">
                         <h3>{{ $partner->pengelola->address }}</h3>
