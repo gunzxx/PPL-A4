@@ -8,21 +8,27 @@
 
         <div class="list-card">
             <div class="card-header-row">
-                <div class="card-header-col">
-                    <h1>{{ ucfirst($detail->partner->name) }}</h1>
-                    <p>{{ ucfirst($detail->partner->pengelola->fullname) }}</p>
+                <div class="card-header-col card-header-identity">
+                    <h1>{{ ucfirst($partner->name) }}</h1>
+                    <p>{{ ucfirst(auth()->user()->fullname) }}</p>
                 </div>
                 <div class="card-header-col end">
-                    <h1>Rp {{ number_format(round($detail->partner->price,-2),0,',','.') }}</h1>
-                    <p>1 kg kedelai</p>
+                    <h1>Rp {{ number_format(round($partner->price,-2),0,',','.') }}</h1>
+                    <p>{{ $partner->stok }} kg kedelai</p>
                 </div>
             </div>
             <div class="card-body">
-                <p>{{ Str::limit(strip_tags($detail->partner->description),500) }}</p>
+                <div class="card-body">
+                    <p>Jenis kedelai : {{ strip_tags($partner->bean_type) }}</p>
+                    <p>Deskripsi : {{ strip_tags($partner->description) }}</p>
+                </div>
             </div>
             <div class="card-footer">
-                <h3>{{ $detail->partner->pengelola->address }}</h3>
-                <p>{{ date("d F Y", strtotime($detail->partner->updated_at)) }}</p>
+                <h3>{{ $partner->pengelola->address }}</h3>
+                <p>{{ date("d F Y", strtotime($partner->updated_at)) }}</p>
+            </div>
+            <div class="card-action">
+                <button class="btn delete batal-tawar cancel-action" data-id="{{ $partner->id }}" type="button">Batal tawar</button>
             </div>
         </div>
 

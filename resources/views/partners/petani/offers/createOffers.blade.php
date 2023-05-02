@@ -8,17 +8,20 @@
 
         <div class="list-card">
             <div class="card-header-row">
-                <div class="card-header-col">
+                <div class="card-header-col card-header-identity">
                     <h1>{{ ucfirst($partner->name) }}</h1>
-                    <p>{{ ucfirst($partner->pengelola->fullname) }}</p>
+                    <p>{{ ucfirst(auth()->user()->fullname) }}</p>
                 </div>
                 <div class="card-header-col end">
                     <h1>Rp {{ number_format(round($partner->price,-2),0,',','.') }}</h1>
-                    <p>1 kg kedelai</p>
+                    <p>{{ $partner->stok }} kg kedelai</p>
                 </div>
             </div>
             <div class="card-body">
-                <p>{{ Str::limit(strip_tags($partner->description),500) }}</p>
+                <div class="card-body">
+                    <p>Jenis kedelai : {{ strip_tags($partner->bean_type) }}</p>
+                    <p>Deskripsi : {{ strip_tags($partner->description) }}</p>
+                </div>
             </div>
             <div class="card-footer">
                 <h3>{{ $partner->pengelola->address }}</h3>

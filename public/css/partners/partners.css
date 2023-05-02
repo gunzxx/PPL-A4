@@ -124,6 +124,7 @@
     justify-content: start;
 }
 .card-header-identity h1{
+    color: var(--g7);
     font-size: 26px;
     font-weight: 600;
 }
