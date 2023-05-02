@@ -27,9 +27,6 @@
                 <h3>{{ $partner->pengelola->address }}</h3>
                 <p>{{ date("d F Y", strtotime($partner->updated_at)) }}</p>
             </div>
-            <div class="card-action">
-                <button class="btn delete batal-tawar cancel-action" data-id="{{ $partner->id }}" type="button">Batal tawar</button>
-            </div>
         </div>
 
         <div class="card-container">
