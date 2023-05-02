@@ -13,7 +13,7 @@
                 <img src="/img/inventory/1.png" height="240px" class="card-img">
                 <div class="card-body">
                     <h1 style="text-align: center;"><span style="color:#41B167;">Jenis kedelai : </span>{{ $inventory->bean_type }}</h1>
-                    <p style="text-align: center;"><span style="color:#41B167;">Tersedia : </span>{{ $inventory->stok }} kg kedelai</p>
+                    <p style="text-align: center;"><span style="color:#41B167;"></span>Tersedia : {{ $inventory->stok }} kg kedelai</p>
                     <div class="action-container">
                         <a href="/{{ auth()->user()->getRoleNames()[0] }}/inventory/update/{{ $inventory->id }}" class="btn-inv edit-inv pointer">Update<i class="bi bi-pencil"></i></a>
                         <p data-inv-id="{{ $inventory->id }}" class="btn-inv delete-inv pointer">Hapus<i class="bi bi-trash-fill"></i></p>
@@ -28,7 +28,7 @@
         @endif
     </main>
 
-    <a class="plus-inv" href="/pengelola/inventory/create"><i class="bi bi-plus-lg"></i></a>
+    {{-- <a class="plus-inv" href="/pengelola/inventory/create">Tambah</a> --}}
 
     <div class="popup-backdrop delete-inventory">
         <div class="popup-container">

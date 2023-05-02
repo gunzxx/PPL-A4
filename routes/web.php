@@ -79,7 +79,7 @@ Route::middleware(['auth','role:pengelola'])->group(function(){
     Route::get('/pengelola/partners/offers', [PengelolaOfferController::class, 'showOffers']);
 
     // Riwayat
-    Route::get("/pengelola/partners/history", [PengelolaPartnerHistoryController::class, 'index']);
+    Route::get("/pengelola/partners/partners/history", [PengelolaPartnerHistoryController::class, 'index']);
 
     // Persetujuan
     Route::get('/pengelola/partners/agreements', [PengelolaAgreementsController::class, 'showAgreements']);

@@ -56,7 +56,7 @@
         
         @if (auth()->user()->hasRole('pengelola'))
             <div class="fixed partner-btn-container">
-                <a class="btn partner-btn partner-btn-history" href="/pengelola/partners/history"><i class="bi bi-clock-history"></i></a>
+                <a class="btn partner-btn partner-btn-history" href="/pengelola/partners/partners/history"><i class="bi bi-clock-history"></i></a>
                 <a class="btn partner-btn partner-btn-create" href="/pengelola/partners/partners/create">Tambah</a>
             </div>
         @endif

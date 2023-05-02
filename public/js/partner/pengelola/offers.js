@@ -3,11 +3,11 @@ var detail_id;
 var offer_id;
 
 $(".confirm").click(function(){
-    $(".spinner-container").css('display','flex');
     detail_id = $(this).attr('data-detail-id');
     offer_id = $(this).attr('data-offer-id');
-    // $('.popup-backdrop.confirm-offer').show();
-    confirmOffer();
+    $('.popup-backdrop.confirm-offer').show();
+    // $(".spinner-container").css('display','flex');
+    // confirmOffer();
 })
 $('.reject').click(function(){
     detail_id = $(this).attr('data-detail-id');

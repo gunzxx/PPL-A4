@@ -17,6 +17,7 @@
                     <p align="center">Silahkan buat kerja sama terlebih dahulu.</p>
                 </div>
             @else
+                <h1 style="text-align: center; font-size: 32px;font-weight: 600;">Riwayat Kerja Sama</h1>
                 @foreach ($partnerHistories as $partnerHistory)
                 <div class="list-card">
                     <div class="card-header-row">

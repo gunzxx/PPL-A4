@@ -28,7 +28,7 @@
         @endif
     </main>
 
-    <a class="plus-inv" href="/petani/inventory/create"><i class="bi bi-plus-lg"></i></a>
+    {{-- <a class="plus-inv" href="/petani/inventory/create">Tambah</a> --}}
 
     <div class="popup-backdrop delete-inventory">
         <div class="popup-container">

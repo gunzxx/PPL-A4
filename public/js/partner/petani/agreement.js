@@ -11,7 +11,9 @@ $(".cancel-agreement").click(function(){
 $(".reject-agreement").click(function(){
     agreementId = $(this).attr('data-agreement-id');
     agreementDetailId = $(this).attr('data-agrement-detail-id');
-    $('.popup-backdrop.reject-agreement-popup').show();
+    // $('.popup-backdrop.reject-agreement-popup').show();
+    $(".spinner-container").css('display', 'flex');
+    rejectAgreement()
 })
 
 $(".confirm-agreement").click(function(){
@@ -74,7 +76,7 @@ function rejectAgreement() {
         },
         success: (e) => {
             console.log(e);
-            alert(e.message)
+            // alert(e.message)
             window.location.reload();
         },
         error: (e) => {

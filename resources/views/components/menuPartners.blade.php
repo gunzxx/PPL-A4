@@ -10,9 +10,4 @@
     <div class="menu-item {{ explode('/',Request::url())[5] == "agreements" ? "active" : '' }}">
         <a href="/{{ auth()->user()->getRoleNames()[0] }}/partners/agreements">Persetujuan</a>
     </div>
-    @if (auth()->user()->hasRole("pengelola"))
-        <div class="menu-item {{ explode('/',Request::url())[5] == "history" ? "active" : '' }}">
-            <a href="/{{ auth()->user()->getRoleNames()[0] }}/partners/history">Riwayat</a>
-        </div>
-    @endif
 </div>
