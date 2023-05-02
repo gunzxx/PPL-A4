@@ -304,6 +304,14 @@ li:before {
 
 
 
+/* Padding */
+.px-3{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+/* Padding end */
+
+
 
 /* Flex */
 .flex-row{

@@ -90,7 +90,14 @@ class PetaniOfferController extends Controller
 
     public function editOffers($detail_id)
     {
-        $detail = OfferDetail::where(['id'=>$detail_id,'is_approved'=>0,'is_rejected'=>0])->with(['partner','offer'])->get();
+        $detail = OfferDetail::where(['id'=>$detail_id,'is_approved'=>0,'is_rejected'=>0])->with([
+            'partner' => function($query){
+                $query->with('pengelola');
+            },
+            'offer' => function ($query) {
+                $query->with('petani');
+            },
+        ])->get();
         if($detail->count()<1){
             return back()->withErrors(["message"=>"Data tidak ditemukan"]);
         }

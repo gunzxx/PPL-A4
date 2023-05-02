@@ -9,23 +9,23 @@
         <div class="list-card">
             <div class="card-header-row">
                 <div class="card-header-col card-header-identity">
-                    <h1>{{ ucfirst($partner->name) }}</h1>
-                    <p>{{ ucfirst(auth()->user()->fullname) }}</p>
+                    <h1>{{ ucfirst($detail->partner->name) }}</h1>
+                    <p>{{ ucfirst($detail->partner->pengelola->fullname) }}</p>
                 </div>
                 <div class="card-header-col end">
-                    <h1>Rp {{ number_format(round($partner->price,-2),0,',','.') }}</h1>
-                    <p>{{ $partner->stok }} kg kedelai</p>
+                    <h1>Rp {{ number_format(round($detail->partner->price,-2),0,',','.') }}</h1>
+                    <p>{{ $detail->partner->stok }} kg kedelai</p>
                 </div>
             </div>
             <div class="card-body">
                 <div class="card-body">
-                    <p>Jenis kedelai : {{ strip_tags($partner->bean_type) }}</p>
-                    <p>Deskripsi : {{ strip_tags($partner->description) }}</p>
+                    <p>Jenis kedelai : {{ strip_tags($detail->partner->bean_type) }}</p>
+                    <p>Deskripsi : {{ strip_tags($detail->partner->description) }}</p>
                 </div>
             </div>
             <div class="card-footer">
-                <h3>{{ $partner->pengelola->address }}</h3>
-                <p>{{ date("d F Y", strtotime($partner->updated_at)) }}</p>
+                <h3>{{ $detail->partner->pengelola->address }}</h3>
+                <p>{{ date("d F Y", strtotime($detail->partner->updated_at)) }}</p>
             </div>
         </div>
 
