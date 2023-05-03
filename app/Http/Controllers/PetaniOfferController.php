@@ -10,7 +10,9 @@ use Illuminate\Http\Request;
 
 class PetaniOfferController extends Controller
 {
-    // Halaman penawaran
+    /**
+     * Method untuk menampilkan view penawaran
+     */
     public function showOffers()
     {
         $details = OfferDetail::where(['petani_id'=>auth()->user()->id])->with([
@@ -26,6 +28,9 @@ class PetaniOfferController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk menampilkan view tambah penawaran
+     */
     public function createOffers($partner_id)
     {
         $partner = Partner::where(['id'=>$partner_id,'is_active'=>true])->get()->first();
@@ -49,6 +54,9 @@ class PetaniOfferController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk menyimpan data tambah penawaran
+     */
     public function saveOffers(Request $request)
     {
         $inventory = Inventory::find($request->post("bean_id"));
@@ -88,6 +96,9 @@ class PetaniOfferController extends Controller
         return redirect(auth()->user()->getRoleNames()[0] . '/partners/offers')->with('success','Data berhasil diupload!');
     }
 
+    /**
+     * Method untuk view edit penawaran
+     */
     public function editOffers($detail_id)
     {
         $detail = OfferDetail::where(['id'=>$detail_id,'is_approved'=>0,'is_rejected'=>0])->with([
@@ -111,6 +122,9 @@ class PetaniOfferController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk memperbarui data penawaran
+     */
     public function updateOffers(Request $request)
     {
         $validated = $request->validate([

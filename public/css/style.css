@@ -389,7 +389,7 @@ li:before {
     justify-content: start;
     box-sizing: border-box;
     padding: 15px;
-    /* border-radius: 5px; */
+    border-radius: 0;
     overflow: hidden;
 }
 .alert-container.alert-container-success{
@@ -398,7 +398,6 @@ li:before {
 .alert-container.alert-container-error{
     background: var(--w1);
     border: 1px solid var(--r2);
-    /* background:(--r2); */
 }
 .alert-container.alert-container-success *{
     color: var(--b2);
@@ -416,7 +415,7 @@ li:before {
 }
 .alert-container .alert-x{
     position: absolute;
-    right: 10px;
+    right: 20px;
     display: block;
     background: none;
     border: none;
@@ -446,6 +445,46 @@ li:before {
     }
 }
 /* Alert end */
+/* Alert Oke */
+.alert-ok-container{
+    position: fixed;
+    right: 50%;
+    top: 50px;
+    transform: translateX(50%);
+    width: 100%;
+    max-width: 350px;
+    padding: 15px;
+    padding-bottom: 70px;
+    border-radius: 5px;
+    box-shadow: 0 0 14px rgba(0,0,0,.1);
+    background: var(--g1);
+    display: none;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+.alert-ok-container *{
+    font-size: 14px;
+}
+.alert-ok-container .alert-ok{
+    width: min-content;
+    height: min-content;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    display: block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background: var(--g3);
+    color: var(--w1);
+    transition: 0.3s;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.alert-ok-container .alert-ok:hover{
+    background: var(--g6);
+}
+/* Alert oke end */
 
 
 /* Spinner */

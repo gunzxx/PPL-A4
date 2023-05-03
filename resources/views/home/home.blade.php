@@ -54,10 +54,11 @@
     </main>
 
     @if(session()->has('duplicate'))
-        <input type="hidden" id="error-msg" value="{{ session()->get('duplicate') }}">
-        <script>
-            alert($("#error-msg").val())
-        </script>
+        <x-alertError :message="session()->get('duplicate')"></x-alertError>
+    @endif
+
+    @if (session()->has('success'))
+        <x-alertSuccess :message="session()->get('success')"></x-alertSuccess>
     @endif
 @endsection
 

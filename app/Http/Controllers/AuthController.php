@@ -31,7 +31,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($validate)) {
             $request->session()->regenerate();
-            return redirect()->intended(auth()->user()->getRoleNames()[0] . "/home");
+            return redirect()->intended(auth()->user()->getRoleNames()[0] . "/home")->with('success','Berhasil login!');
         } else {
             return redirect()->back()->withErrors(['gagal'=> "Email/password salah"])->withInput();
         }

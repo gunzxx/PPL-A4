@@ -95,6 +95,8 @@ $(".logout").click(function(e){
 //     }
 // })
 
+
+// Popup
 $(".popup-yes").click(function(e){
     $(".spinner-container").css('display','flex');
 })
@@ -102,11 +104,19 @@ $(".popup-no").click(function(){
     this.parentNode.parentNode.parentNode.style.display = "none";
 })
 
+
+
+// Alert
 $(".alert-x").click(function () {
     $('.alert-container').hide(300);
 })
 $(".alert-container").ready(function (e) {
     setTimeout(function () {
         $(".alert-container").hide(300);
-    }, 3000)
+    }, 2500)
+})
+
+// Alert OK
+$(".alert-ok").click(function () {
+    $('.alert-ok-container').hide(300);
 })
