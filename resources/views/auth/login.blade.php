@@ -3,16 +3,18 @@
 @section('content')
     <div class="main login">
         <div class="card-container">
+            @error('gagal')
+                <x-alertError :message="$message"></x-alertError>
+            @enderror
+
+            @if (session()->has('success'))
+                <x-alertSuccess :message="session()->get('success')"></x-alertSuccess>
+            @endif
+            
             <div class="title-login-container">
                 <p class="title-login">Selamat datang kembali</p>
                 <h1 class="subtitle-login">Masuk dengan akunmu</h1>
             </div>
-            @if(session()->has('loginError'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {!! session('loginError') !!}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            @endif
             <form method="POST" action="/login" class="form-container login-required-form">
                 @csrf
                 <div class="form-group">
@@ -32,15 +34,7 @@
             </form>
         </div>
     </div>
-
-    @error('gagal')
-        <input type="hidden" id="login-gagal" value="{{ $message }}">
-        <script>
-            alert($("#login-gagal").val())
-        </script>
-    @enderror
 @endsection
-
 
 @section('script')
     <script src="js/login.js"></script>

@@ -15,3 +15,14 @@ idnumber.on('keydown', function () {
         idnumber.parent().append(error)
     }
 });
+
+
+$("form.register-form").submit(function(e){
+    e.preventDefault()
+    $(".popup-backdrop.register-popup").show();
+})
+
+$(".popup-yes-register").click(function(){
+    $("form.register-form").unbind('submit');
+    $("form.register-form").submit();
+})

@@ -8,6 +8,9 @@ use App\Models\AgreementDetail;
 
 class PetaniAgreementsController extends Controller
 {
+    /**
+     * Method untuk menampilkan view persetujuan
+     */
     public function showAgreements()
     {
         $agreement_details = AgreementDetail::with([
@@ -22,6 +25,9 @@ class PetaniAgreementsController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk membatalkan persetujuan
+     */
     public function cancelAgreements(Request $request)
     {
         $agreementId = $request->post("agreementId");
@@ -33,6 +39,9 @@ class PetaniAgreementsController extends Controller
         return response()->json(["message" => "Data berhasil dihapus"], 200);
     }
 
+    /**
+     * Method untuk menolak persetujuan
+     */
     public function rejectAgreements(Request $request)
     {
         $agreementId = $request->post("agreementId");
@@ -44,6 +53,9 @@ class PetaniAgreementsController extends Controller
         return response()->json(["message" => "Persetujuan berhasil ditolak."], 200);
     }
 
+    /**
+     * Method untuk menerima persetujuan
+     */
     public function confirmAgreements(Request $request)
     {
         $agreementDetailId = $request->post("agreementDetailId");

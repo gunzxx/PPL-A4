@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class PengelolaPartnerHistoryController extends Controller
 {
+    /**
+     * Method untuk menampilkan view riwayat
+     */
     public function index()
     {
         $partnerHistories = PartnerHistory::latest()->paginate(10);

@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    /**
+     * Method untuk menampilkan view login
+     */
     public function showLogin()
     {
         return view('auth.login', [
@@ -16,6 +19,9 @@ class AuthController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk memvalidasi login
+     */
     public function login(Request $request)
     {
         $validate = $request->validate([
@@ -27,11 +33,13 @@ class AuthController extends Controller
             $request->session()->regenerate();
             return redirect()->intended(auth()->user()->getRoleNames()[0] . "/home");
         } else {
-            // dd($validate);
-            return redirect()->back()->withErrors(['gagal'=> "Login gagal"])->withInput();
+            return redirect()->back()->withErrors(['gagal'=> "Email/password salah"])->withInput();
         }
     }
 
+    /**
+     * Method untuk logout
+     */
     public function logout()
     {
         Auth::logout();
@@ -43,6 +51,9 @@ class AuthController extends Controller
         return redirect('/');
     }
 
+    /**
+     * Method untuk menampilkan view register
+     */
     public function showRegister()
     {
         return view('auth.register', [
@@ -51,9 +62,11 @@ class AuthController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk validasi register
+     */
     public function register(Request $request)
     {
-        // dd($request->input('role'));
         $validate = $request->validate([
             'fullname' => 'required',
             'id_number' => 'required|numeric',
@@ -62,10 +75,9 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
         ]);
-        // dd($validate);
 
         $validate['password'] = bcrypt($validate['password']);
         User::create($validate)->assignRole($request->post('role'));
-        return redirect('/login')->with('daftar', "User berhasil didaftarkan");
+        return redirect('/login')->with('success', "User berhasil didaftarkan");
     }
 }

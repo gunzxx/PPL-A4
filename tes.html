@@ -8,9 +8,36 @@
   <link rel="stylesheet" href="./tes.css">
 </head>
 <body>
-  <div class="product-container">
+  <!-- Form -->
+  <!-- <div class="product-container">
     <label for="jumlah" class="jumlah">Jumlah : <input type="text" id="jumlah" placeholder="1"></label>
     <button type="button">Update</button>
-  </div>
+  </div> -->
+
+  <!-- Alert -->
+  <form action="">
+    <div class="alert-container">
+      <div class="alert-body">
+        <span>Test</span>
+      </div>
+      <button type="button" class="alert-x">&#10005;</button>
+      <div class="alert-loader"></div>
+    </div>
+    <div class="form-group">
+      <!-- <input type="text"> -->
+    </div>
+  </form>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+  <script>
+    $(".alert-x").click(function(){
+      $('.alert-container').hide(300);
+    })
+    $(".alert-container").ready(function(e){
+      setTimeout(function(){
+        $(".alert-container").hide(300);
+      },3000)
+    })
+  </script>
 </body>
 </html>

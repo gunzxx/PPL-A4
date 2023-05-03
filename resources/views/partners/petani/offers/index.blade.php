@@ -87,17 +87,11 @@
     </div>
 
     @error('message')
-        <input type="hidden" id="error-msg" value="{{ $message }}">
-        <script>
-            alert($("#error-msg").val())
-        </script>
+        <x-alertError :message="$message"></x-alertError>
     @enderror
 
     @if(session()->has('success'))
-        <input type="hidden" id="error-msg" value="{{ session()->get('success') }}">
-        <script>
-            alert($("#error-msg").val())
-        </script>
+        <x-alertSuccess :message="session()->get('success')"></x-alertSuccess>
     @endif
 @endsection
 

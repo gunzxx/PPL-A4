@@ -10,6 +10,9 @@ use App\Models\AgreementDetail;
 
 class PengelolaAgreementsController extends Controller
 {
+    /**
+     * Method untuk menampilkan view persetujuan
+     */
     public function showAgreements()
     {
         $agreement_details = AgreementDetail::with(['agreement','pengelola','petani',
@@ -22,7 +25,10 @@ class PengelolaAgreementsController extends Controller
             'agreement_details' => $agreement_details
         ]);
     }
-    
+
+    /**
+     * Method untuk menampilkan view tambah persetujuan
+     */
     public function createAgreements()
     {
         $partners= Partner::where(["pengelola_id" => auth()->user()->id])->get();
@@ -40,6 +46,9 @@ class PengelolaAgreementsController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk menyimpan data tambah persetujuan
+     */
     public function saveAgreements(Request $request)
     {
         $validated = $request->validate([
@@ -57,7 +66,7 @@ class PengelolaAgreementsController extends Controller
         $validated['pengelola_id'] = auth()->user()->id;
 
         $cekDetail = AgreementDetail::where(['pengelola_id'=> auth()->user()->id, "offer_detail_id" => $offer_detail_id])->get();
-        // dd($cekDetail);
+        
         if($cekDetail->count()>0){
             return redirect()->back()->withErrors(["duplicate"=>"Penawaran sudah pernah dimintai persetujuan,\nPilih penawaran lain!"])->withInput();
         }
@@ -72,6 +81,9 @@ class PengelolaAgreementsController extends Controller
         return redirect(auth()->user()->getRoleNames()[0] . '/partners/agreements')->with('success', 'Data berhasil dikirim!');
     }
 
+    /**
+     * Method untuk menampilkan view edit persetujuan
+     */
     public function editAgreements($agreementDetailId)
     {
         $agreement_detail = AgreementDetail::with(['agreement',"offerDetail"])->find($agreementDetailId);
@@ -88,6 +100,9 @@ class PengelolaAgreementsController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk memperbarui data persetujuan
+     */
     public function updateAgreements(Request $request)
     {
         $validated = $request->validate([
@@ -108,6 +123,9 @@ class PengelolaAgreementsController extends Controller
         return redirect(auth()->user()->getRoleNames()[0] . '/partners/agreements')->with('success', 'Data berhasil diperbarui!');
     }
 
+    /**
+     * Method untuk membatalkan data persetujuan
+     */
     public function cancelAgreements(Request $request)
     {
         $agreementId = $request->post("agreementId");
@@ -119,6 +137,9 @@ class PengelolaAgreementsController extends Controller
         return response()->json(["message" => "Persetujuan berhasil dibatalkan."], 200);
     }
 
+    /**
+     * Method untuk menghapus data persetujuan
+     */
     public function deleteAgreements(Request $request)
     {
         $agreementId = $request->post("agreementId");

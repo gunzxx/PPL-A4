@@ -17,7 +17,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     background: var(--w1);
     padding-left: 95px;
@@ -97,8 +97,6 @@ input[type="radio"]{
     width: 100%;
     display: flex;
     flex-direction: column;
-    /* margin-top: 10px;
-    margin-bottom: 10px; */
 }
 .form-group > label{
     margin-bottom: 10px;
@@ -120,3 +118,16 @@ input[type="radio"]{
     padding: 18px;
     font-size: 18px;
 }
+
+
+
+/* Alert custom login */
+.alert-container {
+    /* width: 100%; */
+    max-width: 440px;
+    position: fixed;
+    top: 50px;
+    right: 100px;
+    height: min-content;
+}
+/* Alert custom login end */

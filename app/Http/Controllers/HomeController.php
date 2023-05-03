@@ -8,9 +8,11 @@ use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
+    /**
+     * Method untuk menampilkan view home
+     */
     public function showHome()
     {
-        // $partners = Partner_detail::with(['partner'])->where(['is_approved' => 0])->paginate(10);
         $partners = Partner::where(['is_active'=>true])->with(['pengelola'])->orderBy('updated_at','DESC')->paginate(10);
         return view('home.home', [
             "css" => ['main','partners/partners','home/style'],

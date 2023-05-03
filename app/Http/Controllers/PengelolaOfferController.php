@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class PengelolaOfferController extends Controller
 {
+    /**
+     * Method untuk menampilkan view penawaran
+     */
     public function showOffers()
     {
         $details = OfferDetail::where(["pengelola_id"=>auth()->user()->id])->with([
@@ -22,6 +25,9 @@ class PengelolaOfferController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk menerima penawaran
+     */
     public function confirmOffers(Request $request)
     {
         if($request->method() != "POST"){
@@ -41,6 +47,9 @@ class PengelolaOfferController extends Controller
         return response()->json(["message"=>"Anda berhasil menerima penawaran petani!"],200);
     }
 
+    /**
+     * Method untuk membatalkan penawaran
+     */
     public function cancelOffers(Request $request)
     {
         if($request->method() != "POST"){
@@ -61,6 +70,9 @@ class PengelolaOfferController extends Controller
         return response()->json(["message"=>"Data berhasil dihapus"],200);
     }
 
+    /**
+     * Method untuk menolak penawaran
+     */
     public function rejectOffers(Request $request)
     {
         if($request->method() != "POST"){

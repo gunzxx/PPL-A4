@@ -10,6 +10,9 @@ use App\Models\PartnerHistory;
 
 class PengelolaPartnerController extends Controller
 {
+    /**
+     * Method untuk menampilkan view kerja sama
+     */
     public function showPartner()
     {
         $partners = Partner::with(['pengelola'])->where(['pengelola_id'=>auth()->user()->id])->latest()->paginate(10);
@@ -20,22 +23,21 @@ class PengelolaPartnerController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk menampilkan view tambah kerja sama
+     */
     public function create()
     {
         return view('partners.pengelola.partners.create',[
             "css"=> ['main','partners/create'],
         ]);
     }
-    
+
+    /**
+     * Method untuk menyimpan data tambah kerja sama
+     */
     public function store(Request $request)
     {
-        // $messages = array(
-        //     'required' => 'Data tidak valid!',
-        // );
-        
-        // $request->validate([
-        //     'address' => 'required',
-        // ]);
         $validated = $request->validate([
             'name' => 'required|max:255',
             'description' => 'required|max:10000',
@@ -50,6 +52,9 @@ class PengelolaPartnerController extends Controller
         return redirect('/pengelola/partners/partners')->with('success', 'Data berhasil ditambahkan!');
     }
 
+    /**
+     * Method untuk menampilkan view edit kerja sama
+     */
     public function edit($partner_id)
     {
         $partner = Partner::where(['id'=> $partner_id,'is_active'=>1])->get()->first();
@@ -65,6 +70,9 @@ class PengelolaPartnerController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk memperbarui data kerja sama
+     */
     public function update(Request $request)
     {
         $request->validate([
@@ -86,6 +94,9 @@ class PengelolaPartnerController extends Controller
         return redirect('/pengelola/partners/partners')->with('success', 'Data berhasil diupdate!');
     }
 
+    /**
+     * Method untuk berhenti kerja sama
+     */
     public function stop(Request $request)
     {
         if(!$request->post('id')){
@@ -111,6 +122,9 @@ class PengelolaPartnerController extends Controller
         return response()->json(['post'=>$request->post(), 'message' => 'Berhasil berhenti.','data'=>$partner], 200);
     }
 
+    /**
+     * Method untuk menghapus data kerja sama
+     */
     public function delete(Request $request)
     {
         if(!$request->post('id')){

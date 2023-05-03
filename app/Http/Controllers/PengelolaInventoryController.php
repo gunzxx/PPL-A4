@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class PengelolaInventoryController extends Controller
 {
+    /**
+     * Method untuk menampilkan view inventori
+     */
     public function showInventory()
     {
         $inventories = Inventory::where('user_id', auth()->user()->id)->latest()->paginate(10);
@@ -16,6 +19,9 @@ class PengelolaInventoryController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk menampilkan view tambah inventori
+     */
     public function create()
     {
         return view('inventory.pengelola.create', [
@@ -23,6 +29,9 @@ class PengelolaInventoryController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk menyimpan data tambah inventori
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -36,15 +45,9 @@ class PengelolaInventoryController extends Controller
         return redirect(auth()->user()->getRoleNames()[0] . '/inventory')->with('success', 'Data berhsail ditambahkan');
     }
 
-    public function manage()
-    {
-        $inventories = Inventory::where('user_id', auth()->user()->id)->paginate(10);
-        return view('inventory.pengelola.manage', [
-            "css" => ['main', 'inventory/inventory', 'inventory/manage'],
-            'inventories' => $inventories,
-        ]);
-    }
-
+    /**
+     * Method untuk menampilkan view edit inventori
+     */
     public function edit(Inventory $inventory)
     {
         if ($inventory->user_id != auth()->user()->id) {
@@ -56,6 +59,9 @@ class PengelolaInventoryController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk memperbarui inventori
+     */
     public function update(Request $request)
     {
         $validated = $request->validate([
@@ -69,6 +75,9 @@ class PengelolaInventoryController extends Controller
         return redirect(auth()->user()->getRoleNames()[0] . '/inventory')->with('success', 'Data berhasil diupdate!');
     }
 
+    /**
+     * Method untuk menghapus inventori
+     */
     public function delete(Request $request)
     {
         if (!$request->post('id')) {
