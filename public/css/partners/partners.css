@@ -290,11 +290,12 @@
 }
 .partner-btn-history{
     background-color: var(--w2);
+    border: 2px solid var(--b2);
     color: var(--b2);
 }
-.partner-btn-history{
-    border: 1px solid #000;
-}
+/* .partner-btn-history:hover{
+    border: 2px solid var(--b2);
+} */
 
 i{
     display: inline-block;
