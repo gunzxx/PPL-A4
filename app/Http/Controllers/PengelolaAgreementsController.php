@@ -112,12 +112,14 @@ class PengelolaAgreementsController extends Controller
         ], [
             "price.min" => "Harga minimal 1000"
         ]);
+        $validated['updated_at']=now();
         $request->validate(['offer_detail_id' => 'required']);
         
         $agreement_id = $request->post('agreement_id');
         
         $agreement_detail_id = $request->post('agreement_detail_id');
 
+        AgreementDetail::where(["id"=> $agreement_detail_id])->update(['updated_at'=>now()]);
         Agreement::where(["id"=> $agreement_id])->update($validated);
         
         return redirect(auth()->user()->getRoleNames()[0] . '/partners/agreements')->with('success', 'Data berhasil diperbarui!');
