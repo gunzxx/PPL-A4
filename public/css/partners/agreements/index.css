@@ -46,6 +46,8 @@
     gap: 60px;
 }
 .detail-list .green{
+    max-width: 45%;
+    text-align: right;
     color: var(--g2);
 }
 .detail-list .is_not_confirm{

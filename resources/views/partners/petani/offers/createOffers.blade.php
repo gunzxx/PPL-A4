@@ -33,7 +33,7 @@
         </div>
 
         <div class="card-container">
-            <form class="form-container required-form" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/partners/offers/create">
+            <form id="offer-required-form" class="form-container required-form" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/partners/offers/create">
                 @csrf
                 <div class="form-group">
                     <textarea class="form-input" name="description" placeholder="Deskripsikan penawaran anda" id="description" cols="30" rows="10">{{ old("description") }}</textarea>
@@ -42,19 +42,19 @@
                     @enderror
                 </div>
                 <div class="form-row">
-                    <div class="form-col">
+                    <div class="form-group form-col">
                         <input value="{{ old('stok') }}" class="numeric form-input @error('stok') invalid @enderror" name="stok" class="numeric" type="text" placeholder="Range stok (kg/bulan)">
                         @error('stok')
                             <p class="error">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="form-col">
+                    <div class="form-group form-col">
                         <input value="{{ old('price') }}" class="numeric form-input @error('price') invalid @enderror" name="price" class="numeric" type="text" placeholder="Harga kedelai (kg)">
                         @error('price')
                             <p class="error">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="form-col">
+                    <div class="form-group form-col">
                         @if ($inventories->count()>0)
                             <select class="form-input @error('bean_id') invalid @enderror" name="bean_id" id="bean_id">
                                 @foreach ($inventories as $inventory)
@@ -82,4 +82,8 @@
             alert($("#error-msg").val())
         </script>
     @enderror
+@endsection
+
+@section('script')
+    <script src="/js/partner/petani/offers.js"></script>
 @endsection

@@ -7,7 +7,7 @@
                 <p class="title-login">Selamat datang</p>
                 <h1 class="subtitle-login">Daftarkan diri anda</h1>
             </div>
-            <form action="/register" method="POST" class="form-container required-form register-form">
+            <form action="/register" method="POST" class="form-container" id="register-form">
                 @csrf
                 <div class="role-group">
                     <p>Daftar sebagai</p>
@@ -32,7 +32,11 @@
                 </div>
                 <div class="form-group">
                     <label for="number_phone">No HP</label>
-                    <input value="{{ old('number_phone') }}" type="tel" name="number_phone" id="number_phone" placeholder="Masukkan nomor hp" maxlength="15" class="@error('number_phone') invalid @enderror">
+                    {{-- <input value="{{ old('number_phone') }}" type="tel" name="number_phone" id="number_phone" placeholder="Masukkan nomor hp" maxlength="15" class="@error('number_phone') invalid @enderror"> --}}
+                    <div class="form-control-group">
+                        <span class="phone-format">+62</span>
+                        <input value="{{ old('number_phone') }}" type="tel" name="number_phone" id="number_phone" placeholder="Masukkan nomor hp" maxlength="15" class="@error('number_phone') invalid @enderror">
+                    </div>
                     @error('number_phone')
                         <p class="error">{{ $message }}</p>
                     @enderror

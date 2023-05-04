@@ -56,8 +56,8 @@ Route::middleware(['auth','role:petani'])->group(function(){
     Route::get('/petani/shop/shop', [PetaniShopController::class,'index']);
 
     // Route inventory
-    Route::get('/petani/inventory', [PetaniInventoryController::class, 'showInventory']);
-    Route::get('/petani/inventory/home', [PetaniInventoryController::class, 'showInventory']);
+    Route::get('/petani/inventory', function(){return redirect("/petani/inventory/inventory");});
+    Route::get('/petani/inventory/inventory', [PetaniInventoryController::class, 'showInventory']);
     Route::get('/petani/inventory/create', [PetaniInventoryController::class, 'create']);
     Route::post('/petani/inventory/create', [PetaniInventoryController::class, 'store']);
     Route::post('/petani/inventory/update', [PetaniInventoryController::class, 'update']);
@@ -93,8 +93,8 @@ Route::middleware(['auth','role:pengelola'])->group(function(){
     Route::get('/pengelola/shop/shop', [PengelolaShopController::class,'index']);
 
     // Route inventory
-    Route::get('/pengelola/inventory', [PengelolaInventoryController::class, 'showInventory']);
-    Route::get('/pengelola/inventory/home', [PengelolaInventoryController::class, 'showInventory']);
+    Route::get('/pengelola/inventory', function(){return redirect("/pengelola/inventory/inventory");});
+    Route::get('/pengelola/inventory/inventory', [PengelolaInventoryController::class, 'showInventory']);
     Route::get('/pengelola/inventory/create', [PengelolaInventoryController::class, 'create']);
     Route::post('/pengelola/inventory/create', [PengelolaInventoryController::class, 'store']);
     Route::post('/pengelola/inventory/update', [PengelolaInventoryController::class, 'update']);

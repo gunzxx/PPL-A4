@@ -1,16 +1,16 @@
 $(document).ready(function () {
-    $("#offer-required-form").validate({
+    $("#agreement-required-form").validate({
         rules: {
-            description: {
+            bean_type: {
                 required: true,
             },
             stok: {
                 required: true,
-                number: true,
+                number:true,
             },
             price: {
                 required: true,
-                number: true,
+                number:true,
             },
         },
     })

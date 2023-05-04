@@ -1,16 +1,22 @@
 $(document).ready(function () {
-    $("#offer-required-form").validate({
+    $("#partner-required-form").validate({
         rules: {
+            name: {
+                required: true,
+            },
             description: {
                 required: true,
             },
             stok: {
                 required: true,
-                number: true,
+                number:true,
             },
             price: {
                 required: true,
-                number: true,
+                number:true,
+            },
+            bean_type: {
+                required: true,
             },
         },
     })

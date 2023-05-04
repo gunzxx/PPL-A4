@@ -7,7 +7,7 @@
         <x-menuPartners></x-menuPartners>
 
         <div class="card-container">
-            <form class="form-container required-form" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/partners/agreements/create">
+            <form id="agreement-required-form" class="form-container required-form" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/partners/agreements/create">
                 @csrf
                 <div class="form-group">
                     <input value="{{ old('bean_type') }}" class="form-input" name="bean_type" placeholder="Masukkan jenis kedelai" id="bean_type" cols="30" rows="10">
@@ -47,9 +47,12 @@
     </main>
 
     @error("message")
-        <input type="hidden" id="error-msg" value="{{ $message }}">
-        <script>
-            alert($("#error-msg").val())
-        </script>
+        <x-alertError :message="$message"></x-alertError>
     @enderror
+    @if(session()->has('message'))
+    @endif
+@endsection
+
+@section('script')
+    <script src="/js/partner/pengelola/agreement_form.js"></script>
 @endsection

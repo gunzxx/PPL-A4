@@ -6,7 +6,7 @@
     <main>
         <x-menuPartners></x-menuPartners>
 
-        <form class="form-container mt-3 form-update" method="POST" action="/pengelola/partners/partners/edit">
+        <form class="form-container mt-3 form-update" id="partner-required-form" method="POST" action="/pengelola/partners/partners/edit">
             @csrf
             <input type="hidden" name="partner_id" value="{{ $partner->id }}">
             <div class="form-group">
@@ -24,19 +24,19 @@
             </div>
 
             <div class="input-row">
-                <div class="input-col">
+                <div class="form-group input-col">
                     <input value="{{ old('stok')? old('stok') : $partner->stok }}"  class="input input-area numeric @error('stok') invalid @enderror" type="text" name="stok" id="stok" placeholder="Kisaran stok kedelai">
                     @error('stok')
                         <p class="error">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="input-col">
+                <div class="form-group input-col">
                     <input value="{{ old('price')? old('price') : $partner->price }}"  class="input input-area numeric @error('price') invalid @enderror" type="text" name="price" id="price" placeholder="Price kedelai">
                     @error('price')
                         <p class="error">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="input-col">
+                <div class="form-group input-col">
                     <input value="{{ old("bean_type")?old("bean_type"):$partner->bean_type }}" class="input input-area @error('bean_type') invalid @enderror"  name="bean_type" id="bean_type" placeholder="Masukkan jenis kedelai">
                 </div>
             </div>
@@ -61,4 +61,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script src="/js/partner/form.js"></script>
 @endsection

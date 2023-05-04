@@ -15,7 +15,7 @@
                 <p class="title-login">Selamat datang kembali</p>
                 <h1 class="subtitle-login">Masuk dengan akunmu</h1>
             </div>
-            <form method="POST" action="/login" class="form-container login-required-form">
+            <form method="POST" action="/login" class="form-container" id="login-required-form">
                 @csrf
                 <div class="form-group">
                     <label for="email">Email</label>

@@ -77,6 +77,8 @@ class AuthController extends Controller
         ]);
 
         $validate['password'] = bcrypt($validate['password']);
+        $validate['number_phone'] = "+62".$validate['number_phone'];
+        dd($validate['number_phone']);
         User::create($validate)->assignRole($request->post('role'));
         return redirect('/login')->with('success', "User berhasil didaftarkan");
     }

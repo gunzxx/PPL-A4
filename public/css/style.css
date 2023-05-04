@@ -166,11 +166,27 @@ li:before {
 .form-group .invalid{
     border: 2px solid var(--r4);
 }
-.error{
+label.error,p.error{
     margin-top: 8px;
     margin-left: 8px;
     font-size: 12px;
     color: var(--r2);
+}
+.form-group:has(input.valid) input{
+    margin-left: 0;
+    border: 2px solid var(--w4) !important;
+}
+.form-group:has(textarea.valid) textarea{
+    margin-left: 0;
+    border: 2px solid var(--w4) !important;
+}
+.form-group:has(label.error) input{
+    margin-left: 0;
+    border: 2px solid var(--r2);
+}
+.form-group:has(label.error) textarea{
+    margin-left: 0;
+    border: 2px solid var(--r2);
 }
 /* Form End */
 

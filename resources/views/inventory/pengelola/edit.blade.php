@@ -6,7 +6,7 @@
     <main>
         <x-menuInventory></x-menuInventory>
         <div class="card-container">
-            <form class="form-container form-update" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/inventory/update">
+            <form class="form-container" id="form-inventory" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/inventory/update">
                 @csrf
                 <div class="form-group">
                     <input name="bean_type" class="@error('email') invalid @enderror" value="{{ old('bean_type') ? old('bean_type') : $inventory->bean_type }}" type="text" placeholder="Masukkan jenis kedelai">
@@ -15,7 +15,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <input name="stok" class="numeric @error('email') invalid @enderror" value="{{ old('stok') ? old('stok') : $inventory->stok }}" type="text" placeholder="Masukkan stok kedelai (dalam gram)">
+                    <input name="stok" class="@error('email') invalid @enderror" value="{{ old('stok') ? old('stok') : $inventory->stok }}" type="text" placeholder="Masukkan stok kedelai (dalam gram)">
                     @error('stok')
                         <p class="error">{{ $message }}</p>
                     @enderror
@@ -38,4 +38,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script src="/js/inventory/pengelola/manage.js"></script>
 @endsection

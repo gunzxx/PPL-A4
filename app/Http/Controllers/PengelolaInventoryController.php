@@ -42,7 +42,7 @@ class PengelolaInventoryController extends Controller
 
         Inventory::create($validated);
 
-        return redirect(auth()->user()->getRoleNames()[0] . '/inventory')->with('success', 'Data berhsail ditambahkan');
+        return redirect(auth()->user()->getRoleNames()[0] . '/inventory/inventory')->with('success', 'Data berhsail ditambahkan');
     }
 
     /**
@@ -72,7 +72,7 @@ class PengelolaInventoryController extends Controller
         $id = $request->only('inv_id');
 
         Inventory::where('id', $id)->update($validated);
-        return redirect(auth()->user()->getRoleNames()[0] . '/inventory')->with('success', 'Data berhasil diupdate!');
+        return redirect(auth()->user()->getRoleNames()[0] . '/inventory/inventory')->with('success', 'Data berhasil diupdate!');
     }
 
     /**

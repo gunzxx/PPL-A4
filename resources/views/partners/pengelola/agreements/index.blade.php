@@ -45,6 +45,14 @@
                                 <p class="green">{{ $agreement_detail->agreement->price }}</p>
                             </div>
                             <div class="detail-list">
+                                <p>Nama petani : </p>
+                                <p class="green">{{ date("d F Y", strtotime(ucfirst($agreement_detail->petani->fullname))) }}</p>
+                            </div>
+                            <div class="detail-list">
+                                <p>Tanggal penawaran : </p>
+                                <p class="green">{{ date("d F Y", strtotime(ucfirst($agreement_detail->offerDetail->offer->created_at))) }}</p>
+                            </div>
+                            <div class="detail-list">
                                 <p>Status : </p>
                                 <p class="@if($agreement_detail->is_approved == 1) is_confirm @else is_not_confirm @endif">{!! $agreement_detail->is_approved == 0 ? "Belum disetujui" : "Disetujui <i class='bi bi-check-circle'></i>" !!}</p>
                             </div>
@@ -98,6 +106,9 @@
     @error("message")
         <x-alertError :message="$message"></x-alertError>
     @enderror
+    @if(session()->has('message'))
+        <x-alertError :message="session()->get('message')"></x-alertErr>
+    @endif
 
     @if(session()->has('success'))
         <x-alertSuccess :message="session()->get('success')"></x-alertSuccess>

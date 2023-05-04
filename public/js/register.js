@@ -1,28 +1,40 @@
-const idnumber = $('#id_number');
-
-idnumber.on('keydown', function () {
-    const inputValue = this.value;
-
-    if (/^\d+$/.test(inputValue)) {
-        this.style.border = "2px solid var(--w4)"
-        error.style.display = 'none'
-    } else {
-        this.style.border = "2px solid var(--r4)"
-        error.style.marginTop = '5px'
-        error.style.fontSize = '10px'
-        error.style.display = 'block'
-        error.innerHTML = "Nomor identitas harus angka"
-        idnumber.parent().append(error)
-    }
+$(document).ready(function () {
+    $("form#register-form").validate({
+        rules:{
+            role:"required",
+            fullname:{
+                required:true,
+            },
+            id_number:{
+                required:true,
+                digits:true,
+            },
+            number_phone:{
+                required:true,
+                digits:true,
+                maxlength:11,
+            },
+            address:{
+                required:true,
+            },
+            email:{
+                required:true,
+                email:true,
+            },
+            password:{
+                required:true,
+                minlength:3,
+            },
+            // submitHandler: function (form) {
+            //     console.log('test');
+            //     // form.preventDefault();
+            //     $(".popup-backdrop.register-popup").show();
+            // },
+        },
+    })
+    
+    $(".popup-yes-register").click(function(){
+        $("form.register-form").unbind('submit');
+        $("form.register-form").submit();
+    })
 });
-
-
-$("form.register-form").submit(function(e){
-    e.preventDefault()
-    $(".popup-backdrop.register-popup").show();
-})
-
-$(".popup-yes-register").click(function(){
-    $("form.register-form").unbind('submit');
-    $("form.register-form").submit();
-})

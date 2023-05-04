@@ -7,7 +7,7 @@
         <x-menuInventory></x-menuInventory>
 
         <div class="card-container">
-            <form class="form-container required-form" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/inventory/create">
+            <form class="form-container" id="form-inventory" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/inventory/create">
                 @csrf
                 <div class="form-group">
                     <input class="@error('bean_type') invalid @enderror" value="{{ old('bean_type') }}" name="bean_type" type="text" placeholder="Masukkan jenis kedelai">
@@ -28,4 +28,8 @@
             </form>
         </div>
     </main>
+@endsection
+
+@section('script')
+    <script src="/js/inventory/pengelola/manage.js"></script>
 @endsection
