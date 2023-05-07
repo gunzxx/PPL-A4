@@ -25,11 +25,6 @@ $(document).ready(function () {
                 required:true,
                 minlength:3,
             },
-            // submitHandler: function (form) {
-            //     console.log('test');
-            //     // form.preventDefault();
-            //     $(".popup-backdrop.register-popup").show();
-            // },
         },
     })
     

@@ -42,6 +42,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
+        // Auth::guard("api")->logout();
         Auth::logout();
 
         request()->session()->invalidate();

@@ -1,14 +1,11 @@
 var lanjut = false;
 var agreementId;
-var agreementDetailId;
 $('.delete-agreement').click(function (e) {
     agreementId = $(this).attr('data-agreement-id');
-    // agreementDetailId = $(this).attr('data-agrement-detail-id');
     $('.popup-backdrop.delete-agreement-popup').show();
 })
 $('.cancel-agreement').click(function (e) {
     agreementId = $(this).attr('data-agreement-id');
-    // agreementDetailId = $(this).attr('data-agrement-detail-id');
     $('.popup-backdrop.cancel-agreement-popup').show();
 })
 

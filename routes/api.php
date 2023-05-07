@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\ApiKedelaiController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\api\AuthController;
 // use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\ApiKedelaiController;
 use App\Http\Controllers\PetaniOfferController;
 use App\Http\Controllers\PengelolaOfferController;
 use App\Http\Controllers\PetaniInventoryController;
@@ -17,7 +19,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware("guest")->group(function(){
-    Route::post("/login");
+    Route::post("/login",[AuthController::class,"login"]);
+});
+
+Route::middleware("auth:api")->group(function(){
+    Route::get('/users', function(){return response()->json(auth()->user());});
+    Route::get('/logout', function(){ Auth::guard("api")->logout();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Berhasil logout',
+        ]);});
 });
 
 // Route inventory petani

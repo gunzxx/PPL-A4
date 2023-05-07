@@ -113,11 +113,6 @@ class PengelolaPartnerController extends Controller
 
         $partner = Partner::where('id', $id)->update(['is_active'=>false]);
 
-        $offer_detail = OfferDetail::where(["partner_id"=>$id])->get()->first();
-        if($offer_detail){
-            OfferDetail::where(["partner_id"=>$id])->delete();
-            Offer::find($offer_detail->offer_id)->delete();
-        }
 
         return response()->json(['post'=>$request->post(), 'message' => 'Berhasil berhenti.','data'=>$partner], 200);
     }
@@ -131,11 +126,6 @@ class PengelolaPartnerController extends Controller
             return response()->json([
                 'message'=>"Id not found",
             ],401);
-        }
-        if(auth()->check()=='false'){
-            return response()->json([
-                'message'=>"Please login!",
-            ],403);
         }
         $id = $request->post('id');
 

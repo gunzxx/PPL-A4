@@ -33,6 +33,12 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
+            // Menambahkan middleware 'web' untuk rute API
+            // Route::prefix('api')
+            //     ->middleware('web')
+            //     ->namespace($this->namespace)
+            //     ->group(base_path('routes/api.php'));
+
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });

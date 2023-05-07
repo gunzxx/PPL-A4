@@ -139,9 +139,8 @@ input[type="radio"]{
 /* Alert custom login */
 .alert-container{
     position: fixed;
-    max-width: 440px;
     height: min-content;
     bottom: 50px !important;
-    right: 50px !important;
+    /* right: 50px !important; */
 }
 /* Alert custom login end */

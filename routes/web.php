@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
@@ -26,7 +24,7 @@ Route::middleware('guest')->group(function(){
     Route::post('/register', [AuthController::class,'register']);
 });
 
-// Route untuk semua role
+// Route untuk semua role yang ter-autentikasi
 Route::middleware('auth')->group(function(){
     // Route home
     Route::get('/home',function(){return redirect("/".auth()->user()->getRoleNames()[0]."/home");});

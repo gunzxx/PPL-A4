@@ -1,13 +1,21 @@
+
+let JWTtoken = getJWTToken();
+JWTtoken = "Bearer " + JWTtoken;
+
 var id;
 $('.delete').click(function(e){
     id = $(this).attr('data-id');
-
     $('.popup-backdrop.delete-partner').show();
 })
+
 function deletePartner(){
+    console.log(JWTtoken);
     $.ajax({
         url: '/api/pengelola/partners/delete',
-        method: "post",
+        type: "POST",
+        headers: {
+            "Authorization" : JWTtoken,
+        },
         dataType: "json",
         data: {
             id: id,
@@ -20,22 +28,23 @@ function deletePartner(){
         error: (e) => {
             alert("gagal");
             console.log(e);
-            if (confirm("Terjadi kesalahan, ingin memuat ulang halaman?")) {
-                window.location.reload();
-            }
+            alert("Terjadi kesalahan, memuat ulang halaman.");
+            window.location.reload();
         },
     })
 }
 
 $('.stop').click(function(e){
     id = $(this).attr('data-id');
-
     $('.popup-backdrop.stop-partner').show();
 })
 function stopPartner(){
     $.ajax({
         url: '/api/pengelola/partners/stop',
-        method: "post",
+        type: "post",
+        headers: {
+            "Authorization": JWTtoken,
+        },
         dataType: "json",
         data: {
             id: id,
@@ -48,9 +57,8 @@ function stopPartner(){
         error: (e) => {
             alert("gagal");
             console.log(e);
-            if (confirm("Terjadi kesalahan, ingin memuat ulang halaman?")) {
-                window.location.reload();
-            }
+            alert("Terjadi kesalahan, memuat ulang halaman.");
+            window.location.reload();
         },
     })
 }
