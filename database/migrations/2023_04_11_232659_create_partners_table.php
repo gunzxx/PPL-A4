@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('stok');
             $table->string('price');
             $table->string("bean_type");
-            // $table->boolean("is_active")->default(true);
+            $table->boolean("is_active")->default(true);
+            $table->boolean("is_open")->default(true);
             $table->foreignId('pengelola_id')->references('id')->on('users')->onDelete('cascade');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamps();
         });
     }
 

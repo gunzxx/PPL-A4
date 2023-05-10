@@ -47,6 +47,9 @@
                         <div class="card-body-partner">
                             <p>Untuk kerja sama : {{ $detail->partner->name }}</p>
                         </div>
+                        <div class="card-body-partner">
+                            <p>Pengelola susu kedelai : {{ $detail->pengelola->fullname }}</p>
+                        </div>
                     </div>
                     <div class="card-footer">
                         <h3>{{ $detail->petani->address }}</h3>
@@ -92,6 +95,10 @@
 
     @if(session()->has('success'))
         <x-alertSuccess :message="session()->get('success')"></x-alertSuccess>
+    @endif
+
+    @if(session()->has('error'))
+        <x-alertError :message="session()->get('error')"></x-alertError>
     @endif
 @endsection
 

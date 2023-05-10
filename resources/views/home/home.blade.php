@@ -53,8 +53,8 @@
         </div>
     </main>
 
-    @if(session()->has('duplicate'))
-        <x-alertError :message="session()->get('duplicate')"></x-alertError>
+    @if(session()->has('error'))
+        <x-alertError :message="session()->get('error')"></x-alertError>
     @endif
 
     @if (session()->has('success'))

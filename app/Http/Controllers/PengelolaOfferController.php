@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Offer;
+use App\Models\Partner;
 use App\Models\OfferDetail;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,11 @@ class PengelolaOfferController extends Controller
      */
     public function showOffers()
     {
-        $details = OfferDetail::where(["pengelola_id"=>auth()->user()->id])->with([
+        $details = OfferDetail::where(["pengelola_id" => auth()->user()->id])->where(function($query){
+            $query
+                ->where(["status"=>"waiting"])
+                ->orWhere(["status"=>"accept"]);
+        })->with([
             'offer' => function ($query) {
                 $query->with(['petani', 'inventory']);
             }
@@ -30,20 +35,26 @@ class PengelolaOfferController extends Controller
      */
     public function confirmOffers(Request $request)
     {
-        if($request->method() != "POST"){
-            return response()->json(['message'=>"Method not allow!"],401);
-        }
-        if(!$request->post("detail_id") || !$request->post("offer_id")){
+        if(!$request->post("detail_id") || !$request->post("offer_id") || !$request->post("partner_id")){
             return response()->json(["message" => "Data tidak lengkap"], 403);
         }
         $detail_id = $request->post('detail_id');
         $offer_id = $request->post('offer_id');
+        $partner_id = $request->post('partner_id');
+
         OfferDetail::where([
             "id" => $detail_id,
             "offer_id" => $offer_id,
         ])->update([
-            "is_approved"=>1,
+            "status"=>"accept",
         ]);
+
+        Partner::find($partner_id)->update(['is_open'=>false]);
+
+        OfferDetail::where([
+            "status" => "waiting",
+        ])->get()->each->delete();
+
         return response()->json(["message"=>"Anda berhasil menerima penawaran petani!"],200);
     }
 
@@ -52,9 +63,6 @@ class PengelolaOfferController extends Controller
      */
     public function cancelOffers(Request $request)
     {
-        if($request->method() != "POST"){
-            return response()->json(['message'=>"Method not allow!"],401);
-        }
         if(!$request->post("detail_id") || !$request->post("offer_id")){
             return response()->json(["message" => "Data tidak lengkap"], 403);
         }

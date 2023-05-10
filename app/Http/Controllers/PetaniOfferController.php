@@ -33,16 +33,16 @@ class PetaniOfferController extends Controller
      */
     public function createOffers($partner_id)
     {
-        $partner = Partner::where(['id'=>$partner_id,'is_active'=>true])->get()->first();
+        $partner = Partner::where(['id'=>$partner_id,'is_active'=>true,'is_open'=>true])->get()->first();
         if (!$partner) {
-            return back()->with(['duplicate' => 'Kerja sama sudah diberhentikan!']);
+            return back()->with(['error' => 'Kerja sama tidak ditemukan!'])->withInput();
         }
         $cekpartner = OfferDetail::where([
-            'partner_id' => $partner->id, 
+            'partner_id' => $partner->id,
             "petani_id" => auth()->user()->id,
         ])->get();
         if ($cekpartner->count() > 0) {
-            return back()->with(['duplicate' => 'Kerja sama sudah pernah ditawar, silahkan cek penawaran anda!']);
+            return back()->with(['error' => 'Kerja sama sudah pernah ditawar, silahkan cek penawaran anda pada menu kerja sama.']);
         }
 
         $inventories = Inventory::where(['user_id' => auth()->user()->id])->get();
@@ -59,8 +59,15 @@ class PetaniOfferController extends Controller
      */
     public function saveOffers(Request $request)
     {
+        if(!$request->post('bean_id')){
+            return back()->with("error","Stok masih kosong")->withInput();
+        }
+        # inventory
         $inventory = Inventory::find($request->post("bean_id"));
-        // dd($inventory);
+
+        # partner id
+        $partner_id = $request->post('partner_id');
+        
         $validated = $request->validate([
             'description' => 'required|max:10000',
             "stok" => "required|numeric|max:{$inventory->stok}",
@@ -70,15 +77,12 @@ class PetaniOfferController extends Controller
             'stok.max' => "Stok melebihi batas inventory"
         ]);
         $validated['petani_id'] = auth()->user()->id;
-        $partner_id = $request->post('partner_id');
-        $partner = Partner::find($partner_id);
-        $pengelola_id = $partner->pengelola_id;
+        // $partner = Partner::find($partner_id)->pengelola_id;
+        $pengelola_id = Partner::find($partner_id)->pengelola_id;
 
         $cekpartner = OfferDetail::where([
             'partner_id' => $partner_id,
             "petani_id" => auth()->user()->id,
-            'is_rejected' => 0,
-            'is_approved' => 0,
         ])->get();
         if ($cekpartner->count() > 0) {
             return back()->withErrors(['duplicate' => 'Kerja sama sudah pernah ditawar'])->withInput();

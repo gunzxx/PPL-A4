@@ -19,6 +19,7 @@ class PartnerSeeder extends Seeder
             'stok' => 1000,
             'price' => 7000,
             'is_active'=>true,
+            'is_open'=>false,
             'bean_type' => "Kedelai hitam",
             'pengelola_id' => 1,
         ]);

@@ -20,8 +20,7 @@ return new class extends Migration
             $table->boolean("is_rejected")->default(0);
             $table->foreignId('pengelola_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('petani_id')->references('id')->on('users')->onDelete('cascade');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamps();
         });
     }
 

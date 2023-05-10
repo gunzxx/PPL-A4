@@ -22,6 +22,7 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 4px 30px rgba(0,0,0,.095);
 }
 .title-nav{
     width: 20%;

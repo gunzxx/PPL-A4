@@ -375,8 +375,8 @@ label.error,p.error{
 /* Alert */
 .alert-container{
     position: fixed;
-    bottom: 50px;
-    left: 50px;
+    bottom: 60px;
+    left: 80px;
     width: 400px;
     background: var(--g1);
     display: flex;
@@ -387,10 +387,11 @@ label.error,p.error{
     overflow: hidden;
 }
 .alert-container.alert-container-success{
-    background: var(--g1);
+    background: var(--w1);
+    border: 1px solid var(--g2);
 }
 .alert-container.alert-container-success *{
-    color: var(--b2);
+    color: var(--g4);
 }
 .alert-container.alert-container-error{
     background: var(--w1);

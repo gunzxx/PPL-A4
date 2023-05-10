@@ -21,8 +21,7 @@ return new class extends Migration
             $table->string("address");
             $table->foreignId("pengelola_id")->references("id")->on("users")->onDelete("cascade");
             $table->foreignId("agreement_detail_id")->references("id")->on("agreement_details")->onDelete("cascade");
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamps();
         });
     }
 

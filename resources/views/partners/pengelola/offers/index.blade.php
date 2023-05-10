@@ -51,10 +51,10 @@
                         <h3>{{ $detail->offer->petani->address }}</h3>
                     </div>
                     <div class="card-action">
-                        @if ($detail->is_approved == 0 && $detail->is_rejected == 0)
-                            <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn confirm" type="button">Accept<i class="bi bi-check-lg"></i></button>
+                        @if ($detail->status == "waiting")
+                            <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" data-partner-id="{{ $detail->partner->id }}" class="btn confirm" type="button">Accept<i class="bi bi-check-lg"></i></button>
                             <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn reject" type="button">Reject<i class="bi bi-x-lg"></i></button>
-                        @elseif($detail->is_approved == 1)
+                        @elseif($detail->status == "accept")
                             <span class="status is_confirm">Diterima <i class="bi bi-check-circle-fill"></i></span>
                             <button data-detail-id="{{ $detail->id }}" data-offer-id="{{ $detail->offer->id }}" class="btn cancel" type="button">Hapus<i class="bi bi-x-lg"></i></button>
                         @endif

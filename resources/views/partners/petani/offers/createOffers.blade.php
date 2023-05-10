@@ -75,6 +75,9 @@
         </div>
     </main>
 
+    @if(session()->has('error'))
+        <x-alertError :message="session()->get('error')"></x-alertError>
+    @endif
 
     @error("duplicate")
         <input type="hidden" id="error-msg" value="{{ $message }}">

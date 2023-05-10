@@ -20,8 +20,7 @@ return new class extends Migration
             $table->integer("price");
             $table->foreignId("bean_id")->references('id')->on('inventories')->onDelete('cascade');
             $table->foreignId("petani_id")->references('id')->on('users')->onDelete('cascade');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamps();
         });
     }
 
