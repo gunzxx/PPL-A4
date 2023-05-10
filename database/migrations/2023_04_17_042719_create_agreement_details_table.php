@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId("agreement_id")->references("id")->on('agreements')->onDelete("cascade");
             $table->foreignId("offer_detail_id")->references("id")->on('offer_details')->onDelete("cascade");
-            $table->boolean("is_approved")->default(0);
-            $table->boolean("is_rejected")->default(0);
+            $table->boolean("is_active")->default(true);
+            $table->enum('status',['waiting','accept','reject'])->default('waiting');
             $table->foreignId('pengelola_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('petani_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

@@ -31,12 +31,12 @@ function cancelAgreement() {
             agreementId: agreementId,
         },
         success: (e) => {
-            console.log(e);
+            // console.log(e);
             alert(e.message)
             window.location.reload();
         },
         error: (e) => {
-            console.log(e);
+            // console.log(e);
             alert("error");
             if (alert("Terjadi kesalahan, memuat ulang halaman.")) {
                 window.location.reload();
@@ -53,12 +53,12 @@ function confirmAgreement() {
             agreementDetailId: agreementDetailId,
         },
         success: (e) => {
-            console.log(e);
+            // console.log(e);
             alert(e.message);
             window.location.reload();
         },
         error: (e) => {
-            console.log(e);
+            // console.log(e);
             alert("error");
             if (alert("Terjadi kesalahan, memuat ulang halaman.")) {
                 window.location.reload();
@@ -75,12 +75,12 @@ function rejectAgreement() {
             agreementId: agreementId,
         },
         success: (e) => {
-            console.log(e);
+            // console.log(e);
             // alert(e.message)
             window.location.reload();
         },
         error: (e) => {
-            console.log(e);
+            // console.log(e);
             alert("error");
             if (alert("Terjadi kesalahan, memuat ulang halaman.")) {
                 window.location.reload();

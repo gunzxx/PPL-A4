@@ -52,6 +52,7 @@ class PengelolaOfferController extends Controller
         Partner::find($partner_id)->update(['is_open'=>false]);
 
         OfferDetail::where([
+            'partner_id'=> $partner_id,
             "status" => "waiting",
         ])->get()->each->delete();
 
@@ -72,9 +73,10 @@ class PengelolaOfferController extends Controller
             "id" => $detail_id,
             "offer_id" => $offer_id,
         ])->update([
-            "is_rejected"=>1,
+            "is_active"=>false,
+            "status"=>"deleted",
         ]);
-        Offer::find($offer_id)->delete();
+        // Offer::find($offer_id)->delete();
         return response()->json(["message"=>"Data berhasil dihapus"],200);
     }
 
@@ -83,9 +85,6 @@ class PengelolaOfferController extends Controller
      */
     public function rejectOffers(Request $request)
     {
-        if($request->method() != "POST"){
-            return response()->json(['message'=>"Method not allow!"],401);
-        }
         if(!$request->post("detail_id") || !$request->post("offer_id")){
             return response()->json(["message" => "Data tidak lengkap"], 403);
         }
@@ -95,9 +94,9 @@ class PengelolaOfferController extends Controller
             "id" => $detail_id,
             "offer_id" => $offer_id,
         ])->update([
-            "is_rejected"=>1,
+            "status"=>"reject",
         ]);
-        Offer::find($offer_id)->delete();
+        // Offer::find($offer_id)->delete();
         return response()->json(["message"=>"Penawaran berhasil ditolak"],200);
     }
 }

@@ -150,8 +150,8 @@
 
 /* Card body */
 .card-body{
-    margin-top: 10px;
-    margin-bottom: 25px;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 .card-body p{
     font-size: 14px;
@@ -315,8 +315,10 @@ i{
     background-color: var(--g2);
 }
 
-.status.is_reject {
-    background-color: var(--r2);
+.status.is_reject{
+    border: 1px solid var(--r2);
+    background-color: var(--w2);
+    color: var(--r2);
 }
 /* Status end */
 

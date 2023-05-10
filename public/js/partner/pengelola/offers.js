@@ -20,9 +20,6 @@ $('.cancel').click(function(){
 
 
 function confirmOffer(){
-    // console.log(offer_id);
-    // console.log(detail_id);
-    // console.log("OKE");
     $.ajax({
         url: "/api/pengelola/offers/confirm",
         method: "post",
@@ -50,9 +47,6 @@ function confirmOffer(){
 }
 
 function cancelOffer(){
-    // console.log(offer_id);
-    // console.log(detail_id);
-    // console.log("OKE");
     $.ajax({
         url: "/api/pengelola/offers/cancel",
         method: "post",

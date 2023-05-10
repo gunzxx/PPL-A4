@@ -462,7 +462,7 @@
         <div class="max-w-sm m-8">
           <div class="text-hijau text-5xl md:text-15xl font-black">403</div>
           <div class="w-16 h-1 bg-hijau my-3 md:my-6"></div>
-          <p class="text-hijau text-2xl md:text-3xl font-light mb-8 leading-normal">Maaf, anda tidak diizinkan untuk mengakses halaman ini :).</p>
+          <p class="text-hijau text-2xl md:text-3xl font-light mb-8 leading-normal">Maaf, anda tidak diizinkan untuk mengakses halaman ini :)</p>
           <a href="/home" class="bg-transparent text-hijau font-bold uppercase tracking-wide py-3 px-6 border-2 border-grey-light hover:border-grey rounded-lg">Go Home</a>
         </div>
       </div>

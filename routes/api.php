@@ -31,6 +31,7 @@ Route::middleware("auth:api")->group(function(){
         ]);});
 });
 
+
 // Route inventory petani
 Route::post('/petani/inventory/delete', [PetaniInventoryController::class, 'delete']);
 // Route inventory pengelola

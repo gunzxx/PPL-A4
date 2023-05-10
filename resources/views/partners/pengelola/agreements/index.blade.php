@@ -30,7 +30,7 @@
                             <p class="tanggal">{{ date("d F Y",strtotime($agreement_detail->agreement->created_at)) }}</p>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body mt-3">
                         <div class="detail-container">
                             <div class="detail-list">
                                 <p>Jenis : </p>
@@ -42,15 +42,15 @@
                             </div>
                             <div class="detail-list">
                                 <p>Harga : </p>
-                                <p class="green">{{ $agreement_detail->agreement->price }}</p>
+                                <p class="green">Rp. {{ number_format($agreement_detail->agreement->price,2,',','.') }}</p>
                             </div>
                             <div class="detail-list">
                                 <p>Nama petani : </p>
-                                <p class="green">{{ date("d F Y", strtotime(ucfirst($agreement_detail->petani->fullname))) }}</p>
+                                <p class="green">{{ $agreement_detail->petani->fullname }}</p>
                             </div>
                             <div class="detail-list">
                                 <p>Tanggal penawaran : </p>
-                                <p class="green">{{ date("d F Y", strtotime(ucfirst($agreement_detail->offerDetail->offer->created_at))) }}</p>
+                                <p class="green">{{ date("d F Y", strtotime($agreement_detail->offerDetail->offer->created_at)) }}</p>
                             </div>
                             <div class="detail-list">
                                 <p>Status : </p>

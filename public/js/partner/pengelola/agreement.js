@@ -18,12 +18,12 @@ function cancelAgreement() {
             agreementId: agreementId,
         },
         success: (e) => {
-            console.log(e);
+            // console.log(e);
             alert(e.message)
             window.location.reload();
         },
         error: (e) => {
-            console.log(e);
+            // console.log(e);
             alert("error");
             if (confirm("Terjadi kesalahan, memuat ulang halaman.")) {
                 window.location.reload();
@@ -40,12 +40,12 @@ function deleteAgreement() {
             agreementId: agreementId,
         },
         success: (e) => {
-            console.log(e);
+            // console.log(e);
             alert(e.message)
             window.location.reload();
         },
         error: (e) => {
-            console.log(e);
+            // console.log(e);
             alert("error");
             if (confirm("Terjadi kesalahan, memuat ulang halaman.")) {
                 window.location.reload();

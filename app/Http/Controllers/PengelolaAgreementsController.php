@@ -36,7 +36,7 @@ class PengelolaAgreementsController extends Controller
         foreach($partners as $partner){
             $partner_id[] = $partner->id;
         }
-        $offer_details = OfferDetail::where(['is_approved' => 1])->whereIn("partner_id", $partner_id)->with('offer')->get();
+        $offer_details = OfferDetail::where(['status' => 'accept'])->whereIn("partner_id", $partner_id)->with('offer')->get();
         if($offer_details->count()<1){
             return redirect()->back()->withErrors(["message"=>"Belum ada penawaran,\ntidak bisa membuat persetujuan!"])->withInput();
         }
@@ -92,7 +92,7 @@ class PengelolaAgreementsController extends Controller
         foreach ($partners as $partner) {
             $partner_id[] = $partner->id;
         }
-        $offer_details = OfferDetail::where(['is_approved' => 1])->whereIn("partner_id", $partner_id)->with('offer')->get();
+        $offer_details = OfferDetail::where(['status' => 'accept'])->whereIn("partner_id", $partner_id)->with('offer')->get();
         return view("partners.pengelola.agreements.edit", [
             'css' => ['main', 'partners/partners', 'partners/agreements/create'],
             "agreement_detail" => $agreement_detail,

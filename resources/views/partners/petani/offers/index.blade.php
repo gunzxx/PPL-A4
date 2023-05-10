@@ -24,11 +24,11 @@
                     <div class="card-header-row">
                         <div class="card-header-col img">
                             <div class="card-header-img-container">
-                                <img src="{{ $detail->offer->petani->getFirstMediaUrl("profile") != "" ? $detail->offer->petani->getFirstMediaUrl("profile") : "/img/profile/default.jpg" }}">
+                                <img src="{{ $detail->petani->getFirstMediaUrl("profile") != "" ? $detail->petani->getFirstMediaUrl("profile") : "/img/profile/default.jpg" }}">
                             </div>
                             <div class="card-header-identity">
-                                <h1>{{ ucfirst($detail->offer->petani->fullname) }}</h1>
-                                <p>No Telp. {{ ucfirst($detail->offer->petani->number_phone) }}</p>
+                                <h1>{{ ucfirst($detail->petani->fullname) }}</h1>
+                                <p>No Telp. {{ ucfirst($detail->petani->number_phone) }}</p>
                             </div>
                         </div>
                         <div class="card-header-col end">
@@ -55,10 +55,12 @@
                         <h3>{{ $detail->petani->address }}</h3>
                     </div>
                     <div class="card-action">
-                        @if ($detail->is_approved == 0 && $detail->is_rejected == 0)
+                        @if ($detail->status == "waiting")
                             <a class="btn" href="/petani/partners/offers/edit/{{ $detail->id }}">Update<i class="bi bi-pencil-square"></i></a>
-                        @elseif($detail->is_approved == 1)
+                        @elseif($detail->status == "accept")
                             <span class="status is_confirm">Diterima <i class="bi bi-check-circle-fill"></i></span>
+                        @elseif($detail->status == "reject")
+                            <span class="status is_reject">Ditolak <i class="bi bi-x-circle-fill"></i></span>
                         @endif
                     </div>
                 </div>

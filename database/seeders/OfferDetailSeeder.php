@@ -18,8 +18,8 @@ class OfferDetailSeeder extends Seeder
             'offer_id' => 1,
             'petani_id' => 3,
             'pengelola_id' => 1,
-            'is_approved' => 1,
-            "is_rejected" => 0,
+            'is_active' => true,
+            "status" => "accept",
         ]);
     }
 }

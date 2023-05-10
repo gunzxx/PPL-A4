@@ -113,6 +113,9 @@ class PengelolaPartnerController extends Controller
 
         $partner = Partner::where('id', $id)->update(['is_active'=>false]);
 
+        OfferDetail::where(['partner_id' => $id])->get()->each(function ($val, $key) {
+            $val->offer->delete();
+        });
 
         return response()->json(['post'=>$request->post(), 'message' => 'Berhasil berhenti.','data'=>$partner], 200);
     }
@@ -139,6 +142,10 @@ class PengelolaPartnerController extends Controller
             'pengelola_id' => $partner->pengelola_id,
             'created_at' => $partner->created_at,
         ]);
+        OfferDetail::where(['partner_id'=>$id])->get()->each(function($val, $key){
+            $val->offer->delete();
+        });
+        // return response()->json(OfferDetail::where(['partner_id'=>$id])->get()->each->offer);
         Partner::find($id)->delete();
 
         return response()->json(['id'=>$id, 'message' => 'Data berhasil dihapus.','data'=>$partnerHistory], 200);
