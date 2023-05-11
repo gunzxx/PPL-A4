@@ -48,6 +48,7 @@ Route::post('/petani/offers/delete', [PetaniOfferController::class, 'deleteOffer
 Route::post('/pengelola/offers/confirm', [PengelolaOfferController::class, 'confirmOffers']);
 Route::post('/pengelola/offers/reject', [PengelolaOfferController::class, 'rejectOffers']);
 Route::post('/pengelola/offers/cancel', [PengelolaOfferController::class, 'cancelOffers']);
+Route::post('/offerDetail/{id}', [PengelolaOfferController::class, 'single']);
 
 // Route agreements pengelola
 Route::post('/pengelola/agreements/cancel', [PengelolaAgreementsController::class, 'cancelAgreements']);
@@ -57,5 +58,7 @@ Route::post('/petani/agreements/cancel', [PetaniAgreementsController::class, 'ca
 Route::post('/petani/agreements/reject', [PetaniAgreementsController::class, 'rejectAgreements']);
 Route::post('/petani/agreements/confirm', [PetaniAgreementsController::class, 'confirmAgreements']);
 
+
+// Route api forecasting data kedelai
 Route::get('/kedelai',[ApiKedelaiController::class,'index']);
 Route::get('/kedelai/{apiKedelai}',[ApiKedelaiController::class,'show']);

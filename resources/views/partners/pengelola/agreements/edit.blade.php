@@ -12,7 +12,7 @@
                 <input type="hidden" name="agreement_detail_id" value="{{ $agreement_detail->id }}">
                 <input type="hidden" name="agreement_id" value="{{ $agreement_detail->agreement->id }}">
                 <div class="form-group">
-                    <input value="{{ old('bean_type') ? old('bean_type') : $agreement_detail->agreement->bean_type  }}" class="form-input" name="bean_type" placeholder="Masukkan jenis kedelai" id="bean_type" cols="30" rows="10">
+                    <input readonly @readonly(true) value="{{ old('bean_type') ? old('bean_type') : $agreement_detail->agreement->bean_type  }}" class="form-input" name="bean_type" placeholder="Masukkan jenis kedelai" id="bean_type" cols="30" rows="10">
                     @error('bean_type')
                         <p class="error">{{ $message }}</p>
                     @enderror

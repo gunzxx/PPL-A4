@@ -99,4 +99,14 @@ class PengelolaOfferController extends Controller
         // Offer::find($offer_id)->delete();
         return response()->json(["message"=>"Penawaran berhasil ditolak"],200);
     }
+
+
+    /**
+     * Method untuk mengambil satu data penawaran
+     */
+    public function single($id)
+    {
+        $offers = OfferDetail::find($id,['offer_id'])->offer()->get("bean_id")->first()->inventory()->get("bean_type")->first();
+        return response()->json($offers);
+    }
 }

@@ -10,7 +10,7 @@
             <form id="agreement-required-form" class="form-container required-form" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/partners/agreements/create">
                 @csrf
                 <div class="form-group">
-                    <input value="{{ old('bean_type') }}" class="form-input" name="bean_type" placeholder="Masukkan jenis kedelai" id="bean_type" cols="30" rows="10">
+                    <input value="{{ old('bean_type') ? old('bean_type') : $offer_details[0]->offer()->get("bean_id")->first()->inventory()->get("bean_type")->first()->bean_type }}" class="form-input" readonly name="bean_type" placeholder="Masukkan jenis kedelai" id="bean_type" cols="30" rows="10">
                     @error('bean_type')
                         <p class="error">{{ $message }}</p>
                     @enderror
@@ -29,7 +29,7 @@
                 </div>
                 <div class="form-group">
                     @if ($offer_details->count()>0)
-                        <select class="form-input @error('bean_id') invalid @enderror" name="offer_detail_id" id="bean_id">
+                        <select class="form-input @error('bean_id') invalid @enderror" name="offer_detail_id" id="offer_detail_id">
                             @foreach ($offer_details as $offer_detail)
                                 <option value="{{ $offer_detail->id }}">{{ ucfirst($offer_detail->petani->fullname) }} - {{ date("d F Y (H:i:s)", strtotime($offer_detail->offer->created_at)) }}</option>
                             @endforeach

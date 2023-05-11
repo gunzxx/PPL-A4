@@ -168,6 +168,10 @@ label.error,p.error{
     margin-left: 0;
     border: 2px solid var(--r2);
 }
+
+input:read-only{
+    cursor: not-allowed;
+}
 /* Form End */
 
 

@@ -14,4 +14,23 @@ $(document).ready(function () {
             },
         },
     })
+
+    $("#offer_detail_id").change(function(){
+        const offerDetail_id = $(this).val();
+        $(".spinner-container").css('display','flex');
+
+        $.ajax({
+            url:'/api/offerDetail/'+offerDetail_id,
+            method:'post',
+            dataType : 'json',
+            success:(e)=>{
+                console.log(e);
+                $("#bean_type").val(e.bean_type);
+                $(".spinner-container").css('display','none');
+            },
+            error:(e)=>{
+                console.log(e);
+            },
+        })
+    })
 })
