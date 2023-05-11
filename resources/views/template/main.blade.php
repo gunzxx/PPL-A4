@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ isset($title) ? ucwords($title)." - " : "" }}SoyChain</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/components.css">
     <link rel="stylesheet" href="/css/pagination.css">
     @if(isset($css) && gettype($css)=='array')
         @foreach ($css as $cssitem)

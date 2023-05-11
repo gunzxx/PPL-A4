@@ -20,7 +20,7 @@ class PetaniAgreementsController extends Controller
             }
         ])->where(['petani_id' => auth()->user()->id])->latest()->paginate(10);
         return view("partners.petani.agreements.index", [
-            'css'=>['main', 'partners/partners','partners/agreements/index'],
+            'css'=>[ 'partners/partners','partners/agreements/index'],
             'agreement_details' => $agreement_details
         ]);
     }

@@ -1,0 +1,15 @@
+.create-button{
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    padding: 5px 25px;
+    background: var(--g6);
+    border: 1px solid var(--g6);
+    border-radius: 5px;
+    color: var(--w1);
+    font-size: 16px;
+    transition: 0.3s;
+}
+.create-button:hover{
+    border: 0.3 solid var(--g7);
+}

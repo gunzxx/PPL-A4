@@ -19,8 +19,8 @@
                 <div class="list-card">
                     <div class="card-header-row">
                         <div class="card-header-col img">
-                            <div class="card-header-img-container">
-                                <img src="{{ $detail->offer->petani->getFirstMediaUrl("profile") != "" ? $detail->offer->petani->getFirstMediaUrl("profile") : "/img/profile/default.jpg" }}">
+                            <div class="card-header-img-container bg-transparent-img">
+                                <img src="{{ $detail->offer->petani->getFirstMediaUrl("profile") != "" ? $detail->offer->petani->getFirstMediaUrl("profile") : "/img/profile/default.png" }}">
                             </div>
                             <div class="card-header-identity">
                                 <h1>{{ ucfirst($detail->offer->petani->fullname) }}</h1>

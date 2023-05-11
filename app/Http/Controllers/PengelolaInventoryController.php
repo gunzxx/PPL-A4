@@ -14,7 +14,7 @@ class PengelolaInventoryController extends Controller
     {
         $inventories = Inventory::where('user_id', auth()->user()->id)->latest()->paginate(10);
         return view('inventory.pengelola.index', [
-            "css" => ['main', 'inventory/inventory'],
+            "css" => [ 'inventory/inventory'],
             'inventories' => $inventories,
         ]);
     }
@@ -25,7 +25,7 @@ class PengelolaInventoryController extends Controller
     public function create()
     {
         return view('inventory.pengelola.create', [
-            "css" => ['main', 'inventory/inventory']
+            "css" => [ 'inventory/inventory']
         ]);
     }
 
@@ -54,7 +54,7 @@ class PengelolaInventoryController extends Controller
             return abort(403);
         }
         return view('inventory.pengelola.edit', [
-            "css" => ['main', 'inventory/inventory', 'inventory/edit'],
+            "css" => [ 'inventory/inventory', 'inventory/edit'],
             "inventory" => $inventory,
         ]);
     }

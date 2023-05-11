@@ -1,8 +1,14 @@
 <div class="menu">
-    <div class="menu-item {{ explode('/',Request::url())[5] == "shop" ? "active" : '' }}">
-        <a href="/petani/shop/shop">Tambah penjualan</a>
+    <div class="menu-item {{ $active == "shop" ? "active" : '' }}">
+        <a href="/petani/shop/shop">Penjualan</a>
     </div>
-    <div class="menu-item {{ explode('/',Request::url())[5] == "agreements" ? "active" : '' }}">
-        <a href="/petani/shop/sale">Penjualan</a>
+    <div class="menu-item {{ $active == "payment" ? "active" : '' }}">
+        <a href="/petani/shop/sale">Pembayaran</a>
+    </div>
+    <div class="menu-item {{ $active == "delivery" ? "active" : '' }}">
+        <a href="/petani/shop/sale">Pengiriman</a>
+    </div>
+    <div class="menu-item {{ $active == "history" ? "active" : '' }}">
+        <a href="/petani/shop/sale">Riwayat</a>
     </div>
 </div>

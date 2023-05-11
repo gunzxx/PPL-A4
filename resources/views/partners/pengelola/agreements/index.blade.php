@@ -14,8 +14,8 @@
                 <div class="list-card">
                     <div class="card-header-row">
                         <div class="card-header-col img">
-                            <div class="card-header-img-container">
-                                <img src="{{ $agreement_detail->pengelola->getFirstMediaUrl("profile") != "" ? $agreement_detail->pengelola->getFirstMediaUrl("profile") : "/img/profile/default.jpg" }}">
+                            <div class="card-header-img-container bg-transparent-img">
+                                <img src="{{ $agreement_detail->pengelola->getFirstMediaUrl("profile") != "" ? $agreement_detail->pengelola->getFirstMediaUrl("profile") : "/img/profile/default.png" }}">
                             </div>
                             <div class="card-header-identity">
                                 <h1>{{ ucfirst($agreement_detail->pengelola->fullname) }}</h1>
@@ -29,7 +29,7 @@
                     <div class="card-body mt-3">
                         <div class="detail-container">
                             <div class="detail-list">
-                                <p>Jenis : </p>
+                                <p>Jenis kedelai : </p>
                                 <p class="green">{{ $agreement_detail->agreement->bean_type }}</p>
                             </div>
                             <div class="detail-list">

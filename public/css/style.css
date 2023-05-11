@@ -186,6 +186,10 @@ input:read-only{
 .pointer{
     cursor: pointer;
 }
+.bg-transparent-img {
+    background-image: url("/img/bg.png") !important;
+    background-size: cover;
+}
 /* Pointer End*/
 
 

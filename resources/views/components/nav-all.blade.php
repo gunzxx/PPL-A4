@@ -22,8 +22,8 @@
             <h1>{{ auth()->user()->fullname }}</h1>
             <p>{{ auth()->user()->getRoleNames()[0] == "pengelola" ? ucfirst(auth()->user()->getRoleNames()[0])." susu" : ucfirst(auth()->user()->getRoleNames()[0]) }} kedelai</p>
         </div>
-        <div class="profile-image-container">
-            <img class="profile-img" src="{{ auth()->user()->getFirstMediaUrl("profile") != "" ? auth()->user()->getFirstMediaUrl("profile") : "/img/profile/default.jpg" }}" alt="">
+        <div class="profile-image-container bg-transparent-img">
+            <img class="profile-img" src="{{ auth()->user()->getFirstMediaUrl("profile") != "" ? auth()->user()->getFirstMediaUrl("profile") : "/img/profile/default.png" }}" alt="">
         </div>
     </div>
 </nav>

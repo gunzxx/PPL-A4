@@ -15,7 +15,7 @@ class PengelolaPartnerHistoryController extends Controller
         $partnerHistories = PartnerHistory::latest()->paginate(10);
 
         return view("partners.pengelola.history.index",[
-            "css"=> ['main', 'partners/partners','partners/history/index'],
+            "css"=> [ 'partners/partners','partners/history/index'],
             'partnerHistories' => $partnerHistories
         ]);
     }

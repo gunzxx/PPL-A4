@@ -14,7 +14,7 @@ class PetaniInventoryController extends Controller
     {
         $inventories = Inventory::where('user_id',auth()->user()->id)->latest()->paginate(10);
         return view('inventory.petani.index', [
-            "css" => ['main', 'inventory/inventory'],
+            "css" => [ 'inventory/inventory'],
             'inventories' => $inventories,
         ]);
     }
@@ -25,7 +25,7 @@ class PetaniInventoryController extends Controller
     public function create()
     {
         return view('inventory.petani.create', [
-            "css" => ['main', 'inventory/inventory']
+            "css" => [ 'inventory/inventory']
         ]);
     }
 
@@ -54,7 +54,7 @@ class PetaniInventoryController extends Controller
             return abort(403);
         }
         return view('inventory.petani.edit', [
-            "css" => ['main', 'inventory/inventory', 'inventory/edit'],
+            "css" => [ 'inventory/inventory', 'inventory/edit'],
             "inventory" => $inventory,
         ]);
     }

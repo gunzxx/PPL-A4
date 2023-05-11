@@ -8,8 +8,9 @@ class PetaniShopController extends Controller
 {
     public function index()
     {
-        return view('shop.petani.index', [
-            "css" => ['main','shop/shop']
+        return view('shop.petani.shop.index', [
+            "css" => ['shop/shop'],
+            "active" => "shop",
         ]);
     }
 }

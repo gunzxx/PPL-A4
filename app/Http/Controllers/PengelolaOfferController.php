@@ -25,7 +25,7 @@ class PengelolaOfferController extends Controller
         ])->latest()->paginate(10);
 
         return view('partners.pengelola.offers.index', [
-            "css" => ['main', 'partners/partners', 'partners/offers/index'],
+            "css" => [ 'partners/partners', 'partners/offers/index'],
             'details' => $details,
         ]);
     }

@@ -21,7 +21,7 @@ class PengelolaAgreementsController extends Controller
             }
         ])->where(['pengelola_id'=>auth()->user()->id])->latest()->paginate(10);
         return view("partners.pengelola.agreements.index",[
-            'css'=>['main', 'partners/partners','partners/agreements/index'],
+            'css'=>[ 'partners/partners','partners/agreements/index'],
             'agreement_details' => $agreement_details
         ]);
     }
@@ -36,14 +36,14 @@ class PengelolaAgreementsController extends Controller
         foreach($partners as $partner){
             $partner_id[] = $partner->id;
         }
-        $offer_details = OfferDetail::where(['status' => 'accept'])->whereIn("partner_id", $partner_id)->with(['petani','offer'=>function($query){
+        $offer_details = OfferDetail::where(['status' => 'accept','is_active'=>true])->whereIn("partner_id", $partner_id)->with(['petani','offer'=>function($query){
             $query->with('inventory');
         }])->get();
         if($offer_details->count()<1){
             return redirect()->back()->withErrors(["message"=>"Belum ada penawaran,\ntidak bisa membuat persetujuan!"])->withInput();
         }
         return view("partners.pengelola.agreements.create",[
-            'css'=>['main', 'partners/partners','partners/agreements/create'],
+            'css'=>[ 'partners/partners','partners/agreements/create'],
             'offer_details' => $offer_details,
         ]);
     }
@@ -96,7 +96,7 @@ class PengelolaAgreementsController extends Controller
         }
         $offer_details = OfferDetail::where(['status' => 'accept'])->whereIn("partner_id", $partner_id)->with('offer')->get();
         return view("partners.pengelola.agreements.edit", [
-            'css' => ['main', 'partners/partners', 'partners/agreements/create'],
+            'css' => [ 'partners/partners', 'partners/agreements/create'],
             "agreement_detail" => $agreement_detail,
             'offer_details' => $offer_details
         ]);

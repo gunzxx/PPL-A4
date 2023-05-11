@@ -11,9 +11,9 @@ class PengelolaShopController extends Controller
      */
     public function index()
     {
-        return view('shop.pengelola.index', [
-            "css" => ['main','shop/shop'],
-            ''
+        return view('shop.pengelola.shop.index', [
+            "css" => ['shop/shop'],
+            'active' => "shop",
         ]);
     }
 }

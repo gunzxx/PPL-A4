@@ -19,7 +19,7 @@ class PengelolaPartnerController extends Controller
         $partners = Partner::with(['pengelola'])->where(['pengelola_id'=>auth()->user()->id])->latest()->paginate(10);
 
         return view('partners.pengelola.partners.index',[
-            "css"=> ['main', 'partners/partners','partners/offers/index'],
+            "css"=> [ 'partners/partners','partners/offers/index'],
             'partners' => $partners,
             'search'=>$search,
         ]);
@@ -31,7 +31,7 @@ class PengelolaPartnerController extends Controller
     public function create()
     {
         return view('partners.pengelola.partners.create',[
-            "css"=> ['main','partners/create'],
+            "css"=> ['partners/create'],
         ]);
     }
 
@@ -67,7 +67,7 @@ class PengelolaPartnerController extends Controller
             return abort(403);
         }
         return view('partners.pengelola.partners.edit',[
-            "css"=> ['main','partners/create'],
+            "css"=> ['partners/create'],
             'partner' => $partner,
         ]);
     }

@@ -23,7 +23,7 @@ class PetaniOfferController extends Controller
         ])->latest()->paginate(10);
 
         return view('partners.petani.offers.index', [
-            "css" => ['main', 'partners/partners', 'partners/offers/index'],
+            "css" => [ 'partners/partners', 'partners/offers/index'],
             'details' => $details,
         ]);
     }
@@ -48,7 +48,7 @@ class PetaniOfferController extends Controller
         $inventories = Inventory::where(['user_id' => auth()->user()->id])->get();
 
         return view('partners.petani.offers.createOffers', [
-            "css" => ['main', 'partners/partners', "partners/offers/create"],
+            "css" => [ 'partners/partners', "partners/offers/create"],
             'partner' => $partner,
             'inventories' => $inventories,
         ]);
@@ -120,7 +120,7 @@ class PetaniOfferController extends Controller
         $inventories = Inventory::where(['user_id' => auth()->user()->id])->get();
 
         return view('partners.petani.offers.editOffers', [
-            "css" => ['main', 'partners/partners', "partners/offers/create"],
+            "css" => [ 'partners/partners', "partners/offers/create"],
             'detail' => $detail,
             'inventories' => $inventories,
         ]);
