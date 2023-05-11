@@ -6,11 +6,7 @@
     <main>
         <x-menuPartners></x-menuPartners>
 
-
-        <div class="search-partner">
-            <input type="text" placeholder="Cari kerja sama">
-            <span class="search-btn"><i class="bi bi-search pointer"></i></span>
-        </div>
+        <x-searchPartner :value="(isset($query)?$query:'')"></x-searchPartner>
 
         <div class="partner-container">
             @if (count($agreement_details)>0)

@@ -1,4 +1,24 @@
 $(document).ready(function(){
+    jQuery.extend(jQuery.validator.messages, {
+        remote: "Please fix this field.",
+        required: "Data tidak valid.",
+        digits: "Masukkan hanya angka saja.",
+        number: "Masukkan angka yang benar.",
+        email: "Email tidak valid.",
+        maxlength: jQuery.validator.format("Panjang maksimal {0} karakter."),
+        minlength: jQuery.validator.format("Panjang minimal {0} karakter."),
+        rangelength: jQuery.validator.format("Panjang antara {0} dan {1} karakter."),
+        range: jQuery.validator.format("Masukkan nilai antara {0} dan {1}."),
+        max: jQuery.validator.format("Nilai maksimal {0}."),
+        min: jQuery.validator.format("Nilai minimal {0}."),
+        equalTo: "Nilai tidak sama.",
+        accept: "Ekstensi file tidak valid.",
+        url: "URL tidak valid.",
+        date: "Masukkan tanggal yang benar.",
+        dateISO: "Masukkan format tanggal (ISO) yang benar.",
+        creditcard: "Masukkan no. kredit yang benar.",
+    });
+
     // Alert
     $(".alert-x").click(function () {
         $('.alert-container').hide(300);
@@ -13,26 +33,38 @@ $(document).ready(function(){
     $(".alert-ok").click(function () {
         $('.alert-ok-container').hide(300);
     })
+    
+    let displayBody = 'box';
+    $(document).keydown(function(e){
+        if(e.key === "/"){
+            e.preventDefault()
+            $(".search-partner input").focus()
+        }
+    })
+    $(".search-partner input").keydown(function(e){
+        var regex = new RegExp("[a-zA-Z0-9]");
+        if (regex.test(e.key)) {
+            console.log("true");
+            return true;
+        } else {
+            e.preventDefault()
+            console.log("false");
+            return false;
+        }
+    })
+    $(".card-description").click(function(){
+        if (displayBody === "box"){
+            displayBody = 'block'
+            $(this).css("display",'block');
+            $(this).attr("title",'klik untuk menampilkan lebih sedikit')
+        }
+        else if (displayBody === "block"){
+            displayBody = 'box'
+            $(this).css("display",'-webkit-box');
+            $(this).attr("title",'klik untuk menampilkan lebih lengkap')
+        }
+    })
 })
-jQuery.extend(jQuery.validator.messages, {
-    remote: "Please fix this field.",
-    required: "Data tidak valid.",
-    digits: "Masukkan hanya angka saja.",
-    number: "Masukkan angka yang benar.",
-    email: "Email tidak valid.",
-    maxlength: jQuery.validator.format("Panjang maksimal {0} karakter."),
-    minlength: jQuery.validator.format("Panjang minimal {0} karakter."),
-    rangelength: jQuery.validator.format("Panjang antara {0} dan {1} karakter."),
-    range: jQuery.validator.format("Masukkan nilai antara {0} dan {1}."),
-    max: jQuery.validator.format("Nilai maksimal {0}."),
-    min: jQuery.validator.format("Nilai minimal {0}."),
-    equalTo: "Nilai tidak sama.",
-    accept: "Ekstensi file tidak valid.",
-    url: "URL tidak valid.",
-    date: "Masukkan tanggal yang benar.",
-    dateISO: "Masukkan format tanggal (ISO) yang benar.",
-    creditcard: "Masukkan no. kredit yang benar.",
-});
 
 // Cancel button action
 $('.cancel-action').click(function () {

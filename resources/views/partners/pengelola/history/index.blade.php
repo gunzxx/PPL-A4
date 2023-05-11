@@ -5,10 +5,7 @@
     <main>
         <x-menuPartners></x-menuPartners>
 
-        <div class="search-partner">
-            <input type="text" placeholder="Cari kerja sama">
-            <span class="search-btn"><i class="bi bi-search pointer"></i></span>
-        </div>
+        <x-searchPartner :value="(isset($query)?$query:'')"></x-searchPartner>
 
         <div class="partner-container">
             @if ($partnerHistories->count()<1)
@@ -31,7 +28,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <p>{{ Str::limit(strip_tags($partnerHistory->description),500) }}</p>
+                        <p title="klik untuk lebih lengkap" class="card-description">{{ Str::limit(strip_tags($partnerHistory->description),500) }}</p>
                     </div>
                     <div class="card-footer">
                         <h3>{{ $partnerHistory->pengelola->address }}</h3>

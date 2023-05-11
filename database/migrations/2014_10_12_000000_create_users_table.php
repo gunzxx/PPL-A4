@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('fullname');
-            $table->bigInteger('id_number')->digits(20)->unsigned();
+            $table->bigInteger('id_number')->digits(20)->unsigned()->unique();
             $table->string('number_phone');
             $table->string('address');
             $table->string('email')->unique();

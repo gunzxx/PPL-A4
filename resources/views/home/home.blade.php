@@ -38,7 +38,7 @@
                     </div>
                     <div class="card-body">
                         <p>Jenis kedelai : {{ strip_tags($partner->bean_type) }}</p>
-                        <p>Deskripsi : {{ strip_tags($partner->description) }}</p>
+                        <p title="klik untuk menampilkan lebih lengkap" class="card-description">Deskripsi : {{ strip_tags($partner->description) }}</p>
                     </div>
                     <div class="card-footer">
                         <h3>{{ $partner->pengelola->address }}</h3>
@@ -99,7 +99,7 @@
         await data_fetch.forEach(element => {
             data_kedelai.push(parseInt(element['harga']));
         });
-        console.log(await data_kedelai);
+        // console.log(await data_kedelai);
 
         myChart.data.datasets[0].data = data_kedelai;
         myChart.update();

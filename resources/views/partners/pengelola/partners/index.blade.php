@@ -6,10 +6,7 @@
     <main>
         <x-menuPartners></x-menuPartners>
 
-        <div class="search-partner">
-            <input type="text" placeholder="Cari kerja sama">
-            <span class="search-btn"><i class="bi bi-search pointer"></i></span>
-        </div>
+        <x-searchPartner :value="(isset($query)?$query:'')"></x-searchPartner>
 
         <div class="partner-container">
             @if (count($partners)<1)
@@ -31,10 +28,9 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="card-body">
-                            <p>Jenis kedelai : {{ strip_tags($partner->bean_type) }}</p>
-                            <p>Deskripsi : {{ Str::limit($partner->description,500) }}</p>
-                        </div>
+                        <p>Jenis kedelai : {{ strip_tags($partner->bean_type) }}</p>
+                        <p title="klik untuk menampilkan lebih lengkap" class="card-description">Deskripsi : {{ $partner->description }}</p>
+                        <small class="show-more">Baca selengkapnya</small>
                     </div>
                     <div class="card-footer">
                         <h3>{{ $partner->pengelola->address }}</h3>

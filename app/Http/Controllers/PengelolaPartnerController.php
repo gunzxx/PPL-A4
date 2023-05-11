@@ -13,13 +13,15 @@ class PengelolaPartnerController extends Controller
     /**
      * Method untuk menampilkan view kerja sama
      */
-    public function showPartner()
+    public function showPartner(Request $request)
     {
+        $query = $request->get('query');
         $partners = Partner::with(['pengelola'])->where(['pengelola_id'=>auth()->user()->id])->latest()->paginate(10);
 
         return view('partners.pengelola.partners.index',[
             "css"=> ['main', 'partners/partners','partners/offers/index'],
             'partners' => $partners,
+            'query'=>$query,
         ]);
     }
 

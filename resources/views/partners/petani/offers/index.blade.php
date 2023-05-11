@@ -6,10 +6,7 @@
     <main>
         <x-menuPartners></x-menuPartners>
 
-        <div class="search-partner">
-            <input type="text" placeholder="Cari kerja sama">
-            <span><i class="bi bi-search pointer"></i></span>
-        </div>
+        <x-searchPartner :value="(isset($query)?$query:'')"></x-searchPartner>
 
         <div class="partner-container">
             @if (count($details)<1)
@@ -32,11 +29,11 @@
                             </div>
                         </div>
                         <div class="card-header-col end">
-                            <p class="tanggal">{{ date("d F Y",strtotime($detail->offer->created_at)) }}</p>
+                            <p title="klik untuk menampilkan lebih lengkap" class="tanggal">{{ date("d F Y",strtotime($detail->offer->created_at)) }}</p>
                         </div>
                     </div>
                     <div class="card-body">
-                        <p>{{ Str::limit(strip_tags($detail->offer->description),500) }}</p>
+                        <p class="card-description">{{ strip_tags($detail->offer->description) }}</p>
                     </div>
                     <div class="card-information">
                         <div class="card-price">
