@@ -5,7 +5,7 @@
 
 ## Step 1 : clone projek dari github
 - buat folder di komputer anda, <strong>bebas dimana aja</strong>
-- klik kanan dimana aja, lalu klik git bash here
+- klik kanan dimana aja, lalu klik git bash here (catatan: pastikan anda sudah menginstall git)
 - copas kode berikut :  <pre>git clone https://github.com/gunzxx/PPL-A4.git .</pre>
 - tunggu sampe selesai, udah lanjut step 2
 
