@@ -165,6 +165,7 @@ main{
     padding: 11px 28px;
     border-radius: 15px 15px 0 0;
     transition: 0.3s;
+    font-size: 16px;
 }
 .menu-item a:hover{
     background: rgba(29,103,63,.1);
@@ -174,8 +175,5 @@ main{
 }
 .menu-item.active *{
     color: var(--w1);
-}
-.menu-item a{
-    font-size: 16px;
 }
 
