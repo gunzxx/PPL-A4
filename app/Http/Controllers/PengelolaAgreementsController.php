@@ -15,13 +15,11 @@ class PengelolaAgreementsController extends Controller
      */
     public function showAgreements()
     {
-        $agreement_details = AgreementDetail::with(['agreement','pengelola','petani',
+        $agreement_details = AgreementDetail::where(["is_active"=>true])->with(['agreement','pengelola','petani',
             "offerDetail"=>function($query){
                 $query->with('offer');
             }
-        ])->where(['pengelola_id'=>auth()->user()->id,'is_active'=>true])->where(function($query){
-            $query->where('status','=','accept')->orWhere('status','=','waiting');
-        })->latest()->paginate(10);
+        ])->latest()->paginate(10);
         return view("partners.pengelola.agreements.index",[
             'css'=>[ 'partners/partners','partners/agreements/index'],
             'agreement_details' => $agreement_details
@@ -69,7 +67,7 @@ class PengelolaAgreementsController extends Controller
         $petani_id = $offer_detail->offer->petani->id;
         $validated['pengelola_id'] = auth()->user()->id;
 
-        $cekDetail = AgreementDetail::where(['pengelola_id'=> auth()->user()->id, "offer_detail_id" => $offer_detail_id])->get();
+        $cekDetail = AgreementDetail::where(['pengelola_id'=> auth()->user()->id, "offer_detail_id" => $offer_detail_id])->where("status",'!=','reject')->get();
         
         if($cekDetail->count()>0){
             return redirect()->back()->withErrors(["message"=>"Penawaran sudah pernah dimintai persetujuan,\nPilih penawaran lain!"])->withInput();

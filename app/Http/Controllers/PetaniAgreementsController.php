@@ -13,17 +13,19 @@ class PetaniAgreementsController extends Controller
      */
     public function showAgreements()
     {
-        $agreement_details = AgreementDetail::with([
-            'agreement', 'pengelola','petani',
+        $agreement_details = AgreementDetail::where(["is_active" => true])
+        ->where(['petani_id' => auth()->user()->id,'is_active'=>true])->where(function($query){
+            $query->where('status','=','accept')->orWhere('status','=','waiting');
+        })->with([
+            'agreement', 'pengelola', 'petani',
             "offerDetail" => function ($query) {
                 $query->with('offer');
             }
-        ])->where(['petani_id' => auth()->user()->id,'is_active'=>true])->where(function($query){
-            $query->where('status','=','accept')->orWhere('status','=','waiting');
-        })->latest()->paginate(10);
+        ])->latest()->paginate(10);
         return view("partners.petani.agreements.index", [
             'css'=>[ 'partners/partners','partners/agreements/index'],
-            'agreement_details' => $agreement_details
+            'agreement_details' => $agreement_details,
+            'search'=>request()->get('search'),
         ]);
     }
 
@@ -46,11 +48,11 @@ class PetaniAgreementsController extends Controller
      */
     public function rejectAgreements(Request $request)
     {
-        $agreementId = $request->post("agreementId");
-        if (!$agreementId) {
+        $agreementDetailId = $request->post("agreementDetailId");
+        if (!$agreementDetailId) {
             return response()->json(["message" => "Data tidak lengkap!"], 401);
         }
-        Agreement::find($agreementId)->delete();
+        AgreementDetail::find($agreementDetailId)->update(['status'=>"reject"]);
 
         return response()->json(["message" => "Persetujuan berhasil ditolak."], 200);
     }

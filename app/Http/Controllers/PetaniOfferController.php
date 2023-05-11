@@ -25,6 +25,7 @@ class PetaniOfferController extends Controller
         return view('partners.petani.offers.index', [
             "css" => [ 'partners/partners', 'partners/offers/index'],
             'details' => $details,
+            'search'=>request()->get('search'),
         ]);
     }
 

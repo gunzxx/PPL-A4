@@ -5,7 +5,7 @@
     <main>
         <x-menuPartners></x-menuPartners>
 
-        <x-searchPartner :value="(isset($query)?$query:'')"></x-searchPartner>
+        <x-searchPartner :value="(isset($search)?$search:'')"></x-searchPartner>
 
         <div class="partner-container">
             @if ($partnerHistories->count()<1)

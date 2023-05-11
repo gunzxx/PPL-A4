@@ -73,10 +73,11 @@ function rejectAgreement() {
         method: "POST",
         data: {
             agreementId: agreementId,
+            agreementDetailId: agreementDetailId,
         },
         success: (e) => {
             // console.log(e);
-            // alert(e.message)
+            alert(e.message)
             window.location.reload();
         },
         error: (e) => {

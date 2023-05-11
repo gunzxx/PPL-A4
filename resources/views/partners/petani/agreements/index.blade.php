@@ -6,7 +6,7 @@
     <main>
         <x-menuPartners></x-menuPartners>
 
-        <x-searchPartner :value="(isset($query)?$query:'')"></x-searchPartner>
+        <x-searchPartner :value="(isset($search)?$search:'')"></x-searchPartner>
 
         <div class="partner-container">
             @if (count($agreement_details)>0)
@@ -46,7 +46,9 @@
                             </div>
                             <div class="detail-list">
                                 <p>Status : </p>
-                                <p class="@if($agreement_detail->status == "accept") is_confirm @elseif($agreement_detail->status == "waiting") is_not_confirm @endif">@if($agreement_detail->status == "waiting")Belum disetujui @elseif($agreement_detail->status == "accept")Disetujui <i class='bi bi-check-circle'></i>@endif</p>
+                                <p class="@if($agreement_detail->status == "accept") is_confirm @elseif($agreement_detail->status == "waiting") is_not_confirm @endif">
+                                    @if($agreement_detail->status == "waiting")Belum disetujui @elseif($agreement_detail->status == "accept")Disetujui <i class='bi bi-check-circle'></i>@endif
+                                </p>
                             </div>
                         </div>
                     </div>
