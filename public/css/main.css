@@ -161,15 +161,15 @@ main{
     display: flex;
     justify-content: start;
 }
-.menu-item{
+.menu-item a{
     padding: 11px 28px;
     border-radius: 15px 15px 0 0;
     transition: 0.3s;
 }
-.menu-item:hover{
+.menu-item a:hover{
     background: rgba(29,103,63,.1);
 }
-.menu-item.active{
+.menu-item.active a{
     background-color: var(--g6);
 }
 .menu-item.active *{
