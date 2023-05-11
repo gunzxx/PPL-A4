@@ -63,7 +63,7 @@ class PetaniAgreementsController extends Controller
             return response()->json(["message" => "Data tidak lengkap!"], 401);
         }
         AgreementDetail::where(["id" => $agreementDetailId])->update([
-            "is_approved" => 1,
+            "status" => "accept",
         ]);
 
         return response()->json(["message" => "Data berhasil diterima."], 200);
