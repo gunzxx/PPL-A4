@@ -18,7 +18,9 @@ class PetaniAgreementsController extends Controller
             "offerDetail" => function ($query) {
                 $query->with('offer');
             }
-        ])->where(['petani_id' => auth()->user()->id])->latest()->paginate(10);
+        ])->where(['petani_id' => auth()->user()->id,'is_active'=>true])->where(function($query){
+            $query->where('status','=','accept')->orWhere('status','=','waiting');
+        })->latest()->paginate(10);
         return view("partners.petani.agreements.index", [
             'css'=>[ 'partners/partners','partners/agreements/index'],
             'agreement_details' => $agreement_details
