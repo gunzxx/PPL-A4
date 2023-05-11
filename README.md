@@ -18,7 +18,7 @@
 ## Step 3 : Konfigurasi database
 - buat database baru dengan nama <pre>gunzxxmy_ppl</pre> di <strong>phpmyadmin</strong>
 - atau kalian bisa konfigurasi sendiri di file .env kalo mau
-- lalu jalankan perintah : <pre>php artisan migrate</pre> di <strong>terminal</strong>
+- lalu jalankan perintah : <pre>php artisan migrate:fresh --seed</pre> di <strong>terminal</strong>
 ## Step 4 : Cara menjalankan aplikasinya
 - ketik <pre>php artisan serve</pre> di <strong>Terminal</strong>
 - buka browser lalu masukin ip nya
