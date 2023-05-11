@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     {
         $user1 = User::create([
             'fullname' => 'Guntur 1',
-            'id_number' => 212410102072,
+            'id_number' => 212410102071,
             'number_phone' => '0895370015252',
             'address' => 'Jl Kalimantan 1',
             'email' => "gunzxx@mail.com",
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
 
         $user3 = User::create([
             'fullname' => 'Guntur 3',
-            'id_number' => 212410102072,
+            'id_number' => 212410102073,
             'number_phone' => '0895370015252',
             'address' => 'Jl Kalimantan 3',
             'email' => "gunz3@mail.com",
@@ -45,7 +45,7 @@ class UserSeeder extends Seeder
 
         $user4 = User::create([
             'fullname' => 'Guntur 4',
-            'id_number' => 212410102072,
+            'id_number' => 212410102074,
             'number_phone' => '0895370015252',
             'address' => 'Jl Kalimantan 4',
             'email' => "gunz4@mail.com",
