@@ -24,11 +24,13 @@ $(document).ready(function () {
             method:'post',
             dataType : 'json',
             success:(e)=>{
-                console.log(e);
+                // console.log(e);
                 $("#bean_type").val(e.bean_type);
                 $(".spinner-container").css('display','none');
             },
             error:(e)=>{
+                alert("error")
+                $(".spinner-container").css('display','none');
                 console.log(e);
             },
         })
