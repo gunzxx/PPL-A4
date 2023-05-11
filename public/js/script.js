@@ -38,10 +38,10 @@ $(document).ready(function(){
     $(document).keydown(function(e){
         if(e.key === "/"){
             e.preventDefault()
-            $(".search-partner input").focus()
+            $(".search-container input").focus()
         }
     })
-    $(".search-partner input").keydown(function(e){
+    $(".search-container input").keydown(function(e){
         var regex = new RegExp("[a-zA-Z0-9]");
         if (regex.test(e.key)) {
             console.log("true");
