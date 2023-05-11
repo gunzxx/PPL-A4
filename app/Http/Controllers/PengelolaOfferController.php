@@ -47,6 +47,7 @@ class PengelolaOfferController extends Controller
             "offer_id" => $offer_id,
         ])->update([
             "status"=>"accept",
+            "is_active"=>true,
         ]);
 
         Partner::find($partner_id)->update(['is_open'=>false]);
@@ -106,7 +107,11 @@ class PengelolaOfferController extends Controller
      */
     public function single($id)
     {
-        $offers = OfferDetail::where(['offer_id'=>$id,'status'=>'accept','is_active'=>true])->get('offer_id')->first()->offer()->get("bean_id")->first()->inventory()->get("bean_type")->first();
-        return response()->json($offers);
+        $offers = OfferDetail::where(['id'=>$id,'status'=>'accept','is_active'=>true])->get('offer_id')->first();
+        if($offers){
+            $offers = $offers->offer()->get("bean_id")->first()->inventory()->get("bean_type")->first();
+            return response()->json($offers);
+        }
+        return response()->json(['message'=>"Data not found!"],404);
     }
 }

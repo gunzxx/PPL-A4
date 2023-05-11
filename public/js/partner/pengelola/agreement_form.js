@@ -29,9 +29,11 @@ $(document).ready(function () {
                 $(".spinner-container").css('display','none');
             },
             error:(e)=>{
-                alert("error")
                 $(".spinner-container").css('display','none');
-                console.log(e);
+                console.log(e.responseJSON);
+                // if()
+                alert(e.responseJSON.message);
+                window.location.reload()
             },
         })
     })
