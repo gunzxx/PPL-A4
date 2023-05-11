@@ -59,8 +59,8 @@
     padding: 5px 25px;
 }
 .detail-list .is_reject{
-    background-color: var(--r2);
-    color: var(--w1);
+    /* background-color: var(--r2); */
+    color: var(--r2);
     padding: 5px 25px;
 }
 
