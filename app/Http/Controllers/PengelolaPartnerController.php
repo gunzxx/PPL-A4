@@ -15,13 +15,13 @@ class PengelolaPartnerController extends Controller
      */
     public function showPartner(Request $request)
     {
-        $query = $request->get('query');
+        $search = $request->get('search');
         $partners = Partner::with(['pengelola'])->where(['pengelola_id'=>auth()->user()->id])->latest()->paginate(10);
 
         return view('partners.pengelola.partners.index',[
             "css"=> ['main', 'partners/partners','partners/offers/index'],
             'partners' => $partners,
-            'query'=>$query,
+            'search'=>$search,
         ]);
     }
 
