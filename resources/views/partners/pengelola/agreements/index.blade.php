@@ -50,7 +50,7 @@
                             </div>
                             <div class="detail-list">
                                 <p>Status : </p>
-                                <p class="@if($agreement_detail->is_approved == 1) is_confirm @else is_not_confirm @endif">{!! $agreement_detail->is_approved == 0 ? "Belum disetujui" : "Disetujui <i class='bi bi-check-circle'></i>" !!}</p>
+                                <p class="@if($agreement_detail->status == "accept") is_confirm @elseif($agreement_detail->status == "waiting") is_not_confirm @endif">@if($agreement_detail->status == "waiting")Belum disetujui @elseif($agreement_detail->status == "accept")Disetujui <i class='bi bi-check-circle'></i></p>
                             </div>
                         </div>
                     </div>
