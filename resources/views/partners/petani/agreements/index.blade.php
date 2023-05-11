@@ -51,11 +51,11 @@
                         </div>
                     </div>
                     <div class="card-action">
-                        @if ($agreement_detail->is_approved == 0)
+                        @if ($agreement_detail->status == "waiting")
                             <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn confirm confirm-agreement" type="button">Terima<i class="bi bi-check-lg"></i></button>
                             <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel reject-agreement" type="button">Tolak<i class="bi bi-x-lg"></i></button>
-                        @elseif($agreement_detail->is_approved == 1)
-                            <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel cancel-agreement" type="button">Hapus <i class="bi bi-x-lg"></i></button>
+                        @elseif($agreement_detail->status == "accept")
+                            {{-- <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel cancel-agreement" type="button">Hapus <i class="bi bi-x-lg"></i></button> --}}
                         @endif
                     </div>
                 </div>
