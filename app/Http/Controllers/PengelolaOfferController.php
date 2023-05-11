@@ -106,7 +106,7 @@ class PengelolaOfferController extends Controller
      */
     public function single($id)
     {
-        $offers = OfferDetail::where(['offer_id'=>$id,'status'=>'accept','is_active'=>true])->get('offer')->first()->offer()->get("bean_id")->first()->inventory()->get("bean_type")->first();
+        $offers = OfferDetail::where(['offer_id'=>$id,'status'=>'accept','is_active'=>true])->get('offer_id')->first()->offer()->get("bean_id")->first()->inventory()->get("bean_type")->first();
         return response()->json($offers);
     }
 }
