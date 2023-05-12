@@ -57,11 +57,26 @@ return [
             'throw' => false,
         ],
         
+        // 'media' => [
+        //     'driver' => 'local',
+        //     'root'   => public_path('media'),
+        //     'url'    => env('APP_URL') . '/media',
+        //     'visibility' => 'public',
+        // ],
         'media' => [
             'driver' => 'local',
-            'root'   => public_path('media'),
-            'url'    => env('APP_URL') . '/media',
-            'visibility' => 'public',
+            'root' => public_path('media'),
+            'url' => env('APP_URL') . '/media',
+            'permissions' => [
+                'file' => [
+                    'public' => 0774,
+                    'private' => 0600,
+                ],
+                'dir' => [
+                    'public' => 0775,
+                    'private' => 0700,
+                ],
+            ],
         ],
     ],
 
