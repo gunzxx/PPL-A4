@@ -16,9 +16,10 @@ use App\Http\Controllers\PengelolaAgreementsController;
 use App\Http\Controllers\PengelolaPartnerHistoryController;
 
 Route::get('/', function () {return view('landing');})->name("landing");
-Route::get('/tes', function () {return view('tes');});
+Route::get('/tes', function () {return view('tes',['user'=>User::find(1)]);});
 Route::post('/tes-media', function () {
     $user = User::find(1)->addMediaFromRequest('image')->toMediaCollection();
+    return back();
 });
 
 // Route guest
