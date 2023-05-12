@@ -29,6 +29,7 @@
                     </div>
                     <div class="card-body">
                         <p title="klik untuk lebih lengkap" class="card-description">{{ Str::limit(strip_tags($partnerHistory->description),500) }}</p>
+                        <small class="show-more">Baca selengkapnya</small>
                     </div>
                     <div class="card-footer">
                         <h3>{{ $partnerHistory->pengelola->address }}</h3>

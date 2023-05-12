@@ -39,6 +39,7 @@
                     <div class="card-body">
                         <p>Jenis kedelai : {{ strip_tags($partner->bean_type) }}</p>
                         <p title="klik untuk menampilkan lebih lengkap" class="card-description">Deskripsi : {{ strip_tags($partner->description) }}</p>
+                        <small class="show-more">Baca selengkapnya</small>
                     </div>
                     <div class="card-footer">
                         <h3>{{ $partner->pengelola->address }}</h3>

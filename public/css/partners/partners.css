@@ -173,6 +173,7 @@
     font-size: 14px;
 }
 .card-body .card-description{
+    transition: 0.5s;
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;
@@ -313,11 +314,13 @@
 }
 .partner-btn-history{
     background-color: var(--w2);
-    border: 1px solid var(--b2);
-    color: var(--b2);
+    border: 1px solid var(--g2);
+    color: var(--g2);
 }
 .partner-btn-history:hover{
-    border: 1px solid var(--b2);
+    background-color: var(--g2);
+    border: 1px solid var(--g2);
+    color: var(--w2);
 }
 
 i{

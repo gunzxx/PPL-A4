@@ -16,7 +16,7 @@ class PengelolaPartnerController extends Controller
     public function showPartner(Request $request)
     {
         $search = $request->get('search');
-        $partners = Partner::with(['pengelola'])->where(['pengelola_id'=>auth()->user()->id])->latest()->paginate(10);
+        $partners = Partner::with(['pengelola','offerDetail'])->where(['pengelola_id'=>auth()->user()->id])->latest()->paginate(10);
 
         return view('partners.pengelola.partners.index',[
             "css"=> [ 'partners/partners','partners/offers/index'],
