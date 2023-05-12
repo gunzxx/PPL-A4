@@ -41,7 +41,11 @@ class PetaniOfferController extends Controller
         $cekpartner = OfferDetail::where([
             'partner_id' => $partner->id,
             "petani_id" => auth()->user()->id,
-        ])->get();
+        ])
+        ->where(function($query){
+            $query->where(['status'=>'waiting'])->orWhere(['status'=>'accept']);
+        })
+        ->get();
         if ($cekpartner->count() > 0) {
             return back()->with(['error' => 'Kerja sama sudah pernah ditawar, silahkan cek penawaran anda pada menu kerja sama.']);
         }
@@ -63,12 +67,10 @@ class PetaniOfferController extends Controller
         if(!$request->post('bean_id')){
             return back()->with("error","Stok masih kosong")->withInput();
         }
+
         # inventory
         $inventory = Inventory::find($request->post("bean_id"));
 
-        # partner id
-        $partner_id = $request->post('partner_id');
-        
         $validated = $request->validate([
             'description' => 'required|max:10000',
             "stok" => "required|numeric|max:{$inventory->stok}",
@@ -78,15 +80,21 @@ class PetaniOfferController extends Controller
             'stok.max' => "Stok melebihi batas inventory"
         ]);
         $validated['petani_id'] = auth()->user()->id;
-        // $partner = Partner::find($partner_id)->pengelola_id;
+
+        # partner id
+        $partner_id = $request->post('partner_id');
         $pengelola_id = Partner::find($partner_id)->pengelola_id;
 
         $cekpartner = OfferDetail::where([
             'partner_id' => $partner_id,
             "petani_id" => auth()->user()->id,
-        ])->get();
+        ])
+        ->where(function($query){
+            $query->where(['status'=>'waiting'])->orWhere(['status'=>'accept']);
+        })
+        ->get();
         if ($cekpartner->count() > 0) {
-            return back()->withErrors(['duplicate' => 'Kerja sama sudah pernah ditawar'])->withInput();
+            return back()->withErrors(['error' => 'Kerja sama sudah pernah ditawar'])->withInput();
         }
 
         $offer = Offer::create($validated);
@@ -106,7 +114,7 @@ class PetaniOfferController extends Controller
      */
     public function editOffers($detail_id)
     {
-        $detail = OfferDetail::where(['id'=>$detail_id,'is_approved'=>0,'is_rejected'=>0])->with([
+        $detail = OfferDetail::where(['id'=>$detail_id,'status'=>"waiting",'is_active'=>true])->with([
             'partner' => function($query){
                 $query->with('pengelola');
             },
@@ -114,6 +122,9 @@ class PetaniOfferController extends Controller
                 $query->with('petani');
             },
         ])->get();
+        if(!$detail){
+            return back()->with('error',"Data tidak ditemukan");
+        }
         if($detail->count()<1){
             return back()->withErrors(["message"=>"Data tidak ditemukan"]);
         }

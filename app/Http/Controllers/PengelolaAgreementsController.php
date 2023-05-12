@@ -70,7 +70,7 @@ class PengelolaAgreementsController extends Controller
         $cekDetail = AgreementDetail::where(['pengelola_id'=> auth()->user()->id, "offer_detail_id" => $offer_detail_id])->where("status",'!=','reject')->get();
         
         if($cekDetail->count()>0){
-            return redirect()->back()->withErrors(["message"=>"Penawaran sudah pernah dimintai persetujuan,\nPilih penawaran lain!"])->withInput();
+            return redirect()->back()->withErrors(["message"=>"Penawaran sudah pernah dimintai persetujuan,\nPilih penawaran lain!"])->with('offer_detail_id',$offer_detail_id)->withInput();
         }
         
         $agreement = Agreement::create($validated);
