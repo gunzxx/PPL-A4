@@ -74,7 +74,7 @@ class PetaniOfferController extends Controller
         $validated = $request->validate([
             'description' => 'required|max:10000',
             "stok" => "required|numeric|max:{$inventory->stok}",
-            "price" => "required|numeric",
+            "price" => "required|numeric|min:1000",
             "bean_id" => "required",
         ],[
             'stok.max' => "Stok melebihi batas inventory"
