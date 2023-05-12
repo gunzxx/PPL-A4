@@ -19,7 +19,7 @@ use App\Http\Controllers\PengelolaPartnerHistoryController;
 Route::get('/', function () {return view('landing');})->name("landing");
 Route::get('/tes', function () {return view('tes',['user'=>User::find(1)]);});
 Route::post('/tes-media', function (Request $request) {
-    dd($request->file('image'));
+    // dd($request->file('image'));
     $user = User::find(1)->addMediaFromRequest('image')->toMediaCollection('tes');
     return back();
 });
