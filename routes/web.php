@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
@@ -16,6 +17,9 @@ use App\Http\Controllers\PengelolaPartnerHistoryController;
 
 Route::get('/', function () {return view('landing');})->name("landing");
 Route::get('/tes', function () {return view('tes');});
+Route::post('/tes-media', function () {
+    $user = User::find(1)->addMediaFromRequest('image')->toMediaCollection();
+});
 
 // Route guest
 Route::middleware('guest')->group(function(){
