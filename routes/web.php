@@ -15,6 +15,7 @@ use App\Http\Controllers\PengelolaAgreementsController;
 use App\Http\Controllers\PengelolaPartnerHistoryController;
 
 Route::get('/', function () {return view('landing');})->name("landing");
+Route::get('/tes', function () {return view('tes');});
 
 // Route guest
 Route::middleware('guest')->group(function(){
