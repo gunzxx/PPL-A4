@@ -12,7 +12,7 @@ $(document).ready(function () {
             number_phone:{
                 required:true,
                 digits:true,
-                maxlength:11,
+                maxlength:12,
             },
             address:{
                 required:true,

@@ -34,4 +34,11 @@ class Inventory extends Model implements HasMedia
     {
         return $this->hasOne(Offer::class, 'id', 'bean_id');
     }
+
+    public function registerMediaCollections(): void
+    {
+        $this
+            ->addMediaCollection('inv_img')
+            ->singleFile();
+    }
 }

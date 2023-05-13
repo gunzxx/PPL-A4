@@ -10,7 +10,7 @@
         <div class="box-container">
             <div class="">
                 <p align="center">Tidak ada penjualan.</p>
-                <p align="center">Silahkan buat penjualan terlebih dahulu.</p>
+                <p align="center">Silahkan jual kedelai terlebih dahulu.</p>
             </div>
         </div>
     </main>

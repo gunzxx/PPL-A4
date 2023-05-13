@@ -23,6 +23,6 @@ class PartnerSeeder extends Seeder
             'bean_type' => "Kedelai hitam",
             'pengelola_id' => 1,
         ]);
-        // Partner::factory(5)->create();
+        Partner::factory(5)->create();
     }
 }

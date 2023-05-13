@@ -34,7 +34,6 @@ $(document).ready(function(){
         $('.alert-ok-container').hide(300);
     })
     
-    let displayBody = 'box';
     $(document).keydown(function(e){
         if(e.key === "/"){
             e.preventDefault()
@@ -52,14 +51,33 @@ $(document).ready(function(){
             return false;
         }
     })
+
+
+
+    $(".show-more").click(function(){
+        let sibling = $(this).siblings(".card-description")[0]
+        
+        if ($(sibling).css("display") =="-webkit-box"){
+            $(this).text("Baca lebih sedikit")
+            $(sibling).css("display",'block');
+            $(sibling).attr("title",'klik untuk menampilkan lebih sedikit')
+        }
+        else if ($(sibling).css("display") =="block"){
+            $(this).text("Baca selengkapnya")
+            $(sibling).css("display",'-webkit-box');
+            $(sibling).attr("title",'klik untuk menampilkan lebih lengkap')
+        }
+    })
     $(".card-description").click(function(){
-        if (displayBody === "box"){
-            displayBody = 'block'
+        let sibling = $(this).siblings(".show-more")[0]
+
+        if ($(this).css("display") =="-webkit-box"){
+            $(sibling).text("Baca lebih sedikit")
             $(this).css("display",'block');
             $(this).attr("title",'klik untuk menampilkan lebih sedikit')
         }
-        else if (displayBody === "block"){
-            displayBody = 'box'
+        else if ($(this).css("display") =="block"){
+            $(sibling).text("Baca selengkapnya")
             $(this).css("display",'-webkit-box');
             $(this).attr("title",'klik untuk menampilkan lebih lengkap')
         }

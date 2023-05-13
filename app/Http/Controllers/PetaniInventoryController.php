@@ -12,7 +12,7 @@ class PetaniInventoryController extends Controller
      */
     public function showInventory()
     {
-        $inventories = Inventory::where('user_id',auth()->user()->id)->latest()->paginate(10);
+        $inventories = Inventory::where('user_id',auth()->user()->id)->with(['media'])->latest()->paginate(10);
         return view('inventory.petani.index', [
             "css" => [ 'inventory/inventory'],
             'inventories' => $inventories,
@@ -40,8 +40,12 @@ class PetaniInventoryController extends Controller
         ]);
         $validated['user_id'] = auth()->user()->id;
 
-        Inventory::create($validated);
+        $inventory = Inventory::create($validated);
 
+        if ($request->file('inv_img')) {
+            $inventory->addMediaFromRequest("inv_img")->toMediaCollection("inv_img");
+        }
+        
         return redirect(auth()->user()->getRoleNames()[0].'/inventory/inventory')->with('success', 'Data berhasil ditambahkan');
     }
 
@@ -69,9 +73,14 @@ class PetaniInventoryController extends Controller
             "stok" => "required|numeric",
         ]);
 
-        $id = $request->only('inv_id');
+        $id = $request->post('inv_id');
 
         Inventory::where('id',$id)->update($validated);
+        
+        $inventory = Inventory::find($id);
+        if ($request->file('inv_img')) {
+            $inventory->addMediaFromRequest("inv_img")->toMediaCollection("inv_img");
+        }
         return redirect(auth()->user()->getRoleNames()[0] . '/inventory/inventory')->with('success', 'Data berhasil diupdate');
     }
 

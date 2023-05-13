@@ -10,7 +10,9 @@
         <div class="card-container">
             @foreach ($inventories as $inventory)
             <div class="card">
-                <img src="/img/inventory/1.png" height="240px" class="card-img">
+                <div class="card-img">
+                    <img src="{{ $inventory->getFirstMediaUrl("inv_img") != "" ? $inventory->getFirstMediaUrl("inv_img") : "/img/inventory/1.png" }}" height="240px" class="">
+                </div>
                 <div class="card-body">
                     <h1 style="text-align: center;"><span style="color:#41B167;">Jenis kedelai : </span>{{ $inventory->bean_type }}</h1>
                     <p style="text-align: center;"><span style="color:#41B167;"></span>Tersedia : {{ $inventory->stok }} kg kedelai</p>

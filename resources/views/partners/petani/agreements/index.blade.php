@@ -6,7 +6,7 @@
     <main>
         <x-menuPartners></x-menuPartners>
 
-        <x-searchPartner :value="(isset($query)?$query:'')"></x-searchPartner>
+        <x-searchPartner :value="(isset($search)?$search:'')"></x-searchPartner>
 
         <div class="partner-container">
             @if (count($agreement_details)>0)
@@ -46,7 +46,9 @@
                             </div>
                             <div class="detail-list">
                                 <p>Status : </p>
-                                <p class="@if($agreement_detail->status == "accept") is_confirm @elseif($agreement_detail->status == "waiting") is_not_confirm @endif">@if($agreement_detail->status == "waiting")Belum disetujui @elseif($agreement_detail->status == "accept")Disetujui <i class='bi bi-check-circle'></i>@endif</p>
+                                <p class="@if($agreement_detail->status == "accept") is_confirm @elseif($agreement_detail->status == "waiting") is_not_confirm @endif">
+                                    @if($agreement_detail->status == "waiting")Belum disetujui @elseif($agreement_detail->status == "accept")Disetujui <i class='bi bi-check-circle'></i>@endif
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -55,6 +57,7 @@
                             <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn confirm confirm-agreement" type="button">Terima<i class="bi bi-check-lg"></i></button>
                             <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel reject-agreement" type="button">Tolak<i class="bi bi-x-lg"></i></button>
                         @elseif($agreement_detail->status == "accept")
+                            <span class="status is_confirm">Diterima <i class="bi bi-check-circle-fill"></i></span>
                             {{-- <button data-agrement-detail-id="{{ $agreement_detail->id }}" data-agreement-id="{{ $agreement_detail->agreement->id }}" class="btn cancel cancel-agreement" type="button">Hapus <i class="bi bi-x-lg"></i></button> --}}
                         @endif
                     </div>

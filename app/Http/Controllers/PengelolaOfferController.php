@@ -27,6 +27,7 @@ class PengelolaOfferController extends Controller
         return view('partners.pengelola.offers.index', [
             "css" => [ 'partners/partners', 'partners/offers/index'],
             'details' => $details,
+            'search' => request()->get('search'),
         ]);
     }
 

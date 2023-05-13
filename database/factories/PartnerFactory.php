@@ -24,7 +24,7 @@ class PartnerFactory extends Factory
             'stok'=>mt_rand(10000,100000),
             'price'=>mt_rand(1000,30000),
             'bean_type'=>"Kedelai hitam",
-            'pengelola_id'=>mt_rand(1,2),
+            'pengelola_id'=>1,
         ];
     }
 }

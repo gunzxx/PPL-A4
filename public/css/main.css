@@ -106,7 +106,7 @@ nav{
     transition: 0.3s;
 }
 .profile-menu-container *{
-    font-size: 16px !important;
+    font-size: 14px !important;
 }
 .profile-menu-container{
     display: none;
@@ -119,21 +119,24 @@ nav{
     width: 250px;
     background: rgb(255, 255, 255);
     box-shadow: 0 4px 25px rgba(0,0,0,.1);
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: hidden;
 }
-
+/* .backdrop-profile{
+    cursor: pointer;
+} */
 .profile-menu-list{
     width: 100%;
     display: flex;
     justify-content: start;
-    padding: 10px 25px;
+    padding: 7px 20px;
 }
 .profile-menu-list:hover{
-    background-color: var(--g1);
+    background-color: var(--g3);
+    color: var(--w1);
 }
 .profile-menu-list.logout:hover{
     background-color: var(--r2);
@@ -161,21 +164,19 @@ main{
     display: flex;
     justify-content: start;
 }
-.menu-item{
+.menu-item a{
     padding: 11px 28px;
     border-radius: 15px 15px 0 0;
     transition: 0.3s;
+    font-size: 16px;
 }
-.menu-item:hover{
+.menu-item a:hover{
     background: rgba(29,103,63,.1);
 }
-.menu-item.active{
+.menu-item.active a{
     background-color: var(--g6);
 }
 .menu-item.active *{
     color: var(--w1);
-}
-.menu-item a{
-    font-size: 16px;
 }
 
