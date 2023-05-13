@@ -33,6 +33,7 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
+            // 'visibility' => 'public',
             'throw' => false,
         ],
 
@@ -56,10 +57,26 @@ return [
             'throw' => false,
         ],
         
+        // 'media' => [
+        //     'driver' => 'local',
+        //     'root'   => public_path('media'),
+        //     'url'    => env('APP_URL') . '/media',
+        //     'visibility' => 'public',
+        // ],
         'media' => [
             'driver' => 'local',
-            'root'   => public_path('media'),
-            'url'    => env('APP_URL') . '/media',
+            'root' => public_path('media'),
+            'url' => env('APP_URL') . '/media',
+            'permissions' => [
+                'file' => [
+                    'public' => 0775,
+                    'private' => 0775,
+                ],
+                'dir' => [
+                    'public' => 0775,
+                    'private' => 0775,
+                ],
+            ],
         ],
     ],
 

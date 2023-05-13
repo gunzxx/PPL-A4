@@ -7,8 +7,14 @@
         <x-menuInventory></x-menuInventory>
 
         <div class="card-container">
-            <form class="form-container required-form" id="form-inventory" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/inventory/create">
+            <form class="form-container required-form" id="form-inventory" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/inventory/create" enctype="multipart/form-data">
                 @csrf
+                <div class="form-group">
+                    <div id="preview-inv-img">
+                        <img src="/img/inventory/default.png">
+                    </div>
+                    <label for="inv-img" class="upload-inv-img-label">Upload<input type="file" name="inv_img" id="inv-img" accept="image/*"></label>
+                </div>
                 <div class="form-group">
                     <input class="@error('bean_type') invalid @enderror" value="{{ old('bean_type') }}" name="bean_type" type="text" placeholder="Masukkan jenis kedelai">
                     @error('bean_type')
@@ -31,5 +37,6 @@
 @endsection
 
 @section('script')
+    <script src="/js/inventory/index.js"></script>
     <script src="/js/inventory/pengelola/manage.js"></script>
 @endsection

@@ -4,8 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\AuthController;
-// use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\ApiKedelaiController;
+use App\Http\Controllers\api\KedelaiController;
 use App\Http\Controllers\PetaniOfferController;
 use App\Http\Controllers\PengelolaOfferController;
 use App\Http\Controllers\PetaniInventoryController;
@@ -60,5 +59,5 @@ Route::post('/petani/agreements/confirm', [PetaniAgreementsController::class, 'c
 
 
 // Route api forecasting data kedelai
-Route::get('/kedelai',[ApiKedelaiController::class,'index']);
-Route::get('/kedelai/{apiKedelai}',[ApiKedelaiController::class,'show']);
+Route::get('/kedelai',[KedelaiController::class,'index']);
+Route::get('/kedelai/{apiKedelai}',[KedelaiController::class,'show']);

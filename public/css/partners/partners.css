@@ -22,6 +22,7 @@
     border:none;
     transition: 0.3s;
     box-shadow: inset 0 0 10px rgba(61,86,86,.1);
+    color: var(--g5);
 }
 .search-container input:focus{
     box-shadow: inset 0 0 20px rgba(61,86,86,.1);
@@ -172,6 +173,7 @@
     font-size: 14px;
 }
 .card-body .card-description{
+    transition: 0.5s;
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;
@@ -312,11 +314,13 @@
 }
 .partner-btn-history{
     background-color: var(--w2);
-    border: 1px solid var(--b2);
-    color: var(--b2);
+    border: 1px solid var(--g2);
+    color: var(--g2);
 }
 .partner-btn-history:hover{
-    border: 1px solid var(--b2);
+    background-color: var(--g2);
+    border: 1px solid var(--g2);
+    color: var(--w2);
 }
 
 i{

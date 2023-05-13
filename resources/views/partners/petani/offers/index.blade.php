@@ -6,7 +6,7 @@
     <main>
         <x-menuPartners></x-menuPartners>
 
-        <x-searchPartner :value="(isset($query)?$query:'')"></x-searchPartner>
+        <x-searchPartner :value="(isset($search)?$search:'')"></x-searchPartner>
 
         <div class="partner-container">
             @if (count($details)<1)

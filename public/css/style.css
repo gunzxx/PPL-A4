@@ -571,3 +571,14 @@ input:read-only{
     font-size: 16px !important;
 }
 /* Pagination End */
+
+
+
+/* Show more */
+.show-more{
+    cursor: pointer;
+}
+.show-more:hover{
+    color: rgba(0,206,209,1);
+}
+/* Show more end */

@@ -16,7 +16,8 @@ class PengelolaPartnerHistoryController extends Controller
 
         return view("partners.pengelola.history.index",[
             "css"=> [ 'partners/partners','partners/history/index'],
-            'partnerHistories' => $partnerHistories
+            'partnerHistories' => $partnerHistories,
+            'search'=>request()->get('search'),
         ]);
     }
 }
