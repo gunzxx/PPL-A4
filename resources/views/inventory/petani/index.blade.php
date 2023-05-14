@@ -30,7 +30,7 @@
         @endif
     </main>
 
-    {{-- <a class="plus-inv" href="/petani/inventory/create">Tambah</a> --}}
+    <a class="plus-inv" href="/petani/inventory/create">Tambah</a>
 
     <div class="popup-backdrop delete-inventory">
         <div class="popup-container">

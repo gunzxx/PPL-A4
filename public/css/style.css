@@ -338,14 +338,17 @@ input:read-only{
     right: 0;
     left: 0;
     z-index: 40;
-    background: rgba(255,255,255,.5);
+    background: rgba(255,255,255,.3);
     width: 100vw;
     height: 100vh;
+}
+.popup-container *{
+    font-size: 16px;
 }
 .popup-container{
     width: 40%;
     padding: 20px;
-    background: rgb(220,220,220);
+    background: rgb(245,245,245);
     box-shadow: 0 4px 15px rgba(0,0,0,.3);
     border-radius: 10px;
     top: 30px;
@@ -356,15 +359,19 @@ input:read-only{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 25px;
 }
 .popup-alert button{
-    padding: 10px 20px;
+    padding: 5px 20px;
     border: none;
     outline: none;
     box-shadow: 0 4px 15px rgba(0,0,0,.3);
     border-radius: 10px;
     color: var(--w2);
+    transition: 0.3s;
+}
+.popup-alert button:hover{
+    transform: scale(1.03);
 }
 .popup-alert .popup-yes{
     background: green !important;

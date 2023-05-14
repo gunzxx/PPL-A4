@@ -9,11 +9,12 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Inventory extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
+
+    protected $guarded = ['id'];
 
     // public function registerMediaConversions(Media $media = null): void
     // {
@@ -22,8 +23,6 @@ class Inventory extends Model implements HasMedia
     //         ->fit(Manipulations::FIT_CROP, 300, 300)
     //         ->nonQueued();
     // }
-
-    protected $guarded = ['id'];
 
     public function user()
     {
