@@ -58,9 +58,9 @@ class PengelolaPartnerController extends Controller
      */
     public function edit($partner_id)
     {
-        $cekPartnerDetail = Partner::where(['id'=> $partner_id,'is_active'=>true])->get()->first()->offerDetail()->where('status','!=','accept')->get();
-        if($cekPartnerDetail->count()<1){
-            return back()->with('error','Data not active');
+        $cekPartnerDetail = Partner::where(['id'=> $partner_id,'is_active'=>true])->get()->first()->offerDetail()->where(['status'=>'accept'])->get();
+        if($cekPartnerDetail->count()>0){
+            return back()->with('error','Kerja sama sudah memiliki penawaran yang aktif!');
         }
         $partner = Partner::where(['id'=> $partner_id,'is_active'=>true])->get()->first();
         if(!$partner){
