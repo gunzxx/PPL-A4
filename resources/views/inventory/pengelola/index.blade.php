@@ -40,6 +40,9 @@
         </div>
     </div>
 
+    {{-- <a class="plus-inv" href="/petani/inventory/create">Tambah</a> --}}
+    <a class="plus-inv" href="/{{ auth()->user()->getRoleNames()[0] }}/inventory/create">Tambah</a>
+
     @error("message")
         <x-alertError :message="$message"></x-alertError>
     @enderror

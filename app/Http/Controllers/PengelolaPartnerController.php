@@ -15,7 +15,12 @@ class PengelolaPartnerController extends Controller
     public function showPartner(Request $request)
     {
         $search = $request->get('search');
-        $partners = Partner::with(['pengelola','offerDetail'])->where(['pengelola_id'=>auth()->user()->id])->latest()->paginate(10);
+        $partners = Partner::where(['pengelola_id'=>auth()->user()->id])->with([
+            'pengelola',
+            'offerDetail'=>function($query){
+                $query->where(['status'=>'active']);
+            },
+        ])->latest()->paginate(10);
 
         return view('partners.pengelola.partners.index',[
             "css"=> [ 'partners/partners','partners/offers/index'],
@@ -58,9 +63,13 @@ class PengelolaPartnerController extends Controller
      */
     public function edit($partner_id)
     {
-        $partner = Partner::where(['id'=> $partner_id,'is_active'=>1])->get()->first();
+        $cekPartnerDetail = Partner::where(['id'=> $partner_id,'is_active'=>true])->get()->first()->offerDetail()->where(['status'=>'accept'])->get();
+        if($cekPartnerDetail->count()>0){
+            return back()->with('error','Kerja sama sudah memiliki penawaran yang aktif!');
+        }
+        $partner = Partner::where(['id'=> $partner_id,'is_active'=>true])->get()->first();
         if(!$partner){
-            return back();
+            return back()->with('error','Data not found');
         }
         if ($partner->pengelola_id != auth()->user()->id) {
             return abort(403);

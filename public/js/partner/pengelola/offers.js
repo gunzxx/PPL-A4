@@ -38,10 +38,8 @@ function confirmOffer(){
         },
         error: (e) => {
             // console.log(e);
-            alert("error");
-            if (alert("Terjadi kesalahan, memuat ulang halaman.")){
-                window.location.reload();
-            }
+            alert(e.responseJSON.message)
+            window.location.reload();
         },
     })
 }
@@ -62,10 +60,8 @@ function cancelOffer(){
         },
         error: (e) => {
             // console.log(e);
-            alert("error");
-            if (alert("Terjadi kesalahan, memuat ulang halaman.")) {
-                window.location.reload();
-            }
+            alert(e.responseJSON.message)
+            window.location.reload();
         },
     })
 }
@@ -89,10 +85,8 @@ function rejectOffer(){
         },
         error: (e) => {
             // console.log(e);
-            alert("error");
-            if (alert("Terjadi kesalahan, memuat ulang halaman.")) {
-                window.location.reload();
-            }
+            alert(e.responseJSON.message)
+            window.location.reload();
         },
     })
 }

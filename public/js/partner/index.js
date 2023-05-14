@@ -19,7 +19,7 @@ function deletePartner(){
             window.location.reload();
         },
         error: (e) => {
-            alert("gagal");
+            // alert("gagal");
             // console.log(e);
             alert("Terjadi kesalahan, memuat ulang halaman.");
             window.location.reload();
@@ -46,7 +46,7 @@ function stopPartner(){
             window.location.reload();
         },
         error: (e) => {
-            alert("gagal");
+            // alert("gagal");
             // console.log(e);
             alert("Terjadi kesalahan, memuat ulang halaman.");
             window.location.reload();

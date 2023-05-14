@@ -20,9 +20,7 @@ function deleteInventory(){
         error: (e) => {
             console.log(e);
             alert("error");
-            if (confirm("Terjadi kesalahan, memuat ulang halaman.")) {
-                window.location.reload();
-            }
+            window.location.reload();
         }
     })
 }
@@ -35,15 +33,6 @@ $("#form-inventory").validate({
         stok:{
             required:true,
             number:true,
-        },
-    },
-    messages:{
-        bean_type:{
-            required:"Data tidak valid",
-        },
-        stok:{
-            required:"Data tidak valid",
-            number:"Data harus angka",
         },
     },
 })

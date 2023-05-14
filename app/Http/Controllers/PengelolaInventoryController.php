@@ -39,6 +39,12 @@ class PengelolaInventoryController extends Controller
             "stok" => "required|numeric",
         ]);
         $validated['user_id'] = auth()->user()->id;
+
+        if ($request->file('inv_img')) {
+            $request->validate([
+                "inv_img" => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+        }
         
         $inventory = Inventory::create($validated);
 
@@ -74,9 +80,15 @@ class PengelolaInventoryController extends Controller
 
         $id = $request->post('inv_id');
 
-        Inventory::where('id', $id)->update($validated);
-        $inventory = Inventory::find($id);
+        if ($request->file('inv_img')) {
+            $request->validate([
+                "inv_img" => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+        }
 
+        Inventory::where('id', $id)->update($validated);
+        
+        $inventory = Inventory::find($id);
         if ($request->file('inv_img')) {
             $inventory->addMediaFromRequest("inv_img")->toMediaCollection("inv_img");
         }

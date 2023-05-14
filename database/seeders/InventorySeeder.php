@@ -16,7 +16,7 @@ class InventorySeeder extends Seeder
         Inventory::create([
             'bean_type' => 'Kedelai hitam',
             'stok' => 1000,
-            'user_id' => 1
+            'user_id' => 3
         ]);
 
         Inventory::create([

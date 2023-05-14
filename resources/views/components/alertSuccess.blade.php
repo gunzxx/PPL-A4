@@ -1,6 +1,6 @@
 <div class="alert-container alert-container-success">
     <div class="alert-icon">
-        <i class="bi bi-exclamation-triangle-fill"></i>
+        <i class="bi bi-check-circle-fill"></i>
     </div>
     <div class="alert-body">
         <p>{{ $message }}</p>
