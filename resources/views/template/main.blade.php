@@ -28,6 +28,7 @@
 
     <script src="/js/jquery.min.js"></script>
     <script src="/js/jquery-validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/script.js"></script>
     @yield('script')
 </body>

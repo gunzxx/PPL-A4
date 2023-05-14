@@ -17,9 +17,13 @@ use App\Http\Controllers\PengelolaAgreementsController;
 use App\Http\Controllers\PengelolaPartnerHistoryController;
 
 Route::get('/', function () {return view('landing');})->name("landing");
+
+// Tes alert
 Route::get('/tes', function () {return view('tes',['user'=>User::find(1)]);});
-Route::post('/tes-media', function (Request $request) {
-    // dd($request->file('image'));
+
+// Tes media library
+Route::get('/tes-media', function () {return view('tes',['user'=>User::find(1)]);});
+Route::post('/tes-media', function () {
     $user = User::find(1)->addMediaFromRequest('image')->toMediaCollection('tes');
     return back();
 });
