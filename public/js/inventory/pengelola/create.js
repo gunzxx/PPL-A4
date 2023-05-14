@@ -7,14 +7,9 @@ $("#form-inventory").validate({
             required:true,
             number:true,
         },
-    },
-    messages:{
-        bean_type:{
-            required:"Data tidak valid",
-        },
-        stok:{
-            required:"Data tidak valid",
-            number:"Data harus angka",
-        },
+        inv_img: {
+            required: true,
+            accept: 'image/*',
+        }
     },
 })

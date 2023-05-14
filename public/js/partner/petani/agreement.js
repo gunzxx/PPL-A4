@@ -37,10 +37,8 @@ function cancelAgreement() {
         },
         error: (e) => {
             // console.log(e);
-            alert("error");
-            if (alert("Terjadi kesalahan, memuat ulang halaman.")) {
-                window.location.reload();
-            }
+            alert(e.responseJSON.message)
+            window.location.reload();
         },
     })
 }
@@ -59,10 +57,8 @@ function confirmAgreement() {
         },
         error: (e) => {
             // console.log(e);
-            alert("error");
-            if (alert("Terjadi kesalahan, memuat ulang halaman.")) {
-                window.location.reload();
-            }
+            alert(e.responseJSON.message)
+            window.location.reload();
         },
     })
 }
@@ -82,10 +78,8 @@ function rejectAgreement() {
         },
         error: (e) => {
             // console.log(e);
-            alert("error");
-            if (alert("Terjadi kesalahan, memuat ulang halaman.")) {
-                window.location.reload();
-            }
+            alert(e.responseJSON.message)
+            window.location.reload();
         },
     })
 }

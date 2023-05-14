@@ -23,11 +23,9 @@ function cancelAgreement() {
             window.location.reload();
         },
         error: (e) => {
-            console.log(e);
-            alert("error");
-            if (confirm("Terjadi kesalahan, memuat ulang halaman.")) {
-                window.location.reload();
-            }
+            // console.log(e);
+            alert(e.responseJSON.message)
+            window.location.reload();
         }
     })
 }
@@ -45,11 +43,9 @@ function deleteAgreement() {
             window.location.reload();
         },
         error: (e) => {
-            console.log(e);
-            alert("error");
-            if (confirm("Terjadi kesalahan, memuat ulang halaman.")) {
-                window.location.reload();
-            }
+            // console.log(e);
+            alert(e.responseJSON.message)
+            window.location.reload();
         }
     })
 }
