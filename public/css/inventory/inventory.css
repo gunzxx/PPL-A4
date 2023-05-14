@@ -184,6 +184,7 @@
     max-height: 230px;
     height: 230px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     /* background-color: var(--g1); */
@@ -192,8 +193,16 @@
     border-radius: 10px;
     overflow: hidden;
 }
+#preview-inv-img > p{
+    color: var(--r2);
+    font-size: 16px;
+}
 #preview-inv-img img{
-    height: 100% !important;
+    height: 100%;
+    border-radius: 10px;
+}
+#preview-inv-img:has(p) img{
+    height: 80% !important;
     border-radius: 10px;
 }
 .upload-inv-img-label{

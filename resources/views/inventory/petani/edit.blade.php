@@ -11,6 +11,9 @@
                 <div class="form-group">
                     <div id="preview-inv-img">
                         <img src="{{ $inventory->getFirstMediaUrl('inv_img') != '' ? $inventory->getFirstMediaUrl('inv_img') : '/img/inventory/default.png' }}">
+                        @error('inv_img')
+                            <p class="error">{{ $message }}</p>
+                        @enderror
                     </div>
                     <label for="inv-img" class="upload-inv-img-label">Upload<input type="file" name="inv_img" id="inv-img" accept="image/*"></label>
                 </div>

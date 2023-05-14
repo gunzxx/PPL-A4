@@ -40,6 +40,12 @@ class PetaniInventoryController extends Controller
         ]);
         $validated['user_id'] = auth()->user()->id;
 
+        if ($request->file('inv_img')) {
+            $request->validate([
+                "inv_img" => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+        }
+
         $inventory = Inventory::create($validated);
 
         if ($request->file('inv_img')) {
@@ -75,12 +81,20 @@ class PetaniInventoryController extends Controller
 
         $id = $request->post('inv_id');
 
+        if ($request->file('inv_img')) {
+            $request->validate([
+                "inv_img"=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+        }
+
         Inventory::where('id',$id)->update($validated);
         
         $inventory = Inventory::find($id);
+
         if ($request->file('inv_img')) {
             $inventory->addMediaFromRequest("inv_img")->toMediaCollection("inv_img");
         }
+
         return redirect(auth()->user()->getRoleNames()[0] . '/inventory/inventory')->with('success', 'Data berhasil diupdate');
     }
 
