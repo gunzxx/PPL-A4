@@ -40,7 +40,7 @@
                         @if ($partner->is_active == 0)
                             <button class="btn delete" data-id="{{ $partner->id }}" type="button">Hapus<i class="bi bi-trash3-fill"></i></button>
                         @else
-                            @if (!$partner->offerDetail()->where(['status'=>'accept'])->get('status'))
+                            @if ($partner->offerDetail()->where(['status'=>'accept'])->get('status')->count() < 1)
                                 <a class="btn" href="/pengelola/partners/partners/edit/{{ $partner->id }}" type="button">Update<i class="bi bi-pencil-square"></i></a>
                             @endif
                             <button class="btn stop" data-id="{{ $partner->id }}" type="button">Berhenti<i class="bi bi-x-lg"></i></button>
@@ -86,6 +86,10 @@
     
     @if(session()->has('success'))
         <x-alertSuccess :message="session()->get('success')"></x-alertSuccess>
+    @endif
+    
+    @if(session()->has('error'))
+        <x-alertError :message="session()->get('error')"></x-alertError>
     @endif
 @endsection
 
