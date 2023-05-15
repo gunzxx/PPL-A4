@@ -1,32 +1,22 @@
 <?php
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PetaniShopController;
 use App\Http\Controllers\PetaniOfferController;
+use App\Http\Controllers\PetaniInventoryController;
+use App\Http\Controllers\PetaniAgreementsController;
 use App\Http\Controllers\PengelolaShopController;
 use App\Http\Controllers\PengelolaOfferController;
-use App\Http\Controllers\PetaniInventoryController;
 use App\Http\Controllers\PengelolaPartnerController;
-use App\Http\Controllers\PetaniAgreementsController;
 use App\Http\Controllers\PengelolaInventoryController;
 use App\Http\Controllers\PengelolaAgreementsController;
 use App\Http\Controllers\PengelolaPartnerHistoryController;
 
 Route::get('/', function () {return view('landing');})->name("landing");
 
-// Tes alert
-Route::get('/tes', function () {return view('tes',['user'=>User::find(1)]);});
-
-// Tes media library
-Route::get('/tes-media', function () {return view('tes',['user'=>User::find(1)]);});
-Route::post('/tes-media', function () {
-    $user = User::find(1)->addMediaFromRequest('image')->toMediaCollection('tes');
-    return back();
-});
 
 // Route guest
 Route::middleware('guest')->group(function(){
@@ -35,6 +25,7 @@ Route::middleware('guest')->group(function(){
     Route::get('/register', [AuthController::class,'showRegister']);
     Route::post('/register', [AuthController::class,'register']);
 });
+
 
 // Route untuk semua role yang ter-autentikasi
 Route::middleware('auth')->group(function(){
@@ -64,6 +55,10 @@ Route::middleware(['auth','role:petani'])->group(function(){
     // Route jual beli
     Route::get('/petani/shop', function(){return redirect('/petani/shop/shop');});
     Route::get('/petani/shop/shop', [PetaniShopController::class,'index']);
+    Route::get('/petani/shop/create', [PetaniShopController::class,'create']);
+    Route::post('/petani/shop/create', [PetaniShopController::class,'store']);
+    Route::get('/petani/shop/update/{item}', [PetaniShopController::class,'edit']);
+    Route::post('/petani/shop/update', [PetaniShopController::class,'update']);
 
     // Route inventory
     Route::get('/petani/inventory', function(){return redirect("/petani/inventory/inventory");});
@@ -73,6 +68,7 @@ Route::middleware(['auth','role:petani'])->group(function(){
     Route::post('/petani/inventory/update', [PetaniInventoryController::class, 'update']);
     Route::get('/petani/inventory/update/{inventory}', [PetaniInventoryController::class, 'edit']);
 });
+
 
 // Route untuk role pengelola
 Route::middleware(['auth','role:pengelola'])->group(function(){

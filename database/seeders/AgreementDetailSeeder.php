@@ -16,7 +16,15 @@ class AgreementDetailSeeder extends Seeder
         AgreementDetail::create([
             'agreement_id' => 1,
             "offer_detail_id" => 1,
-            "is_active"=>1,
+            "is_active"=>true,
+            "status" => 'accept',
+            "pengelola_id" => 1,
+            "petani_id" => 3,
+        ]);
+        AgreementDetail::create([
+            'agreement_id' => 2,
+            "offer_detail_id" => 2,
+            "is_active"=>true,
             "status" => 'accept',
             "pengelola_id" => 1,
             "petani_id" => 3,

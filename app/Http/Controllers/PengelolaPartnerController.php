@@ -17,10 +17,11 @@ class PengelolaPartnerController extends Controller
         $search = $request->get('search');
         $partners = Partner::where(['pengelola_id'=>auth()->user()->id])->with([
             'pengelola',
-            'offerDetail'=>function($query){
-                $query->where(['status'=>'active']);
-            },
-        ])->latest()->paginate(10);
+            // 'offerDetail'=>function($query){
+            //     $query->where(['status'=>'accept'])
+            //     ->with([]);
+            // },
+        ])->orderBy('updated_at','DESC')->paginate(10);
 
         return view('partners.pengelola.partners.index',[
             "css"=> [ 'partners/partners','partners/offers/index'],

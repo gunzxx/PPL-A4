@@ -16,11 +16,25 @@ class PetaniOfferController extends Controller
     public function showOffers()
     {
         $details = OfferDetail::where(['petani_id'=>auth()->user()->id])->with([
-            'petani','pengelola',
-            'offer'=>function($query){
-                $query->with(['petani','inventory']);
+            'petani'=>function($query){
+                $query->with(['media']);
             },
-        ])->latest()->paginate(10);
+            'pengelola',
+            'partner',
+            'offer'=>function($query){
+                $query->with([
+                    'petani'=>function($query){
+                        $query->with(['media']);
+                    },
+                    'inventory',
+                    // 'inventory'=>function($query){
+                    //     $query->with([
+
+                    //     ]);
+                    // },
+                ]);
+            },
+        ])->orderBy('updated_at','DESC')->paginate(10);
 
         return view('partners.petani.offers.index', [
             "css" => [ 'partners/partners', 'partners/offers/index'],

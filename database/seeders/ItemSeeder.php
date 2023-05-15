@@ -18,6 +18,7 @@ class ItemSeeder extends Seeder
             'price'=>1000,
             'petani_id'=>3,
             'pengelola_id'=>1,
+            'inventory_id'=>1,
             'agreement_detail_id'=>1,
         ]);
     }

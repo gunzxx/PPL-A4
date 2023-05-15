@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Inventory;
 use App\Models\AgreementDetail;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
@@ -25,8 +26,15 @@ class Item extends Model implements HasMedia
         return $this->belongsTo(User::class, 'petani_id', 'id');
     }
 
-    public function pengelola()
+    public function inventory()
     {
-        return $this->belongsTo(User::class, 'pengelola_id', 'id');
+        return $this->belongsTo(Inventory::class, 'inventory_id', 'id');
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this
+            ->addMediaCollection('product')
+            ->singleFile();
     }
 }

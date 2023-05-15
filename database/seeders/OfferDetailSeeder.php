@@ -21,5 +21,13 @@ class OfferDetailSeeder extends Seeder
             'is_active' => true,
             "status" => "accept",
         ]);
+        OfferDetail::create([
+            'partner_id' => 2,
+            'offer_id' => 2,
+            'petani_id' => 3,
+            'pengelola_id' => 1,
+            'is_active' => true,
+            "status" => "accept",
+        ]);
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\AuthController;
+use App\Http\Controllers\PetaniShopController;
 use App\Http\Controllers\api\KedelaiController;
 use App\Http\Controllers\PetaniOfferController;
+use App\Http\Controllers\PengelolaCartController;
 use App\Http\Controllers\PengelolaOfferController;
 use App\Http\Controllers\PetaniInventoryController;
 use App\Http\Controllers\PengelolaPartnerController;
@@ -13,23 +13,9 @@ use App\Http\Controllers\PetaniAgreementsController;
 use App\Http\Controllers\PengelolaInventoryController;
 use App\Http\Controllers\PengelolaAgreementsController;
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::middleware("guest")->group(function(){
-    Route::post("/login",[AuthController::class,"login"]);
-});
-
-Route::middleware("auth:api")->group(function(){
-    Route::get('/users', function(){return response()->json(auth()->user());});
-    Route::get('/logout', function(){ Auth::guard("api")->logout();
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Berhasil logout',
-        ]);});
-});
-
+/**
+ * Sprint 1 : Kerja sama
+ */
 
 // Route inventory petani
 Route::post('/petani/inventory/delete', [PetaniInventoryController::class, 'delete']);
@@ -52,12 +38,25 @@ Route::post('/offerDetail/{id}', [PengelolaOfferController::class, 'single']);
 // Route agreements pengelola
 Route::post('/pengelola/agreements/cancel', [PengelolaAgreementsController::class, 'cancelAgreements']);
 Route::post('/pengelola/agreements/delete', [PengelolaAgreementsController::class, 'deleteAgreements']);
+Route::post('/agreementDetail/{id}', [PengelolaAgreementsController::class, 'single']);
 // Route agreements petani
 Route::post('/petani/agreements/cancel', [PetaniAgreementsController::class, 'cancelAgreements']);
 Route::post('/petani/agreements/reject', [PetaniAgreementsController::class, 'rejectAgreements']);
 Route::post('/petani/agreements/confirm', [PetaniAgreementsController::class, 'confirmAgreements']);
 
-
 // Route api forecasting data kedelai
 Route::get('/kedelai',[KedelaiController::class,'index']);
 Route::get('/kedelai/{apiKedelai}',[KedelaiController::class,'show']);
+
+
+/**
+ * Sprint 2 : Jual beli
+ */
+
+// Petani
+// Route hapus item
+Route::post("/petani/item/delete",[PetaniShopController::class,'delete']);
+
+// Pengelola
+// Route tambah keranjang
+Route::post("/pengelola/cart/add",[PengelolaCartController::class,'add']);

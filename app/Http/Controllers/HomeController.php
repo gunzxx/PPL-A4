@@ -13,7 +13,12 @@ class HomeController extends Controller
      */
     public function showHome()
     {
-        $partners = Partner::where(['is_active'=>true,'is_open'=>true])->with(['pengelola'])->orderBy('updated_at','DESC')->paginate(10);
+        $partners = Partner::where(['is_active'=>true,'is_open'=>true])->with([
+            'pengelola',
+            // 'offerDetail'=>function($query){
+            //     $query->where('status','!=','accept');
+            // },
+        ])->orderBy('updated_at','DESC')->paginate(10);
         return view('home.home', [
             "css" => ['partners/partners','home/style'],
             "partners" => $partners

@@ -18,5 +18,11 @@ class AgreementSeeder extends Seeder
             'price' => 7000,
             'pengelola_id' => 1,
         ]);
+        Agreement::create([
+            'bean_type' => 'Kedelai ungu',
+            'stok' => 1000,
+            'price' => 7000,
+            'pengelola_id' => 1,
+        ]);
     }
 }
