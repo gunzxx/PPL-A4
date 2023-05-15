@@ -1,0 +1,1 @@
+<a href="{{ $href }}" class="update-btn">{{ isset($text)? $text : "Update" }}<i class="bi bi-pencil-square"></i></a>

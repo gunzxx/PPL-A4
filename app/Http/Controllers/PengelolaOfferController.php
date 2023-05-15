@@ -19,8 +19,16 @@ class PengelolaOfferController extends Controller
                 ->where(["status"=>"waiting"])
                 ->orWhere(["status"=>"accept"]);
         })->with([
+            'petani' => function ($query) {
+                $query->with('media');
+            },
+            'pengelola',
+            'partner',
             'offer' => function ($query) {
-                $query->with(['petani', 'inventory']);
+                $query->with([
+                    'petani',
+                    'inventory',
+                ]);
             }
         ])->latest()->paginate(10);
 

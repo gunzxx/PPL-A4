@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Item;
 use App\Models\Offer;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
@@ -32,6 +33,11 @@ class Inventory extends Model implements HasMedia
     public function offer()
     {
         return $this->hasOne(Offer::class, 'id', 'bean_id');
+    }
+
+    public function item()
+    {
+        return $this->hasMany(Item::class);
     }
 
     public function registerMediaCollections(): void

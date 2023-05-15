@@ -60,7 +60,7 @@
         @endif
     </main>
 
-    <div class="popup-backdrop stop-partner">
+    {{-- <div class="popup-backdrop stop-partner">
         <div class="popup-container">
             <div class="popup-text">Apakah anda yakin untuk berhenti kerja sama?</div>
             <div class="popup-alert">
@@ -78,7 +78,7 @@
                 <button value="false" class="popup-confirm popup-no" type="button">No</button>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     @error("message")
         <x-alertError :message="$message"></x-alertError>

@@ -1,7 +1,23 @@
 var id;
 $('.delete').click(function(e){
     id = $(this).attr('data-id');
-    $('.popup-backdrop.delete-partner').show();
+    Swal.fire({
+        text:"Apakah yakin melakukan penghapusan data kerja sama?",
+        showCancelButton: true,
+        cancelButtonText: 'No',
+        confirmButtonText: 'Yes',
+        confirmButtonColor: 'var(--r2)',
+        customClass: {
+            popup:'swal-wide',
+        },
+    })
+    .then((result)=>{
+        if(result.isConfirmed){
+            deletePartner()
+            $('.spinner-container').css('display','flex');
+        }
+    })
+    // $('.popup-backdrop.delete-partner').show();
 })
 
 // Delete partner
@@ -15,12 +31,18 @@ function deletePartner(){
         },
         success: (e) => {
             // console.log(e);
-            alert(e.message);
-            window.location.reload();
+            Swal.fire({
+                text : e.message,
+                icon : 'success',
+                confirmButtonColor: 'var(--g2)',
+                customClass: {
+                    popup:'swal-wide',
+                },
+            }).then(()=>{
+                window.location.reload();
+            })
         },
         error: (e) => {
-            // alert("gagal");
-            // console.log(e);
             alert("Terjadi kesalahan, memuat ulang halaman.");
             window.location.reload();
         },
@@ -30,7 +52,25 @@ function deletePartner(){
 // Stop partner
 $('.stop').click(function(e){
     id = $(this).attr('data-id');
-    $('.popup-backdrop.stop-partner').show();
+    Swal.fire({
+        text:"Apakah anda yakin untuk berhenti kerja sama?",
+        showCancelButton: true,
+        cancelButtonText: 'No',
+        confirmButtonText: 'Yes',
+        allowOutsideClick: false,
+        confirmButtonColor: 'var(--r2)',
+        customClass: {
+            popup:'swal-wide',
+        },
+    })
+    .then((result)=>{
+        if(result.isConfirmed){
+            $('.spinner-container').css('display','flex');
+            stopPartner();
+            return false;
+        }
+    });
+    // $('.popup-backdrop.stop-partner').show();
 })
 function stopPartner(){
     $.ajax({
@@ -41,12 +81,18 @@ function stopPartner(){
             id: id,
         },
         success: (e) => {
-            // console.log(e);
-            alert(e.message);
-            window.location.reload();
+            Swal.fire({
+                text : e.message,
+                icon : 'success',
+                confirmButtonColor: 'var(--g2)',
+                customClass: {
+                    popup:'swal-wide',
+                },
+            }).then(()=>{
+                window.location.reload();
+            })
         },
         error: (e) => {
-            // alert("gagal");
             // console.log(e);
             alert("Terjadi kesalahan, memuat ulang halaman.");
             window.location.reload();

@@ -154,4 +154,18 @@ class PengelolaAgreementsController extends Controller
 
         return response()->json(["message" => "Data berhasil dihapus"], 200);
     }
+
+
+    /**
+     * Method untuk mengambil satu data penawaran
+     */
+    public function single($id)
+    {
+        $agreementsDetail = AgreementDetail::where(['id' => $id, 'status' => 'accept', 'is_active' => true])->get()->first();
+        if ($agreementsDetail) {
+            $agreementsDetail = $agreementsDetail->agreement()->get("bean_type")->first();
+            return response()->json($agreementsDetail);
+        }
+        return response()->json(['message' => "Data not found!"], 404);
+    }
 }

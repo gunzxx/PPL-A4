@@ -5,17 +5,49 @@ $(".confirm").click(function(){
     detail_id = $(this).attr('data-detail-id');
     offer_id = $(this).attr('data-offer-id');
     partner_id = $(this).attr('data-partner-id');
-    $('.popup-backdrop.confirm-offer').show();
+    Swal.fire({
+        text: "Terima penawaran dengan petani?",
+        showCancelButton: true,
+        cancelButtonText: 'No',
+        confirmButtonText: 'Yes',
+        allowOutsideClick: true,
+        confirmButtonColor: 'var(--g2)',
+        customClass: {
+            popup:'swal-wide',
+        },
+    }).then((result)=>{
+        if(result.isConfirmed){
+            $('.spinner-container').css('display','flex');
+            confirmOffer();
+        }
+    })
+    // $('.popup-backdrop.confirm-offer').show();
 })
 $('.reject').click(function(){
     detail_id = $(this).attr('data-detail-id');
     offer_id = $(this).attr('data-offer-id');
-    $('.popup-backdrop.reject-offer').show();
+    Swal.fire({
+        text: "Apakah anda yakin menolak penawaran petani?",
+        showCancelButton: true,
+        cancelButtonText: 'No',
+        confirmButtonText: 'Yes',
+        allowOutsideClick: true,
+        confirmButtonColor: 'var(--r2)',
+        customClass: {
+            popup:'swal-wide',
+        },
+    }).then((result)=>{
+        if(result.isConfirmed){
+            $('.spinner-container').css('display','flex');
+            rejectOffer();
+        }
+    })
+    // $('.popup-backdrop.reject-offer').show();
 })
 $('.cancel').click(function(){
     detail_id = $(this).attr('data-detail-id');
     offer_id = $(this).attr('data-offer-id');
-    $('.popup-backdrop.cancel-offer').show();
+    // $('.popup-backdrop.cancel-offer').show();
 })
 
 
@@ -30,10 +62,15 @@ function confirmOffer(){
             partner_id: partner_id,
         },
         success: (e) => {
-            alert(e.message);
-            // console.log(e);
-            // console.log("OKE");
-            window.location.reload();
+            Swal.fire({
+                text : e.message,
+                confirmButtonColor: 'var(--g2)',
+                customClass: {
+                    popup:'swal-wide',
+                },
+            }).then(()=>{
+                window.location.reload();
+            })
             partner_id=null;
         },
         error: (e) => {
@@ -54,9 +91,15 @@ function cancelOffer(){
             offer_id: offer_id,
         },
         success: (e) => {
-            alert(e.message);
-            // console.log("OKE");
-            window.location.reload();
+            Swal.fire({
+                text : e.message,
+                confirmButtonColor: 'var(--g2)',
+                customClass: {
+                    popup:'swal-wide',
+                },
+            }).then(()=>{
+                window.location.reload();
+            })
         },
         error: (e) => {
             // console.log(e);
@@ -67,9 +110,6 @@ function cancelOffer(){
 }
 
 function rejectOffer(){
-    // console.log(offer_id);
-    // console.log(detail_id);
-    // console.log("OKE");
     $.ajax({
         url: "/api/pengelola/offers/reject",
         method: "post",
@@ -79,9 +119,16 @@ function rejectOffer(){
             offer_id: offer_id,
         },
         success: (e) => {
-            alert(e.message);
-            // console.log("OKE");
-            window.location.reload();
+            Swal.fire({
+                text : e.message,
+                confirmButtonColor: 'var(--g2)',
+                customClass: {
+                    popup:'swal-wide',
+                },
+            }).then(()=>{
+                window.location.reload();
+            })
+            partner_id = null;
         },
         error: (e) => {
             // console.log(e);

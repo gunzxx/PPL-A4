@@ -5,21 +5,50 @@ var agreementDetailId;
 $(".cancel-agreement").click(function(){
     agreementId = $(this).attr('data-agreement-id');
     agreementDetailId = $(this).attr('data-agrement-detail-id');
-    $('.popup-backdrop.cancel-agreement-popup').show();
 })
 
 $(".reject-agreement").click(function(){
     agreementId = $(this).attr('data-agreement-id');
     agreementDetailId = $(this).attr('data-agrement-detail-id');
-    // $('.popup-backdrop.reject-agreement-popup').show();
-    $(".spinner-container").css('display', 'flex');
-    rejectAgreement()
+    
+    Swal.fire({
+        text: "Tolak persetujuan dengan pengelola?",
+        showCancelButton: true,
+        cancelButtonText: 'No',
+        confirmButtonText: 'Yes',
+        allowOutsideClick: true,
+        confirmButtonColor: 'var(--r2)',
+        customClass: {
+            popup: 'swal-wide',
+        },
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $('.spinner-container').css('display', 'flex');
+            rejectAgreement();
+        }
+    })
 })
 
 $(".confirm-agreement").click(function(){
     agreementId = $(this).attr('data-agreement-id');
     agreementDetailId = $(this).attr('data-agrement-detail-id');
-    $('.popup-backdrop.confirm-agreement-popup').show();
+    
+    Swal.fire({
+        text: "Terima persetujuan dengan pengelola?",
+        showCancelButton: true,
+        cancelButtonText: 'No',
+        confirmButtonText: 'Yes',
+        allowOutsideClick: true,
+        confirmButtonColor: 'var(--g2)',
+        customClass: {
+            popup: 'swal-wide',
+        },
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $('.spinner-container').css('display', 'flex');
+            confirmAgreement();
+        }
+    })
 })
 
 
@@ -51,9 +80,15 @@ function confirmAgreement() {
             agreementDetailId: agreementDetailId,
         },
         success: (e) => {
-            // console.log(e);
-            alert(e.message);
-            window.location.reload();
+            Swal.fire({
+                text : e.message,
+                confirmButtonColor: 'var(--g2)',
+                customClass: {
+                    popup:'swal-wide',
+                },
+            }).then(()=>{
+                window.location.reload();
+            })
         },
         error: (e) => {
             // console.log(e);
@@ -72,9 +107,15 @@ function rejectAgreement() {
             agreementDetailId: agreementDetailId,
         },
         success: (e) => {
-            // console.log(e);
-            alert(e.message)
-            window.location.reload();
+            Swal.fire({
+                text : e.message,
+                confirmButtonColor: 'var(--g2)',
+                customClass: {
+                    popup:'swal-wide',
+                },
+            }).then(()=>{
+                window.location.reload();
+            })
         },
         error: (e) => {
             // console.log(e);

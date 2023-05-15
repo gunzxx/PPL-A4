@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->string("bean_type");
             $table->bigInteger("stok");
             $table->bigInteger("price");
+            $table->bigInteger("no_rek");
             $table->foreignId("agreement_detail_id")->references("id")->on("agreements")->onDelete("cascade");
             $table->foreignId("petani_id")->references("id")->on("users")->onDelete("cascade");
             $table->foreignId("pengelola_id")->references("id")->on("users")->onDelete("cascade");
