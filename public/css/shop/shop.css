@@ -66,7 +66,8 @@
 }
 .list-card{
     width: 100%;
-    max-height: 200px;
+    min-height: 200px;
+    max-height: 230px;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
@@ -81,9 +82,14 @@
 }
 .list-card-img{
     width: 230px;
-    height: 100%;
+    background-size: cover;
+    background-position: center;
     overflow: hidden;
 }
+/* .list-card-img img{
+    min-height: 100%;
+    min-width: 100%;
+} */
 .list-card-nonimg{
     width: 100%;
     display: flex;

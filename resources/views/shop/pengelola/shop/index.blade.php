@@ -15,8 +15,8 @@
             @else
                 @foreach ($items as $item)
                     <div class="list-card">
-                        <div class="list-card-img">
-                            <img src="{{ $item->getFirstMediaUrl('product') != '' ? $item->getFirstMediaUrl('product') : '/img/shop/default.png' }}">
+                        <div class="list-card-img" style="background-image: url({{ $item->getFirstMediaUrl('product') != '' ? $item->getFirstMediaUrl('product') : '/img/shop/default.png' }});">
+                            {{-- <img src="{{ $item->getFirstMediaUrl('product') != '' ? $item->getFirstMediaUrl('product') : '/img/shop/default.png' }}"> --}}
                         </div>
                         <div class="list-card-nonimg">
                             <div class="list-card-body">
