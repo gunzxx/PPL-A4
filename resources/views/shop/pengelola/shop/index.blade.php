@@ -9,8 +9,8 @@
         <div class="box-container">
             @if ($items->count()<1)
                 <div class="">
-                    <p align="center">Tidak ada penjualan.</p>
-                    <p align="center">Silahkan jual kedelai terlebih dahulu.</p>
+                    <p align="center">Tidak ada kedelai.</p>
+                    <p align="center">Silahkan minta petani menjual kedelai terlebih dahulu.</p>
                 </div>
             @else
                 @foreach ($items as $item)
