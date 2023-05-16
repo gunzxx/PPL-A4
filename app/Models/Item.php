@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Cart;
 use App\Models\User;
 use App\Models\Inventory;
 use App\Models\AgreementDetail;
@@ -36,5 +37,10 @@ class Item extends Model implements HasMedia
         $this
             ->addMediaCollection('product')
             ->singleFile();
+    }
+
+    public function cart()
+    {
+        return $this->hasMany(Cart::class);
     }
 }

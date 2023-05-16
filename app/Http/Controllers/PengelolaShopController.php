@@ -12,7 +12,7 @@ class PengelolaShopController extends Controller
      */
     public function index()
     {
-        $items = Item::where(['pengelola_id' => auth()->user()->id])->with(['media', 'agreementDetail', 'inventory'])->get();
+        $items = Item::where(['pengelola_id' => auth()->user()->id])->with(['media', 'agreementDetail', 'inventory'])->latest()->paginate();
 
         return view('shop.pengelola.shop.index', [
             "css" => ['shop/shop'],

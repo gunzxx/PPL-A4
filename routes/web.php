@@ -6,11 +6,12 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PetaniShopController;
 use App\Http\Controllers\PetaniOfferController;
-use App\Http\Controllers\PetaniInventoryController;
-use App\Http\Controllers\PetaniAgreementsController;
+use App\Http\Controllers\PengelolaCartController;
 use App\Http\Controllers\PengelolaShopController;
 use App\Http\Controllers\PengelolaOfferController;
+use App\Http\Controllers\PetaniInventoryController;
 use App\Http\Controllers\PengelolaPartnerController;
+use App\Http\Controllers\PetaniAgreementsController;
 use App\Http\Controllers\PengelolaInventoryController;
 use App\Http\Controllers\PengelolaAgreementsController;
 use App\Http\Controllers\PengelolaPartnerHistoryController;
@@ -84,7 +85,7 @@ Route::middleware(['auth','role:pengelola'])->group(function(){
     // Penawaran
     Route::get('/pengelola/partners/offers', [PengelolaOfferController::class, 'showOffers']);
 
-    // Riwayat
+    // Riwayat kerja sama
     Route::get("/pengelola/partners/partners/history", [PengelolaPartnerHistoryController::class, 'index']);
 
     // Persetujuan
@@ -94,9 +95,12 @@ Route::middleware(['auth','role:pengelola'])->group(function(){
     Route::get('/pengelola/partners/agreements/edit/{agreementDetailId}', [PengelolaAgreementsController::class, 'editAgreements']);
     Route::post('/pengelola/partners/agreements/edit', [PengelolaAgreementsController::class, 'updateAgreements']);
 
-    // Jual beli
+    // Pembelian
     Route::get('/pengelola/shop', function(){return redirect('/pengelola/shop/shop');});
     Route::get('/pengelola/shop/shop', [PengelolaShopController::class,'index']);
+    
+    // Keranjang
+    Route::get('/pengelola/shop/cart', [PengelolaCartController::class,'index']);
 
     // Route inventory
     Route::get('/pengelola/inventory', function(){return redirect("/pengelola/inventory/inventory");});

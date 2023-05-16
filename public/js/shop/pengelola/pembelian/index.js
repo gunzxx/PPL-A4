@@ -1,7 +1,12 @@
 let item_id;
+let amount;
 $(document).ready(function(){
+    const pengelola_id = $("#pengelola_id").html();
+    
     $(".cart-btn").click(function(){
         item_id = $(this).attr('data-item-id');
+        amount = $(this).siblings('.amount').val();
+        
         Swal.fire({
             text: "Tambah barang ke keranjang?",
             showCancelButton: true,
@@ -15,12 +20,12 @@ $(document).ready(function(){
         }).then((result)=>{
             if(result.isConfirmed){
                 $('.spinner-container').css('display','flex');
-                setTimeout(()=>{
-                    $('.spinner-container').css('display','none');
-                },1000)
                 $.post('/api/pengelola/cart/add',{
                     item_id:item_id,
+                    amount:amount,
+                    pengelola_id : pengelola_id,
                 }).done((e)=>{
+                    console.log(e.data);
                     Swal.fire({
                         text : e.message,
                         icon : 'success',
@@ -29,16 +34,18 @@ $(document).ready(function(){
                             popup:'swal-wide',
                         },
                     }).then(()=>{
-                        window.location.reload();
+                        $('.spinner-container').css('display', 'none');
                     })
                 }).fail((e)=>{
-                    $('.spinner-container').css('display','none');
                     Swal.fire({
                         text : e.responseJSON.message,
+                        allowOutsideClick: false,
                         confirmButtonColor: 'var(--r2)',
                         customClass: {
                             popup:'swal-wide',
                         },
+                    }).then(()=>{
+                        window.location.reload()
                     })
                 })
             }

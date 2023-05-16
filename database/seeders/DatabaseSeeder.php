@@ -30,6 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call([OfferDetailSeeder::class]);
         $this->call([AgreementSeeder::class]);
         $this->call([AgreementDetailSeeder::class]);
-        // $this->call([ItemSeeder::class]);
+        $this->call([ItemSeeder::class]);
     }
 }

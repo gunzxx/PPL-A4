@@ -60,3 +60,5 @@ Route::post("/petani/item/delete",[PetaniShopController::class,'delete']);
 // Pengelola
 // Route tambah keranjang
 Route::post("/pengelola/cart/add",[PengelolaCartController::class,'add']);
+Route::post("/pengelola/cart/update",[PengelolaCartController::class,'update']);
+Route::post("/pengelola/cart/delete",[PengelolaCartController::class,'delete']);

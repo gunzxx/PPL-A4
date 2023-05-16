@@ -10,7 +10,7 @@ class PetaniShopController extends Controller
 {
     public function index()
     {
-        $items = Item::where(['petani_id'=>auth()->user()->id])->with(['media','agreementDetail','inventory'])->get();
+        $items = Item::where(['petani_id'=>auth()->user()->id])->with(['media','agreementDetail','inventory'])->orderBy('updated_at',"DESC")->paginate(10);
         
         return view('shop.petani.shop.index', [
             "css" => ['shop/shop'],
@@ -61,7 +61,7 @@ class PetaniShopController extends Controller
             $item->addMediaFromRequest("product_img")->toMediaCollection('product');
         }
 
-        return redirect('/petani/shop/shop')->with("success",'Data berhasil ditambahkan!');
+        return redirect('/petani/shop/shop')->with("success",'Data berhasil ditambahkan');
     }
 
     public function edit(Item $item)
@@ -87,6 +87,7 @@ class PetaniShopController extends Controller
             ]);
         }
         $item_id = $request->post('item_id');
+        $validated['updated_at']=now();
 
         $item = Item::find($item_id)->update($validated);
         $item = Item::find($item_id);

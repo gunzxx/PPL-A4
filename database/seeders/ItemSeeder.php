@@ -14,11 +14,12 @@ class ItemSeeder extends Seeder
     public function run(): void
     {
         Item::create([
+            'bean_type'=>"kedelai hitam",
             'stok'=>100,
             'price'=>1000,
+            'no_rek'=>101010101010,
             'petani_id'=>3,
             'pengelola_id'=>1,
-            'inventory_id'=>1,
             'agreement_detail_id'=>1,
         ]);
     }

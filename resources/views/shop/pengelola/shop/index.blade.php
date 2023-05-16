@@ -25,10 +25,10 @@
                                         <p>Jenis Kedelai : {{ ucwords($item->bean_type) }}</p>
                                     </div>
                                     <div class="list-card-detail">
-                                        <p>Stok : {{ ucwords($item->stok) }}</p>
+                                        <p>Stok : {{ ucwords($item->stok) }} kg</p>
                                     </div>
                                     <div class="list-card-detail">
-                                        <p>Harga : {{ ucwords($item->price) }}</p>
+                                        <p>Harga : Rp. {{ number_format($item->price,0,',','.') }},-</p>
                                     </div>
                                 </div>
                                 <div class="list-card-time">
@@ -36,7 +36,12 @@
                                 </div>
                             </div>
                             <div class="list-card-footer">
-                                <input type="number" class="amount" value="1" min="1">
+                                <input type="text" class="amount amount-form" value="1" min="1">
+                                {{-- <div class="amount-container">
+                                    <i class="amount-min bi bi-icon bi-dash-lg"></i>
+                                    <span class="amount">0</span>
+                                    <i class="amount-plus bi bi-icon bi-plus-lg"></i>
+                                </div> --}}
                                 <button class="btn main-btn cart-btn" type="button" data-item-id="{{ $item->id }}">Tambahkan ke keranjang</button>
                             </div>
                         </div>
@@ -57,5 +62,7 @@
 @endsection
 
 @section('script')
+    <span id="pengelola_id">{{ auth()->user()->id }}</span>
+    <script src="/js/shop/pengelola/main.js"></script>
     <script src="/js/shop/pengelola/pembelian/index.js"></script>
 @endsection

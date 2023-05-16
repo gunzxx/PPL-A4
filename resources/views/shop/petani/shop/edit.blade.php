@@ -50,7 +50,7 @@
             </div>
             <div class="form-group button">
                 <button class="btn-danger cancel-action" type="button" href="/inventory">Batal</button>
-                <button class="save-btn" type="submit">Tambah</button>
+                <button class="save-btn" type="submit">Simpan</button>
             </div>
         </form>
     </main>

@@ -3,7 +3,7 @@ $(document).ready(function(){
     $(".delete-btn").click(function(){
         item_id = $(this).attr('data-item-id');
         Swal.fire({
-            text: "Hapus data penjualan",
+            text: "Apakah yakin melakukan penghapusan data?",
             showCancelButton: true,
             cancelButtonText: 'No',
             confirmButtonText: 'Yes',

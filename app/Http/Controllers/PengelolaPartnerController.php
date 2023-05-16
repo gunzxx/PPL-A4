@@ -97,8 +97,9 @@ class PengelolaPartnerController extends Controller
             'bean_type' => 'required',
         ]);
 
-        $validated['updated_at'] = date("Y-m-d H-i-s", time());
-
+        // $validated['updated_at'] = date("Y-m-d H-i-s", time());
+        $validated['updated_at'] = now();
+        
         $id = $request->only('partner_id');
         Partner::where('id', $id)->update($validated);
 
