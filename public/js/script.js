@@ -85,9 +85,22 @@ $(document).ready(()=>{
     })
     $(".logout").click(function(e){
         e.preventDefault();
-        if(confirm("Yakin logout?")){
-            window.location.href = "/logout";
-        }
+        Swal.fire({
+            text: "Yakin logout dek?",
+            showCancelButton: true,
+            cancelButtonText: 'No',
+            confirmButtonText: 'Yes',
+            allowOutsideClick: false,
+            confirmButtonColor: 'var(--r2)',
+            cancelButtonColor: 'var(--b3)',
+            customClass: {
+                popup:'swal-wide',
+            },
+        }).then((result)=>{
+            if(result.isConfirmed){
+                window.location.href = "/logout";
+            }
+        })
     })
     
     
