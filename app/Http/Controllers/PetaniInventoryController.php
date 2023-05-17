@@ -12,9 +12,12 @@ class PetaniInventoryController extends Controller
      */
     public function showInventory()
     {
-        $inventories = Inventory::where('user_id',auth()->user()->id)->with(['media'])->latest()->paginate(10);
+        $inventories = Inventory::where('user_id',auth()->user()->id)->with(['media'])->orderBy('updated_at','DESC')->paginate(9);
         return view('inventory.petani.index', [
-            "css" => [ 'inventory/inventory'],
+            "css" => [
+                'inventory/inventory',
+                'inventory/form',
+            ],
             'inventories' => $inventories,
         ]);
     }
@@ -25,7 +28,10 @@ class PetaniInventoryController extends Controller
     public function create()
     {
         return view('inventory.petani.create', [
-            "css" => [ 'inventory/inventory']
+            "css" => [
+                'inventory/inventory',
+                'inventory/form',
+            ],
         ]);
     }
 
@@ -42,7 +48,7 @@ class PetaniInventoryController extends Controller
 
         if ($request->file('inv_img')) {
             $request->validate([
-                "inv_img" => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                "inv_img" => 'image|mimes:webp,jpeg,png,jpg,gif,svg|max:2048',
             ]);
         }
 
@@ -64,7 +70,10 @@ class PetaniInventoryController extends Controller
             return abort(403);
         }
         return view('inventory.petani.edit', [
-            "css" => [ 'inventory/inventory', 'inventory/edit'],
+            "css" => [
+                'inventory/inventory',
+                'inventory/form',
+            ],
             "inventory" => $inventory,
         ]);
     }
@@ -83,7 +92,7 @@ class PetaniInventoryController extends Controller
 
         if ($request->file('inv_img')) {
             $request->validate([
-                "inv_img"=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                "inv_img"=>'image|mimes:webp,jpeg,png,jpg,gif,svg|max:2048',
             ]);
         }
 

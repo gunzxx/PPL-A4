@@ -1,4 +1,4 @@
-<div class="alert-container alert-container-error">
+{{-- <div class="alert-container alert-container-error">
     <div class="alert-icon">
         <i class="bi bi-exclamation-triangle-fill"></i>
     </div>
@@ -9,4 +9,10 @@
         <button type="button" class="alert-x">&#10005;</button>
     </div>
     <div class="alert-loader"></div>
-</div>
+</div> --}}
+<input type="hidden" id="alert-message" value="{{ $message }}">
+<script>
+    $(document).ready(()=>{
+        GNotify.alertError($("#alert-message").val())
+    })
+</script>

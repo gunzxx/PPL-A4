@@ -5,49 +5,81 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shop</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link rel="stylesheet" href="./tes.css">
 </head>
 <body>
-  <!-- Form -->
-  <!-- <div class="product-container">
-    <label for="jumlah" class="jumlah">Jumlah : <input type="text" id="jumlah" placeholder="1"></label>
-    <button type="button">Update</button>
-  </div> -->
-
-  <!-- Alert -->
-  <div class="alert-ok-container">
-    <div class="alert-ok-body">
-      <span>Data berhasil ditambahkan</span>
-    </div>
-    <button type="button" class="alert-ok">Oke</button>
+  <div class="container-full">
+    <button type="button" class="tes">tes</button>
   </div>
   
-  <form action="">
-    <!-- <div class="alert-container">
-      <div class="alert-body">
-        <span>Test</span>
-      </div>
-      <button type="button" class="alert-x">&#10005;</button>
-      <div class="alert-loader"></div>
-    </div> -->
-    
-    <div class="form-group">
-      <!-- <input type="text"> -->
-    </div>
-  </form>
+  <div class="list-alert-container">
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
   <script>
-    // $(".alert-x").click(function(){
-    //   $('.alert-container').hide(300);
-    // })
-    // $(".alert-container").ready(function(e){
-    //   setTimeout(function(){
-    //     $(".alert-container").hide(300);
-    //   },3000)
-    // })
-    $(".alert-ok").click(function(){
-      $('.alert-ok-container').hide(300);
+    $(document).ready(()=>{
+      class GNotify {
+        static alertSuccess(message){
+          const alertContainer = document.createElement('div')
+          alertContainer.classList.add("alert-container")
+          alertContainer.classList.add("alert-container-success")
+          alertContainer.innerHTML = `
+            <div class="alert-icon">
+              <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <div class="alert-body">
+              <p>`+ message + `</p>
+            </div>
+            <div class="alert-x-container">
+              <button type="button" class="alert-x">&#10005;</button>
+            </div>
+            <div class="alert-loader"></div>
+          `;
+  
+          $('.list-alert-container').append(alertContainer);
+          $(alertContainer).css('display','flex').show(300);
+  
+          setTimeout(async ()=>{
+            await $(alertContainer).hide(300)
+            $(alertContainer).remove()
+          },2500)
+  
+          return alertContainer;
+        }
+
+        static alertError(message){
+          const alertContainer = document.createElement('div')
+          alertContainer.classList.add("alert-container")
+          alertContainer.classList.add("alert-container-error")
+          alertContainer.innerHTML = `
+            <div class="alert-icon">
+              <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <div class="alert-body">
+              <p>`+ message + `</p>
+            </div>
+            <div class="alert-x-container">
+              <button type="button" class="alert-x">&#10005;</button>
+            </div>
+            <div class="alert-loader"></div>
+          `;
+  
+          $('.list-alert-container').append(alertContainer);
+          $(alertContainer).css('display','flex').show(300);
+
+          setTimeout(async ()=>{
+            await $(alertContainer).hide(300)
+            $(alertContainer).remove()
+          },2500)
+          return alertContainer;
+        }
+      }
+
+      $(".tes").click(()=>{
+        GNotify.alertSuccess("OKE");
+        GNotify.alertError("OKE");
+      })
     })
   </script>
 </body>

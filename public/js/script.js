@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(()=>{
     jQuery.extend(jQuery.validator.messages, {
         remote: "Please fix this field.",
         required: "Data tidak valid.",
@@ -18,21 +18,6 @@ $(document).ready(function(){
         dateISO: "Masukkan format tanggal (ISO) yang benar.",
         creditcard: "Masukkan no. kredit yang benar.",
     });
-
-    // Alert
-    $(".alert-x").click(function () {
-        $('.alert-container').hide(300);
-    })
-    $(".alert-container").ready(function (e) {
-        setTimeout(function () {
-            $(".alert-container").hide(300);
-        }, 2500)
-    })
-
-    // Alert OK
-    $(".alert-ok").click(function () {
-        $('.alert-ok-container').hide(300);
-    })
     
     $(document).keydown(function(e){
         if(e.key === "/"){
@@ -53,7 +38,6 @@ $(document).ready(function(){
     })
 
 
-
     $(".show-more").click(function(){
         let sibling = $(this).siblings(".card-description")[0]
         
@@ -68,6 +52,7 @@ $(document).ready(function(){
             $(sibling).attr("title",'klik untuk menampilkan lebih lengkap')
         }
     })
+
     $(".card-description").click(function(){
         let sibling = $(this).siblings(".show-more")[0]
 
@@ -82,37 +67,37 @@ $(document).ready(function(){
             $(this).attr("title",'klik untuk menampilkan lebih lengkap')
         }
     })
-})
-
-// Cancel button action
-$('.cancel-action').click(function () {
-    if (confirm("Batal simpan?")) {
-        history.go(-1);
-    }
-    return false;
-});
-
-
-$(".profile-image-container").click(function(e){
-    $(".profile-menu-container").show()
-})
-$(".backdrop-profile").click(function(e){
-    $(".profile-menu-container").hide()
-})
-$(".logout").click(function(e){
-    e.preventDefault();
-    if(confirm("Yakin logout?")){
-        window.location.href = "/logout";
-    }
-})
-
-
-// Popup
-$(".popup-yes").click(function(e){
-    $(".spinner-container").css('display','flex');
-})
-$(".popup-no").click(function(){
-    this.parentNode.parentNode.parentNode.style.display = "none";
+    
+    // Cancel button action
+    $('.cancel-action').click(function () {
+        if (confirm("Batal simpan?")) {
+            history.go(-1);
+        }
+        return false;
+    });
+    
+    
+    $(".profile-image-container").click(function(e){
+        $(".profile-menu-container").show()
+    })
+    $(".backdrop-profile").click(function(e){
+        $(".profile-menu-container").hide()
+    })
+    $(".logout").click(function(e){
+        e.preventDefault();
+        if(confirm("Yakin logout?")){
+            window.location.href = "/logout";
+        }
+    })
+    
+    
+    // Popup
+    $(".popup-yes").click(function(e){
+        $(".spinner-container").css('display','flex');
+    })
+    $(".popup-no").click(function(){
+        this.parentNode.parentNode.parentNode.style.display = "none";
+    })
 })
 
 

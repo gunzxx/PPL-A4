@@ -36,12 +36,7 @@
                                 </div>
                             </div>
                             <div class="list-card-footer">
-                                <input type="text" class="amount amount-form" value="1" min="1">
-                                {{-- <div class="amount-container">
-                                    <i class="amount-min bi bi-icon bi-dash-lg"></i>
-                                    <span class="amount">0</span>
-                                    <i class="amount-plus bi bi-icon bi-plus-lg"></i>
-                                </div> --}}
+                                <input type="number" class="amount amount-form" value="1" min="1">
                                 <button class="btn main-btn cart-btn" type="button" data-item-id="{{ $item->id }}">Tambahkan ke keranjang</button>
                             </div>
                         </div>

@@ -6,3 +6,106 @@
     width: 400px !important;
 }
 /* Sweet alert custom end */
+
+
+/* Manual Alert */
+.list-alert-container{
+    position: fixed;
+    bottom: 60px;
+    left: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.alert-container{
+    position: relative;
+    width: 400px;
+    background: var(--g1);
+    display: none;
+    justify-content: start;
+    align-items: stretch;
+    box-sizing: border-box;
+    border-radius: 0;
+    overflow: hidden;
+}
+.alert-container.alert-container-success{
+    background: var(--w1);
+    border: 1px solid var(--g2);
+}
+.alert-container.alert-container-success *{
+    color: var(--g4);
+}
+.alert-container.alert-container-error{
+    background: var(--w1);
+    border: 1px solid var(--r2);
+}
+.alert-container.alert-container-error *{
+    color: var(--r2);
+}
+
+.alert-container-success .alert-icon{
+    background: var(--g4);
+}
+.alert-container-error .alert-icon{
+    background: var(--r2);
+}
+.alert-container .alert-icon *{
+    color: var(--w1);
+}
+.alert-container .alert-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.alert-container .alert-body *{
+    font-size: 14px;
+}
+.alert-container .alert-body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+}
+.alert-container .alert-x-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.alert-container .alert-x-container .alert-x{
+    display: block;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.alert-loader{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    animation: alertLoader 2.5s ease-in forwards;
+}
+.alert-container.alert-container-success .alert-loader{
+    background: var(--g4);
+}
+.alert-container.alert-container-error .alert-loader{
+    background: var(--r2);
+}
+@keyframes alertLoader{
+    0% {
+        width: 100%;
+    }
+    100% {
+        width: 0;
+    }
+}
+/* Manual Alert end */

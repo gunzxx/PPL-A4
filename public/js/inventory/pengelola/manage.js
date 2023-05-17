@@ -1,40 +1,31 @@
 $(document).ready(function(){
-    var id;
     $('.delete-inv').click(function(e){
-        id = this.getAttribute('data-inv-id');
-        $(".popup-backdrop.delete-inventory").show()
-    })
-    
-    function deleteInventory(){
-        $.ajax({
-            url: '/api/pengelola/inventory/delete',
-            method: 'post',
-            dataType: 'json',
-            data: {
-                id: id,
+        const id = this.getAttribute('data-inv-id');
+        console.log(id);
+
+        Swal.fire({
+            text: "Apakah yakin melakukan penghapusan data",
+            showCancelButton: true,
+            cancelButtonText: 'No',
+            confirmButtonText: 'Yes',
+            allowOutsideClick: false,
+            confirmButtonColor: 'var(--r2)',
+            customClass: {
+                popup:'swal-wide',
             },
-            success: (e) => {
-                console.log(e);
-                alert(e.message)
-                window.location.reload()
-            },
-            error: (e) => {
-                console.log(e);
-                alert("error");
-                window.location.reload();
+        }).then((result)=>{
+            if(result.isConfirmed){
+                $.post('/api/pengelola/inventory/delete',{
+                    id:id,
+                }).done((e)=>{
+                    GNotify.alertSuccess(e.message);
+                    
+                    $(this).parent().parent().hide(300);
+                    setTimeout(()=>{
+                        $(this).parent().parent().remove();
+                    },500)
+                })
             }
         })
-    }
-    
-    $("#form-inventory").validate({
-        rules:{
-            bean_type:{
-                required:true,
-            },
-            stok:{
-                required:true,
-                number:true,
-            },
-        },
     })
 })

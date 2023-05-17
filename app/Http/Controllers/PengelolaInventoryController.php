@@ -12,9 +12,11 @@ class PengelolaInventoryController extends Controller
      */
     public function showInventory()
     {
-        $inventories = Inventory::where('user_id', auth()->user()->id)->with(['media'])->latest()->paginate(10);
+        $inventories = Inventory::where('user_id', auth()->user()->id)->with(['media'])->orderBy('updated_at','DESC')->paginate(9);
         return view('inventory.pengelola.index', [
-            "css" => [ 'inventory/inventory'],
+            "css" => [
+                'inventory/inventory',
+            ],
             'inventories' => $inventories,
         ]);
     }
@@ -25,7 +27,10 @@ class PengelolaInventoryController extends Controller
     public function create()
     {
         return view('inventory.pengelola.create', [
-            "css" => [ 'inventory/inventory']
+            "css" => [
+                'inventory/inventory',
+                'inventory/form',
+            ],
         ]);
     }
 
@@ -42,7 +47,7 @@ class PengelolaInventoryController extends Controller
 
         if ($request->file('inv_img')) {
             $request->validate([
-                "inv_img" => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                "inv_img" => 'image|mimes:webp,jpeg,png,jpg,gif,svg|max:2048',
             ]);
         }
         
@@ -63,7 +68,10 @@ class PengelolaInventoryController extends Controller
             return abort(403);
         }
         return view('inventory.pengelola.edit', [
-            "css" => [ 'inventory/inventory', 'inventory/edit'],
+            "css" => [
+                'inventory/inventory',
+                'inventory/form',
+            ],
             "inventory" => $inventory,
         ]);
     }
@@ -82,7 +90,7 @@ class PengelolaInventoryController extends Controller
 
         if ($request->file('inv_img')) {
             $request->validate([
-                "inv_img" => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                "inv_img" => 'image|mimes:webp,jpeg,png,jpg,gif,svg|max:2048',
             ]);
         }
 
@@ -103,6 +111,7 @@ class PengelolaInventoryController extends Controller
         if (!$request->post('id')) {
             return response()->json([
                 'message' => "Id not found",
+                'data'=> $request->post(),
             ], 401);
         }
 

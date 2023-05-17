@@ -1,56 +1,32 @@
 let cart_id;
 let amount;
 $(document).ready(function(){
-    const pengelola_id = $("#pengelola_id").html();
-
-
     // Update chart
     $(".update-btn").click(function(){
         cart_id = $(this).attr('data-cart-id');
         amount = $(this).parent().siblings('.list-card-body').find('.amount').val();
         
-        Swal.fire({
-            text: "Perbarui keranjang?",
-            showCancelButton: true,
-            cancelButtonText: 'No',
-            confirmButtonText: 'Yes',
-            confirmButtonColor: 'var(--g2)',
-            customClass: {
-                popup:'swal-wide',
-            },
-        }).then((result)=>{
-            if(result.isConfirmed){
-                $('.spinner-container').css('display','flex');
-                setTimeout(()=>{
-                    $('.spinner-container').css('display','none');
-                },1000)
-                $.post('/api/pengelola/cart/update',{
-                    cart_id:cart_id,
-                    amount:amount,
-                }).done((e)=>{
-                    Swal.fire({
-                        text : e.message,
-                        icon : 'success',
-                        confirmButtonColor: 'var(--g2)',
-                        customClass: {
-                            popup:'swal-wide',
-                        },
-                    }).then(() => {
-                        $('.spinner-container').css('display', 'none');
-                    })
-                }).fail((e)=>{
-                    Swal.fire({
-                        text : e.responseJSON.message,
-                        allowOutsideClick: false,
-                        confirmButtonColor: 'var(--r2)',
-                        customClass: {
-                            popup:'swal-wide',
-                        },
-                    }).then(()=>{
-                        window.location.reload()
-                    })
-                })
-            }
+        $('.spinner-container').css('display', 'flex');
+        setTimeout(() => {
+            $('.spinner-container').css('display', 'none');
+        }, 1000)
+        $.post('/api/pengelola/cart/update', {
+            cart_id: cart_id,
+            amount: amount,
+        }).done((e) => {
+            GNotify.alertSuccess(e.message);
+            $('.spinner-container').css('display', 'none');
+        }).fail((e) => {
+            Swal.fire({
+                text: e.responseJSON.message,
+                allowOutsideClick: false,
+                confirmButtonColor: 'var(--r2)',
+                customClass: {
+                    popup: 'swal-wide',
+                },
+            }).then(() => {
+                window.location.reload()
+            })
         })
     })
 
@@ -58,51 +34,48 @@ $(document).ready(function(){
     // Delete cart
     $(".delete-btn").click(function(){
         cart_id = $(this).attr('data-cart-id');
-        
+
         Swal.fire({
             text: "Hapus keranjang?",
             showCancelButton: true,
             cancelButtonText: 'No',
             confirmButtonText: 'Yes',
+            allowOutsideClick: false,
             confirmButtonColor: 'var(--r2)',
+            cancelButtonColor: 'var(--b3)',
             customClass: {
                 popup:'swal-wide',
             },
         }).then((result)=>{
             if(result.isConfirmed){
-                $('.spinner-container').css('display','flex');
-                setTimeout(()=>{
-                    $('.spinner-container').css('display','none');
-                },1000)
-                $.post('/api/pengelola/cart/delete',{
-                    cart_id:cart_id,
-                }).done((e)=>{
-                    Swal.fire({
-                        text : e.message,
-                        icon : 'success',
-                        confirmButtonColor: 'var(--g2)',
-                        customClass: {
-                            popup:'swal-wide',
-                        },
-                    }).then(() => {
+                $('.spinner-container').css('display', 'flex');
+                setTimeout(() => {
+                    $('.spinner-container').css('display', 'none');
+                }, 1000)
+                $.post('/api/pengelola/cart/delete', {
+                    cart_id: cart_id,
+                }).done((e) => {
+                    GNotify.alertSuccess(e.message);
+                    $(this).parent().parent().parent().hide(300)
+                    setTimeout(()=>{
                         $(this).parent().parent().parent().remove()
-                        
-                        $('.spinner-container').css('display', 'none');
-                    })
-                }).fail((e)=>{
+                    },500)
+                    $('.spinner-container').css('display', 'none');
+                }).fail((e) => {
                     Swal.fire({
-                        text : e.responseJSON.message,
+                        text: e.responseJSON.message,
                         allowOutsideClick: false,
                         confirmButtonColor: 'var(--r2)',
                         customClass: {
-                            popup:'swal-wide',
+                            popup: 'swal-wide',
                         },
-                    }).then(()=>{
+                    }).then(() => {
                         window.location.reload()
                     })
                 })
             }
         })
+        
     })
 
 
@@ -119,7 +92,4 @@ $(document).ready(function(){
 
         $(this).parent().parent().parent().parent().siblings('.list-card-thigh').find('.total_cost').text(total_cost);
     })
-
-
-    
 })

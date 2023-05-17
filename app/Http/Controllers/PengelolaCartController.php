@@ -44,7 +44,7 @@ class PengelolaCartController extends Controller
                 'amount' => $amount,
             ]);
 
-            return response()->json(['message'=>'Barang berhasil ditambahkan!','data'=>$cekCart],200);
+            return response()->json(['message'=>'Data berhasil ditambahkan!','data'=>$cekCart],200);
         }
         
         $pengelola_id = $request->post('pengelola_id');
@@ -53,7 +53,7 @@ class PengelolaCartController extends Controller
             'item_id' => $item_id,
             'pengelola_id' => $pengelola_id,
         ]);
-        return response()->json(['message'=>'Barang berhasil ditambahkan!','data'=>$cart],200);
+        return response()->json(['message'=>'Data berhasil ditambahkan!','data'=>$cart],200);
     }
 
     public function update(Request $request)
@@ -74,7 +74,7 @@ class PengelolaCartController extends Controller
             'cost' => $cost,
             'updated_at' => now(),
         ]);
-        return response()->json(['message'=>'Keranjang berhasil diperbarui!','data'=>$cart],200);
+        return response()->json(['message'=>'Data berhasil diperbarui!','data'=>$cart],200);
     }
 
     public function delete(Request $request)
@@ -86,6 +86,6 @@ class PengelolaCartController extends Controller
 
         $cart = Cart::find($cart_id)->delete();
         
-        return response()->json(['message'=>'Keranjang berhasil dihapus!','data'=>$cart],200);
+        return response()->json(['message'=>'Data berhasil dihapus!','data'=>$cart],200);
     }
 }
