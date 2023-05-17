@@ -90,7 +90,6 @@ $(document).ready(()=>{
             showCancelButton: true,
             cancelButtonText: 'No',
             confirmButtonText: 'Yes',
-            allowOutsideClick: false,
             confirmButtonColor: 'var(--r2)',
             cancelButtonColor: 'var(--b3)',
             customClass: {

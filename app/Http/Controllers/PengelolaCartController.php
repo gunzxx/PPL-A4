@@ -14,7 +14,7 @@ class PengelolaCartController extends Controller
             'item'=>function($query){
                 $query->with(['media']);
             }
-        ])->orderBy('updated_at',"DESC")->paginate(10);
+        ])->latest()->paginate(10);
 
         return view('shop.pengelola.cart.index', [
             "css" => ['shop/shop'],
@@ -32,13 +32,12 @@ class PengelolaCartController extends Controller
             return response()->json(['message'=>'Data masih kosong!'],400);
         }
         $item_id = $request->post('item_id');
-        $item = Item::find($item_id,['price']);
 
-        $amount = $request->post('amount');
+        (int)$amount = $request->post('amount');
         
         $cekCart = Cart::where(['item_id'=>$item_id])->get(['amount'])->first();
         if($cekCart){
-            $amount = $cekCart->amount + $amount;
+            $amount = (int)$cekCart->amount + (int)$amount;
 
             Cart::where(['item_id' => $item_id])->get()->first()->update([
                 'amount' => $amount,
