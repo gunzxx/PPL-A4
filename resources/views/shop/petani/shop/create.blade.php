@@ -46,7 +46,9 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        @if ($agreement_details->count()>0)
+                        @if ($agreement_details->count()<1)
+                            <p class="kosong">Tidak ada persetujuan, harap <a href="/petani/partners/agreements" class="error">buat persetujuan</a></p>
+                        @else
                             <select class="form-input @error('bean_id') invalid @enderror" name="agreement_detail_id" id="agreement_detail_id">
                                 @foreach ($agreement_details as $agreement_detail)
                                     @if(session()->has("agreement_detail_id"))
@@ -56,8 +58,6 @@
                                     @endif
                                 @endforeach
                             </select>
-                        @else
-                            <p class="kosong">Tidak ada persetujuan, harap <a href="/petani/partners/agreements" class="error">buat persetujuan</a></p>
                         @endif
                     </div>
                 </div>

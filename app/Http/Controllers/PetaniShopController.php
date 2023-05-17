@@ -28,6 +28,10 @@ class PetaniShopController extends Controller
     public function create()
     {
         $agreement_details = AgreementDetail::where(['petani_id' => auth()->user()->id,'status'=>'accept','is_active'=>true])->with(['petani','agreement'])->get();
+
+        if(!$agreement_details || $agreement_details->count()<1){
+            return redirect('/petani/shop/shop')->with('error',"Persetujuan masih kosong!");
+        }
         return view('shop.petani.shop.create', [
             "css" => ['shop/form'],
             "active" => "shop",
