@@ -136,13 +136,18 @@ class PetaniOfferController extends Controller
                 $query->with('petani');
             },
         ])->get();
+
+        
         if(!$detail){
-            return back()->with('error',"Data tidak ditemukan");
+            return abort(404);
         }
         if($detail->count()<1){
-            return back()->withErrors(["message"=>"Data tidak ditemukan"]);
+            return abort(404);
         }
         $detail = $detail->first();
+        if($detail->petani_id != auth()->user()->id){
+            return abort(403);
+        }
         $inventories = Inventory::where(['user_id' => auth()->user()->id])->get();
 
         return view('partners.petani.offers.editOffers', [
@@ -169,34 +174,4 @@ class PetaniOfferController extends Controller
 
         return redirect(auth()->user()->getRoleNames()[0] . '/partners/offers')->with('success', 'Data berhasil diupdate!');
     }
-
-    // public function cancelOffer(Request $request)
-    // {
-    //     if (!$request->post()) {
-    //         return response()->json(["message" => "method not allowed"], 401);
-    //     }
-    //     if (!$request->post('offer_id') || !$request->post('detail_id')) {
-    //         return response()->json(["message" => "Data tidak lengkap"], 403);
-    //     }
-    //     $detail_id = $request->post('detail_id');
-    //     $offer_id = $request->post('offer_id');
-    //     OfferDetail::find($detail_id)->delete();
-    //     Offer::find($offer_id)->delete();
-    //     return response()->json(["message" => "Penawaran berhasil dibatalkan"], 200);
-    // }
-
-    // public function deleteOffer(Request $request)
-    // {
-    //     if (!$request->post()) {
-    //         return response()->json(["message" => "method not allowed"], 401);
-    //     }
-    //     if (!$request->post('offer_id') || !$request->post('detail_id')) {
-    //         return response()->json(["message" => "Data tidak lengkap"], 403);
-    //     }
-    //     $detail_id = $request->post('detail_id');
-    //     $offer_id = $request->post('offer_id');
-    //     OfferDetail::find($detail_id)->delete();
-    //     Offer::find($offer_id)->delete();
-    //     return response()->json(["message" => "Penawaran berhasil dihapus"], 200);
-    // }
 }

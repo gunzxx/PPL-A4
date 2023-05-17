@@ -88,17 +88,22 @@ class PengelolaAgreementsController extends Controller
      */
     public function editAgreements($agreementDetailId)
     {
-        $agreement_detail = AgreementDetail::with(['agreement',"offerDetail"])->find($agreementDetailId);
+        $agreement_detail = AgreementDetail::with(['agreement', "offerDetail"])->find($agreementDetailId);
+        if(!$agreement_detail){
+            return abort(404);
+        }
+        if($agreement_detail->pengelola_id != auth()->user()->id){
+            return abort(403);
+        }
         $partners = Partner::where(["pengelola_id" => auth()->user()->id])->get();
         $partner_id = [];
         foreach ($partners as $partner) {
             $partner_id[] = $partner->id;
         }
-        $offer_details = OfferDetail::where(['status' => 'accept'])->whereIn("partner_id", $partner_id)->with('offer')->get();
+        // $offer_details = OfferDetail::where(['status' => 'accept'])->whereIn("partner_id", $partner_id)->with('offer')->get();
         return view("partners.pengelola.agreements.edit", [
             'css' => [ 'partners/partners', 'partners/agreements/create'],
             "agreement_detail" => $agreement_detail,
-            'offer_details' => $offer_details
         ]);
     }
 

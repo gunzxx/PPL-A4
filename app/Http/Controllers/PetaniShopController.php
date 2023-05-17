@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class PetaniShopController extends Controller
 {
+    /**
+     * Method untuk menampilkan view penjualan
+     */
     public function index()
     {
         $items = Item::where(['petani_id'=>auth()->user()->id])->with(['media','agreementDetail','inventory'])->orderBy('updated_at',"DESC")->paginate(10);
@@ -19,6 +22,9 @@ class PetaniShopController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk menampilkan view tambah penjualan
+     */
     public function create()
     {
         $agreement_details = AgreementDetail::where(['petani_id' => auth()->user()->id,'status'=>'accept','is_active'=>true])->with(['petani','agreement'])->get();
@@ -29,6 +35,9 @@ class PetaniShopController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk menyimpan data tambah penjualan
+     */
     public function store(Request $request)
     {
         $cekItem = Item::where([
@@ -64,8 +73,14 @@ class PetaniShopController extends Controller
         return redirect('/petani/shop/shop')->with("success",'Data berhasil ditambahkan');
     }
 
+    /**
+     * Method untuk menampilkan view edit penjualan
+     */
     public function edit(Item $item)
     {
+        if($item->petani_id != auth()->user()->id){
+            return abort(403);
+        }
         return view('shop.petani.shop.edit', [
             "css" => ['shop/form'],
             "active" => "shop",
@@ -73,6 +88,9 @@ class PetaniShopController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk memperbarui data penjualan
+     */
     public function update(Request $request)
     {
         $validated = $request->validate([
@@ -98,6 +116,9 @@ class PetaniShopController extends Controller
         return redirect('/petani/shop/shop')->with("success", 'Data berhasil diperbarui!');
     }
 
+    /**
+     * Method untuk menghapus data penjualan
+     */
     public function delete(Request $request)
     {
         if(!$request->post("item_id")){
