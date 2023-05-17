@@ -7,6 +7,7 @@ $(document).ready(()=>{
 })
 
 class GNotify {
+    
     static alertSuccess(message) {
         const alertContainer = document.createElement('div')
         alertContainer.classList.add("alert-container")
@@ -29,7 +30,9 @@ class GNotify {
 
         setTimeout(() => {
             $(alertContainer).hide(300)
+          setTimeout(() => {
             $(alertContainer).remove()
+          }, 500)
         }, 2500)
 
         return alertContainer;
@@ -40,24 +43,26 @@ class GNotify {
         alertContainer.classList.add("alert-container")
         alertContainer.classList.add("alert-container-error")
         alertContainer.innerHTML = `
-        <div class="alert-icon">
-          <i class="bi bi-check-circle-fill"></i>
-        </div>
-        <div class="alert-body">
-          <p>`+ message + `</p>
-        </div>
-        <div class="alert-x-container">
-          <button type="button" class="alert-x">&#10005;</button>
-        </div>
-        <div class="alert-loader"></div>
-      `;
+          <div class="alert-icon">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+          </div>
+          <div class="alert-body">
+            <p>`+ message + `</p>
+          </div>
+          <div class="alert-x-container">
+            <button type="button" class="alert-x">&#10005;</button>
+          </div>
+          <div class="alert-loader"></div>
+        `;
 
         $('.list-alert-container').append(alertContainer);
         $(alertContainer).css('display', 'flex').show(300);
 
         setTimeout(() => {
             $(alertContainer).hide(300)
-            $(alertContainer).remove()
+            setTimeout(() => {
+                $(alertContainer).remove()
+            }, 500)
         }, 2500)
         return alertContainer;
     }

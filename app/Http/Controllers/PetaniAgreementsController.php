@@ -13,7 +13,7 @@ class PetaniAgreementsController extends Controller
      */
     public function showAgreements()
     {
-        $agreement_details = AgreementDetail::where(["is_active" => true])
+        $agreement_details = AgreementDetail::where(["is_active" => true,'petani_id'=>auth()->user()->id])
         ->where(['petani_id' => auth()->user()->id,'is_active'=>true])->where(function($query){
             $query->where('status','=','accept')->orWhere('status','=','waiting');
         })->with([

@@ -13,6 +13,7 @@
 <input type="hidden" id="alert-message" value="{{ $message }}">
 <script>
     $(document).ready(()=>{
-        GNotify.alertError($("#alert-message").val())
+        GNotify.alertError($("#alert-message").val());
+        $("#alert-message").remove();
     })
 </script>

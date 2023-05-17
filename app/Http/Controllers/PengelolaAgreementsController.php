@@ -15,7 +15,7 @@ class PengelolaAgreementsController extends Controller
      */
     public function showAgreements()
     {
-        $agreement_details = AgreementDetail::where(["is_active"=>true])->with(['agreement','pengelola','petani',
+        $agreement_details = AgreementDetail::where(["is_active"=>true,'pengelola_id'=>auth()->user()->id])->with(['agreement','pengelola','petani',
             "offerDetail"=>function($query){
                 $query->with('offer');
             }

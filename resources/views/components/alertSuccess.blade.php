@@ -1,6 +1,7 @@
 <input type="hidden" id="alert-message" value="{{ $message }}">
 <script>
     $(document).ready(()=>{
-        GNotify.alertSuccess($("#alert-message").val())
+        GNotify.alertSuccess($("#alert-message").val());
+        $("#alert-message").remove();
     })
 </script>
