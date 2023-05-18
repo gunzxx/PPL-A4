@@ -64,7 +64,7 @@ Route::middleware(['auth','role:petani'])->group(function(){
     Route::post('/petani/shop/update', [PetaniShopController::class,'update']);
 
     // Pembayaran
-    Route::get('/pengelola/shop/payment', [PetaniPaymentController::class, 'index']);
+    Route::get('/petani/shop/payment', [PetaniPaymentController::class, 'index']);
 
     // inventory
     Route::get('/petani/inventory', function(){return redirect("/petani/inventory/inventory");});

@@ -29,7 +29,7 @@ class PengelolaPaymentController extends Controller
                 ]);
             },
             'petani',
-        ])->get();
+        ])->latest()->get();
 
         return view("shop.pengelola.payment.index",[
             "css" => ['shop/shop'],
@@ -54,7 +54,7 @@ class PengelolaPaymentController extends Controller
             return abort(404);
         }
 
-        return view("shop.pengelola.payment.pay",[
+        return view("shop.pengelola.payment.proof",[
             "css" => ['shop/shop','shop/proof'],
             'active' => 'payment',
             'payment' => $payment,
@@ -77,7 +77,6 @@ class PengelolaPaymentController extends Controller
         ])->where(function($query){
             $query->where(['status'=>'notpay'])->orWhere(['status'=>'waiting']);
         })->first();
-        // dd($payment);
         
         if(!$payment){
             return redirect("/pengelola/shop/payment")->with('error', "Pembayaran sudah diterima!");
@@ -85,18 +84,15 @@ class PengelolaPaymentController extends Controller
         
         if ($request->file('proof')) {
             if($payment->getFirstMediaUrl('payment_proof') == ''){
-                if($payment->status == 'notpay'){
-                    $payment->update([
-                        'status'=>'waiting',
-                    ]);
-                }
+                $payment->update([
+                    'status'=>'waiting',
+                ]);
                 $payment->addMediaFromRequest("proof")->toMediaCollection('payment_proof');
                 return redirect("/pengelola/shop/payment")->with('success',"Bukti pembayaran berhasil diunggah!");
             }
 
             $payment->addMediaFromRequest("proof")->toMediaCollection('payment_proof');
             return redirect("/pengelola/shop/payment")->with('success',"Bukti pembayaran berhasil diperbarui!");
-
         }
 
         return redirect("/pengelola/shop/payment");

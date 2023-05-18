@@ -4,14 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PetaniShopController;
 use App\Http\Controllers\api\KedelaiController;
 use App\Http\Controllers\PetaniOfferController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\PengelolaCartController;
+use App\Http\Controllers\PetaniPaymentController;
 use App\Http\Controllers\PengelolaOfferController;
 use App\Http\Controllers\PetaniInventoryController;
 use App\Http\Controllers\PengelolaPartnerController;
 use App\Http\Controllers\PetaniAgreementsController;
 use App\Http\Controllers\PengelolaInventoryController;
 use App\Http\Controllers\PengelolaAgreementsController;
-use App\Http\Controllers\PengelolaTransactionController;
 
 /**
  * Sprint 1 : Kerja sama
@@ -54,16 +55,15 @@ Route::get('/kedelai/{apiKedelai}',[KedelaiController::class,'show']);
  */
 
 // Penjualan
-// Route hapus item
 Route::post("/petani/item/delete",[PetaniShopController::class,'delete']);
 
 // Keranjang
-// Route tambah keranjang
 Route::post("/pengelola/cart/add",[PengelolaCartController::class,'add']);
 Route::post("/pengelola/cart/update",[PengelolaCartController::class,'update']);
 Route::post("/pengelola/cart/delete",[PengelolaCartController::class,'delete']);
 
 // Pembayaran
-// Route tambah pembayaran
-Route::post("/pengelola/payment/add",[PengelolaTransactionController::class,'add']);
-Route::post("/pengelola/payment/cancel",[PengelolaTransactionController::class,'cancel']);
+Route::post("/pengelola/payment/add",[TransactionController::class,'add']);
+Route::post("/pengelola/payment/cancel",[TransactionController::class,'cancel']);
+
+Route::post("/petani/payment/accept",[PetaniPaymentController::class,'accept']);

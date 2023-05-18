@@ -140,10 +140,13 @@
 }
 .list-card-detail .status{
     padding: 5px;
+    color: var(--w1);
 }
 .list-card-detail .status.notprocess,.list-card-detail .status.waiting{
     background: var(--o2);
-    color: var(--w1);
+}
+.list-card-detail .status.accept{
+    background: var(--g2);
 }
 
 .list-card-thigh *{

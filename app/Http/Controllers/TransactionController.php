@@ -9,7 +9,7 @@ use App\Models\Payment;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
-class PengelolaTransactionController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Method untuk menambahkan data transaksi dan pembayaran
