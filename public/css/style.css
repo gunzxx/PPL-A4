@@ -32,6 +32,9 @@
     --r4: #FFCDD2;
     --r5: #FFB6C1;
 
+    --o1:#FF5000;
+    --o2:#FF9900;
+
     --bl1:#0000FF;
     --bl2:#00EBD7;
 
@@ -39,6 +42,9 @@
     --sc2 : rgba(252, 41, 71,.7);
     --sc3 : rgba(254, 98, 68,.7);
     --sc4 : rgba(255, 222, 185,.7);
+}
+:fullscreen{
+    background-color: var(--g3);
 }
 
 * {

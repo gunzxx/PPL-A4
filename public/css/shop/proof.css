@@ -1,0 +1,70 @@
+/* Proof form */
+.box-container{
+    justify-content: start;
+}
+#proof-form-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 30px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.proof-profile-image-container {
+    height: 45px;
+    width: 45px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+}
+.proof-profile-image-container img {
+    min-height: 100%;
+}
+
+.detail-container{
+    display: flex;
+    flex-direction: column;
+}
+.detail-container h1{
+    color: var(--g2);
+    font-size: 20px;
+    font-weight: 700;
+}
+.detail-container p{
+    color: var(--b3);
+    font-size: 16px;
+}
+
+
+.form-group input{
+    display: none;
+}
+.form-group:has(#input-preview-img){
+    flex-direction: column;
+}
+#preview-img{
+    width: 480px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#preview-img img{
+    max-height: 100%;
+    cursor: zoom-in;
+}
+.proof-upload:hover{
+    color: var(--g3);
+    cursor: pointer;
+}
+/* Proof form end */
+

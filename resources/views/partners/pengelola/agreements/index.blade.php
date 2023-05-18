@@ -86,25 +86,6 @@
         @endif
     </main>
 
-    <div class="popup-backdrop cancel-agreement-popup">
-        <div class="popup-container">
-            <div class="popup-text">Apakah yakin melakukan pembatalan data?</div>
-            <div class="popup-alert">
-                <button onclick="cancelAgreement()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button value="false" class="popup-confirm popup-no" type="button">No</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="popup-backdrop delete-agreement-popup">
-        <div class="popup-container">
-            <div class="popup-text">Apakah yakin melakukan penghapusan data?</div>
-            <div class="popup-alert">
-                <button onclick="deleteAgreement()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button value="false" class="popup-confirm popup-no" type="button">No</button>
-            </div>
-        </div>
-    </div>
 
     @error("message")
         <x-alertError :message="$message"></x-alertError>
@@ -121,9 +102,3 @@
 @section('script')
     <script src="/js/partner/pengelola/agreement.js"></script>
 @endsection
-
-<?php
-
-// array_has($array, key)
-
-?>

@@ -3,3 +3,4 @@ layer 2 : nav
 layer 3 : profile
 layer 4 : popup
 layer 5 : loader
+layer 6 : notification

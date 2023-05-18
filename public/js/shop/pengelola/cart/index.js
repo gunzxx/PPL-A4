@@ -1,6 +1,6 @@
 let cart_id;
 let amount;
-$(document).ready(function(){
+$(document).ready(()=>{
     // Update chart
     $(".update-btn").click(function(){
         cart_id = $(this).attr('data-cart-id');
@@ -14,7 +14,18 @@ $(document).ready(function(){
             cart_id: cart_id,
             amount: amount,
         }).done((e) => {
-            GNotify.alertSuccess(e.message);
+            if(e.message == "Jumlah melebihi batas stok!"){
+                Swal.fire({
+                    text : e.message,
+                    confirmButtonColor: 'var(--r2)',
+                    customClass: {
+                        popup:'swal-wide',
+                    },
+                })
+            }
+            else{
+                GNotify.alertSuccess(e.message);
+            }
             $('.spinner-container').css('display', 'none');
         }).fail((e) => {
             Swal.fire({
@@ -40,7 +51,6 @@ $(document).ready(function(){
             showCancelButton: true,
             cancelButtonText: 'No',
             confirmButtonText: 'Yes',
-            allowOutsideClick: false,
             confirmButtonColor: 'var(--r2)',
             cancelButtonColor: 'var(--b3)',
             customClass: {
@@ -56,10 +66,10 @@ $(document).ready(function(){
                     cart_id: cart_id,
                 }).done((e) => {
                     GNotify.alertSuccess(e.message);
-                    $(this).parent().parent().parent().hide(300)
-                    setTimeout(()=>{
-                        $(this).parent().parent().parent().remove()
-                    },500)
+                    $(this).parent().parent().parent().remove();
+                    if ($('.list-card').length == 0) {
+                        $(".box-container").html('<div><p align="center">Tidak ada barang di keranjang.</p></div>')
+                    }
                     $('.spinner-container').css('display', 'none');
                 }).fail((e) => {
                     Swal.fire({
@@ -75,7 +85,51 @@ $(document).ready(function(){
                 })
             }
         })
-        
+    })
+
+    // Buy item
+    $(".buy-btn").click(function(){
+        const cart_id = $(this).attr('data-cart-id');
+        const item_id = $(this).attr('data-item-id');
+        // console.log([cart_id,item_id]);
+
+        Swal.fire({
+            text: "Beli kedelai?",
+            showCancelButton: true,
+            cancelButtonText: 'No',
+            confirmButtonText: 'Yes',
+            confirmButtonColor: 'var(--g2)',
+            cancelButtonColor: 'var(--b3)',
+            customClass: {
+                popup:'swal-wide',
+            },
+        }).then((result)=>{
+            if(result.isConfirmed){
+                $('.spinner-container').css('display','flex');
+                $.post("/api/pengelola/payment/add",{
+                    cart_id:cart_id,
+                    item_id:item_id,
+                }).done((e)=>{
+                    $(this).parent().parent().parent().remove();
+                    if ($('.list-card').length == 0) {
+                        $(".box-container").html('<div><p align="center">Tidak ada barang di keranjang.</p></div>')
+                    }
+                    
+                    GNotify.alertSuccess(e.message);
+                    window.location.href = '/pengelola/shop/payment'
+                }).fail(e=>{
+                    Swal.fire({
+                        text : e.responseJSON.message,
+                        confirmButtonColor: 'var(--r2)',
+                        customClass: {
+                            popup:'swal-wide',
+                        },
+                    }).then(()=>{
+                        window.location.reload();
+                    })
+                })
+            }
+        })
     })
 
 

@@ -73,36 +73,6 @@
         </div>
     </main>
 
-    <div class="popup-backdrop cancel-agreement-popup">
-        <div class="popup-container">
-            <div class="popup-text">Apakah yakin melakukan penghapusan data?</div>
-            <div class="popup-alert">
-                <button onclick="cancelAgreement()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button value="false" class="popup-confirm popup-no" type="button">No</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="popup-backdrop reject-agreement-popup">
-        <div class="popup-container">
-            <div class="popup-text">Tolak persetujuan dengan pengelola?</div>
-            <div class="popup-alert">
-                <button onclick="rejectAgreement()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button value="false" class="popup-confirm popup-no" type="button">No</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="popup-backdrop confirm-agreement-popup">
-        <div class="popup-container">
-            <div class="popup-text">Terima persetujuan dengan pengelola?</div>
-            <div class="popup-alert">
-                <button onclick="confirmAgreement()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button value="false" class="popup-confirm popup-no" type="button">No</button>
-            </div>
-        </div>
-    </div>
-
     @error("message")
         <input type="hidden" id="error-msg" value="{{ $message }}">
         <script>

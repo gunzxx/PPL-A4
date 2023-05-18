@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class PengelolaCartController extends Controller
 {
+    /**
+     * Method untuk menampilkan view keranjang
+     */
     public function index()
     {
         $carts = Cart::where(['pengelola_id'=>auth()->user()->id])->with([
@@ -23,30 +27,37 @@ class PengelolaCartController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk menambah data keranjang
+     */
     public function add(Request $request)
     {
-        if(!$request->post('item_id')|| !$request->post('amount') || !$request->post('pengelola_id')){
+        if(!$request->post('item_id')|| !$request->post('amount')){
             return response()->json(['message'=>'Data tidak valid!'],400);
         }
-        if($request->post('amount') == 0){
+        if($request->post('amount') < 0){
             return response()->json(['message'=>'Data masih kosong!'],400);
         }
-        $item_id = $request->post('item_id');
 
+        $item_id = $request->post('item_id');
         (int)$amount = $request->post('amount');
         
-        $cekCart = Cart::where(['item_id'=>$item_id])->get(['amount'])->first();
+        $cekCart = Cart::where(['item_id'=>$item_id])->get(['id','amount','updated_at','item_id'])->first();
         if($cekCart){
             $amount = (int)$cekCart->amount + (int)$amount;
+            if($amount > $cekCart->item->stok){
+                return response()->json(['message'=>'Jumlah melebihi batas stok!'],200);
+            }
 
-            Cart::where(['item_id' => $item_id])->get()->first()->update([
+            $cekCart->update([
                 'amount' => $amount,
+                'updated_at'=>Carbon::now(),
             ]);
 
             return response()->json(['message'=>'Data berhasil ditambahkan!','data'=>$cekCart],200);
         }
         
-        $pengelola_id = $request->post('pengelola_id');
+        $pengelola_id = Item::find($item_id)->pengelola_id;
         $cart = Cart::create([
             'amount' => $amount,
             'item_id' => $item_id,
@@ -55,6 +66,9 @@ class PengelolaCartController extends Controller
         return response()->json(['message'=>'Data berhasil ditambahkan!','data'=>$cart],200);
     }
 
+    /**
+     * Method untuk memperbarui data keranjang
+     */
     public function update(Request $request)
     {
         if(!$request->post('cart_id') || !$request->post('amount')){
@@ -66,16 +80,20 @@ class PengelolaCartController extends Controller
         $cart = Cart::find($cart_id);
         $item = Item::find($cart->item_id);
 
-        $cost = $item->price * $amount;
-        
+        if($amount > $item->stok){
+            return response()->json(['message'=> 'Jumlah melebihi batas stok!','data'=>$cart],200);
+        }
+
         $cart->update([
             'amount' => $amount,
-            'cost' => $cost,
             'updated_at' => now(),
         ]);
         return response()->json(['message'=>'Data berhasil diperbarui!','data'=>$cart],200);
     }
 
+    /**
+     * Method untuk menghapus data keranjang
+     */
     public function delete(Request $request)
     {
         if(!$request->post('cart_id')){

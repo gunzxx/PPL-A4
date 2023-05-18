@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\api\AuthController;
 use App\Http\Controllers\PetaniShopController;
 use App\Http\Controllers\api\KedelaiController;
 use App\Http\Controllers\PetaniOfferController;
@@ -12,6 +11,7 @@ use App\Http\Controllers\PengelolaPartnerController;
 use App\Http\Controllers\PetaniAgreementsController;
 use App\Http\Controllers\PengelolaInventoryController;
 use App\Http\Controllers\PengelolaAgreementsController;
+use App\Http\Controllers\PengelolaTransactionController;
 
 /**
  * Sprint 1 : Kerja sama
@@ -53,12 +53,17 @@ Route::get('/kedelai/{apiKedelai}',[KedelaiController::class,'show']);
  * Sprint 2 : Jual beli
  */
 
-// Petani
+// Penjualan
 // Route hapus item
 Route::post("/petani/item/delete",[PetaniShopController::class,'delete']);
 
-// Pengelola
+// Keranjang
 // Route tambah keranjang
 Route::post("/pengelola/cart/add",[PengelolaCartController::class,'add']);
 Route::post("/pengelola/cart/update",[PengelolaCartController::class,'update']);
 Route::post("/pengelola/cart/delete",[PengelolaCartController::class,'delete']);
+
+// Pembayaran
+// Route tambah pembayaran
+Route::post("/pengelola/payment/add",[PengelolaTransactionController::class,'add']);
+Route::post("/pengelola/payment/cancel",[PengelolaTransactionController::class,'cancel']);

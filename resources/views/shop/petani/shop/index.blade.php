@@ -58,5 +58,5 @@
 @endsection
 
 @section('script')
-    <script src="/js/shop/petani/penjualan/index.js"></script>
+    <script src="/js/shop/petani/shop/index.js"></script>
 @endsection

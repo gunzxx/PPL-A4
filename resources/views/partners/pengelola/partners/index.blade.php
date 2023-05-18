@@ -60,25 +60,6 @@
         @endif
     </main>
 
-    {{-- <div class="popup-backdrop stop-partner">
-        <div class="popup-container">
-            <div class="popup-text">Apakah anda yakin untuk berhenti kerja sama?</div>
-            <div class="popup-alert">
-                <button onclick="stopPartner()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button value="false" class="popup-confirm popup-no" type="button">No</button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="popup-backdrop delete-partner">
-        <div class="popup-container">
-            <div class="popup-text">Apakah yakin melakukan penghapusan data kerja sama?</div>
-            <div class="popup-alert">
-                <button onclick="deletePartner()" value="true" class="popup-confirm popup-yes" type="button">Yes</button>
-                <button value="false" class="popup-confirm popup-no" type="button">No</button>
-            </div>
-        </div>
-    </div> --}}
 
     @error("message")
         <x-alertError :message="$message"></x-alertError>

@@ -8,9 +8,11 @@ use App\Http\Controllers\PetaniShopController;
 use App\Http\Controllers\PetaniOfferController;
 use App\Http\Controllers\PengelolaCartController;
 use App\Http\Controllers\PengelolaShopController;
+use App\Http\Controllers\PetaniPaymentController;
 use App\Http\Controllers\PengelolaOfferController;
 use App\Http\Controllers\PetaniInventoryController;
 use App\Http\Controllers\PengelolaPartnerController;
+use App\Http\Controllers\PengelolaPaymentController;
 use App\Http\Controllers\PetaniAgreementsController;
 use App\Http\Controllers\PengelolaInventoryController;
 use App\Http\Controllers\PengelolaAgreementsController;
@@ -53,7 +55,7 @@ Route::middleware(['auth','role:petani'])->group(function(){
     // Persetujuan
     Route::get('/petani/partners/agreements', [PetaniAgreementsController::class,'showAgreements']);
 
-    // Route jual beli
+    // Jual beli
     Route::get('/petani/shop', function(){return redirect('/petani/shop/shop');});
     Route::get('/petani/shop/shop', [PetaniShopController::class,'index']);
     Route::get('/petani/shop/create', [PetaniShopController::class,'create']);
@@ -61,7 +63,10 @@ Route::middleware(['auth','role:petani'])->group(function(){
     Route::get('/petani/shop/update/{item}', [PetaniShopController::class,'edit']);
     Route::post('/petani/shop/update', [PetaniShopController::class,'update']);
 
-    // Route inventory
+    // Pembayaran
+    Route::get('/pengelola/shop/payment', [PetaniPaymentController::class, 'index']);
+
+    // inventory
     Route::get('/petani/inventory', function(){return redirect("/petani/inventory/inventory");});
     Route::get('/petani/inventory/inventory', [PetaniInventoryController::class, 'showInventory']);
     Route::get('/petani/inventory/create', [PetaniInventoryController::class, 'create']);
@@ -101,8 +106,13 @@ Route::middleware(['auth','role:pengelola'])->group(function(){
     
     // Keranjang
     Route::get('/pengelola/shop/cart', [PengelolaCartController::class,'index']);
+    
+    // Pembayaran
+    Route::get('/pengelola/shop/payment', [PengelolaPaymentController::class,'index']);
+    Route::get('/pengelola/shop/payment/pay/{payment_id}', [PengelolaPaymentController::class,'pay']);
+    Route::post('/pengelola/shop/payment/pay', [PengelolaPaymentController::class,'savePay']);
 
-    // Route inventory
+    // Inventory
     Route::get('/pengelola/inventory', function(){return redirect("/pengelola/inventory/inventory");});
     Route::get('/pengelola/inventory/inventory', [PengelolaInventoryController::class, 'showInventory']);
     Route::get('/pengelola/inventory/create', [PengelolaInventoryController::class, 'create']);

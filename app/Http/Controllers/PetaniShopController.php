@@ -108,6 +108,7 @@ class PetaniShopController extends Controller
                 'product_img' => 'image',
             ]);
         }
+        
         $item_id = $request->post('item_id');
         $validated['updated_at']=now();
 

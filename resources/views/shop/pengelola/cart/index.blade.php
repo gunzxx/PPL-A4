@@ -31,7 +31,7 @@
                                     </div>
                                 </div>
                                 <div class="list-card-time">
-                                    <p>{{ date('d M Y',strtotime($cart->created_at)) }}</p>
+                                    <p>{{ date('d M Y',strtotime($cart->updated_at)) }}</p>
                                 </div>
                             </div>
                             <div class="list-card-thigh">
@@ -40,7 +40,7 @@
                             <div class="list-card-footer">
                                 <button class="btn update-btn" type="button" data-cart-id="{{ $cart->id }}">Update <i class="bi bi-pencil-square"></i></button>
                                 <button class="btn delete-btn" type="button" data-cart-id="{{ $cart->id }}">Hapus <i class="bi bi-trash3-fill"></i></button>
-                                <button class="btn main-btn buy-btn" type="button" data-cart-id="{{ $cart->id }}">Beli</button>
+                                <button class="btn main-btn buy-btn" type="button" data-cart-id="{{ $cart->id }}"  data-item-id="{{ $cart->item->id }}">Beli</button>
                             </div>
                         </div>
                     </div>
@@ -61,5 +61,5 @@
 
 @section('script')
     <script src="/js/shop/pengelola/main.js"></script>
-    <script src="/js/shop/pengelola/keranjang/index.js"></script>
+    <script src="/js/shop/pengelola/cart/index.js"></script>
 @endsection

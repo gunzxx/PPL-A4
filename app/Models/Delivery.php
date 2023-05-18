@@ -2,24 +2,22 @@
 
 namespace App\Models;
 
-use App\Models\Cart;
 use App\Models\User;
-use App\Models\Inventory;
-use App\Models\AgreementDetail;
+use App\Models\Transaction;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Item extends Model implements HasMedia
+class Delivery extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia;
-
+    use HasFactory,InteractsWithMedia;
+    
     protected $guarded = ['id'];
 
-    public function agreementDetail()
+    public function transaction()
     {
-        return $this->hasOne(AgreementDetail::class, 'id', 'agreement_detail_id');
+        return $this->hasOne(Transaction::class);
     }
 
     public function petani()
@@ -32,20 +30,10 @@ class Item extends Model implements HasMedia
         return $this->belongsTo(User::class, 'pengelola_id', 'id');
     }
 
-    public function inventory()
-    {
-        return $this->belongsTo(Inventory::class, 'inventory_id', 'id');
-    }
-
     public function registerMediaCollections(): void
     {
         $this
-            ->addMediaCollection('product')
+            ->addMediaCollection('profile')
             ->singleFile();
-    }
-
-    public function cart()
-    {
-        return $this->hasMany(Cart::class);
     }
 }
