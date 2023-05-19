@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
@@ -13,13 +12,13 @@ use App\Http\Controllers\PetaniPaymentController;
 use App\Http\Controllers\PengelolaOfferController;
 use App\Http\Controllers\PetaniDeliveryController;
 use App\Http\Controllers\PetaniInventoryController;
-use App\Http\Controllers\PengelolaHistoryController;
 use App\Http\Controllers\PengelolaPartnerController;
 use App\Http\Controllers\PengelolaPaymentController;
 use App\Http\Controllers\PetaniAgreementsController;
 use App\Http\Controllers\PengelolaDeliveryController;
 use App\Http\Controllers\PengelolaInventoryController;
 use App\Http\Controllers\PengelolaAgreementsController;
+use App\Http\Controllers\PengelolaShopHistoryController;
 use App\Http\Controllers\PengelolaPartnerHistoryController;
 
 Route::get('/', function () {return view('landing');})->name("landing");
@@ -132,7 +131,7 @@ Route::middleware(['auth','role:pengelola'])->group(function(){
     Route::get('/pengelola/shop/delivery/{delivery_id}', [PengelolaDeliveryController::class,'proof']);
     
     // Riwayat Jual Beli
-    Route::get('/pengelola/shop/history', [PengelolaHistoryController::class,'index']);
+    Route::get('/pengelola/shop/history', [PengelolaShopHistoryController::class,'index']);
 
     // Inventory
     Route::get('/pengelola/inventory', function(){return redirect("/pengelola/inventory/inventory");});

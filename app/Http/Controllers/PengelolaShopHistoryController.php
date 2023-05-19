@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
-class PengelolaHistoryController extends Controller
+class PengelolaShopHistoryController extends Controller
 {
     /**
      * Method untuk menampilkan view history
