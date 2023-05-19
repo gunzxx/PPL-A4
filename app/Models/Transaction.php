@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Item;
+use App\Models\Delivery;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -25,5 +26,10 @@ class Transaction extends Model
     public function pengelola()
     {
         return $this->belongsTo(User::class, 'pengelola_id', 'id');
+    }
+
+    public function delivery()
+    {
+        return $this->hasOne(Delivery::class);
     }
 }

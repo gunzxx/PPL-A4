@@ -8,10 +8,12 @@ use App\Http\Controllers\PetaniShopController;
 use App\Http\Controllers\PetaniOfferController;
 use App\Http\Controllers\PengelolaCartController;
 use App\Http\Controllers\PengelolaShopController;
+use App\Http\Controllers\PetaniHistoryController;
 use App\Http\Controllers\PetaniPaymentController;
 use App\Http\Controllers\PengelolaOfferController;
 use App\Http\Controllers\PetaniDeliveryController;
 use App\Http\Controllers\PetaniInventoryController;
+use App\Http\Controllers\PengelolaHistoryController;
 use App\Http\Controllers\PengelolaPartnerController;
 use App\Http\Controllers\PengelolaPaymentController;
 use App\Http\Controllers\PetaniAgreementsController;
@@ -75,6 +77,9 @@ Route::middleware(['auth','role:petani'])->group(function(){
     Route::get('/petani/shop/delivery/send/{delivery_id}', [PetaniDeliveryController::class,'send']);
     Route::post('/petani/shop/delivery/send', [PetaniDeliveryController::class,'save']);
 
+    // Riwayat Jual Beli
+    Route::get('/petani/shop/history', [PetaniHistoryController::class, 'index']);
+
     // inventory
     Route::get('/petani/inventory', function(){return redirect("/petani/inventory/inventory");});
     Route::get('/petani/inventory/inventory', [PetaniInventoryController::class, 'showInventory']);
@@ -125,6 +130,9 @@ Route::middleware(['auth','role:pengelola'])->group(function(){
     // Pengiriman
     Route::get('/pengelola/shop/delivery', [PengelolaDeliveryController::class,'index']);
     Route::get('/pengelola/shop/delivery/{delivery_id}', [PengelolaDeliveryController::class,'proof']);
+    
+    // Riwayat Jual Beli
+    Route::get('/pengelola/shop/history', [PengelolaHistoryController::class,'index']);
 
     // Inventory
     Route::get('/pengelola/inventory', function(){return redirect("/pengelola/inventory/inventory");});
