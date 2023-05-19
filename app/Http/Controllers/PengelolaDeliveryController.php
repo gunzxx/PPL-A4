@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Delivery;
+use App\Models\Inventory;
 use Illuminate\Http\Request;
 
 class PengelolaDeliveryController extends Controller
@@ -78,9 +79,19 @@ class PengelolaDeliveryController extends Controller
         ]);
 
         $transaction = $delivery->transaction;
+
+        $inventory = $transaction->inventory;
+        return response()->json(['message'=>"Pengiriman diterima!", $inventory]);
+        $stok = (int)$inventory->stok + (int)$transaction->amount;
+        Inventory::create([
+            'bean_type'=>$transaction->bean_type,
+            "stok"=>$stok,
+            'user_id'=>$transaction->pengelola_id,
+        ]);
+
         $transaction->update([
-            'status'=>'done',
-            'is_active'=>false,
+            'status' => 'done',
+            'is_active' => false,
         ]);
         
         return response()->json(['message'=>"Pengiriman diterima!",$transaction]);
