@@ -81,8 +81,9 @@ class PengelolaDeliveryController extends Controller
         $transaction = $delivery->transaction;
 
         $inventory = $transaction->inventory;
-        return response()->json(['message'=>"Pengiriman diterima!", $inventory]);
+        
         $stok = (int)$inventory->stok + (int)$transaction->amount;
+
         Inventory::create([
             'bean_type'=>$transaction->bean_type,
             "stok"=>$stok,
