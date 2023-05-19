@@ -17,23 +17,23 @@ class Delivery extends Model implements HasMedia
 
     public function transaction()
     {
-        return $this->hasOne(Transaction::class);
+        return $this->hasOne(Transaction::class,'id','transaction_id');
     }
 
     public function petani()
     {
-        return $this->belongsTo(User::class, 'petani_id', 'id');
+        return $this->belongsTo(User::class);
     }
 
     public function pengelola()
     {
-        return $this->belongsTo(User::class, 'pengelola_id', 'id');
+        return $this->belongsTo(User::class);
     }
 
     public function registerMediaCollections(): void
     {
         $this
-            ->addMediaCollection('profile')
+            ->addMediaCollection('delivery_proof')
             ->singleFile();
     }
 }

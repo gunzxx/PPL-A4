@@ -11,6 +11,7 @@ use App\Http\Controllers\PengelolaOfferController;
 use App\Http\Controllers\PetaniInventoryController;
 use App\Http\Controllers\PengelolaPartnerController;
 use App\Http\Controllers\PetaniAgreementsController;
+use App\Http\Controllers\PengelolaDeliveryController;
 use App\Http\Controllers\PengelolaInventoryController;
 use App\Http\Controllers\PengelolaAgreementsController;
 
@@ -67,3 +68,6 @@ Route::post("/pengelola/payment/add",[TransactionController::class,'add']);
 Route::post("/pengelola/payment/cancel",[TransactionController::class,'cancel']);
 
 Route::post("/petani/payment/accept",[PetaniPaymentController::class,'accept']);
+
+// Pengiriman
+Route::post("/pengelola/delivery/accept",[PengelolaDeliveryController::class,'accept']);

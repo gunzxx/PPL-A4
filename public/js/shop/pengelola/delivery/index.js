@@ -1,8 +1,8 @@
 $(".accept-btn").click(function(){
-    const payment_id = $(this).attr("data-payment-id");
+    const delivery_id = $(this).attr("data-delivery-id");
 
     Swal.fire({
-        text: "Terima pembayaran?",
+        text: "Terima pengiriman?",
         showCancelButton: true,
         cancelButtonText: 'No',
         confirmButtonText: 'Yes',
@@ -15,9 +15,10 @@ $(".accept-btn").click(function(){
     }).then((result)=>{
         if(result.isConfirmed){
             $('.spinner-container').css('display','flex');
-            $.post('/api/petani/payment/accept',{
-                payment_id:payment_id,
+            $.post('/api/pengelola/delivery/accept',{
+                delivery_id:delivery_id,
             }).done((e)=>{
+                // console.log(e);
                 Swal.fire({
                     text : e.message,
                     icon : 'success',

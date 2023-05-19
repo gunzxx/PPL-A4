@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->enum('status', ['notsend','waiting','accept','reject'])->default('notsend');
             $table->timestamp('send_at')->nullable();
-            $table->timestamp('receive_at')->nullable();
+            $table->timestamp('accept_at')->nullable();
             $table->foreignId('transaction_id')->references('id')->on('transactions')->onDelete('cascade');
             $table->foreignId('pengelola_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('petani_id')->references('id')->on('users')->onDelete('cascade');

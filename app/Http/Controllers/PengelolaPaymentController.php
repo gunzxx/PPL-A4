@@ -39,7 +39,7 @@ class PengelolaPaymentController extends Controller
     }
 
     /**
-     * Method untuk menampilkan view bukti pembayaran
+     * Method untuk menampilkan view edit bukti pembayaran
      */
     public function pay($payment_id)
     {
@@ -79,7 +79,7 @@ class PengelolaPaymentController extends Controller
         })->first();
         
         if(!$payment){
-            return redirect("/pengelola/shop/payment")->with('error', "Pembayaran sudah diterima!");
+            return redirect("/pengelola/shop/payment")->with('error', "Pembayaran tidak ditemukan!");
         }
         
         if ($request->file('proof')) {
@@ -96,5 +96,27 @@ class PengelolaPaymentController extends Controller
         }
 
         return redirect("/pengelola/shop/payment");
+    }
+    
+    /**
+     * Method untuk menampilkan view bukti pembayaran
+     */
+    public function showPay($payment_id)
+    {
+        $payment = Payment::where([
+            'id'=> $payment_id,
+            'pengelola_id'=>auth()->user()->id,
+            'status'=>'accept',
+        ])->first(['id','status','petani_id','transaction_id']);
+
+        if(!$payment){
+            return abort(404);
+        }
+
+        return view("shop.pengelola.payment.proof",[
+            "css" => ['shop/shop','shop/proof'],
+            'active' => 'payment',
+            'payment' => $payment,
+        ]);
     }
 }

@@ -26,7 +26,7 @@
                                         <p>Jumlah : <span class="stok">{{ ucwords($payment->transaction->amount) }}</span> kg</p>
                                     </div>
                                     <div class="list-card-detail">
-                                        <p>Total harga : Rp. {{ number_format($payment->transaction->price,0,',','.') }},-</p>
+                                        <p>Total harga : Rp. {{ number_format($payment->transaction->total_cost,0,',','.') }},-</p>
                                     </div>
                                     <div class="list-card-detail">
                                         <p>Alamat : {{ $payment->transaction->pengelola->address }}</p>
@@ -51,13 +51,15 @@
                                 @endif
                                 
                                 @if ($payment->status != 'notpay')
-                                    <a class="btn warning-btn" target="_blank" href="https://wa.me/{{ $payment->petani->number_phone }}">Hubungi penjual</a>
+                                    <a class="btn warning-btn" target="_blank" href="https://wa.me/{{ $payment->petani->number_phone }}">Hubungi Petani</a>
                                 @endif
                                 
                                 @if ($payment->status == 'notpay')
                                     <a class="btn main-btn" href="/pengelola/shop/payment/pay/{{ $payment->id }}">Bayar</a>
                                 @elseif($payment->status == 'waiting')
                                     <a class="btn second-warning-btn" href="/pengelola/shop/payment/pay/{{ $payment->id }}">Bukti pembayaran</a>
+                                @elseif($payment->status == 'accept')
+                                    <a class="btn second-warning-btn" href="/pengelola/shop/payment/{{ $payment->id }}">Bukti pembayaran</a>
                                 @endif
                             </div>
                         </div>

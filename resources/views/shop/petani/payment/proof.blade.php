@@ -4,11 +4,10 @@
     <x-nav-all></x-nav-all>
 
     <main>
-        <x-menuShopPengelola :active="$active"></x-menuShopPengelola>
+        <x-menuShopPetani :active="$active"></x-menuShopPetani>
 
         <div class="box-container">
-            <form action="/pengelola/shop/payment/pay" method="POST" id="proof-form-container" enctype="multipart/form-data">
-                @csrf
+            <div id="proof-form-container>
                 <div class="form-group">
                     <div class="profile-container">
                         <div class="proof-profile-image-container bg-transparent-img">
@@ -24,23 +23,13 @@
                     <div id="preview-img">
                         <img src="{{ $payment->getFirstMediaUrl('payment_proof') != '' ? $payment->getFirstMediaUrl('payment_proof') : '/img/shop/form/default.png' }}" alt="Bukti pembayaran">
                     </div>
-                    @error('proof')
-                        <p class="error">{{ $message }}</p>
-                    @enderror
-                    @if ($payment->status != "accept")
-                        <label class="proof-upload" for="input-preview-img">Unggah</label>
-                        <input type="file" title="Unggah bukti pembayaran" name="proof" id="input-preview-img" accept="image/*">
-                    @endif
                 </div>
                 <div class="form-group">
-                    @if ($payment->status != "accept")
-                        <input type="hidden" name="payment_id" value="{{ $payment->id }}">
-                        <button class="btn main-btn">Kirim bukti pembayaran</button>
-                    @else
+                    @if ($payment->status == "accept")
                         <span class="btn success-banner">Bukti pembayaran diterima&nbsp;<i class="bi bi-patch-check-fill"></i></span>
                     @endif
                 </div>
-            </form>
+            </div>
         </div>
     </main>
 

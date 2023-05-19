@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class PetaniPaymentController extends Controller
 {
+    /**
+     * Method untuk menampilkan view bukti pembayaran
+     */
     public function index()
     {
         $payments = Payment::where([
@@ -25,10 +28,10 @@ class PetaniPaymentController extends Controller
                     'item'=>function($query){
                         $query->with(['media']);
                     },
-                    'pengelola',
+                    'petani',
                 ]);
             },
-            'petani',
+            'pengelola',
         ])->latest()->get();
 
         return view("shop.petani.payment.index",[
@@ -38,6 +41,9 @@ class PetaniPaymentController extends Controller
         ]);
     }
 
+    /**
+     * Method untuk menerima bukti pembayaran
+     */
     public function accept(Request $request)
     {
         if(!$request->post("payment_id")){
@@ -53,5 +59,28 @@ class PetaniPaymentController extends Controller
             'pengelola_id'=>$payment->pengelola_id,
         ]);
         return response()->json(['message'=>"Pembayaran diterima!"]);
+    }
+
+    /**
+     * Method untuk menampilkan view bukti pembayaran
+     */
+    public function showPay($payment_id)
+    {
+        $payment = Payment::where([
+            'id'=> $payment_id,
+            'petani_id'=>auth()->user()->id,
+        ])->where(function($query){
+            $query->where(['status'=>'notpay'])->orWhere(['status'=>'waiting'])->orWhere(['status'=>'accept']);
+        })->first(['id','status','petani_id','transaction_id']);
+
+        if(!$payment){
+            return abort(404);
+        }
+
+        return view("shop.petani.payment.proof",[
+            "css" => ['shop/shop','shop/proof'],
+            'active' => 'payment',
+            'payment' => $payment,
+        ]);
     }
 }

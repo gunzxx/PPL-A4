@@ -10,10 +10,12 @@ use App\Http\Controllers\PengelolaCartController;
 use App\Http\Controllers\PengelolaShopController;
 use App\Http\Controllers\PetaniPaymentController;
 use App\Http\Controllers\PengelolaOfferController;
+use App\Http\Controllers\PetaniDeliveryController;
 use App\Http\Controllers\PetaniInventoryController;
 use App\Http\Controllers\PengelolaPartnerController;
 use App\Http\Controllers\PengelolaPaymentController;
 use App\Http\Controllers\PetaniAgreementsController;
+use App\Http\Controllers\PengelolaDeliveryController;
 use App\Http\Controllers\PengelolaInventoryController;
 use App\Http\Controllers\PengelolaAgreementsController;
 use App\Http\Controllers\PengelolaPartnerHistoryController;
@@ -65,6 +67,13 @@ Route::middleware(['auth','role:petani'])->group(function(){
 
     // Pembayaran
     Route::get('/petani/shop/payment', [PetaniPaymentController::class, 'index']);
+    Route::get('/petani/shop/payment/{payment_id}', [PetaniPaymentController::class, 'showPay']);
+    
+    // Pengiriman
+    Route::get('/petani/shop/delivery', [PetaniDeliveryController::class,'index']);
+    Route::get('/petani/shop/delivery/{delivery_id}', [PetaniDeliveryController::class,'proof']);
+    Route::get('/petani/shop/delivery/send/{delivery_id}', [PetaniDeliveryController::class,'send']);
+    Route::post('/petani/shop/delivery/send', [PetaniDeliveryController::class,'save']);
 
     // inventory
     Route::get('/petani/inventory', function(){return redirect("/petani/inventory/inventory");});
@@ -109,8 +118,13 @@ Route::middleware(['auth','role:pengelola'])->group(function(){
     
     // Pembayaran
     Route::get('/pengelola/shop/payment', [PengelolaPaymentController::class,'index']);
+    Route::get('/pengelola/shop/payment/{payment_id}', [PengelolaPaymentController::class, 'showPay']);
     Route::get('/pengelola/shop/payment/pay/{payment_id}', [PengelolaPaymentController::class,'pay']);
     Route::post('/pengelola/shop/payment/pay', [PengelolaPaymentController::class,'savePay']);
+    
+    // Pengiriman
+    Route::get('/pengelola/shop/delivery', [PengelolaDeliveryController::class,'index']);
+    Route::get('/pengelola/shop/delivery/{delivery_id}', [PengelolaDeliveryController::class,'proof']);
 
     // Inventory
     Route::get('/pengelola/inventory', function(){return redirect("/pengelola/inventory/inventory");});
