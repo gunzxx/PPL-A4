@@ -73,17 +73,17 @@ class PengelolaDeliveryController extends Controller
         }
         $delivery_id = $request->post("delivery_id");
         $delivery = Delivery::find($delivery_id,['id','status','transaction_id','petani_id','pengelola_id']);
-        $delivery->update([
-            'status'=>'accept',
-            'accept_at'=>Carbon::now(),
-        ]);
+        // $delivery->update([
+        //     'status'=>'accept',
+        //     'accept_at'=>Carbon::now(),
+        // ]);
 
         $transaction = $delivery->transaction;
 
         $inventory = $transaction->inventory;
+        $stok = (int)$transaction->amount;
+        // return response()->json(['message'=>"Pengiriman diterima!", $inventory,$stok]);
         
-        $stok = (int)$inventory->stok + (int)$transaction->amount;
-
         Inventory::create([
             'bean_type'=>$transaction->bean_type,
             "stok"=>$stok,
@@ -95,6 +95,6 @@ class PengelolaDeliveryController extends Controller
             'is_active' => false,
         ]);
         
-        return response()->json(['message'=>"Pengiriman diterima!",$transaction]);
+        return response()->json(['message'=>"Pengiriman diterima!"]);
     }
 }

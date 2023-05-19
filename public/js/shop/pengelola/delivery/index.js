@@ -18,7 +18,7 @@ $(".accept-btn").click(function(){
             $.post('/api/pengelola/delivery/accept',{
                 delivery_id:delivery_id,
             }).done((e)=>{
-                // console.log(e);
+                console.log(e);
                 Swal.fire({
                     text : e.message,
                     icon : 'success',
@@ -27,7 +27,8 @@ $(".accept-btn").click(function(){
                         popup:'swal-wide',
                     },
                 });
-                window.location.reload();
+                $('.spinner-container').css('display','none');
+                // window.location.reload();
             }).fail((e)=>{
                 Swal.fire({
                     text : e.responseJSON.message,
