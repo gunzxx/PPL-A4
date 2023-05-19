@@ -14,7 +14,7 @@
             @else
                 @foreach ($deliveries as $delivery)
                     <div class="list-card">
-                        <div class="list-card-img" style="background-image: url('{{ $delivery->transaction->item->getFirstMediaUrl('product') != '' ? $delivery->getFirstMediaUrl('product') : '/img/shop/default.png' }}');">
+                        <div class="list-card-img" style="background-image: url('{{ $delivery->transaction->item->getFirstMediaUrl('product') != '' ? $delivery->transaction->item->getFirstMediaUrl('product') : '/img/shop/default.png' }}');">
                         </div>
                         <div class="list-card-nonimg">
                             <div class="list-card-body">
