@@ -29,7 +29,7 @@
                     @enderror
                 </div>
                 <div class="form-group button">
-                    <button class="btn-danger cancel-action" type="button" href="/inventory">Batal</button>
+                    <a class="btn-danger" href="/pengelola/inventory/inventory">Batal</a>
                     <button class="save-btn" type="submit">Tambah</button>
                 </div>
             </form>

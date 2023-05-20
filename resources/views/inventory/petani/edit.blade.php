@@ -30,7 +30,7 @@
                 </div>
                 <input type="hidden" name="inv_id" value="{{ $inventory->id }}">
                 <div class="form-group button">
-                    <button type="button" class="btn-danger cancel-action">Batal</button>
+                    <a class="btn-danger" href="/petani/inventory/inventory">Batal</a>
                     <button class="save-btn" type="submit">Simpan</button>
                 </div>
             </form>
