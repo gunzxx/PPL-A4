@@ -18,7 +18,15 @@ $(document).ready(function(){
                 $.post('/api/pengelola/inventory/delete',{
                     id:id,
                 }).done((e)=>{
-                    GNotify.alertSuccess(e.message);
+                    // GNotify.alertSuccess(e.message);
+                    Swal.fire({
+                        text : e.message,
+                        icon : 'success',
+                        confirmButtonColor: 'var(--g2)',
+                        customClass: {
+                            popup:'swal-wide',
+                        },
+                    })
                     
                     $(this).parent().parent().hide(300);
                     setTimeout(()=>{

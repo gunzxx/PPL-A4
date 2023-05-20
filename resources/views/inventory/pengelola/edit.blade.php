@@ -30,7 +30,7 @@
                 </div>
                 <input type="hidden" name="inv_id" value="{{ $inventory->id }}">
                 <div class="form-group button">
-                    <a class="btn-danger" href="/pengelola/inventory/inventory">>Batal</a>
+                    <a class="btn-danger" href="/pengelola/inventory/inventory">Batal</a>
                     <button class="save-btn" type="submit">Simpan</button>
                 </div>
             </form>
