@@ -68,7 +68,7 @@
                 </div>
                 <input type="hidden" name="partner_id" value="{{ $partner->id }}">
                 <div class="form-row button">
-                    <button class="btn-danger cancel-action" type="button" href="/inventory">Batal</button>
+                    <a class="btn-danger" href="/petani/home">Batal</a>
                     <button class="save-btn" type="submit">Place bid</button>
                 </div>
             </form>

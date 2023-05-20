@@ -106,8 +106,8 @@ class PengelolaOfferController extends Controller
         ])->update([
             "status"=>"reject",
         ]);
-        // Offer::find($offer_id)->delete();
-        return response()->json(["message"=>"Penawaran berhasil ditolak"],200);
+
+        return response()->json(["message"=>"Berhasil ditolak"],200);
     }
 
 

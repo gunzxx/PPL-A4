@@ -65,7 +65,7 @@
                 </div>
                 <input type="hidden" name="offer_id" value="{{ $detail->offer->id }}">
                 <div class="form-row button">
-                    <button class="btn-danger cancel-action" type="button" href="/inventory">Batal</button>
+                    <button href="/petani/home" class="btn-danger">Batal</button>
                     <button class="save-btn" type="submit">Save Bid</button>
                 </div>
             </form>

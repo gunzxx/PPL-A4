@@ -31,7 +31,7 @@
                 </div>
                 <input type="hidden" name="offer_detail_id" value="{{ $agreement_detail->offerDetail->id }}">
                 <div class="form-group row">
-                    <button class="btn-danger cancel-action" type="button" href="/inventory">Batal</button>
+                    <a class="btn-danger" href="/pengelola/partners/agreements">Batal</a>
                     <button class="save-btn" type="submit">Simpan</button>
                 </div>
             </form>

@@ -31,6 +31,7 @@ function deletePartner(){
         },
         success: (e) => {
             // console.log(e);
+            
             Swal.fire({
                 text : e.message,
                 icon : 'success',
@@ -81,16 +82,19 @@ function stopPartner(){
             id: id,
         },
         success: (e) => {
-            Swal.fire({
-                text : e.message,
-                icon : 'success',
-                confirmButtonColor: 'var(--g2)',
-                customClass: {
-                    popup:'swal-wide',
-                },
-            }).then(()=>{
-                window.location.reload();
-            })
+            window.location.reload();
+            GNotify.alertSuccess(e.message);
+            
+            // Swal.fire({
+            //     text : e.message,
+            //     icon : 'success',
+            //     confirmButtonColor: 'var(--g2)',
+            //     customClass: {
+            //         popup:'swal-wide',
+            //     },
+            // }).then(()=>{
+            //     window.location.reload();
+            // })
         },
         error: (e) => {
             // console.log(e);

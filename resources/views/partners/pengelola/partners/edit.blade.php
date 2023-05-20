@@ -46,7 +46,7 @@
             </div>
 
             <div class="button-row">
-                <button type="button" class="cancel-action btn-danger">Batal</button>
+                <a href="/pengelola/partners/partners" class=" btn-danger">Batal</a>
                 <button type="submit" class="save-btn">Simpan</button>
             </div>
         </form>

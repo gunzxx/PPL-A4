@@ -4,8 +4,6 @@
     <x-nav-all></x-nav-all>
 
     <main>
-        <x-menuInventory></x-menuInventory>
-
         <div class="card-container">
             <form class="form-container required-form" id="form-inventory" method="POST" action="/{{ auth()->user()->getRoleNames()[0] }}/inventory/create" enctype="multipart/form-data">
                 @csrf

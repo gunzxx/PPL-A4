@@ -69,7 +69,8 @@ $(document).ready(()=>{
     })
     
     // Cancel button action
-    $('.cancel-action').click(function () {
+    $('.cancel-action').click(function (e) {
+        e.preventDefault()
         if (confirm("Batal simpan?")) {
             history.go(-1);
         }

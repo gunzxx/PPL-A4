@@ -54,7 +54,7 @@ class PetaniAgreementsController extends Controller
         }
         AgreementDetail::find($agreementDetailId)->update(['status'=>"reject"]);
 
-        return response()->json(["message" => "Persetujuan berhasil ditolak."], 200);
+        return response()->json(["message" => "Berhasil ditolak."], 200);
     }
 
     /**
@@ -70,6 +70,6 @@ class PetaniAgreementsController extends Controller
             "status" => "accept",
         ]);
 
-        return response()->json(["message" => "Data berhasil diterima."], 200);
+        return response()->json(["message" => "Berhasil diterima."], 200);
     }
 }

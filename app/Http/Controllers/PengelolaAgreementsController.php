@@ -129,7 +129,7 @@ class PengelolaAgreementsController extends Controller
         AgreementDetail::where(["id"=> $agreement_detail_id])->update(['updated_at'=>now()]);
         Agreement::where(["id"=> $agreement_id])->update($validated);
         
-        return redirect(auth()->user()->getRoleNames()[0] . '/partners/agreements')->with('success', 'Data berhasil diperbarui!');
+        return redirect(auth()->user()->getRoleNames()[0] . '/partners/agreements')->with('success', 'Data berhasil diupdate!');
     }
 
     /**
