@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Ramsey\Uuid\Uuid;
 use App\Models\Premium;
 use Illuminate\Http\Request;
@@ -51,6 +52,9 @@ class PremiumController extends Controller
             if ($request->transaction_status == 'capture') {
                 $premium = Premium::where(['uuid'=>$request->order_id])->first();
                 $premium->update(['status' => 'paid']);
+
+                $user = User::find($premium->user_id);
+                $user->update(['premium'=>true]);
             }
         }
     }
