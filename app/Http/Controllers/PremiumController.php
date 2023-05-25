@@ -14,9 +14,11 @@ class PremiumController extends Controller
         $premium = Premium::where(['user_id'=>auth()->user()->id])->first();
         if(!$premium){
             $premium = Premium::create([
+                'uuid'=> Uuid::uuid4()->__toString,
                 'user_id'=>auth()->user()->id,
             ]);
             $premium = Premium::find($premium->id);
+            dd($premium);
     
             \Midtrans\Config::$serverKey = config("midtrans.server_key");
             \Midtrans\Config::$isProduction = false;
