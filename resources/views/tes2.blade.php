@@ -24,24 +24,8 @@
                 <h5 class="card-title">Detail pesanan</h5>
                 <table>
                     <tr>
-                        <td>Nama</td>
-                        <td>{{ $order->name }}</td>
-                    </tr>
-                    <tr>
-                        <td>No HP</td>
-                        <td>{{ $order->phone }}</td>
-                    </tr>
-                    <tr>
-                        <td>Alamat</td>
-                        <td>{{ $order->address }}</td>
-                    </tr>
-                    <tr>
-                        <td>Jumlah</td>
-                        <td>{{ $order->qty }}</td>
-                    </tr>
-                    <tr>
-                        <td>Total harga</td>
-                        <td>{{ $order->total_price }}</td>
+                        <td>Pesanan dibuat pada : </td>
+                        <td>{{ $premium->created_at }}</td>
                     </tr>
                 </table>
 

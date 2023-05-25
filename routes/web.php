@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PremiumController;
 use App\Http\Controllers\PetaniShopController;
 use App\Http\Controllers\PetaniOfferController;
 use App\Http\Controllers\PengelolaCartController;
@@ -40,6 +40,9 @@ Route::middleware('auth')->group(function(){
     Route::get('/home',function(){return redirect("/".auth()->user()->getRoleNames()[0]."/home");});
     Route::get("/pengelola/home", [HomeController::class,"showHome"]);
     Route::get("/petani/home", [HomeController::class,'showHome']);
+
+    // Route premium
+    Route::get('/premium/register', [PremiumController::class,'order']);
 
     // Route logout
     Route::get('/logout', [AuthController::class,'logout']);
@@ -146,5 +149,4 @@ Route::middleware(['auth','role:pengelola'])->group(function(){
 Route::get("/tes",function(){
     return view('tes');
 });
-Route::post("/tes",[OrderController::class,'index']);
-Route::post("/tes-callback",[OrderController::class,'callback']);
+Route::post("/tes",[PremiumController::class,'order']);

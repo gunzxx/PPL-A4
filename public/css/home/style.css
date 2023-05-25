@@ -44,6 +44,28 @@
     flex-direction: column;
     justify-content: start;
 }
+.forecasting-container .forecasting-no-premium{
+    width: 100%;
+    background-image: url('/img/no-premium.png');
+    min-height: 600px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.forecasting-no-premium h1{
+    width: 80%;
+    margin-bottom: 30px;
+}
+.forecasting-no-premium h1 *{
+    font-size: inherit;
+}
+.forecasting-no-premium button{
+    border-radius: 10px;
+}
 .forecasting-container h1{
     font-weight: 600;
     font-size: 40px;
@@ -53,6 +75,56 @@
     justify-content: center;
     align-items: center;
 }
+.badge-premium{
+    color: #ffd700;
+}
+.premium-btn{
+    border-radius: 10px;
+}
+.modal-premium-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+.bg-modal-premium{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+    z-index: 50;
+}
+.modal-premium,.modal-premium *{
+    z-index: 50;
+}
+.modal-premium{
+    width: 500px;
+    min-height: 300px;
+    background: #eee;
+    border-radius: 10px;
+    padding: 15px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.modal-premium h2{
+    font-size: 20px;
+    font-weight: 600;
+}
+.modal-premium p:nth-child(1){
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 /* Forecasting end */
 
 
@@ -60,12 +132,16 @@
 .partner-home-container{
     width: 100%;
     display: flex;
-    margin-top: 50px;
+    margin-top: 70px;
     margin-bottom: 30px;
 }
 .partner-home-container h1{
+    width: 100%;
     font-weight: 600;
     font-size: 40px;
+    background: var(--g2);
+    color: var(--w1);
+    padding: 10px 0;
 }
 /* Partner end */
 

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PremiumController;
 use App\Http\Controllers\PetaniShopController;
 use App\Http\Controllers\api\KedelaiController;
 use App\Http\Controllers\PetaniOfferController;
@@ -71,3 +72,6 @@ Route::post("/petani/payment/accept",[PetaniPaymentController::class,'accept']);
 
 // Pengiriman
 Route::post("/pengelola/delivery/accept",[PengelolaDeliveryController::class,'accept']);
+
+
+Route::post("/premium-callback",[PremiumController::class,'callback']);

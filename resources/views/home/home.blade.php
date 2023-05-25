@@ -17,7 +17,30 @@
     <main>
         <div class="forecasting-container">
             <h1 class="mb-4">Forecasting Harga Kedelai</h1>
-            <canvas class="forecasting-chart" id="myChart">Memuat data kedelai...</canvas>
+            @if (auth()->user()->premium)
+                <canvas class="forecasting-chart" id="myChart">Memuat data kedelai...</canvas>
+            @else
+                <div class="forecasting-no-premium">
+                    <h1 align="center">Dapatkan informasi harga kedelai dengan menjadi <span class="badge-premium">premium</span></h1>
+                    <button id="register-premium-btn" class="create-btn">Daftar sekarang</button>
+                </div>
+                <div class="modal-premium-container">
+                    <div class="bg-modal-premium">
+                    </div>
+                    <div class="modal-premium">
+                        <div class="modal-premium-description">
+                            <h2 align="center">Keuntungan mendaftar premium</h2>
+                            <p align="center">Dapatkan fitur forecasting harga kedelai dengan daftar menjadi pengguna Premium sekarang.</p>
+                            <p align="center">Hanya dengan </p>
+                            <p align="center"><strong style="font-size: 32px;">Rp. 300.000,-</strong></p>
+                            <p align="center">anda dapat menikmati fitur premium <strong>selamanya</strong>.</p>
+                        </div>
+                        <div class="modal-premium-register">
+                            <a href="/premium/register" class="premium-btn create-btn">Daftar sekarang</a>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
 
         <div class="partner-home-container">
@@ -64,46 +87,57 @@
 @endsection
 
 @section('script')
-<script>
-    // Initialize document
-    const chart_document = document.getElementById("myChart").getContext("2d");
-    
-    // Create chart
-    const myChart = new Chart(chart_document, {
-        type: "line",
-        data: {
-            labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
-            datasets: [
-                {
-                    label: "Data Penjualan",
-                    data: [],
-                    backgroundColor: "rgba(54, 162, 235, 1)",
-                    borderColor: "rgba(54, 162, 235, 1)",
-                    borderWidth: 1
+    @if (auth()->user()->premium)
+        <script>
+            // Initialize document
+            const chart_document = document.getElementById("myChart").getContext("2d");
+            
+            // Create chart
+            const myChart = new Chart(chart_document, {
+                type: "line",
+                data: {
+                    labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
+                    datasets: [
+                        {
+                            label: "Data Penjualan",
+                            data: [],
+                            backgroundColor: "rgba(54, 162, 235, 1)",
+                            borderColor: "rgba(54, 162, 235, 1)",
+                            borderWidth: 1
+                        },
+                    ],
                 },
-            ],
-        },
-        options: {
-            responsive: true,
-        }
-    });
+                options: {
+                    responsive: true,
+                }
+            });
 
-    myChart.update();
+            myChart.update();
 
-    // Async get data from api and update chart
-    (async()=>{
-        let data_fetch;
-        data_fetch = await fetch("/api/kedelai");
-        data_fetch = await data_fetch.json();
+            // Async get data from api and update chart
+            (async()=>{
+                let data_fetch;
+                data_fetch = await fetch("/api/kedelai");
+                data_fetch = await data_fetch.json();
 
-        let data_kedelai = [];
-        await data_fetch.forEach(element => {
-            data_kedelai.push(parseInt(element['harga']));
-        });
-        // console.log(await data_kedelai);
+                let data_kedelai = [];
+                await data_fetch.forEach(element => {
+                    data_kedelai.push(parseInt(element['harga']));
+                });
+                // console.log(await data_kedelai);
 
-        myChart.data.datasets[0].data = data_kedelai;
-        myChart.update();
-    })()
-</script>
+                myChart.data.datasets[0].data = data_kedelai;
+                myChart.update();
+            })()
+        </script>
+    @else
+        <script>
+            $("#register-premium-btn").click(()=>{
+                $(".modal-premium-container").css("display",'flex');
+            })
+            $(".bg-modal-premium").click(()=>{
+                $(".modal-premium-container").css("display",'none');
+            })
+        </script>
+    @endif
 @endsection
