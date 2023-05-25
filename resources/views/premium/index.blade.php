@@ -10,10 +10,10 @@
     <main>
         <div class="card-order">
             <img src="/img/premium/premium-img.jpg" alt="smile :)" width="150">
-            @if ($premium->status == 'unpaid' || auth()->user()->premium == false)
+            @if ($premium->status == 'unpaid')
                 <p>Pendaftaran sedang dilakukan. Silahkan selesaikan pembayaran.</p>
                 <button id="pay-button" class="create-btn">Bayar</button>
-            @else
+            @elseif(auth()->user()->premium == true)
                 <p>Selamat akun anda sudah <strong class="badge-premium">Premium</strong>.</p>
                 <p class="premium-check"><i class="bi bi-check-circle-fill"></i></p>
             @endif

@@ -12,7 +12,8 @@ class PremiumController extends Controller
     public function order(Request $request)
     {
         if(auth()->user()->premium == true){
-            return redirect("/".auth()->user()->getRoleNames()[0]."/home");
+            $premium = Premium::where(['user_id' => auth()->user()->id])->latest()->first();
+            return view("premium.index", compact('premium'));
         }
         $premium = Premium::where(['user_id'=>auth()->user()->id])->whereHas('user',function($query){
             $query->where(['premium'=>false,'id'=>auth()->user()->id]);
