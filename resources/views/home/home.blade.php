@@ -36,7 +36,7 @@
                             <p align="center">anda dapat menikmati fitur premium <strong>selamanya</strong>.</p>
                         </div>
                         <div class="modal-premium-register">
-                            <a href="/premium/register" class="premium-btn create-btn">Daftar sekarang</a>
+                            <a href="/premium" class="premium-btn create-btn">Daftar sekarang</a>
                         </div>
                     </div>
                 </div>

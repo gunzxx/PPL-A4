@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function(){
     Route::get("/petani/home", [HomeController::class,'showHome']);
 
     // Route premium
-    Route::get('/premium/register', [PremiumController::class,'order']);
+    Route::get('/premium', [PremiumController::class,'order']);
 
     // Route logout
     Route::get('/logout', [AuthController::class,'logout']);

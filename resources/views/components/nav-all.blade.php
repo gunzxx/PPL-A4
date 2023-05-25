@@ -7,7 +7,7 @@
             <a class="{{ array_reverse(explode('/',Request::url()))[0] == "home" || array_reverse(explode('/',Request::url()))[1] == "home" || array_reverse(explode('/',Request::url()))[2] == "home" ? "active" : '' }}" href="/{{ auth()->user()->getRoleNames()[0] }}/home">Beranda</a>
         </div>
         <div class="nav-item">
-            <a class="{{ explode('/',Request::url())[4] == "partners" || array_reverse(explode('/',Request::url()))[1] == "partners" || array_reverse(explode('/',Request::url()))[2] == "partners" ? "active" : '' }}" href="/{{ auth()->user()->getRoleNames()[0] }}/partners">Kerja sama</a>
+            <a class="{{ array_reverse(explode('/',Request::url()))[1] == "partners" || array_reverse(explode('/',Request::url()))[2] == "partners" ? "active" : '' }}" href="/{{ auth()->user()->getRoleNames()[0] }}/partners">Kerja sama</a>
         </div>
         <div class="nav-item">
             <a class="{{ array_reverse(explode('/',Request::url()))[0] == "shop" || array_reverse(explode('/',Request::url()))[1] == "shop" || array_reverse(explode('/',Request::url()))[2] == "shop" ? "active" : '' }}" href="/{{ auth()->user()->getRoleNames()[0] }}/shop">Jual Beli</a>

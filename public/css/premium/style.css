@@ -24,3 +24,11 @@ main{
     color: var(--w1);
     border-radius: 10px;
 }
+.premium-check *{
+    color: var(--g2);
+    display: inline-block;
+    font-size: 32px !important;
+}
+.badge-premium {
+    color: #ffd700;
+}
