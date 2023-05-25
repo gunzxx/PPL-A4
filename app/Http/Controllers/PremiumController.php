@@ -14,7 +14,7 @@ class PremiumController extends Controller
         $premium = Premium::where(['user_id'=>auth()->user()->id])->first();
         if(!$premium){
             $premium = Premium::create([
-                'uuid'=> Uuid::uuid4()->__toString,
+                'uuid'=> Uuid::uuid4(),
                 'user_id'=>auth()->user()->id,
             ]);
             $premium = Premium::find($premium->id);
