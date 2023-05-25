@@ -12,6 +12,7 @@
             <img src="/img/premium/premium-img.jpg" alt="smile :)" width="150">
             @if ($premium->status == 'unpaid')
                 <p>Pendaftaran sedang dilakukan. Silahkan selesaikan pembayaran.</p>
+                <p align="center"><strong style="font-size: 32px;">Rp. 300.000,-</strong></p>
                 <button id="pay-button" class="create-btn">Bayar</button>
             @elseif(auth()->user()->premium == true)
                 <p>Selamat akun anda sudah <strong class="badge-premium">Premium</strong>.</p>
