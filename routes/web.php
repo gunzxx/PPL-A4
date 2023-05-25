@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PetaniShopController;
 use App\Http\Controllers\PetaniOfferController;
 use App\Http\Controllers\PengelolaCartController;
@@ -142,3 +143,8 @@ Route::middleware(['auth','role:pengelola'])->group(function(){
     Route::get('/pengelola/inventory/update/{inventory}', [PengelolaInventoryController::class, 'edit']);
 });
 
+Route::get("/tes",function(){
+    return view('tes');
+});
+Route::post("/tes",[OrderController::class,'index']);
+Route::post("/tes-callback",[OrderController::class,'callback']);
