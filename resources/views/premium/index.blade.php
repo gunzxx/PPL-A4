@@ -10,7 +10,7 @@
     <main>
         <div class="card-order">
             <img src="/img/premium/premium-img.jpg" alt="smile :)" width="150">
-            @if ($premium->status == 'unpaid' && auth()->user()->premium == false)
+            @if ($premium->status == 'unpaid' || auth()->user()->premium == false)
                 <p>Pendaftaran sedang dilakukan. Silahkan selesaikan pembayaran.</p>
                 <button id="pay-button" class="create-btn">Bayar</button>
             @else
