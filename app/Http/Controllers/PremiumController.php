@@ -15,7 +15,7 @@ class PremiumController extends Controller
             $premium = Premium::where(['user_id' => auth()->user()->id])->latest()->first();
             return view("premium.index", compact('premium'));
         }
-        $premium = Premium::where(['user_id'=>auth()->user()->id])->whereHas('user',function($query){
+        $premium = Premium::where(['user_id'=>auth()->user()->id,'status'=>'unpaid'])->whereHas('user',function($query){
             $query->where(['premium'=>false,'id'=>auth()->user()->id]);
         })->latest()->first();
         if(!$premium){
