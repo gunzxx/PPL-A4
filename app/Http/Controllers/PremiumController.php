@@ -11,7 +11,9 @@ class PremiumController extends Controller
 {
     public function order(Request $request)
     {
-        $premium = Premium::where(['user_id'=>auth()->user()->id])->first();
+        $premium = Premium::where(['user_id'=>auth()->user()->id])->whereHas('user',function($query){
+            $query->where(['premium'=>false,'id'=>auth()->user()->id]);
+        })->first();
         if(!$premium){
             $premium = Premium::create([
                 'uuid'=> Uuid::uuid4(),
