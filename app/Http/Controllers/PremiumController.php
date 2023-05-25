@@ -18,7 +18,7 @@ class PremiumController extends Controller
                 'user_id'=>auth()->user()->id,
             ]);
             $premium = Premium::find($premium->id);
-            dd($premium);
+            // dd($premium);
     
             \Midtrans\Config::$serverKey = config("midtrans.server_key");
             \Midtrans\Config::$isProduction = false;
