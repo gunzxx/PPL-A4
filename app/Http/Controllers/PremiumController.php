@@ -88,6 +88,9 @@ class PremiumController extends Controller
 
     public function callback(Request $request)
     {
+        if(!$request->order_id){
+            return response()->json(['message'=>"Data not valid"]);
+        }
         $serverKey = config('midtrans.server_key');
         $hashed = hash('sha512', $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
         if ($hashed == $request->signature_key) {
