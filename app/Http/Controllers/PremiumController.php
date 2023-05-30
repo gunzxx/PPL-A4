@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use Ramsey\Uuid\Uuid;
 use App\Models\Premium;
@@ -24,7 +25,6 @@ class PremiumController extends Controller
                 'user_id'=>auth()->user()->id,
             ]);
             $premium = Premium::find($premium->id);
-            // dd($premium);
     
             \Midtrans\Config::$serverKey = config("midtrans.server_key");
             \Midtrans\Config::$isProduction = false;
@@ -46,6 +46,40 @@ class PremiumController extends Controller
             $premium->update([
                 'snapToken'=>$snapToken,
             ]);
+            return view("premium.index")->with('snapToken',$snapToken)->with("premium",$premium)->with('success','Pesanan berhasil dibuat, silahkan selesaikan pembayaran!');
+        }
+        $created_at = Carbon::parse($premium->created_at);
+        $created_at->diffInDays(Carbon::now());
+        if($created_at->diffInDays(Carbon::now()) >= 1){
+            $premium->delete();
+
+            $premium = Premium::create([
+                'uuid'=> Uuid::uuid4(),
+                'user_id'=>auth()->user()->id,
+            ]);
+            $premium = Premium::find($premium->id);
+    
+            \Midtrans\Config::$serverKey = config("midtrans.server_key");
+            \Midtrans\Config::$isProduction = false;
+            \Midtrans\Config::$isSanitized = true;
+            \Midtrans\Config::$is3ds = true;
+
+            $params = array(
+                'transaction_details' => array(
+                    'order_id' => $premium->uuid,
+                    'gross_amount' => $premium->total_price,
+                ),
+                'customer_details' => array(
+                    'name' => $premium->name,
+                    'phone' => $premium->phone,
+                ),
+            );
+
+            $snapToken = \Midtrans\Snap::getSnapToken($params);
+            $premium->update([
+                'snapToken'=>$snapToken,
+            ]);
+
             return view("premium.index")->with('snapToken',$snapToken)->with("premium",$premium)->with('success','Pesanan berhasil dibuat, silahkan selesaikan pembayaran!');
         }
         $snapToken = $premium->snapToken;
