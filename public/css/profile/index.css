@@ -1,0 +1,117 @@
+/* Profile */
+main{
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 76px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+}
+main > div{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 30px;
+    padding: 30px;
+}
+.profile-top-container{
+    width: 100%;
+    height: 250px;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.img-profile{
+    min-width: 190px;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img-profile img{
+    max-height: 100%;
+    aspect-ratio: 1 !important;
+}
+.profile-label{
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/profile/bg-profile.png');
+    background-size: cover;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.profile-label *{
+    color: var(--w1);
+}
+.profile-label h3{
+    font-size: 32px;
+    font-weight: 600;
+}
+.action-container{
+    width: 100%;
+    display: flex;
+}
+.action-container:has(.btn){
+    margin-top: 10px;
+    /* justify-content: end; */
+}
+
+.profile-bottom-container {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+.profile-bottom {
+    width: 80%;
+    display: flex;
+    gap: 30px;
+}
+.profile-bottom > .col{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 25px;
+}
+.profile-bottom>.col:has(.logout) {
+    align-items: end;
+}
+/* Profile end */
+
+
+/* Button */
+.btn{
+    width: fit-content;
+    background: var(--w1);
+    color: var(--b1);
+    border: 1px solid var(--b1);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 30px;
+}
+.btn *{
+    color: var(--b1);
+}
+.btn-warning{
+    background: var(--o2);
+    color: var(--w1);
+    border: 1px solid var(--w1);
+}
+.btn-warning *{
+    color: var(--w1);
+}
+.btn-logout{
+    background: var(--r2);
+    color: var(--w1);
+    border: 1px solid var(--r2);
+}
+/* Button end */

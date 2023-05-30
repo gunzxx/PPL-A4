@@ -35,7 +35,10 @@
                 <div class="form-group">
                     @if ($delivery->status != "accept")
                         <input type="hidden" name="delivery_id" value="{{ $delivery->id }}">
-                        <button class="btn main-btn">Kirim bukti pengiriman</button>
+                        <div class="action-container">
+                            <a class="btn cancel-btn" href="/petani/shop/delivery">Batal</a>
+                            <button class="btn main-btn">Kirim</button>
+                        </div>
                     @else
                         <span class="btn success-banner">Bukti pengiriman diterima&nbsp;<i class="bi bi-patch-check-fill"></i></span>
                     @endif

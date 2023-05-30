@@ -35,7 +35,10 @@
                 <div class="form-group">
                     @if ($payment->status != "accept")
                         <input type="hidden" name="payment_id" value="{{ $payment->id }}">
-                        <button class="btn main-btn">Kirim bukti pembayaran</button>
+                        <div class="action-container">
+                            <a class="btn cancel-btn" href="/pengelola/shop/payment">Batal</a>
+                            <button class="btn main-btn">Kirim</button>
+                        </div>
                     @else
                         <span class="btn success-banner">Bukti pembayaran diterima&nbsp;<i class="bi bi-patch-check-fill"></i></span>
                     @endif

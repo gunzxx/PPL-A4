@@ -48,9 +48,7 @@ class PremiumController extends Controller
             ]);
             return view("premium.index")->with('snapToken',$snapToken)->with("premium",$premium)->with('success','Pesanan berhasil dibuat, silahkan selesaikan pembayaran!');
         }
-        $created_at = Carbon::parse($premium->created_at);
-        $created_at->diffInDays(Carbon::now());
-        if($created_at->diffInDays(Carbon::now()) >= 1){
+        if(Carbon::parse($premium->created_at)->diffInDays(Carbon::now()) >= 1){
             $premium->delete();
 
             $premium = Premium::create([

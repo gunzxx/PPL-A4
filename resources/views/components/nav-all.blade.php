@@ -31,9 +31,9 @@
 <div class="profile-menu-container">
     <div class="backdrop-profile"></div>
     <div class="card-profile-menu">
-        <a href="" class="profile-menu-list">Edit Profil</a>
-        <a href="" class="profile-menu-list">Ganti password</a>
-        <a href="" class="profile-menu-list">Alamat & Pembayaran</a>
+        <a href="/profile" class="profile-menu-list">Profil</a>
+        <a href="/profile/password" class="profile-menu-list">Ganti password</a>
+        <a href="/premium" class="profile-menu-list">Premium</a>
         <div class="profile-menu-decide">
             <hr>
         </div>

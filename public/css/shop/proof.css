@@ -68,3 +68,11 @@
 }
 /* Proof form end */
 
+
+
+/* Action container */
+.action-container{
+    display: flex;
+    gap: 20px;
+}
+/* Action container end */
