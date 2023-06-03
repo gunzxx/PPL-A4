@@ -8,7 +8,7 @@ class ProfileController extends Controller
 {
     public function index(){
         return view('profile.index',[
-            'css'=>['profile/index', 'profile/form']
+            'css'=>['profile/index', 'profile/form'],
         ]);
     }
 }

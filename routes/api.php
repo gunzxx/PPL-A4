@@ -42,6 +42,7 @@ Route::post('/offerDetail/{id}', [PengelolaOfferController::class, 'single']);
 Route::post('/pengelola/agreements/cancel', [PengelolaAgreementsController::class, 'cancelAgreements']);
 Route::post('/pengelola/agreements/delete', [PengelolaAgreementsController::class, 'deleteAgreements']);
 Route::post('/agreementDetail/{id}', [PengelolaAgreementsController::class, 'single']);
+
 // Route agreements petani
 Route::post('/petani/agreements/cancel', [PetaniAgreementsController::class, 'cancelAgreements']);
 Route::post('/petani/agreements/reject', [PetaniAgreementsController::class, 'rejectAgreements']);
@@ -73,5 +74,7 @@ Route::post("/petani/payment/accept",[PetaniPaymentController::class,'accept']);
 // Pengiriman
 Route::post("/pengelola/delivery/accept",[PengelolaDeliveryController::class,'accept']);
 
-
+/**
+ * Callback untuk premium
+ */
 Route::post("/premium-callback",[PremiumController::class,'callback']);

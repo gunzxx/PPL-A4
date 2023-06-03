@@ -2,9 +2,26 @@ var lanjut = false;
 var agreementId;
 var agreementDetailId;
 
-$(".cancel-agreement").click(function(){
+$(".delete-agreement").click(function(){
     agreementId = $(this).attr('data-agreement-id');
     agreementDetailId = $(this).attr('data-agrement-detail-id');
+
+    Swal.fire({
+        text: "Apakah yakin melakukan penghapusan data?",
+        showCancelButton: true,
+        cancelButtonText: 'No',
+        confirmButtonText: 'Yes',
+        allowOutsideClick: false,
+        confirmButtonColor: 'var(--)',
+        cancelButtonColor: 'var(--b3)',
+        customClass: {
+            popup:'swal-wide',
+        },
+    }).then((result)=>{
+        if(result.isConfirmed){
+            deleteAgreement();
+        }
+    })
 })
 
 $(".reject-agreement").click(function(){
@@ -52,17 +69,25 @@ $(".confirm-agreement").click(function(){
 })
 
 
-function cancelAgreement() {
+function deleteAgreement() {
     $.ajax({
-        url: "/api/petani/agreements/cancel",
+        url: "/api/petani/agreements/delete",
         method: "POST",
         data: {
             agreementId: agreementId,
         },
         success: (e) => {
             // console.log(e);
-            alert(e.message)
-            window.location.reload();
+            Swal.fire({
+                text : e.message,
+                icon : 'success',
+                confirmButtonColor: 'var(--g2)',
+                customClass: {
+                    popup:'swal-wide',
+                },
+            }).then(()=>{
+                window.location.reload();
+            })
         },
         error: (e) => {
             // console.log(e);
