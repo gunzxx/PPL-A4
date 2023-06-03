@@ -42,12 +42,29 @@ $('.reject').click(function(){
             rejectOffer();
         }
     })
-    // $('.popup-backdrop.reject-offer').show();
 })
-$('.cancel').click(function(){
+
+$('.delete').click(function(){
     detail_id = $(this).attr('data-detail-id');
     offer_id = $(this).attr('data-offer-id');
-    // $('.popup-backdrop.cancel-offer').show();
+    
+    Swal.fire({
+        text: "Apakah yakin melakukan penghapusan data?",
+        showCancelButton: true,
+        cancelButtonText: 'No',
+        confirmButtonText: 'Yes',
+        allowOutsideClick: false,
+        confirmButtonColor: 'var(--r2)',
+        cancelButtonColor: 'var(--b3)',
+        customClass: {
+            popup:'swal-wide',
+        },
+    }).then((result)=>{
+        if(result.isConfirmed){
+            $('.spinner-container').css('display','flex');
+            cancelOffer();
+        }
+    })
 })
 
 
@@ -103,7 +120,15 @@ function cancelOffer(){
         },
         error: (e) => {
             // console.log(e);
-            alert(e.responseJSON.message)
+            Swal.fire({
+                text : e.responseJSON.message,
+                confirmButtonColor: 'var(--r2)',
+                customClass: {
+                    popup:'swal-wide',
+                },
+            }).then(()=>{
+                window.location.reload();
+            })
             window.location.reload();
         },
     })

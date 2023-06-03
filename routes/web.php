@@ -107,12 +107,12 @@ Route::middleware(['auth','role:pengelola'])->group(function(){
     Route::get('/pengelola/partners/partners/edit', function(){return redirect('/pengelola/partners/partners');});
     Route::get('/pengelola/partners/partners/edit/{partner_id}', [PengelolaPartnerController::class, 'edit']);
     Route::post('/pengelola/partners/partners/edit', [PengelolaPartnerController::class, 'update']);
-    
-    // Penawaran
-    Route::get('/pengelola/partners/offers', [PengelolaOfferController::class, 'showOffers']);
 
     // Riwayat kerja sama
     Route::get("/pengelola/partners/partners/history", [PengelolaPartnerHistoryController::class, 'index']);
+    
+    // Penawaran
+    Route::get('/pengelola/partners/offers', [PengelolaOfferController::class, 'showOffers']);
 
     // Persetujuan
     Route::get('/pengelola/partners/agreements', [PengelolaAgreementsController::class, 'showAgreements']);

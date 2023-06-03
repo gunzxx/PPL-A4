@@ -12,13 +12,14 @@ $(".delete-agreement").click(function(){
         cancelButtonText: 'No',
         confirmButtonText: 'Yes',
         allowOutsideClick: false,
-        confirmButtonColor: 'var(--)',
+        confirmButtonColor: 'var(--r2)',
         cancelButtonColor: 'var(--b3)',
         customClass: {
             popup:'swal-wide',
         },
     }).then((result)=>{
         if(result.isConfirmed){
+            $('.spinner-container').css('display', 'flex');
             deleteAgreement();
         }
     })
