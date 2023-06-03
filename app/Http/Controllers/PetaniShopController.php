@@ -122,7 +122,7 @@ class PetaniShopController extends Controller
             $item->addMediaFromRequest("product_img")->toMediaCollection('product');
         }
 
-        return redirect('/petani/shop/shop')->with("success", 'Data berhasil diperbarui!');
+        return redirect('/petani/shop/shop')->with("success", 'Data berhasil diupdate!');
     }
 
     /**

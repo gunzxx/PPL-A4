@@ -63,7 +63,7 @@
                 </div>
             </div>
             <div class="form-group button">
-                <a class="btn-danger" href="/petani/shop">Batal</a>
+                <a class="btn-danger" href="/petani/shop/shop">Batal</a>
                 <button class="save-btn" type="submit">Jual</button>
             </div>
         </form>
