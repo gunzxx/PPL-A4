@@ -26,22 +26,25 @@ $(".confirm").click(function(){
 $('.reject').click(function(){
     detail_id = $(this).attr('data-detail-id');
     offer_id = $(this).attr('data-offer-id');
-    Swal.fire({
-        text: "Apakah anda yakin menolak penawaran petani?",
-        showCancelButton: true,
-        cancelButtonText: 'No',
-        confirmButtonText: 'Yes',
-        allowOutsideClick: true,
-        confirmButtonColor: 'var(--r2)',
-        customClass: {
-            popup:'swal-wide',
-        },
-    }).then((result)=>{
-        if(result.isConfirmed){
-            $('.spinner-container').css('display','flex');
-            rejectOffer();
-        }
-    })
+    
+    $('.spinner-container').css('display', 'flex');
+    rejectOffer();
+    // Swal.fire({
+    //     text: "Apakah anda yakin menolak penawaran petani?",
+    //     showCancelButton: true,
+    //     cancelButtonText: 'No',
+    //     confirmButtonText: 'Yes',
+    //     allowOutsideClick: true,
+    //     confirmButtonColor: 'var(--r2)',
+    //     customClass: {
+    //         popup:'swal-wide',
+    //     },
+    // }).then((result)=>{
+    //     if(result.isConfirmed){
+    //         $('.spinner-container').css('display','flex');
+    //         rejectOffer();
+    //     }
+    // })
 })
 
 $('.delete').click(function(){
