@@ -28,23 +28,24 @@ $(".delete-agreement").click(function(){
 $(".reject-agreement").click(function(){
     agreementId = $(this).attr('data-agreement-id');
     agreementDetailId = $(this).attr('data-agrement-detail-id');
-    
-    Swal.fire({
-        text: "Tolak persetujuan dengan pengelola?",
-        showCancelButton: true,
-        cancelButtonText: 'No',
-        confirmButtonText: 'Yes',
-        allowOutsideClick: true,
-        confirmButtonColor: 'var(--r2)',
-        customClass: {
-            popup: 'swal-wide',
-        },
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $('.spinner-container').css('display', 'flex');
-            rejectAgreement();
-        }
-    })
+    $('.spinner-container').css('display', 'flex');
+    rejectAgreement();
+    // Swal.fire({
+    //     text: "Tolak persetujuan dengan pengelola?",
+    //     showCancelButton: true,
+    //     cancelButtonText: 'No',
+    //     confirmButtonText: 'Yes',
+    //     allowOutsideClick: true,
+    //     confirmButtonColor: 'var(--r2)',
+    //     customClass: {
+    //         popup: 'swal-wide',
+    //     },
+    // }).then((result) => {
+    //     if (result.isConfirmed) {
+    //         $('.spinner-container').css('display', 'flex');
+    //         rejectAgreement();
+    //     }
+    // })
 })
 
 $(".confirm-agreement").click(function(){
