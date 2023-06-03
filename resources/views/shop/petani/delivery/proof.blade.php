@@ -28,7 +28,7 @@
                         <p class="error">{{ $message }}</p>
                     @enderror
                     @if ($delivery->status != "accept")
-                        <label class="proof-upload" for="input-preview-img">Unggah</label>
+                        <label class="proof-upload" for="input-preview-img">Upload</label>
                         <input type="file" title="Unggah bukti pengiriman" name="proof" id="input-preview-img" accept="image/*">
                     @endif
                 </div>
