@@ -56,8 +56,12 @@ class PetaniShopController extends Controller
             'bean_type'=>'required',
             'stok'=>'required|numeric',
             'price'=>'required|numeric',
-            'no_rek'=>'required|numeric|max:16',
+            'no_rek'=>'required|max:16|numeric',
             'agreement_detail_id'=>'required',
+        ],[
+            'no_rek' => [
+                'max'=>'Maksimal 16 digit'
+            ]
         ]);
         $validated['petani_id']=auth()->user()->id;
         
