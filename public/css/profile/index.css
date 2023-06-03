@@ -115,3 +115,15 @@ main > div{
     border: 1px solid var(--r2);
 }
 /* Button end */
+
+
+
+/* Logout container */
+.logout-container{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding: 0;
+    padding-right: 30px;
+}
+/* Logout container end */

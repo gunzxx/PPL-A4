@@ -20,26 +20,28 @@
             <div class="profile-bottom">
                 <div class="col">
                     <div class="form-group">
-                        <label>Email</label>
-                        <p class="form-control">{{ auth()->user()->email }}</p>
+                        <label>Nama</label>
+                        <p class="form-control">{{ auth()->user()->fullname }}</p>
                     </div>
                     <div class="form-group">
-                        <label>No. Telepon</label>
-                        <p class="form-control">{{ auth()->user()->number_phone }}</p>
+                        <label>Email</label>
+                        <p class="form-control">{{ auth()->user()->email }}</p>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label>Email</label>
-                        <p class="form-control">{{ auth()->user()->email }}</p>
+                        <label>Alamat</label>
+                        <p class="form-control">{{ auth()->user()->address }}</p>
                     </div>
                     <div class="form-group">
                         <label>No. Telepon</label>
                         <p class="form-control">{{ auth()->user()->number_phone }}</p>
                     </div>
-                    <a class="btn btn-logout logout">Logout</a>
                 </div>
             </div>
+        </div>
+        <div class="logout-container">
+            <a class="btn btn-logout logout">Logout</a>
         </div>
     </main>
 @endsection
