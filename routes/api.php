@@ -44,7 +44,7 @@ Route::post('/pengelola/agreements/delete', [PengelolaAgreementsController::clas
 Route::post('/agreementDetail/{id}', [PengelolaAgreementsController::class, 'single']);
 
 // Route agreements petani
-Route::post('/petani/agreements/cancel', [PetaniAgreementsController::class, 'cancelAgreements']);
+Route::post('/petani/agreements/delete', [PetaniAgreementsController::class, 'cancelAgreements']);
 Route::post('/petani/agreements/reject', [PetaniAgreementsController::class, 'rejectAgreements']);
 Route::post('/petani/agreements/confirm', [PetaniAgreementsController::class, 'confirmAgreements']);
 
