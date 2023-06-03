@@ -2,7 +2,7 @@ $(".accept-btn").click(function(){
     const payment_id = $(this).attr("data-payment-id");
 
     Swal.fire({
-        text: "Terima pembayaran?",
+        text: "Konfirmasi bukti pembayaran?",
         showCancelButton: true,
         cancelButtonText: 'No',
         confirmButtonText: 'Yes',
@@ -25,8 +25,9 @@ $(".accept-btn").click(function(){
                     customClass: {
                         popup:'swal-wide',
                     },
+                }).then(()=>{
+                    window.location.reload();
                 });
-                window.location.reload();
             }).fail((e)=>{
                 Swal.fire({
                     text : e.responseJSON.message,

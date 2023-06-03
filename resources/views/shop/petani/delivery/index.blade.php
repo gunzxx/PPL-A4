@@ -49,7 +49,7 @@
                                 <a class="btn warning-btn" target="_blank" href="https://wa.me/{{ $delivery->pengelola->number_phone }}">Hubungi pengelola</a>
                                 
                                 @if ($delivery->status == 'notsend')
-                                    <a class="btn main-btn" href="/petani/shop/delivery/send/{{ $delivery->id }}" data-payment-id="{{ $delivery->id }}">Kirim</a>
+                                    <a class="btn main-btn" href="/petani/shop/delivery/send/{{ $delivery->id }}" data-payment-id="{{ $delivery->id }}">Bukti pengiriman</a>
                                 @elseif ($delivery->status == 'waiting')
                                     <a class="btn second-warning-btn" href="/petani/shop/delivery/send/{{ $delivery->id }}" data-payment-id="{{ $delivery->id }}">Bukti pengiriman</a>
                                 @elseif($delivery->status == 'accept')

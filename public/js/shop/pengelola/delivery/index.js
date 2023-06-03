@@ -26,9 +26,10 @@ $(".accept-btn").click(function(){
                     customClass: {
                         popup:'swal-wide',
                     },
-                });
-                $('.spinner-container').css('display','none');
-                // window.location.reload();
+                }).then(()=>{
+                    $('.spinner-container').css('display','none');
+                    window.location.reload();
+                })
             }).fail((e)=>{
                 Swal.fire({
                     text : e.responseJSON.message,
