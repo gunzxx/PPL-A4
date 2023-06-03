@@ -40,10 +40,10 @@
                                 <p>Harga : </p>
                                 <p class="green">Rp. {{ number_format($agreement_detail->agreement->price,2,',','.') }}</p>
                             </div>
-                            <div class="detail-list">
+                            {{-- <div class="detail-list">
                                 <p>Nama petani : </p>
                                 <p class="green">{{ $agreement_detail->petani->fullname }}</p>
-                            </div>
+                            </div> --}}
                             <div class="detail-list">
                                 <p>Status : </p>
                                 <p class="@if($agreement_detail->status == "accept") is_confirm @elseif($agreement_detail->status == "waiting") is_not_confirm @endif">
