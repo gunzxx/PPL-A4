@@ -19,12 +19,14 @@ $(document).ready(()=>{
         creditcard: "Masukkan no. kredit yang benar.",
     });
     
+    
     $(document).keydown(function(e){
         if(e.key === "/"){
             e.preventDefault()
             $(".search-container input").focus()
         }
-    })
+    });
+
     $(".search-container input").keydown(function(e){
         var regex = new RegExp("[a-zA-Z0-9]");
         if (regex.test(e.key)) {
@@ -87,7 +89,7 @@ $(document).ready(()=>{
     $(".logout").click(function(e){
         e.preventDefault();
         Swal.fire({
-            text: "Yakin logout dek?",
+            text: "Apakah anda yakin untuk keluar?",
             showCancelButton: true,
             cancelButtonText: 'No',
             confirmButtonText: 'Yes',
