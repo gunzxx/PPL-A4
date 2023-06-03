@@ -40,7 +40,7 @@
             @if (auth()->check()==true)
                 <a href="/home" class="action-button px-3">Coba sekarang</a>                
             @else
-                <a href="/register" class="action-button">Daftar</a>
+                <a href="/register" class="action-button">Daftar sekarang</a>
             @endif
         </div>
         <img src="img/hero.png" title="SoySync" width="345" height="474">

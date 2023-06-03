@@ -31,7 +31,8 @@ class AuthController extends Controller
 
         if (Auth::attempt($validate)) {
             $request->session()->regenerate();
-            return redirect()->intended(auth()->user()->getRoleNames()[0] . "/home")->with('success','Berhasil login!');
+            // return redirect()->intended(auth()->user()->getRoleNames()[0] . "/home")->with('success','Login berhasil!');
+            return redirect()->intended(auth()->user()->getRoleNames()[0] . "/home");
         } else {
             return redirect()->back()->withErrors(['gagal'=> "Email/password salah"])->withInput();
         }
@@ -81,6 +82,6 @@ class AuthController extends Controller
         $validate['number_phone'] = "+62".$validate['number_phone'];
         // dd($validate['number_phone']);
         User::create($validate)->assignRole($request->post('role'));
-        return redirect('/login')->with('success', "User berhasil didaftarkan");
+        return redirect('/login')->with('success', "Akun berhasil ditambahkan.");
     }
 }
