@@ -56,7 +56,7 @@ class PetaniShopController extends Controller
             'bean_type'=>'required',
             'stok'=>'required|numeric',
             'price'=>'required|numeric',
-            'no_rek'=>'required|max:16|numeric',
+            'no_rek'=>'required|max:16',
             'agreement_detail_id'=>'required',
         ],[
             'no_rek' => [

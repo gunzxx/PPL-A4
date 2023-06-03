@@ -2,7 +2,7 @@ $(".accept-btn").click(function(){
     const delivery_id = $(this).attr("data-delivery-id");
 
     Swal.fire({
-        text: "Terima pengiriman?",
+        text: "Konfirmasi barang sudah diterima?",
         showCancelButton: true,
         cancelButtonText: 'No',
         confirmButtonText: 'Yes',

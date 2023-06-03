@@ -96,7 +96,7 @@ class PetaniDeliveryController extends Controller
             $delivery->update([
                 'send_at' => Carbon::now(),
             ]);
-            return redirect("/petani/shop/delivery")->with('success',"Bukti pengiriman berhasil diperbarui!");
+            return redirect("/petani/shop/delivery")->with('success',"Berhasil dikirim!");
         }
 
         return redirect("/petani/shop/delivery");

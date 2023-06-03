@@ -34,6 +34,7 @@ $(".cancel-btn").click(function(){
                     }
 
                     $('.spinner-container').css('display','none');
+                    window.location.href = "/pengelola/shop/cart"
                 })
             })
         }

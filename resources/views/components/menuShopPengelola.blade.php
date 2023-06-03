@@ -1,6 +1,6 @@
 <div class="menu">
     <div class="menu-item {{ $active == "shop" ? "active" : '' }}">
-        <a href="/pengelola/shop/shop">Pembelian</a>
+        <a href="/pengelola/shop/shop">Tambah Pembelian</a>
     </div>
     <div class="menu-item {{ $active == "cart" ? "active" : '' }}">
         <a href="/pengelola/shop/cart">Keranjang</a>

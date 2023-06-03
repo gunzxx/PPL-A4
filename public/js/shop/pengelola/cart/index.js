@@ -46,44 +46,30 @@ $(document).ready(()=>{
     $(".delete-btn").click(function(){
         cart_id = $(this).attr('data-cart-id');
 
-        Swal.fire({
-            text: "Hapus keranjang?",
-            showCancelButton: true,
-            cancelButtonText: 'No',
-            confirmButtonText: 'Yes',
-            confirmButtonColor: 'var(--r2)',
-            cancelButtonColor: 'var(--b3)',
-            customClass: {
-                popup:'swal-wide',
-            },
-        }).then((result)=>{
-            if(result.isConfirmed){
-                $('.spinner-container').css('display', 'flex');
-                setTimeout(() => {
-                    $('.spinner-container').css('display', 'none');
-                }, 1000)
-                $.post('/api/pengelola/cart/delete', {
-                    cart_id: cart_id,
-                }).done((e) => {
-                    GNotify.alertSuccess(e.message);
-                    $(this).parent().parent().parent().remove();
-                    if ($('.list-card').length == 0) {
-                        $(".box-container").html('<div><p align="center">Tidak ada barang di keranjang.</p></div>')
-                    }
-                    $('.spinner-container').css('display', 'none');
-                }).fail((e) => {
-                    Swal.fire({
-                        text: e.responseJSON.message,
-                        allowOutsideClick: false,
-                        confirmButtonColor: 'var(--r2)',
-                        customClass: {
-                            popup: 'swal-wide',
-                        },
-                    }).then(() => {
-                        window.location.reload()
-                    })
-                })
+        $('.spinner-container').css('display', 'flex');
+        setTimeout(() => {
+            $('.spinner-container').css('display', 'none');
+        }, 1000)
+        $.post('/api/pengelola/cart/delete', {
+            cart_id: cart_id,
+        }).done((e) => {
+            GNotify.alertSuccess(e.message);
+            $(this).parent().parent().parent().remove();
+            if ($('.list-card').length == 0) {
+                $(".box-container").html('<div><p align="center">Tidak ada barang di keranjang.</p></div>')
             }
+            $('.spinner-container').css('display', 'none');
+        }).fail((e) => {
+            Swal.fire({
+                text: e.responseJSON.message,
+                allowOutsideClick: false,
+                confirmButtonColor: 'var(--r2)',
+                customClass: {
+                    popup: 'swal-wide',
+                },
+            }).then(() => {
+                window.location.reload()
+            })
         })
     })
 
@@ -91,44 +77,29 @@ $(document).ready(()=>{
     $(".buy-btn").click(function(){
         const cart_id = $(this).attr('data-cart-id');
         const item_id = $(this).attr('data-item-id');
-        // console.log([cart_id,item_id]);
-
-        Swal.fire({
-            text: "Beli kedelai?",
-            showCancelButton: true,
-            cancelButtonText: 'No',
-            confirmButtonText: 'Yes',
-            confirmButtonColor: 'var(--g2)',
-            cancelButtonColor: 'var(--b3)',
-            customClass: {
-                popup:'swal-wide',
-            },
-        }).then((result)=>{
-            if(result.isConfirmed){
-                $('.spinner-container').css('display','flex');
-                $.post("/api/pengelola/payment/add",{
-                    cart_id:cart_id,
-                    item_id:item_id,
-                }).done((e)=>{
-                    $(this).parent().parent().parent().remove();
-                    if ($('.list-card').length == 0) {
-                        $(".box-container").html('<div><p align="center">Tidak ada barang di keranjang.</p></div>')
-                    }
-                    
-                    GNotify.alertSuccess(e.message);
-                    window.location.href = '/pengelola/shop/payment'
-                }).fail(e=>{
-                    Swal.fire({
-                        text : e.responseJSON.message,
-                        confirmButtonColor: 'var(--r2)',
-                        customClass: {
-                            popup:'swal-wide',
-                        },
-                    }).then(()=>{
-                        window.location.reload();
-                    })
-                })
+        
+        $('.spinner-container').css('display', 'flex');
+        $.post("/api/pengelola/payment/add", {
+            cart_id: cart_id,
+            item_id: item_id,
+        }).done((e) => {
+            $(this).parent().parent().parent().remove();
+            if ($('.list-card').length == 0) {
+                $(".box-container").html('<div><p align="center">Tidak ada barang di keranjang.</p></div>')
             }
+
+            GNotify.alertSuccess(e.message);
+            window.location.href = '/pengelola/shop/payment'
+        }).fail(e => {
+            Swal.fire({
+                text: e.responseJSON.message,
+                confirmButtonColor: 'var(--r2)',
+                customClass: {
+                    popup: 'swal-wide',
+                },
+            }).then(() => {
+                window.location.reload();
+            })
         })
     })
 

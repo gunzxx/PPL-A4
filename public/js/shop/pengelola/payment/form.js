@@ -39,4 +39,25 @@ $(document).ready(()=>{
             }
         }
     })
+
+    $("#proof-form-container").submit(function (e) {
+        e.preventDefault();
+        Swal.fire({
+            text: "Apakah sudah sesuai?",
+            showCancelButton: true,
+            cancelButtonText: 'No',
+            confirmButtonText: 'Yes',
+            allowOutsideClick: false,
+            confirmButtonColor: 'var(--g2)',
+            cancelButtonColor: 'var(--b3)',
+            customClass: {
+                popup: 'swal-wide',
+            },
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $(this).unbind('submit');
+                $(this).submit();
+            }
+        })
+    })
 })

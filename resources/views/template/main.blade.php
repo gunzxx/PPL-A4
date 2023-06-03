@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/components.css">
     <link rel="stylesheet" href="/css/pagination.css">
+    <script src="/js/npm/swal2.js"></script>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/my/notify.js"></script>
     @if(isset($css) && gettype($css)=='array')
@@ -29,7 +30,6 @@
     </div>
 
     <script src="/js/jquery-validate.min.js"></script>
-    <script src="/js/npm/swal2.js"></script>
     <script src="/js/script.js"></script>
     @yield('script')
 </body>

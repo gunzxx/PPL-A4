@@ -64,7 +64,16 @@
     </main>
 
     @if(session()->has('success'))
-        <x-alertSuccess :message="session()->get('success')"></x-alertSuccess>
+        <script>
+            Swal.fire({
+                text : "{{ session()->get('success') }}",
+                icon : 'success',
+                confirmButtonColor: 'var(--g2)',
+                customClass: {
+                    popup:'swal-wide',
+                },
+            })
+        </script>
     @endif
 
     @if(session()->has('error'))

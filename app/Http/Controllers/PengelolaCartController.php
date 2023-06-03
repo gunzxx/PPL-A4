@@ -54,7 +54,7 @@ class PengelolaCartController extends Controller
                 'updated_at'=>Carbon::now(),
             ]);
 
-            return response()->json(['message'=>'Data berhasil ditambahkan!','data'=>$cekCart],200);
+            return response()->json(['message'=>'Data berhasil ditambahkan ke keranjang!','data'=>$cekCart],200);
         }
         
         $pengelola_id = Item::find($item_id)->pengelola_id;
@@ -63,7 +63,7 @@ class PengelolaCartController extends Controller
             'item_id' => $item_id,
             'pengelola_id' => $pengelola_id,
         ]);
-        return response()->json(['message'=>'Data berhasil ditambahkan!','data'=>$cart],200);
+        return response()->json(['message'=> 'Data berhasil ditambahkan ke keranjang!','data'=>$cart],200);
     }
 
     /**
@@ -88,7 +88,7 @@ class PengelolaCartController extends Controller
             'amount' => $amount,
             'updated_at' => now(),
         ]);
-        return response()->json(['message'=>'Data berhasil diperbarui!','data'=>$cart],200);
+        return response()->json(['message'=>'Data berhasil diupdate!','data'=>$cart],200);
     }
 
     /**

@@ -95,6 +95,6 @@ class PengelolaDeliveryController extends Controller
             'is_active' => false,
         ]);
         
-        return response()->json(['message'=>"Pengiriman diterima!"]);
+        return response()->json(['message'=>"Berhasil diterima!"]);
     }
 }
