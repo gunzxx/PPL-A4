@@ -35,8 +35,11 @@
                             <p align="center"><strong style="font-size: 32px;">Rp. 300.000,-</strong></p>
                             <p align="center">anda dapat menikmati fitur premium <strong>selamanya</strong>.</p>
                         </div>
+                        <div class="my-3 mb-5">
+                            <x-uiv.loader3></x-uiv.loader3>
+                        </div>
                         <div class="modal-premium-register">
-                            <a href="/premium" class="premium-btn create-btn">Daftar sekarang</a>
+                            <a href="/premium" class="premium-btn create-btn premium-btn-animate">Daftar sekarang</a>
                         </div>
                     </div>
                 </div>
