@@ -18,7 +18,7 @@
                                 <img src="{{ $agreement_detail->pengelola->getFirstMediaUrl("profile") != "" ? $agreement_detail->pengelola->getFirstMediaUrl("profile") : "/img/profile/default.png" }}">
                             </div>
                             <div class="card-header-identity">
-                                <h1>{{ ucfirst($agreement_detail->pengelola->fullname) }}</h1>
+                                <h1>{{ ucfirst($agreement_detail->petani->fullname) }}</h1>
                                 <p>No Telp.&nbsp;{{ ucfirst($agreement_detail->pengelola->number_phone) }}</p>
                             </div>
                         </div>
