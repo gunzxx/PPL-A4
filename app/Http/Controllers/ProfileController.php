@@ -59,7 +59,7 @@ class ProfileController extends Controller
 
         $user = User::find(auth()->user()->id);
         $hasher = app('hash');
-        if ($hasher->check('passwordToCheck', $user->password)) {
+        if ($hasher->check($request->old_password, $user->password)) {
             $user->update([
                 'password'=>bcrypt($request->new_password),
             ]);
