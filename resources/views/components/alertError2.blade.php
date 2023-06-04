@@ -1,6 +1,6 @@
 <input type="hidden" id="alert-message" value="{{ $message }}">
 <script>
-    const alertMessage = document.getElementById("alert-message").value();
+    const alertMessage = document.getElementById("alert-message").value;
     Swal.fire({
         text : alertMessage,
         icon : 'error',

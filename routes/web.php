@@ -49,6 +49,8 @@ Route::middleware('auth')->group(function(){
     Route::get('/profile',[ProfileController::class,'index']);
     Route::get('/profile/edit',[ProfileController::class,'edit']);
     Route::post('/profile/edit',[ProfileController::class,'update']);
+    Route::get('/profile/password',[ProfileController::class,'password']);
+    Route::post('/profile/password',[ProfileController::class,'change']);
 
     // Route logout
     Route::get('/logout', [AuthController::class,'logout']);

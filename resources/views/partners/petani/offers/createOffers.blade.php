@@ -62,7 +62,7 @@
                                 @endforeach
                             </select>
                         @else
-                            <p class="kosong">Inventori masih kosong, harap <a href="/petani/inventory/create" class="error">tambah inventori</a></p>
+                            <p class="kosong">Inventori masih kosong, harap <a href="/petani/inventory/create" style="color: blue;" target="_blank" class="error">tambah inventori</a></p>
                         @endif
                     </div>
                 </div>

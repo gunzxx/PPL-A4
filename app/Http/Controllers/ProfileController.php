@@ -41,4 +41,30 @@ class ProfileController extends Controller
         
         return redirect("/profile")->with("success2","Data berhasil diperbarui.");
     }
+
+    public function password()
+    {
+        return view('profile.password', [
+            'css' => ['profile/index', 'profile/form', 'profile/edit'],
+        ]);
+    }
+
+    public function change(Request $request)
+    {
+        $request->validate([
+            'old_password'=>"required|min:3",
+            'new_password'=> "required|required_with:password_confirmation|same:password_confirmation|min:3",
+            'password_confirmation'=>"required|min:3",
+        ]);
+
+        $user = User::find(auth()->user()->id);
+        $hasher = app('hash');
+        if ($hasher->check('passwordToCheck', $user->password)) {
+            $user->update([
+                'password'=>bcrypt($request->new_password),
+            ]);
+            return redirect('/profile')->with("success2","Password berhasil diperbarui.");
+        }
+        return back()->with("error2","Password salah!")->withInput();
+    }
 }
