@@ -29,6 +29,7 @@ $(document).ready(function () {
                 required: true,
                 number:true,
                 minlength:12,
+                maxlength:16,
             },
             agreement_detail_id: {
                 required: true,
