@@ -15,7 +15,7 @@
                     <div class="card-header-row">
                         <div class="card-header-col img">
                             <div class="card-header-img-container bg-transparent-img">
-                                <img src="{{ $agreement_detail->pengelola->getFirstMediaUrl("profile") != "" ? $agreement_detail->pengelola->getFirstMediaUrl("profile") : "/img/profile/default.png" }}">
+                                <img src="{{ $agreement_detail->petani->getFirstMediaUrl("profile") != "" ? $agreement_detail->petani->getFirstMediaUrl("profile") : "/img/profile/default.png" }}">
                             </div>
                             <div class="card-header-identity">
                                 <h1>{{ ucfirst($agreement_detail->petani->fullname) }}</h1>
