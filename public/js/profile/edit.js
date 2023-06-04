@@ -30,6 +30,7 @@ $(document).ready(()=>{
             number_phone: {
                 required: true,
                 minlength: 10,
+                maxlength: 12,
                 number:true,
             },
         },
