@@ -23,6 +23,7 @@ form.form-container{
     width: 100%;
     aspect-ratio: 1;
     overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,0,0,.1);
 }
 #preview-img img{
     max-width: 100%;
