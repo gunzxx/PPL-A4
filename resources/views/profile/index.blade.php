@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="logout-container">
-            <a class="btn btn-logout logout">Logout</a>
+            <a class="btn btn-logout logout">Keluar</a>
         </div>
     </main>
 

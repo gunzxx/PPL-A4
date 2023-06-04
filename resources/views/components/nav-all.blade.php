@@ -37,6 +37,6 @@
         <div class="profile-menu-decide">
             <hr>
         </div>
-        <a class="profile-menu-list logout">Logout&nbsp;<i class="bi bi-box-arrow-right"></i></a>
+        <a class="profile-menu-list logout">Keluar&nbsp;<i class="bi bi-box-arrow-right"></i></a>
     </div>
 </div>
