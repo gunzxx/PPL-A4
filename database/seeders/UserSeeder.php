@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
         $user1 = User::create([
             'fullname' => 'Guntur 1',
             'id_number' => 212410102071,
-            'number_phone' => '0895370015252',
+            'number_phone' => '+62895370015252',
             'address' => 'Jl Kalimantan 1',
             'email' => "gunzxx@mail.com",
             'password' => bcrypt('123'),
@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
         $user2 = User::create([
             'fullname' => 'Guntur 2',
             'id_number' => 212410102072,
-            'number_phone' => '0895370015252',
+            'number_phone' => '+62895370015252',
             'address' => 'Jl Kalimantan 2',
             'email' => "gunz2@mail.com",
             'password' => bcrypt('123'),
@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
         $user3 = User::create([
             'fullname' => 'Guntur 3',
             'id_number' => 212410102073,
-            'number_phone' => '0895370015252',
+            'number_phone' => '+62895370015252',
             'address' => 'Jl Kalimantan 3',
             'email' => "gunz3@mail.com",
             'password' => bcrypt('123'),
@@ -46,7 +46,7 @@ class UserSeeder extends Seeder
         $user4 = User::create([
             'fullname' => 'Guntur 4',
             'id_number' => 212410102074,
-            'number_phone' => '0895370015252',
+            'number_phone' => '+62895370015252',
             'address' => 'Jl Kalimantan 4',
             'email' => "gunz4@mail.com",
             'password' => bcrypt('123'),

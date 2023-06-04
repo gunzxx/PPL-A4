@@ -44,4 +44,12 @@
             <a class="btn btn-logout logout">Logout</a>
         </div>
     </main>
+
+    @if(session()->has('error2'))
+        <x-alertError2 :message="session()->get('error2')"></x-alertError2>
+    @endif
+
+    @if (session()->has('success2'))
+        <x-alertSuccess2 :message="session()->get('success2')"></x-alertSuccess2>
+    @endif
 @endsection

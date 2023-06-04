@@ -34,10 +34,6 @@ form{
     border-radius: 10px;
     overflow: hidden;
 }
-#preview-img > p{
-    color: var(--r2);
-    font-size: 16px;
-}
 #preview-img img{
     height: 100%;
     width: max-content;
@@ -91,6 +87,11 @@ form{
     border: 1px solid var(--b3);
     border-radius: 5px;
     padding: 10px 30px;
+}
+.form-button {
+    width: 100%;
+    display: flex;
+    gap: 30px;
 }
 #preview-img{
     width: 230px;
