@@ -27,11 +27,12 @@ class ProfileController extends Controller
             'number_phone' => 'required',
         ]);
 
+        $validate['number_phone'] = "+62".$validate['number_phone'];
+
         if(!$user = User::find(auth()->user()->id)){
             return abort(404);
         }
 
-        
         $user->update($validate);
 
         if($request->file("profile_image")){
