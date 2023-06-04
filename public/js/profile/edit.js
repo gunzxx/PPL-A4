@@ -21,6 +21,7 @@ $(document).ready(()=>{
             id_number: {
                 required: true,
                 minlength: 3,
+                maxlength: 16,
                 digits:true,
             },
             address: {
