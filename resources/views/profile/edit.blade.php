@@ -23,6 +23,10 @@
                         <input id="id_number" name="id_number" value="{{ auth()->user()->id_number }}" type="text" required class="form-control">
                     </div>
                     <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" readonly name="email" value="{{ auth()->user()->email }}" type="text" required class="form-control">
+                    </div>
+                    <div class="form-group">
                         <label for="address">Alamat</label>
                         <input id="address" name="address" value="{{ auth()->user()->address }}" type="text" required class="form-control">
                     </div>
