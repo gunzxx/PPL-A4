@@ -2,6 +2,7 @@
 
 @section('head')
     <script src="/js/npm/chart.js"></script>
+    <link rel="stylesheet" href="/css/uiv/loader4.css">
 @endsection
 
 @section('content')
@@ -16,11 +17,39 @@
 
     <main>
         <div class="forecasting-container">
-            <div class="label mb-4">
+            <div class="label">
                 <h1 style="text-align: center;">Forecasting Harga Kedelai</h1>
             </div>
             @if (auth()->user()->premium)
-                <canvas class="forecasting-chart" id="myChart">Memuat data kedelai...</canvas>
+                <div class="canvas-container">
+                    <div class="loader-premium-container">
+                        <div class="loader-premium">
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                        </div>
+                        <p>Mengambil data...</p>
+                    </div>
+                    <canvas class="forecasting-chart" id="myChart">Memuat data kedelai...</canvas>
+                </div>
+                <div class="data-container">
+                    <div class="tahun-container">
+                        <label for="tahun">Pilih tahun : </label>
+                        <select class="form-control" name="tahun" id="tahun">
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021" selected>2021</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>Rata-rata harga kedelai pada tahun <span id="tahun-detail">-</span> : <span id="average-detail">-</span></p>
+                    </div>
+                </div>
             @else
                 <div class="forecasting-no-premium">
                     <h1 align="center">Dapatkan informasi harga kedelai dengan menjadi <span class="badge-premium">premium</span></h1>
@@ -37,9 +66,6 @@
                             <p align="center"><strong style="font-size: 32px;">Rp. 300.000,-</strong></p>
                             <p align="center">anda dapat menikmati fitur premium <strong>selamanya</strong>.</p>
                         </div>
-                        {{-- <div class="my-3 mb-5">
-                            <x-uiv.button1 :front="'Beli'" :top="'Sekarang'"></x-uiv.button1>
-                        </div> --}}
                         <div class="modal-premium-register">
                             <a href="/premium" class="premium-btn create-btn premium-btn-animate">Daftar sekarang</a>
                         </div>
@@ -48,7 +74,7 @@
             @endif
         </div>
 
-        <div class="partner-home-container label">
+        <div class="partner-home-container label mt-4">
             <h1 style="text-align: center;">Broadcasting kerja sama</h1>
         </div>
         <div class="card-container">
@@ -104,11 +130,11 @@
                     labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
                     datasets: [
                         {
-                            label: "Data Penjualan",
+                            label: "Harga kedelai",
                             data: [],
                             backgroundColor: "rgba(54, 162, 235, 1)",
                             borderColor: "rgba(54, 162, 235, 1)",
-                            borderWidth: 1
+                            // borderWidth: 1
                         },
                     ],
                 },
@@ -116,24 +142,72 @@
                     responsive: true,
                 }
             });
-
             myChart.update();
 
-            // Async get data from api and update chart
-            (async()=>{
-                let data_fetch;
-                data_fetch = await fetch("/api/kedelai");
-                data_fetch = await data_fetch.json();
+            // get data harga from api and update chart
+            fetch("/api/kedelai?tahun=2021")
+            .then((response)=>{
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Api error.');
+            })
+            .then((data_fetch)=>{
+                document.querySelector(".loader-premium-container").style.display = "none";
 
-                let data_kedelai = [];
-                await data_fetch.forEach(element => {
-                    data_kedelai.push(parseInt(element['harga']));
+                let data_harga = [];
+                data_fetch.forEach(element => {
+                    data_harga.push(parseInt(element['harga']));
                 });
-                // console.log(await data_kedelai);
-
-                myChart.data.datasets[0].data = data_kedelai;
+                
+                myChart.data.datasets[0].data = data_harga;
                 myChart.update();
-            })()
+
+                const total_harga = data_harga.reduce((a,b)=>a+b,0);
+                const avg = (total_harga/data_fetch.length) || 0;
+
+                $("#tahun-detail").text(2021);
+                $("#average-detail").text(new Intl.NumberFormat("id-ID", {style: "currency", currency: "IDR"}).format(avg));
+            })
+            .catch((error)=>{
+                console.log(error);
+            })
+
+            // Change tahun ajax
+            $("#tahun").change(function(){
+                document.querySelector(".loader-premium-container").style.display = "flex";
+                
+                const tahun = $(this).val();
+                const url = "/api/kedelai?tahun="+tahun;
+                
+                fetch(url)
+                .then((response)=>{
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Api error.');
+                })
+                .then((data_fetch)=>{
+                    document.querySelector(".loader-premium-container").style.display = "none";
+
+                    let data_harga = [];
+                    data_fetch.forEach(element => {
+                        data_harga.push(parseInt(element['harga']));
+                    });
+    
+                    myChart.data.datasets[0].data = data_harga;
+                    myChart.update();
+                    
+                    const total_harga = data_harga.reduce((a,b)=>a+b,0);
+                    const avg = (total_harga/data_fetch.length) || 0;
+
+                    $("#tahun-detail").text(tahun);
+                    $("#average-detail").text(new Intl.NumberFormat("id-ID", {style: "currency", currency: "IDR"}).format(avg));
+                })
+                .catch((error)=>{
+                    console.log(error);
+                })
+            })
         </script>
     @else
         <script>

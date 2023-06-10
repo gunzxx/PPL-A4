@@ -50,7 +50,6 @@ Route::post('/petani/agreements/confirm', [PetaniAgreementsController::class, 'c
 
 // Route api forecasting data kedelai
 Route::get('/kedelai',[KedelaiController::class,'index']);
-Route::get('/kedelai/{apiKedelai}',[KedelaiController::class,'show']);
 
 
 /**

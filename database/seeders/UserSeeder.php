@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
             'address' => 'Jl Kalimantan 1',
             'email' => "gunzxx@mail.com",
             'password' => bcrypt('123'),
+            'premium' => true,
         ]);
         $user1->assignRole("pengelola");
 

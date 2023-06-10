@@ -10,7 +10,7 @@
     <main>
         <div class="card-order">
             <img src="/img/premium/premium-img.jpg" alt="smile :)" width="150">
-            @if ($premium->status == 'unpaid')
+            @if ($premium->status == 'unpaid' & auth()->user()->premium == false)
                 <p>Pendaftaran sedang dilakukan. Silahkan selesaikan pembayaran.</p>
                 <p align="center"><strong style="font-size: 32px;">Rp. 300.000,-</strong></p>
                 <button id="pay-button" class="create-btn">Bayar</button>
@@ -27,7 +27,7 @@
 @endsection
 
 @section('script')
-    @if ($premium->status == 'unpaid')
+    @if ($premium->status == 'unpaid' & auth()->user()->premium == false)
         <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
         <script type="text/javascript">
             $(document).ready(()=>{

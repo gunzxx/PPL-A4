@@ -11,21 +11,14 @@ class KedelaiController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $apiKedelais = ApiKedelai::get(['id', 'bulan', 'harga'])->toArray();
-        return response()->json($apiKedelais);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show($apiKedelai)
-    {
-        $apiKedelai = ApiKedelai::find($apiKedelai);
-        if (!$apiKedelai) {
-            return response()->json([]);
+        if(!$request->tahun){
+            return response()->json([
+                'message' => "Data tidak valid."
+            ],404);
         }
-        return response()->json($apiKedelai->toArray());
+        $apiKedelais = ApiKedelai::where(['tahun'=>$request->tahun])->get(['id', 'bulan', 'harga'])->toArray();
+        return response()->json($apiKedelais);
     }
 }

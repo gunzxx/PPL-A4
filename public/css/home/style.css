@@ -132,15 +132,16 @@
 .label{
     width: 100%;
     display: flex;
+}
+.label.partner-home-container{
     margin-top: 70px;
-    margin-bottom: 30px;
 }
 .label h1{
     width: 100%;
     font-weight: 600;
     font-size: 40px;
-    background: var(--g2);
-    color: var(--w1);
+    background: var(--w1);
+    color: var(--g2);
     padding: 10px 0;
 }
 /* Partner end */
