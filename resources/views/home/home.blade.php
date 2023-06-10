@@ -16,7 +16,9 @@
 
     <main>
         <div class="forecasting-container">
-            <h1 class="mb-4">Forecasting Harga Kedelai</h1>
+            <div class="label mb-4">
+                <h1 style="text-align: center;">Forecasting Harga Kedelai</h1>
+            </div>
             @if (auth()->user()->premium)
                 <canvas class="forecasting-chart" id="myChart">Memuat data kedelai...</canvas>
             @else
@@ -46,7 +48,7 @@
             @endif
         </div>
 
-        <div class="partner-home-container">
+        <div class="partner-home-container label">
             <h1 style="text-align: center;">Broadcasting kerja sama</h1>
         </div>
         <div class="card-container">

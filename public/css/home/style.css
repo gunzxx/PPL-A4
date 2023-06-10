@@ -129,13 +129,13 @@
 
 
 /* Partner */
-.partner-home-container{
+.label{
     width: 100%;
     display: flex;
     margin-top: 70px;
     margin-bottom: 30px;
 }
-.partner-home-container h1{
+.label h1{
     width: 100%;
     font-weight: 600;
     font-size: 40px;
